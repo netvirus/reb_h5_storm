@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="L2Rain" default="dist" basedir=".">
+<project name="L2relax.fun" default="dist" basedir=".">
 	<property name="build.version" value="1.0" />
 	<property name="debug" value="on" />
 	
@@ -237,6 +237,6 @@
 	<target name="dist" depends="loginserver, gameserver, scripts" description="Create the Zip file.">
 		<delete file="${lib}/gameserver.jar" />
 		<delete file="${lib}/commons.jar" />
-		<zip destfile="${build}/L2Rain-H5.zip" basedir="${build.dist}" level="9" />
+		<zip destfile="${build}/L2relax.fun.zip" basedir="${build.dist}" level="9" />
 	</target>
 </project>
