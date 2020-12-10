@@ -10,7 +10,6 @@ import l2r.gameserver.handler.voicecommands.impl.CastleInfo;
 import l2r.gameserver.handler.voicecommands.impl.Cfg;
 import l2r.gameserver.handler.voicecommands.impl.CustomSecurity;
 import l2r.gameserver.handler.voicecommands.impl.Debug;
-import l2r.gameserver.handler.voicecommands.impl.Donate;
 import l2r.gameserver.handler.voicecommands.impl.Hellbound;
 import l2r.gameserver.handler.voicecommands.impl.Offline;
 import l2r.gameserver.handler.voicecommands.impl.Offlinebuff;
@@ -63,7 +62,6 @@ public class VoicedCommandHandler extends AbstractHolder
 		registerVoicedCommandHandler(new Ping());
 		registerVoicedCommandHandler(new Offlinebuff());
 		registerVoicedCommandHandler(new Calculator());
-		registerVoicedCommandHandler(new Donate());
 		if (Config.ENABLE_ALT_VOTE_REWARD)
 			registerVoicedCommandHandler(new AlternativeVoteReward());
 	}
