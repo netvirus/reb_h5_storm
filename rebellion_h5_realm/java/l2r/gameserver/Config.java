@@ -124,7 +124,7 @@ public class Config
 	public static final String ENCHANT_CB_CONFIG_FILE = "config/community/enchanter_manager.properties";
 
 	/** CONFIG - Phantom players */
-	//	public static final String PHANTOM_FILE = "config/phantom/Phantoms.properties";
+	public static final String PHANTOM_FILE = "config/phantom/Phantoms.properties";
 
 	public static boolean ENABLE_HWID_CHECKER;
 	
@@ -138,42 +138,42 @@ public class Config
 
 	 /* --------------------------------------------------------- */
 	// Phantom players
-//	public static boolean PHANTOM_PLAYERS_ENABLED;
-//	public static String PHANTOM_PLAYERS_ACCOUNT;
-//	public static int PHANTOM_MAX_PLAYERS;
-//	public static int[] PHANTOM_BANNED_CLASSID;
-//	public static int[] PHANTOM_BANNED_SETID;
-//	public static int PHANTOM_MAX_WEAPON_GRADE;
-//	public static int PHANTOM_MAX_ARMOR_GRADE;
-//	public static int PHANTOM_MAX_JEWEL_GRADE;
-//	public static int PHANTOM_SPAWN_MAX;
-//	public static int PHANTOM_SPAWN_DELAY;
-//	public static int PHANTOM_MAX_LIFETIME;
-//	public static int CHANCE_TO_ENCHANT_WEAP;
-//	public static int MAX_ENCH_PHANTOM_WEAP;
-//	public static int PHANTOM_MAX_DRIFT_RANGE;
-//	public static boolean ALLOW_PHANTOM_CUSTOM_TITLES;
-//	public static int PHANTOM_CHANCE_SET_NOBLE_TITLE;
-//	public static boolean DISABLE_PHANTOM_ACTIONS;
-//	public static int[] PHANTOM_ALLOWED_NPC_TO_WALK;
-//	public static int PHANTOM_ROAMING_MAX_WH_CHECKS;
-//	public static int PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF;
-//	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS;
-//	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF;
-//	public static int PHANTOM_ROAMING_MAX_NPC_CHECKS;
-//	public static int PHANTOM_ROAMING_MIN_WH_DELAY;
-//	public static int PHANTOM_ROAMING_MAX_WH_DELAY;
-//	public static int PHANTOM_ROAMING_MIN_SHOP_DELAY;
-//	public static int PHANTOM_ROAMING_MAX_SHOP_DELAY;
-//	public static int PHANTOM_ROAMING_MIN_NPC_DELAY;
-//	public static int PHANTOM_ROAMING_MAX_NPC_DELAY;
-//	public static int PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY;
-//	public static int PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY;
-//	public static int PHANTOM_ROAMING_MIN_FREEROAM_DELAY;
-//	public static int PHANTOM_ROAMING_MAX_FREEROAM_DELAY;
-//	public static boolean DISABLE_PHANTOM_RESPAWN;
-//	public static boolean DEBUG_PHANTOMS;
-//	public static int[] PHANTOM_CLANS;
+	public static boolean PHANTOM_PLAYERS_ENABLED;
+	public static String PHANTOM_PLAYERS_ACCOUNT;
+	public static int PHANTOM_MAX_PLAYERS;
+	public static int[] PHANTOM_BANNED_CLASSID;
+	public static int[] PHANTOM_BANNED_SETID;
+	public static int PHANTOM_MAX_WEAPON_GRADE;
+	public static int PHANTOM_MAX_ARMOR_GRADE;
+	public static int PHANTOM_MAX_JEWEL_GRADE;
+	public static int PHANTOM_SPAWN_MAX;
+	public static int PHANTOM_SPAWN_DELAY;
+	public static int PHANTOM_MAX_LIFETIME;
+	public static int CHANCE_TO_ENCHANT_WEAP;
+	public static int MAX_ENCH_PHANTOM_WEAP;
+	public static int PHANTOM_MAX_DRIFT_RANGE;
+	public static boolean ALLOW_PHANTOM_CUSTOM_TITLES;
+	public static int PHANTOM_CHANCE_SET_NOBLE_TITLE;
+	public static boolean DISABLE_PHANTOM_ACTIONS;
+	public static int[] PHANTOM_ALLOWED_NPC_TO_WALK;
+	public static int PHANTOM_ROAMING_MAX_WH_CHECKS;
+	public static int PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF;
+	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS;
+	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF;
+	public static int PHANTOM_ROAMING_MAX_NPC_CHECKS;
+	public static int PHANTOM_ROAMING_MIN_WH_DELAY;
+	public static int PHANTOM_ROAMING_MAX_WH_DELAY;
+	public static int PHANTOM_ROAMING_MIN_SHOP_DELAY;
+	public static int PHANTOM_ROAMING_MAX_SHOP_DELAY;
+	public static int PHANTOM_ROAMING_MIN_NPC_DELAY;
+	public static int PHANTOM_ROAMING_MAX_NPC_DELAY;
+	public static int PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY;
+	public static int PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY;
+	public static int PHANTOM_ROAMING_MIN_FREEROAM_DELAY;
+	public static int PHANTOM_ROAMING_MAX_FREEROAM_DELAY;
+	public static boolean DISABLE_PHANTOM_RESPAWN;
+	public static boolean DEBUG_PHANTOMS;
+	public static int[] PHANTOM_CLANS;
 	
 	// Automatic potions
 	public static boolean ENABLE_AUTO_POTIONS;
@@ -4638,52 +4638,52 @@ public class Config
         COMMUNITYBOARD_ENCHANT_ATRIBUTE_PVP = EnchantCBSetting.getProperty("CBEnchantAtributePvP", false);	
 	}
 	
-//	public static void loadPhantomsConfig()
-//	{
-//		ExProperties settings = load(PHANTOM_FILE);
-//
-//		PHANTOM_PLAYERS_ENABLED = settings.getProperty("PhantomPlayersEnabled", false);
-//		PHANTOM_PLAYERS_ACCOUNT = settings.getProperty("PhantomPlayersAccount", "PhantomPlayerAI");
-//		PHANTOM_MAX_PLAYERS = settings.getProperty("PhantomMaxPlayers", 1);
-//		PHANTOM_BANNED_CLASSID = settings.getProperty("PhantomBannedClassIds", new int[]{});
-//		PHANTOM_BANNED_SETID = settings.getProperty("PhantomBannedSetIds", new int[]{});
-//		PHANTOM_MAX_WEAPON_GRADE = settings.getProperty("PhantomMaxWeaponGrade", 5);
-//		PHANTOM_MAX_ARMOR_GRADE = settings.getProperty("PhantomMaxArmorGrade", 5);
-//		PHANTOM_MAX_JEWEL_GRADE = settings.getProperty("PhantomMaxJewelGrade", 5);
-//		PHANTOM_SPAWN_MAX = settings.getProperty("PhantomSpawnMax", 1);
-//		PHANTOM_SPAWN_DELAY = settings.getProperty("PhantomSpawnDelay", 60);
-//		PHANTOM_MAX_LIFETIME = settings.getProperty("PhantomMaxLifetime", 120);
-//
-//		CHANCE_TO_ENCHANT_WEAP = settings.getProperty("PhantomChanceEnchantWeap", 0);
-//		MAX_ENCH_PHANTOM_WEAP = settings.getProperty("PhantomMaxEnchantWeap", 4);
-//
-//		PHANTOM_MAX_DRIFT_RANGE  = settings.getProperty("MaxDriftRangeForNpc", 1000);
-//
-//		ALLOW_PHANTOM_CUSTOM_TITLES = settings.getProperty("AllowSetupCustomTitles", false);
-//		PHANTOM_CHANCE_SET_NOBLE_TITLE = settings.getProperty("ChanceToSetTitle", 30);
-//
-//		DISABLE_PHANTOM_ACTIONS = settings.getProperty("DisablePhantomActions", false);
-//
-//		PHANTOM_ALLOWED_NPC_TO_WALK = settings.getProperty("PhantomRoamingNpcs", new int[]{});
-//		PHANTOM_ROAMING_MAX_WH_CHECKS = settings.getProperty("PhantomRoamingMaxWhChecks", 2);
-//		PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxWhChecksDwarf", 8);
-//		PHANTOM_ROAMING_MAX_SHOP_CHECKS = settings.getProperty("PhantomRoamingMaxShopChecks", 2);
-//		PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxShopChecksDwarf", 5);
-//		PHANTOM_ROAMING_MAX_NPC_CHECKS = settings.getProperty("PhantomRoamingMaxNpcChecks", 6);
-//		PHANTOM_ROAMING_MIN_WH_DELAY = settings.getProperty("PhantomRoamingMinWhDelay", 60);
-//		PHANTOM_ROAMING_MAX_WH_DELAY = settings.getProperty("PhantomRoamingMaxWhDelay", 300);
-//		PHANTOM_ROAMING_MIN_SHOP_DELAY = settings.getProperty("PhantomRoamingMinShopDelay", 30);
-//		PHANTOM_ROAMING_MAX_SHOP_DELAY = settings.getProperty("PhantomRoamingMaxShopDelay", 120);
-//		PHANTOM_ROAMING_MIN_NPC_DELAY = settings.getProperty("PhantomRoamingMinNpcDelay", 45);
-//		PHANTOM_ROAMING_MAX_NPC_DELAY = settings.getProperty("PhantomRoamingMaxNpcDelay", 120);
-//		PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMinPrivatestoreDelay", 2);
-//		PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMaxPrivatestoreDelay", 7);
-//		PHANTOM_ROAMING_MIN_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMinFreeroamDelay", 10);
-//		PHANTOM_ROAMING_MAX_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMaxFreeroamDelay", 60);
-//		DISABLE_PHANTOM_RESPAWN = settings.getProperty("DisablePhantomRespawn", false);
-//		DEBUG_PHANTOMS = settings.getProperty("DebugPhantoms", false);
-//		PHANTOM_CLANS = settings.getProperty("PhantomClans", new int[]{});
-//	}
+	public static void loadPhantomsConfig()
+	{
+		ExProperties settings = load(PHANTOM_FILE);
+
+		PHANTOM_PLAYERS_ENABLED = settings.getProperty("PhantomPlayersEnabled", false);
+		PHANTOM_PLAYERS_ACCOUNT = settings.getProperty("PhantomPlayersAccount", "PhantomPlayerAI");
+		PHANTOM_MAX_PLAYERS = settings.getProperty("PhantomMaxPlayers", 1);
+		PHANTOM_BANNED_CLASSID = settings.getProperty("PhantomBannedClassIds", new int[]{});
+		PHANTOM_BANNED_SETID = settings.getProperty("PhantomBannedSetIds", new int[]{});
+		PHANTOM_MAX_WEAPON_GRADE = settings.getProperty("PhantomMaxWeaponGrade", 5);
+		PHANTOM_MAX_ARMOR_GRADE = settings.getProperty("PhantomMaxArmorGrade", 5);
+		PHANTOM_MAX_JEWEL_GRADE = settings.getProperty("PhantomMaxJewelGrade", 5);
+		PHANTOM_SPAWN_MAX = settings.getProperty("PhantomSpawnMax", 1);
+		PHANTOM_SPAWN_DELAY = settings.getProperty("PhantomSpawnDelay", 60);
+		PHANTOM_MAX_LIFETIME = settings.getProperty("PhantomMaxLifetime", 120);
+
+		CHANCE_TO_ENCHANT_WEAP = settings.getProperty("PhantomChanceEnchantWeap", 0);
+		MAX_ENCH_PHANTOM_WEAP = settings.getProperty("PhantomMaxEnchantWeap", 4);
+
+		PHANTOM_MAX_DRIFT_RANGE  = settings.getProperty("MaxDriftRangeForNpc", 1000);
+
+		ALLOW_PHANTOM_CUSTOM_TITLES = settings.getProperty("AllowSetupCustomTitles", false);
+		PHANTOM_CHANCE_SET_NOBLE_TITLE = settings.getProperty("ChanceToSetTitle", 30);
+
+		DISABLE_PHANTOM_ACTIONS = settings.getProperty("DisablePhantomActions", false);
+
+		PHANTOM_ALLOWED_NPC_TO_WALK = settings.getProperty("PhantomRoamingNpcs", new int[]{});
+		PHANTOM_ROAMING_MAX_WH_CHECKS = settings.getProperty("PhantomRoamingMaxWhChecks", 2);
+		PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxWhChecksDwarf", 8);
+		PHANTOM_ROAMING_MAX_SHOP_CHECKS = settings.getProperty("PhantomRoamingMaxShopChecks", 2);
+		PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxShopChecksDwarf", 5);
+		PHANTOM_ROAMING_MAX_NPC_CHECKS = settings.getProperty("PhantomRoamingMaxNpcChecks", 6);
+		PHANTOM_ROAMING_MIN_WH_DELAY = settings.getProperty("PhantomRoamingMinWhDelay", 60);
+		PHANTOM_ROAMING_MAX_WH_DELAY = settings.getProperty("PhantomRoamingMaxWhDelay", 300);
+		PHANTOM_ROAMING_MIN_SHOP_DELAY = settings.getProperty("PhantomRoamingMinShopDelay", 30);
+		PHANTOM_ROAMING_MAX_SHOP_DELAY = settings.getProperty("PhantomRoamingMaxShopDelay", 120);
+		PHANTOM_ROAMING_MIN_NPC_DELAY = settings.getProperty("PhantomRoamingMinNpcDelay", 45);
+		PHANTOM_ROAMING_MAX_NPC_DELAY = settings.getProperty("PhantomRoamingMaxNpcDelay", 120);
+		PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMinPrivatestoreDelay", 2);
+		PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMaxPrivatestoreDelay", 7);
+		PHANTOM_ROAMING_MIN_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMinFreeroamDelay", 10);
+		PHANTOM_ROAMING_MAX_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMaxFreeroamDelay", 60);
+		DISABLE_PHANTOM_RESPAWN = settings.getProperty("DisablePhantomRespawn", false);
+		DEBUG_PHANTOMS = settings.getProperty("DebugPhantoms", false);
+		PHANTOM_CLANS = settings.getProperty("PhantomClans", new int[]{});
+	}
 	
 	public static void loadPremiumConfig()
 	{
@@ -5376,7 +5376,7 @@ public class Config
 		LoadCustomSecurity_Config();
 //		LoadSMTP_Config();
 		loadOfflineConfig();
-//		loadPhantomsConfig();
+		loadPhantomsConfig();
 		loadDonateRewardSettings();
 		
 		_log.info("All Config files has been loaded!");
