@@ -10,50 +10,22 @@ import l2r.gameserver.achievements.PlayerTops;
 import l2r.gameserver.auction.AuctionManager;
 import l2r.gameserver.cache.CrestCache;
 import l2r.gameserver.cache.ImagesChache;
-import l2r.gameserver.dao.ChampionTemplateTable;
-import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.EmotionsTable;
-import l2r.gameserver.dao.ItemsDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
-import l2r.gameserver.dao.PromotionCheckerDAO;
-import l2r.gameserver.dao.QuestHWIDRestriction;
+import l2r.gameserver.dao.*;
 import l2r.gameserver.data.BoatHolder;
 import l2r.gameserver.data.xml.Parsers;
 import l2r.gameserver.data.xml.holder.EventHolder;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
 import l2r.gameserver.data.xml.holder.StaticObjectHolder;
 import l2r.gameserver.database.DatabaseFactory;
-import l2r.gameserver.donation.DonationReader;
 import l2r.gameserver.geodata.GeoEngine;
 import l2r.gameserver.handler.admincommands.AdminCommandHandler;
 import l2r.gameserver.handler.items.ItemHandler;
 import l2r.gameserver.handler.usercommands.UserCommandHandler;
 import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2r.gameserver.idfactory.IdFactory;
-import l2r.gameserver.instancemanager.AutoAnnounce;
-import l2r.gameserver.instancemanager.AutoHuntingManager;
-import l2r.gameserver.instancemanager.AutoSpawnManager;
-import l2r.gameserver.instancemanager.BetaServer;
-import l2r.gameserver.instancemanager.BloodAltarManager;
-import l2r.gameserver.instancemanager.CastleManorManager;
-import l2r.gameserver.instancemanager.CoupleManager;
-import l2r.gameserver.instancemanager.CursedWeaponsManager;
-import l2r.gameserver.instancemanager.DimensionalRiftManager;
-import l2r.gameserver.instancemanager.HellboundManager;
-import l2r.gameserver.instancemanager.L2TopManager;
-import l2r.gameserver.instancemanager.MMOTopManager;
-import l2r.gameserver.instancemanager.PetitionManager;
-import l2r.gameserver.instancemanager.PlayerMessageStack;
-import l2r.gameserver.instancemanager.RaidBossSpawnManager;
-import l2r.gameserver.instancemanager.SMSWayToPay;
-import l2r.gameserver.instancemanager.SchemeBufferManager;
-import l2r.gameserver.instancemanager.ServerVariables;
-import l2r.gameserver.instancemanager.SoDManager;
-import l2r.gameserver.instancemanager.SoIManager;
-import l2r.gameserver.instancemanager.SpawnManager;
-import l2r.gameserver.instancemanager.VoteManager;
+import l2r.gameserver.instancemanager.*;
 import l2r.gameserver.instancemanager.games.ActivityReward;
-import l2r.gameserver.instancemanager.games.DonationBonusDay;
+//import l2r.gameserver.instancemanager.games.DonationBonusDay;
 import l2r.gameserver.instancemanager.games.FishingChampionShipManager;
 import l2r.gameserver.instancemanager.games.LotteryManager;
 import l2r.gameserver.instancemanager.games.MiniGameScoreManager;
@@ -81,7 +53,6 @@ import l2r.gameserver.randoms.CaptchaImage;
 import l2r.gameserver.randoms.PlayerKill;
 import l2r.gameserver.randoms.PlayerKillsLogManager;
 import l2r.gameserver.randoms.Visuals;
-import l2r.gameserver.randoms.votingengine.VotingRewardAPI;
 import l2r.gameserver.scripts.Scripts;
 import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.tables.AugmentationData;
@@ -94,7 +65,6 @@ import l2r.gameserver.taskmanager.ItemsAutoDestroy;
 import l2r.gameserver.taskmanager.TaskManager;
 import l2r.gameserver.taskmanager.tasks.RestoreOfflineBuffers;
 import l2r.gameserver.taskmanager.tasks.RestoreOfflineTraders;
-import l2r.gameserver.utils.HwidBansChecker;
 import l2r.gameserver.utils.RRDTools;
 import l2r.gameserver.utils.Strings;
 
@@ -175,29 +145,27 @@ public class GameServer
 		version = new Version(GameServer.class);
 		
 		_log.info("=================================================");
-		_log.info("Copyright: ............... " + "L2Age Based on L2r");
+		_log.info("Copyright: ............... " + "L2relax.fun Based on L2r");
 		_log.info("Chronicle: ............... " + "High Five");
 		_log.info("Revision: ................ " + version.getRevisionNumber());
 		_log.info("Build date: .............. " + version.getBuildDate());
-		// _log.info("Builder name: ............ " + version.getBuilderName());
-		// _log.info("Compiler version: ........ " + Version.getBuildJdk());
 		_log.info("=================================================");
 	}
-	
-	private void showLogo()
-	{
-		System.out.println("                                                                ");
-		System.out.println("================================================================");
-		System.out.println(".......##........#######........###.....######...########.......");
-		System.out.println(".......##.......##.....##......##.##...##....##..##.............");
-		System.out.println(".......##..............##.....##...##..##........##.............");
-		System.out.println(".......##........#######.....##.....##.##...####.######.........");
-		System.out.println(".......##.......##...........#########.##....##..##.............");
-		System.out.println(".......##.......##...........##.....##.##....##..##.............");
-		System.out.println(".......########.#########....##.....##..######...########.......");
-		System.out.println("================================================================");
-		System.out.println("                                                                ");
-	}
+//
+//	private void showLogo()
+//	{
+//		System.out.println("                                                                ");
+//		System.out.println("================================================================");
+//		System.out.println(".......##........#######........###.....######...########.......");
+//		System.out.println(".......##.......##.....##......##.##...##....##..##.............");
+//		System.out.println(".......##..............##.....##...##..##........##.............");
+//		System.out.println(".......##........#######.....##.....##.##...####.######.........");
+//		System.out.println(".......##.......##...........#########.##....##..##.............");
+//		System.out.println(".......##.......##...........##.....##.##....##..##.............");
+//		System.out.println(".......########.#########....##.....##..######...########.......");
+//		System.out.println("================================================================");
+//		System.out.println("                                                                ");
+//	}
 	
 	@SuppressWarnings("unchecked")
 	public GameServer() throws Exception
@@ -211,7 +179,7 @@ public class GameServer
 		new File("./log/").mkdir();
 		
 		showVersion();
-		showLogo();
+//		showLogo();
 		
 		// Initialize config
 		printSection("Config");
@@ -354,9 +322,9 @@ public class GameServer
 		
 		//BotCheckerManager.load();
 		
-		MMOTopManager.getInstance();
+		//MMOTopManager.getInstance();
 		
-		SMSWayToPay.getInstance();
+		//SMSWayToPay.getInstance();
 		
 		PlayerTops.getInstance();
 		
@@ -409,21 +377,26 @@ public class GameServer
 		_log.info("Promotion Hwid Check loaded.");
 		
 		// If there is no such var in server var create such with default false.
-		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
-			ServerVariables.set("DonationBonusActive", false);
-		
-		if (ServerVariables.getBool("DonationBonusActive", true))
-			DonationBonusDay.getInstance().continuePormotion();
-		else
-			DonationBonusDay.getInstance().stopPromotion();
+//		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
+//			ServerVariables.set("DonationBonusActive", false);
+//
+//		if (ServerVariables.getBool("DonationBonusActive", true))
+//			DonationBonusDay.getInstance().continuePormotion();
+//		else
+//			DonationBonusDay.getInstance().stopPromotion();
+
+		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
 		
 		BetaServer.getInstance();
 		
-		VotingRewardAPI.getInstance();
+		//VotingRewardAPI.getInstance();
+
+		if (Config.ENABLE_DONATION_READER) {
+			DonationPaymentsDAO.getInstance();
+			_log.info("Donation auto check system is enabled.");
+		}
 		
-		DonationReader.getInstance();
-		
-		HwidBansChecker.getInstance();
+		//HwidBansChecker.getInstance();
 		
 		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
 		_log.info("GameServer Started");
@@ -450,8 +423,8 @@ public class GameServer
 		if (!Config.DONTAUTOANNOUNCE)
 			ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoAnnounce(), 60000, 60000);
 		
-		if (Config.PHANTOM_PLAYERS_ENABLED)
-			PhantomPlayers.init();
+//		if (Config.PHANTOM_PLAYERS_ENABLED)
+//			PhantomPlayers.init();
 		
 		getListeners().onStart();
 		
