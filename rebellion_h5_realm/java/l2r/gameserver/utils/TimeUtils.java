@@ -6,6 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 public class TimeUtils
 {
 	private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
@@ -224,5 +226,160 @@ public class TimeUtils
 		
 		String time = hour + ":" + minute + " (" + type + ")";
 		return time;
+	}
+
+	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent)
+	{
+		return getMilisecondsToNextDay(days, hourOfTheEvent, 5);
+	}
+
+	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent, int minuteOfTheEvent)
+	{
+		int[] hours = new int[days.size()];
+		for (int i = 0; i< hours.length; i++)
+			hours[i] = days.get(i).intValue();
+		return getMilisecondsToNextDay(hours, hourOfTheEvent, minuteOfTheEvent);
+	}
+
+	/**
+	 * Getting Time in Milliseconds to the closest day.
+	 * If every day already passed, it's getting closest day of next month
+	 * Event Time: Millisecond: 0, Second: 0, Minute: 0, Hour: hourOfTheEvent
+	 * @param days Array of specific days in the month
+	 * @param hourOfTheEvent hour of the day, when clock will stop
+	 * @param minuteOfTheEvent
+	 * @return Time in milliseconds to that day
+	 */
+	public static long getMilisecondsToNextDay(int[] days, int hourOfTheEvent, int minuteOfTheEvent)
+	{
+		Calendar tempCalendar = Calendar.getInstance();
+		tempCalendar.set(Calendar.SECOND, 0);
+		tempCalendar.set(Calendar.MILLISECOND, 0);
+		tempCalendar.set(Calendar.HOUR_OF_DAY, hourOfTheEvent);
+		tempCalendar.set(Calendar.MINUTE, minuteOfTheEvent);
+
+		final long currentTime = System.currentTimeMillis();
+		Calendar eventCalendar = Calendar.getInstance();
+
+		boolean found = false;
+		long smallest = Long.MAX_VALUE;
+
+		for (int day : days)
+		{
+			tempCalendar.set(Calendar.DAY_OF_MONTH, day);
+			long timeInMillis = tempCalendar.getTimeInMillis();
+
+			if (timeInMillis <= currentTime)
+			{
+				if (timeInMillis < smallest)
+					smallest = timeInMillis;
+				continue;
+			}
+
+			if (!found || timeInMillis < eventCalendar.getTimeInMillis())
+			{
+				found = true;
+				eventCalendar.setTimeInMillis(timeInMillis);
+			}
+		}
+
+		if (!found)
+		{
+			eventCalendar.setTimeInMillis(smallest);
+			eventCalendar.add(Calendar.MONTH, 1);
+		}
+		return eventCalendar.getTimeInMillis() - currentTime;
+	}
+
+	public static long addDay(int count) { return (count * 60 * 60 * 24 * 1000L); }
+
+	public static long addHours(int count) { return (count * 60 * 60 * 1000L); }
+
+	public static long addMinutes(int count) { return (count * 60 * 1000L); }
+
+	public static long addSecond(int count) { return (count * 1000L); }
+
+	public static String formatTime(int time) { return formatTime(time, true); }
+
+	public static String formatTime(int time, boolean cut)
+	{
+		int days = time / 86400;
+		int hours = (time - days * 24 * 3600) / 3600;
+		int minutes = (time - days * 24 * 3600 - hours * 3600) / 60;
+
+		String result;
+
+		if (days >= 1)
+		{
+			if ((hours < 1) || (cut))
+			{
+				result = days + " " + declension(days, TimeUtilDeclension.DAYS);
+			}
+			else
+			{
+				result = days + " " + declension(days, TimeUtilDeclension.DAYS) + " " + hours + " " + declension(hours, TimeUtilDeclension.HOUR);
+			}
+		}
+		else
+		{
+			if (hours >= 1)
+			{
+				if ((minutes < 1) || (cut))
+				{
+					result = hours + " " + declension(hours, TimeUtilDeclension.HOUR);
+				}
+				else
+				{
+					result = hours + " " + declension(hours, TimeUtilDeclension.HOUR) + " " + minutes + " " + declension(minutes, TimeUtilDeclension.MINUTES);
+				}
+			}
+			else
+			{
+				result = minutes + " " + declension(minutes, TimeUtilDeclension.MINUTES);
+			}
+		}
+		return result;
+	}
+
+	public static String declension(long count, TimeUtilDeclension word)
+	{
+		String one = "";
+		String two = "";
+		String five = "";
+		switch (word)
+		{
+			case DAYS:
+				one = new String("Day");
+				two = new String("Days");
+				five = new String("Days");
+				break;
+			case HOUR:
+				one = new String("Hour");
+				two = new String("Hours");
+				five = new String("Hours");
+				break;
+			case MINUTES:
+				one = new String("Minute");
+				two = new String("Minutes");
+				five = new String("Minutes");
+				break;
+		}
+		if (count > 100L)
+		{
+			count %= 100L;
+		}
+		if (count > 20L)
+		{
+			count %= 10L;
+		}
+		if (count == 1L)
+		{
+			return one;
+		}
+		if ((count == 2L) || (count == 3L) || (count == 4L))
+		{
+			return two;
+		}
+		return five;
 	}
 }

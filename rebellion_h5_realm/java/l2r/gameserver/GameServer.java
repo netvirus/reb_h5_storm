@@ -16,6 +16,7 @@ import l2r.gameserver.data.xml.Parsers;
 import l2r.gameserver.data.xml.holder.EventHolder;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
 import l2r.gameserver.data.xml.holder.StaticObjectHolder;
+import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
 import l2r.gameserver.database.DatabaseFactory;
 import l2r.gameserver.geodata.GeoEngine;
 import l2r.gameserver.handler.admincommands.AdminCommandHandler;
@@ -328,8 +329,11 @@ public class GameServer
 		
 		PlayerTops.getInstance();
 		
-		PremiumAccountsTable.init();
-		
+		//PremiumAccountsTable.init();
+		printSection("Premium system");
+		PremiumSystemOptionsData.getInstance();
+		PremiumSystemManager.getInstance();
+
 		if (Config.ENABLE_ACHIEVEMENTS)
 			Achievements.getInstance();
 		

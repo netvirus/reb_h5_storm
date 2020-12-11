@@ -24,14 +24,7 @@ import l2r.gameserver.ai.PhantomPlayerAI;
 import l2r.gameserver.ai.PlayableAI.nextAction;
 import l2r.gameserver.ai.PlayerAI;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.AccountBonusDAO;
-import l2r.gameserver.dao.AccountReportDAO;
-import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.CharacterGroupReuseDAO;
-import l2r.gameserver.dao.CharacterPostFriendDAO;
-import l2r.gameserver.dao.EffectsDAO;
-import l2r.gameserver.dao.OlympiadNobleDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
+import l2r.gameserver.dao.*;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.CharTemplateHolder;
 import l2r.gameserver.data.xml.holder.EventHolder;
@@ -79,15 +72,7 @@ import l2r.gameserver.model.GameObjectTasks.WaterTask;
 import l2r.gameserver.model.Request.L2RequestType;
 import l2r.gameserver.model.Skill.AddedSkill;
 import l2r.gameserver.model.Zone.ZoneType;
-import l2r.gameserver.model.actor.instances.player.Bonus;
-import l2r.gameserver.model.actor.instances.player.BookMarkList;
-import l2r.gameserver.model.actor.instances.player.FriendList;
-import l2r.gameserver.model.actor.instances.player.Macro;
-import l2r.gameserver.model.actor.instances.player.MacroList;
-import l2r.gameserver.model.actor.instances.player.NevitSystem;
-import l2r.gameserver.model.actor.instances.player.RecomBonus;
-import l2r.gameserver.model.actor.instances.player.ShortCut;
-import l2r.gameserver.model.actor.instances.player.ShortCutList;
+import l2r.gameserver.model.actor.instances.player.*;
 import l2r.gameserver.model.actor.listener.PlayerListenerList;
 import l2r.gameserver.model.actor.recorder.PlayerStatsChangeRecorder;
 import l2r.gameserver.model.base.AccessLevel;
@@ -630,9 +615,6 @@ public final class Player extends Playable implements PlayerGroup
 	protected int _baseClass = -1;
 	protected SubClass _activeClass = null;
 
-	private Bonus _bonus = new Bonus();
-	private Future<?> _bonusExpiration;
-
 	private boolean _isSitting;
 	private StaticObjectInstance _sittingObject;
 
@@ -726,6 +708,15 @@ public final class Player extends Playable implements PlayerGroup
 	
 	private static ScheduledFuture<?> _startTaskMessage;
 	private static ScheduledFuture<?> _startTaskPunishWyvern;
+
+	/**
+	 * Premium system for player
+	 */
+	private L2PremiumBonus _premiumBonus = null;
+	private boolean _hasPremium = false;
+	private boolean _hasTwoPremium = false;
+	private Bonus _bonus = new Bonus();
+	private Future<?> _bonusExpiration;
 	
 	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
@@ -3736,7 +3727,7 @@ public final class Player extends Playable implements PlayerGroup
 		
 		if (Config.AUTO_LOOT_PA)
 		{
-			if (!(_bonusExpiration !=null))
+			if (!hasPremiumStatus())
 			{
 				item.dropToTheGround(this, fromNpc, true);
 				sendMessage(isLangRus() ? "Вам нужно купить премиум аккаунт." : "You need to buy Premium Account.");
@@ -9341,6 +9332,7 @@ public final class Player extends Playable implements PlayerGroup
 		}
 	}
 
+
 	@Override
 	public int getInventoryLimit()
 	{
@@ -9579,7 +9571,7 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		if (PremiumAccountsTable.isPremium(this))
 			return PremiumAccountsTable.getDropBonus(this, 57);
-		
+
 		return _party == null ? _bonus.getDropAdena() : _party._rateAdena;
 	}
 
@@ -9588,7 +9580,7 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		if (PremiumAccountsTable.isPremium(this))
 				return PremiumAccountsTable.getDropBonus(this, 0);
-		
+
 		return _party == null ? _bonus.getDropItems() : _party._rateDrop;
 	}
 
@@ -13890,4 +13882,20 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		return _IsPhantom;
 	}
+
+	public L2PremiumBonus getPremiumBonus() { return _premiumBonus; }
+
+	public void setTwoPremium(boolean state) { _hasTwoPremium = state; }
+
+	public boolean hasTwoPremium() { return _hasTwoPremium; }
+
+	public void setPremiumBonus(L2PremiumBonus premiumBonus) { _premiumBonus = premiumBonus; }
+
+	public boolean isPremiumBonusMain() { return _premiumBonus.isBonusMain(); }
+
+	public boolean hasPremiumBonus() { return (_premiumBonus.getBonusId() != 0); }
+
+	public boolean hasPremiumStatus() { return _hasPremium; }
+
+	public void setPremiumStatus(boolean status) { _hasPremium = status; }
 }

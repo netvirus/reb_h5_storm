@@ -75,7 +75,7 @@ public class PremiumAccount extends Functions
 						long endtime = System.currentTimeMillis() + premiumDuration;
 						PremiumAccountsTable.savePremium(activeChar.getAccountName(), premiumId, endtime);
 						activeChar.sendChatMessage(0, ChatType.BATTLEFIELD.ordinal(),"Premium" ,"You have purchased " + template.name + " premium status for 1 " + premiumTime + ".");
-						activeChar.sendPacket(new ExBR_PremiumState(activeChar, true));
+						activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), true));
 						Log.addDonation("Character " + activeChar + " has buyed premium: " + template.name  + " ID(" + premiumId + ") ", "premiumsystem");
 					}
 					else
@@ -134,7 +134,7 @@ public class PremiumAccount extends Functions
 							long endtime = System.currentTimeMillis() + premiumDuration;
 							PremiumAccountsTable.savePremium(activeChar.getAccountName(), premiumId, endtime);
 							activeChar.sendChatMessage(0, ChatType.BATTLEFIELD.ordinal(),"Premium" ,"You have purchased " + template.name + " premium status for 1 " + premiumTime + ".");
-							activeChar.sendPacket(new ExBR_PremiumState(activeChar, true));
+							activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), true));
 							Log.addDonation("Character " + activeChar + " has buyed premium: " + template.name  + " ID(" + premiumId + ") ", "premiumsystem");
 						}
 						else

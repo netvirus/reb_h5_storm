@@ -87,13 +87,13 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 			public void runImpl() throws Exception
 			{
 				player.getBonus().setBonusExpire(0);
-				
+
 				player.getBonus().setRateXp(1.);
 				player.getBonus().setRateSp(1.);
 				player.getBonus().setDropAdena(1.);
 				player.getBonus().setDropItems(1.);
 				player.getBonus().setDropSpoil(1.);
-				
+
 				player.getBonus().setQuestDropRate(1.);
 				player.getBonus().setQuestRewardRate(1.);
 
@@ -101,7 +101,7 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 					player.getParty().recalculatePartyData();
 
 				String msg = new CustomMessage("scripts.services.RateBonus.LuckEnded", player).toString();
-				player.sendPacket(new ExShowScreenMessage(msg, 10000, ScreenMessageAlign.TOP_CENTER, true), new ExBR_PremiumState(player, false));
+				player.sendPacket(new ExShowScreenMessage(msg, 10000, ScreenMessageAlign.TOP_CENTER, true), new ExBR_PremiumState(player.getObjectId(), false));
 				player.sendMessage(msg);
 
 				if(Config.SERVICES_RATE_TYPE == Bonus.BONUS_GLOBAL_ON_GAMESERVER)

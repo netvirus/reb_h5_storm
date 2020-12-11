@@ -209,7 +209,7 @@ public class EnterWorld extends L2GameClientPacket
 		if (client.getState() == GameClientState.ENTER_GAME)
 			client.setState(GameClientState.IN_GAME);
 		
-		activeChar.sendPacket(new ExBR_PremiumState(activeChar, PremiumAccountsTable.isPremium(activeChar)));
+		activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), PremiumAccountsTable.isPremium(activeChar)));
 
 		activeChar.getMacroses().sendUpdate();
 		activeChar.sendPacket(new SSQInfo(), new HennaInfo(activeChar), new ExGetBookMarkInfo(activeChar));

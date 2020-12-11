@@ -89,11 +89,11 @@ public class RateBonus extends Functions
 		}
 		player.getClient().setBonus(bonus);
 		player.getClient().setBonusExpire(bonusExpire);
-		player.stopBonusTask();
-		player.startBonusTask();
+//		player.stopBonusTask();
+//		player.startBonusTask();
 		if(player.getParty() != null)
 			player.getParty().recalculatePartyData();
-		player.sendPacket(new ExBR_PremiumState(player, true));
+		player.sendPacket(new ExBR_PremiumState(player.getObjectId(), true));
 		show(HtmCache.getInstance().getNotNull("scripts/services/RateBonusGet.htm", player), player);
 	}
 }

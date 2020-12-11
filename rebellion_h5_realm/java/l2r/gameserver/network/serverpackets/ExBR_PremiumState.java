@@ -7,9 +7,9 @@ public class ExBR_PremiumState extends L2GameServerPacket
 	private int _objectId;
 	private int _state;
 
-	public ExBR_PremiumState(Player activeChar, boolean state)
+	public ExBR_PremiumState(int objectId, boolean state)
 	{
-		_objectId = activeChar.getObjectId();
+		_objectId = objectId;
 		_state = state ? 1 : 0;
 	}
 

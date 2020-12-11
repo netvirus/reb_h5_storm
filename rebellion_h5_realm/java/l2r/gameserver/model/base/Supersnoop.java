@@ -151,7 +151,7 @@ public class Supersnoop
 			snooper.sendPacket(new CharSelected(snoopedTarget, snooper.getClient().getSessionKey().playOkID1)); // Show loading screen
 			//snooper.sendPacket(new ExUISetting(snoopedTarget));
 			snooper.sendPacket(new ChangeMoveType(snoopedTarget));
-			snooper.sendPacket(new ExBR_PremiumState(snoopedTarget, snoopedTarget.hasBonus()));
+//			snooper.sendPacket(new ExBR_PremiumState(snoopedTarget, snoopedTarget.hasBonus()));
 			//Macro update?
 			snooper.sendPacket(new SSQInfo(), new HennaInfo(snoopedTarget));
 			snooper.sendItemList(false);
