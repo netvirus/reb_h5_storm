@@ -73,7 +73,7 @@ public class Config
 	public static final String PVP_CONFIG_FILE = "config/pvp.properties";
 	public static final String RESIDENCE_CONFIG_FILE = "config/residence.properties";
 	public static final String CONFIGURATION_FILE = "config/server.properties";
-	//public static final String SMTP_CONFIG = "config/SMTP.properties";
+	public static final String SMTP_CONFIG = "config/SMTP.properties";
 	public static final String TELNET_CONFIGURATION_FILE = "config/telnet.properties";
 	public static final String INSTANCES_FILE = "config/instances.properties";
 	public static final String ITEMS_FILE = "config/items.properties";
@@ -5124,24 +5124,24 @@ public class Config
 		SECURITY_CLAN_ALLY_ALL = custom_security.getProperty("EnableSecurityClanAllyAll", false);
 	}
 	
-//	public static void LoadSMTP_Config()
-//	{
-//		ExProperties stmp_server = load(SMTP_CONFIG);
-//
-//		ENABLE_PASSWORD_RECOVERY = stmp_server.getProperty("EnablePasswordRecovery", false);
-//		ENABLE_ON_PASSWORD_CHANGE = stmp_server.getProperty("EnableOnChangePassword", false);
-//		ENABLE_ON_SECURITY_PASSWORD_CHANGE = stmp_server.getProperty("EnableOnChangeSecurity", false);
-//		SMTP_SERVER = stmp_server.getProperty("SMTPServerAddress", "smtp.gmail.com");
-//		SMTP_SERVER_PORT = stmp_server.getProperty("SMTPServerPort", 465);
-//		SMTP_USERNAME = stmp_server.getProperty("SMTPUsername", "username");
-//		SMTP_PASSWORD = stmp_server.getProperty("SMTPPassword", "password");
-//		SMTP_SERVER_AUTH = stmp_server.getProperty("SMTPAuth", false);
-//		SMTP_SERVER_SECUIRTY = stmp_server.getProperty("SMTPSecurity", "TLS");
-//		SMTP_EMAIL_ADDR_SENDER = stmp_server.getProperty("SMTPEmailAdressSender", "sender@something.com");
-//		SMTP_SERVER_TIMEOUT = stmp_server.getProperty("STMPServerTimeout", 5000);
-//		SMTP_SERVER_CONNECTION_TIMEOUT = stmp_server.getProperty("STMPServerConnectionTimeout", 5000);
-//
-//	}
+	public static void LoadSMTP_Config()
+	{
+		ExProperties stmp_server = load(SMTP_CONFIG);
+
+		ENABLE_PASSWORD_RECOVERY = stmp_server.getProperty("EnablePasswordRecovery", false);
+		ENABLE_ON_PASSWORD_CHANGE = stmp_server.getProperty("EnableOnChangePassword", false);
+		ENABLE_ON_SECURITY_PASSWORD_CHANGE = stmp_server.getProperty("EnableOnChangeSecurity", false);
+		SMTP_SERVER = stmp_server.getProperty("SMTPServerAddress", "smtp.gmail.com");
+		SMTP_SERVER_PORT = stmp_server.getProperty("SMTPServerPort", 465);
+		SMTP_USERNAME = stmp_server.getProperty("SMTPUsername", "username");
+		SMTP_PASSWORD = stmp_server.getProperty("SMTPPassword", "password");
+		SMTP_SERVER_AUTH = stmp_server.getProperty("SMTPAuth", false);
+		SMTP_SERVER_SECUIRTY = stmp_server.getProperty("SMTPSecurity", "TLS");
+		SMTP_EMAIL_ADDR_SENDER = stmp_server.getProperty("SMTPEmailAdressSender", "sender@something.com");
+		SMTP_SERVER_TIMEOUT = stmp_server.getProperty("STMPServerTimeout", 5000);
+		SMTP_SERVER_CONNECTION_TIMEOUT = stmp_server.getProperty("STMPServerConnectionTimeout", 5000);
+
+	}
 	
 	public static void loadAcc_moveConfig()
 	{
@@ -5374,7 +5374,7 @@ public class Config
 		loadCaptureTheFlagSettings();
 		LoadCustom_Config();
 		LoadCustomSecurity_Config();
-//		LoadSMTP_Config();
+		LoadSMTP_Config();
 		loadOfflineConfig();
 		loadPhantomsConfig();
 		loadDonateRewardSettings();

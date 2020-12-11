@@ -48,8 +48,8 @@ public class Functions
 	/**
 	 * Вызывает метод с задержкой
 	 *
-	 * @param object	 - от чьего имени вызывать
-	 * @param sClass<?>  - вызываемый класс
+	 * @param caller	 - от чьего имени вызывать
+	 * @param className  - вызываемый класс
 	 * @param methodName - вызываемый метод
 	 * @param args	   - массив аргуметов
 	 * @param variables  - список выставляемых переменных

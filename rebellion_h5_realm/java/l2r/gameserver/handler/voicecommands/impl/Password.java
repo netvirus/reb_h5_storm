@@ -34,9 +34,9 @@ public class Password extends Functions implements IVoicedCommandHandler
 		props.put("mail.smtp.host", Config.SMTP_SERVER);
 		props.put("mail.smtp.port", Config.SMTP_SERVER_PORT);
 		props.put("mail.smtp.auth", Config.SMTP_SERVER_AUTH);
-		props.put("mail.smtp.timeout", Config.SMTP_SERVER_TIMEOUT);             
-		props.put("mail.smtp.connectiontimeout", Config.SMTP_SERVER_CONNECTION_TIMEOUT); 
-		
+		props.put("mail.smtp.timeout", Config.SMTP_SERVER_TIMEOUT);
+		props.put("mail.smtp.connectiontimeout", Config.SMTP_SERVER_CONNECTION_TIMEOUT);
+
 		switch (Config.SMTP_SERVER_SECUIRTY)
 		{
 			case "TLS":
@@ -53,7 +53,7 @@ public class Password extends Functions implements IVoicedCommandHandler
 				break;
 			}
 		}
-		
+
 		if (Config.SMTP_SERVER_AUTH)
 		{
 			SESSION = Session.getDefaultInstance(props, new javax.mail.Authenticator()
@@ -152,28 +152,28 @@ public class Password extends Functions implements IVoicedCommandHandler
 		if (Config.ENABLE_ON_PASSWORD_CHANGE)
 		{
 			String email = CharacterIntro.getEmail(activeChar);
-			
+
 			if (email == null)
 				email = "";
-			
+
 			if (!email.equals(StringUtil.EMPTY))
 			{
 				try
 				{
 					StringBuilder sb = new StringBuilder();
 					sb.append("This is an automated notification regarding the recent change(s) made to your character: " + activeChar.getName() + " \n\n");
-					
+
 					sb.append("Your password for account " + activeChar.getAccountName() + " has been changed!  \n\n");
 					sb.append("If you made this password change, please disregard this notification. If you did not change your password, please contact the administrator. This action was performed from IP: " + activeChar.getClient().getIpAddr() + ".\n");
 
 					sb.append("L2-Rain \n");
-					
+
 					Message message = new MimeMessage(SESSION);
 					message.setFrom(new InternetAddress(Config.SMTP_EMAIL_ADDR_SENDER));
 					message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 					message.setSubject("Account Password Changed");
 					message.setText(sb.toString());
-					
+
 					Transport.send(message);
 				}
 				catch (MessagingException e)
