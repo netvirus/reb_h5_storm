@@ -263,11 +263,11 @@ public class CharacterEmails
 	
 	public static void newcomersReward(Player activeChar, int amount, int levelPassed)
 	{
-		if (!activeChar.hasHWID())
-		{
-			_log.error("CharacterEmails: newcomersReward() error getting player hwid! Player: " + activeChar.getName());
-			return;
-		}
+//		if (!activeChar.hasHWID())
+//		{
+//			_log.error("CharacterEmails: newcomersReward() error getting player hwid! Player: " + activeChar.getName());
+//			return;
+//		}
 		
 		Connection con = null;
 		PreparedStatement statement = null;
