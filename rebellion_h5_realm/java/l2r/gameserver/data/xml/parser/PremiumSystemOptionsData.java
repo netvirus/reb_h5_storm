@@ -36,11 +36,7 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
         nodeListStreamFilteredByName(doc.getFirstChild().getChildNodes(), "premium").forEach(n -> {
             final StatsSet set = new StatsSet();
             attributeStream(n.getAttributes()).forEach(a -> set.set(a.getNodeName(), a.getNodeValue()));
-            Map<String, String> columnParam = new LinkedHashMap<>();
-            columnParam.put("rates", "rates");
-            columnParam.put("time", "time");
-            columnParam.put("price", "price");
-            nodeListStreamFilteredByMap(n.getChildNodes(), columnParam)
+            nodeListStreamFilteredByMap(n.getChildNodes(), Map.of("rates", "rates", "time", "time", "price", "price"))
                     .forEach(p -> attributeStream(p.getAttributes()).forEach(k -> set.set(k.getNodeName(), k.getNodeValue())));
             _premiumBonusList.put(set.getInt("id"), new L2PremiumBonus(set));
         });
