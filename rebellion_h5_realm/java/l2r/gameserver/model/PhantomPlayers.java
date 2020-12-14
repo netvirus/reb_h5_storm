@@ -830,7 +830,7 @@ public class PhantomPlayers
 					}
 					
 					// Do not spawn more than max phantoms.
-					if (GameObjectsStorage.getAllPlayersStream().filter(Player::isPhantom).count() >= Config.PHANTOM_MAX_PLAYERS)
+					if (GameObjectsStorage.getAllPlayersStream().filter(player -> player.isPhantom()).count() >= Config.PHANTOM_MAX_PLAYERS)
 					{
 						_log.info("PhantomsEngine: Error! Reached maximum allowed spawns of: " + Config.PHANTOM_MAX_PLAYERS + " players.");
 						cancel();

@@ -83,7 +83,7 @@ public class AuthServer
 		// Check binding address
 		checkFreePorts();
 		// Initialize database
-		Class.forName(Config.DATABASE_DRIVER).newInstance();
+		Class.forName(Config.DATABASE_DRIVER).getDeclaredConstructor().newInstance();
 		L2DatabaseFactory.getInstance().getConnection().close();
 
 		authServer = new AuthServer();

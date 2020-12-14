@@ -17,6 +17,7 @@ import l2r.gameserver.utils.Strings;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -152,7 +153,7 @@ public class NpcHtmlMessage extends L2GameServerPacket
 			String replaces = "";
 
 			// Добавить в конец странички текст, определенный в скриптах.
-			Object[] script_args = new Object[] { new Integer(val) };
+			Object[] script_args = new Object[] {val};
 			for(ScriptClassAndMethod append : appends)
 			{
 				Object obj = Scripts.getInstance().callScripts(player, append.className, append.methodName, script_args);
@@ -330,7 +331,7 @@ public class NpcHtmlMessage extends L2GameServerPacket
 			{
 				try
 				{
-					c = Class.forName(mo.group(1)).newInstance();
+					c = Class.forName(mo.group(1)).getDeclaredConstructor().newInstance();
 					Field field = c.getClass().getField(mo.group(2));
 					_html = _html.replace(mo.group(0), field.get(c).toString());
 				}
@@ -352,6 +353,10 @@ public class NpcHtmlMessage extends L2GameServerPacket
 				}
 				catch (SecurityException e)
 				{
+					e.printStackTrace();
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
 					e.printStackTrace();
 				}
 			}

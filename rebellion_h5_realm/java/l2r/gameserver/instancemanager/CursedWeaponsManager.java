@@ -616,7 +616,7 @@ public class CursedWeaponsManager
 	{
 		SystemMessage sm = new SystemMessage(SystemMessage.S2_MINUTE_OF_USAGE_TIME_ARE_LEFT_FOR_S1);
 		sm.addString(cw.getName());
-		sm.addNumber(new Long(cw.getTimeLeft() / 60000).intValue());
+		sm.addNumber(Long.valueOf(cw.getTimeLeft() / 60000).intValue());
 		player.sendPacket(sm);
 	}
 
