@@ -24,6 +24,7 @@
                                             <xs:attribute type="xs:float" name="extractableRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="manorDropRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="questDropRate" use="optional"/>
+                                            <xs:attribute type="xs:float" name="questRewardRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="petExpRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="raidDropChance" use="optional"/>
                                             <xs:attribute type="xs:float" name="raidDropAmount" use="optional"/>

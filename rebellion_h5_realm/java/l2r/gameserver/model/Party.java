@@ -6,6 +6,7 @@ import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
 import l2r.gameserver.instancemanager.MatchingRoomManager;
 import l2r.gameserver.instancemanager.ReflectionManager;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.model.base.Experience;
 import l2r.gameserver.model.entity.DimensionalRift;
 import l2r.gameserver.model.entity.Reflection;
@@ -92,14 +93,15 @@ public class Party implements PlayerGroup
 	 */
 	public Party(Player leader, int itemDistribution)
 	{
+		PremiumBonus leaderBonus = leader.getPremiumBonus();
 		_itemDistribution = itemDistribution;
 		_members.add(leader);
 		_partyLvl = leader.getLevel();
-		_rateExp = leader.getBonus().getRateXp();
-		_rateSp = leader.getBonus().getRateSp();
-		_rateAdena = leader.getBonus().getDropAdena();
-		_rateDrop = leader.getBonus().getDropItems();
-		_rateSpoil = leader.getBonus().getDropSpoil();
+		_rateExp = leaderBonus.getBonusExpRate();
+		_rateSp = leaderBonus.getBonusSpRate();
+		_rateAdena = leaderBonus.getBonusAdenaDropRate();
+		_rateDrop = leaderBonus.getBonusDropRate();
+		_rateSpoil = leaderBonus.getBonusSpoilRate();
 	}
 
 	/**
@@ -650,18 +652,24 @@ public class Party implements PlayerGroup
 			int level = member.getLevel();
 			_partyLvl = Math.max(_partyLvl, level);
 			count++;
+			PremiumBonus playerBonus = member.getPremiumBonus();
+			double expRate = playerBonus.getBonusExpRate();
+			double spRate = playerBonus.getBonusSpRate();
+			double itemsDrop = playerBonus.getBonusDropRate();
+			double adenaDrop = playerBonus.getBonusAdenaDropRate();
+			double spoilRate = playerBonus.getBonusSpoilRate();
 
-			rateExp += member.getBonus().getRateXp();
-			rateSp += member.getBonus().getRateSp();
-			rateDrop += member.getBonus().getDropItems();
-			rateAdena += member.getBonus().getDropAdena();
-			rateSpoil += member.getBonus().getDropSpoil();
+			rateExp += expRate;
+			rateSp += spRate;
+			rateDrop += itemsDrop;
+			rateAdena += adenaDrop;
+			rateSpoil += spoilRate;
 
-			minRateExp = Math.min(minRateExp, member.getBonus().getRateXp());
-			minRateSp = Math.min(minRateSp, member.getBonus().getRateSp());
-			minRateDrop = Math.min(minRateDrop, member.getBonus().getDropItems());
-			minRateAdena = Math.min(minRateAdena, member.getBonus().getDropAdena());
-			minRateSpoil = Math.min(minRateSpoil, member.getBonus().getDropSpoil());
+			minRateExp = Math.min(minRateExp, expRate);
+			minRateSp = Math.min(minRateSp, spRate);
+			minRateDrop = Math.min(minRateDrop, itemsDrop);
+			minRateAdena = Math.min(minRateAdena, adenaDrop);
+			minRateSpoil = Math.min(minRateSpoil, spoilRate);
 		}
 
 		_rateExp = Config.RATE_PARTY_MIN ? minRateExp : rateExp / count;
