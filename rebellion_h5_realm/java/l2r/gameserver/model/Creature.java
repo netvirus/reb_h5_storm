@@ -4222,6 +4222,7 @@ public abstract class Creature extends GameObject
 	{
 		_abnormalEffects[ae.getType().ordinal()] &= ~ ae.getMask();
 		sendChanges();
+
 	}
 	
 	public void startAttackStanceTask()

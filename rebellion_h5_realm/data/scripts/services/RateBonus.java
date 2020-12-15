@@ -3,11 +3,9 @@ package services;
 import java.util.Date;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.AccountBonusDAO;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.ItemHolder;
 import l2r.gameserver.model.Player;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.network.loginservercon.AuthServerCommunication;
 import l2r.gameserver.network.loginservercon.gspackets.BonusRequest;
 import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
@@ -20,7 +18,7 @@ public class RateBonus extends Functions
 	public void list()
 	{
 		Player player = getSelf();
-		if(Config.SERVICES_RATE_TYPE == Bonus.NO_BONUS)
+		if(Config.ENABLE_PREMIUM_SYSTEM)
 		{
 			show(HtmCache.getInstance().getNotNull("npcdefault.htm", player), player);
 			return;
@@ -56,7 +54,7 @@ public class RateBonus extends Functions
 	public void get(String[] param)
 	{
 		Player player = getSelf();
-		if(Config.SERVICES_RATE_TYPE == Bonus.NO_BONUS)
+		if(Config.ENABLE_PREMIUM_SYSTEM)
 		{
 			show(HtmCache.getInstance().getNotNull("npcdefault.htm", player), player);
 			return;
@@ -70,7 +68,7 @@ public class RateBonus extends Functions
 				player.sendPacket(SystemMsg.INCORRECT_ITEM_COUNT);
 			return;
 		}
-		if(Config.SERVICES_RATE_TYPE == Bonus.BONUS_GLOBAL_ON_AUTHSERVER && AuthServerCommunication.getInstance().isShutdown())
+		if(Config.ENABLE_PREMIUM_SYSTEM && AuthServerCommunication.getInstance().isShutdown())
 		{
 			list();
 			return;
@@ -78,15 +76,15 @@ public class RateBonus extends Functions
 		Log.addDonation(player.getName() + "|" + player.getObjectId() + "|rate bonus|" + Config.SERVICES_RATE_BONUS_VALUE[i] + "|" + Config.SERVICES_RATE_BONUS_DAYS[i] + "|", "services");
 		double bonus = Config.SERVICES_RATE_BONUS_VALUE[i];
 		int bonusExpire = (int) (System.currentTimeMillis() / 1000L) + Config.SERVICES_RATE_BONUS_DAYS[i] * 24 * 60 * 60;
-		switch(Config.SERVICES_RATE_TYPE)
-		{
-			case Bonus.BONUS_GLOBAL_ON_AUTHSERVER:
-				AuthServerCommunication.getInstance().sendPacket(new BonusRequest(player.getAccountName(), bonus, bonusExpire));
-				break;
-			case Bonus.BONUS_GLOBAL_ON_GAMESERVER:
-				AccountBonusDAO.getInstance().insert(player.getAccountName(), bonus, bonusExpire);
-				break;
-		}
+//		switch(Config.SERVICES_RATE_TYPE)
+//		{
+//			case Bonus.BONUS_GLOBAL_ON_AUTHSERVER:
+//				AuthServerCommunication.getInstance().sendPacket(new BonusRequest(player.getAccountName(), bonus, bonusExpire));
+//				break;
+//			case Bonus.BONUS_GLOBAL_ON_GAMESERVER:
+//				AccountBonusDAO.getInstance().insert(player.getAccountName(), bonus, bonusExpire);
+//				break;
+//		}
 		player.getClient().setBonus(bonus);
 		player.getClient().setBonusExpire(bonusExpire);
 //		player.stopBonusTask();

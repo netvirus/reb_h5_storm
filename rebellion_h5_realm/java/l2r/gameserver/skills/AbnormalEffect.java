@@ -125,6 +125,7 @@ public enum AbnormalEffect
 		_mask = mask;
 		_type = t;
 	}
+
 	public final int getMask()
 	{
 		return _mask;
@@ -147,5 +148,13 @@ public enum AbnormalEffect
 				return eff;
 
 		throw new NoSuchElementException("AbnormalEffect not found for name: '" + name + "'.\n Please check " + AbnormalEffect.class.getCanonicalName());
+	}
+
+	public static AbnormalEffect getByMask(int mask)
+	{
+		for (AbnormalEffect eff : AbnormalEffect.values())
+			if (eff.getMask() == mask)
+				return eff;
+		throw new NoSuchElementException("AbnormalEffect not found for mask: '" + mask + "'.\n Please check " + AbnormalEffect.class.getCanonicalName());
 	}
 }
