@@ -79,33 +79,14 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 
 	public Future<?> startBonusExpirationTask(final Player player)
 	{
-		long delay = player.getBonus().getBonusExpire() * 1000L - System.currentTimeMillis();
+		long delay = player.getPremiumBonus().getBonusDuration() * 1000L - System.currentTimeMillis();
 
 		return schedule(new RunnableImpl(){
 
 			@Override
 			public void runImpl() throws Exception
 			{
-				player.getBonus().setBonusExpire(0);
-
-				player.getBonus().setRateXp(1.);
-				player.getBonus().setRateSp(1.);
-				player.getBonus().setDropAdena(1.);
-				player.getBonus().setDropItems(1.);
-				player.getBonus().setDropSpoil(1.);
-
-				player.getBonus().setQuestDropRate(1.);
-				player.getBonus().setQuestRewardRate(1.);
-
-				if(player.getParty() != null)
-					player.getParty().recalculatePartyData();
-
-				String msg = new CustomMessage("scripts.services.RateBonus.LuckEnded", player).toString();
-				player.sendPacket(new ExShowScreenMessage(msg, 10000, ScreenMessageAlign.TOP_CENTER, true), new ExBR_PremiumState(player.getObjectId(), false));
-				player.sendMessage(msg);
-
-				if(Config.SERVICES_RATE_TYPE == Bonus.BONUS_GLOBAL_ON_GAMESERVER)
-					AccountBonusDAO.getInstance().delete(player.getAccountName());
+				System.out.println("My Premium bonus is started !!!");
 			}
 
 		}, delay);

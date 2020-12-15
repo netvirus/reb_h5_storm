@@ -1,12 +1,13 @@
-package l2r.gameserver.model;
+package l2r.gameserver.model.actor.instances.player;
+
+import l2r.gameserver.model.StatsSet;
 
 /**
  * Class for the Premium Bonus object
- *
  * @author netvirus
  */
 
-public class L2PremiumBonus {
+public class PremiumBonus {
 
     // premium
     private int _bonusId = 0;
@@ -44,10 +45,10 @@ public class L2PremiumBonus {
     private int _itemId = 0;
     private int _itemAmount = 0;
 
-    public L2PremiumBonus() {}
+    public PremiumBonus() {}
 
     // Constructor for clone
-    public L2PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
+    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
         this._bonusId = _bonusId;
         this._nameBonus = _nameBonus;
         this._auraBonus = _auraBonus;
@@ -75,7 +76,7 @@ public class L2PremiumBonus {
     }
 
     // Do clone
-    public L2PremiumBonus(L2PremiumBonus original) {
+    public PremiumBonus(PremiumBonus original) {
         this(
                 // premium
                 original.getBonusId(),
@@ -106,7 +107,7 @@ public class L2PremiumBonus {
         );
     }
 
-    public L2PremiumBonus(StatsSet set) {
+    public PremiumBonus(StatsSet set) {
         // premium
         setBonusId(set.getInt("id"));
         setBonusName(set.getString("name"));

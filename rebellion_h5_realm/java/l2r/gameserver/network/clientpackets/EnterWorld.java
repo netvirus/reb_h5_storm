@@ -8,16 +8,8 @@ import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.StringHolder;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
-import l2r.gameserver.instancemanager.AutoHuntingManager;
-import l2r.gameserver.instancemanager.CoupleManager;
-import l2r.gameserver.instancemanager.CursedWeaponsManager;
-import l2r.gameserver.instancemanager.PetitionManager;
-import l2r.gameserver.instancemanager.PlayerMessageStack;
-import l2r.gameserver.instancemanager.QuestManager;
-import l2r.gameserver.instancemanager.SchemeBufferManager;
+import l2r.gameserver.instancemanager.*;
 import l2r.gameserver.instancemanager.SchemeBufferManager.PlayerBuffProfile;
-import l2r.gameserver.instancemanager.ServerVariables;
-import l2r.gameserver.instancemanager.VoteManager;
 import l2r.gameserver.instancemanager.games.DonationBonusDay;
 import l2r.gameserver.listener.actor.player.OnAnswerListener;
 import l2r.gameserver.listener.actor.player.impl.ReviveAnswerListener;
@@ -208,8 +200,10 @@ public class EnterWorld extends L2GameClientPacket
 
 		if (client.getState() == GameClientState.ENTER_GAME)
 			client.setState(GameClientState.IN_GAME);
-		
-		activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), PremiumAccountsTable.isPremium(activeChar)));
+
+		if (Config.ENABLE_PREMIUM_SYSTEM) {
+			PremiumSystemManager.getInstance().load(activeChar);
+		}
 
 		activeChar.getMacroses().sendUpdate();
 		activeChar.sendPacket(new SSQInfo(), new HennaInfo(activeChar), new ExGetBookMarkInfo(activeChar));
