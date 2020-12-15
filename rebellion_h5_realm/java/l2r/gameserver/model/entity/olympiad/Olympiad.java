@@ -434,7 +434,7 @@ public class Olympiad
 	public static synchronized void logoutPlayer(Player player)
 	{
 		_classBasedRegisters.removeValue(player.getObjectId());
-		_nonClassBasedRegisters.remove(new Integer(player.getObjectId()));
+		_nonClassBasedRegisters.remove(Integer.valueOf(player.getObjectId()));
 		_teamBasedRegisters.removeValue(player.getObjectId());
 		_playersIp.remove(player.getIP());
 		_playersHWID.remove(player.getHWID());
@@ -492,7 +492,7 @@ public class Olympiad
 			}
 		}
 		_classBasedRegisters.removeValue(noble.getObjectId());
-		_nonClassBasedRegisters.remove(new Integer(noble.getObjectId()));
+		_nonClassBasedRegisters.remove(Integer.valueOf(noble.getObjectId()));
 		_teamBasedRegisters.removeValue(noble.getObjectId());
 		_playersIp.remove(noble.getIP());
 		_playersHWID.remove(noble.getHWID());

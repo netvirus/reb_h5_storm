@@ -148,7 +148,7 @@ public class Scripts
 			if (ClassUtils.isAssignable(clazz, ScriptFile.class))
 				try
 				{
-					((ScriptFile) clazz.newInstance()).onLoad();
+					((ScriptFile) clazz.getConstructor().newInstance()).onLoad();
 				}
 				catch (Exception e)
 				{
@@ -198,7 +198,7 @@ public class Scripts
 				if (ClassUtils.isAssignable(prevClazz, ScriptFile.class))
 					try
 					{
-						((ScriptFile) prevClazz.newInstance()).onReload();
+						((ScriptFile) prevClazz.getDeclaredConstructor().newInstance()).onReload();
 					}
 					catch (Exception e)
 					{
@@ -216,7 +216,7 @@ public class Scripts
 			if (ClassUtils.isAssignable(clazz, ScriptFile.class))
 				try
 				{
-					((ScriptFile) clazz.newInstance()).onLoad();
+					((ScriptFile) clazz.getConstructor().newInstance()).onLoad();
 				}
 				catch (Exception e)
 				{
@@ -242,7 +242,7 @@ public class Scripts
 			if (ClassUtils.isAssignable(clazz, ScriptFile.class))
 				try
 				{
-					((ScriptFile) clazz.newInstance()).onShutdown();
+					((ScriptFile) clazz.getConstructor().newInstance()).onShutdown();
 				}
 				catch (Exception e)
 				{
@@ -438,7 +438,7 @@ public class Scripts
 
 		try
 		{
-			o = clazz.newInstance();
+			o = clazz.getDeclaredConstructor().newInstance();
 		}
 		catch (Exception e)
 		{

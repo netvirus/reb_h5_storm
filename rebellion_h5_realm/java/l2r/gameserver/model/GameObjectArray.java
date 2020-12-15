@@ -280,6 +280,6 @@ public class GameObjectArray<E extends GameObject> implements Iterable<E>
 	
 	public Stream<E> stream()
 	{
-		return Arrays.stream(elementData).filter(Objects::nonNull);
+		return Arrays.stream(elementData).filter(obj -> Objects.nonNull(obj));
 	}
 }

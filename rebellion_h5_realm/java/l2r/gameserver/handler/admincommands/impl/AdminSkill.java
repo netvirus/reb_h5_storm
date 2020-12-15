@@ -26,10 +26,7 @@ import l2r.gameserver.utils.Log;
 import l2r.gameserver.utils.StringUtil;
 import l2r.gameserver.utils.Util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 public class AdminSkill implements IAdminCommandHandler
@@ -402,7 +399,7 @@ public class AdminSkill implements IAdminCommandHandler
 		for(Skill skill : player.getAllSkills())
 			list.add(skill);
 		
-		Collections.sort(list, (o1, o2) -> o1.getId() - o2.getId());
+		Collections.sort(list, Comparator.comparingInt(Skill::getId));
 		
 		int totalpages = (int) Math.round(list.size() / 16.0 + 1);
 		

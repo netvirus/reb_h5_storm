@@ -9,6 +9,7 @@ import l2r.gameserver.utils.Language;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -193,7 +194,7 @@ public class ShowBoard extends L2GameServerPacket
 				{
 					try
 					{
-						c = Class.forName(m.group(1)).newInstance();
+						c = Class.forName(m.group(1)).getDeclaredConstructor().newInstance();
 						Field field = c.getClass().getField(m.group(2));
 						_htmlCode = _htmlCode.replace(m.group(0), field.get(c).toString());
 					}
@@ -215,6 +216,10 @@ public class ShowBoard extends L2GameServerPacket
 					}
 					catch (SecurityException e)
 					{
+						e.printStackTrace();
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
 						e.printStackTrace();
 					}
 				}

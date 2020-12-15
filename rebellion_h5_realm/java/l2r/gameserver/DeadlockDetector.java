@@ -78,9 +78,14 @@ public final class DeadlockDetector extends Thread
 			return false;
 		
 		_log.warn("Killing thread " + locked_threads[0] + " via NullPointerException");
-		locked_threads[0].stop(new NullPointerException("This thread is deadlocked!"));
-		_log.warn("Killed thread " + locked_threads[0] + " via NullPointerException");
-		
+		try {
+			locked_threads[0].stop();
+		}
+		catch (NullPointerException e)
+		{
+			_log.warn("Killed thread " + locked_threads[0] + " via NullPointerException! This thread is deadlocked!");
+		}
+
 		return true;
 	}
 

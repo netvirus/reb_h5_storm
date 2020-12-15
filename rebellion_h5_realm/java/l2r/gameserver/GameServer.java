@@ -189,7 +189,7 @@ public class GameServer
 		// Check binding address
 		checkFreePorts();
 		// Initialize database
-		Class.forName(Config.DATABASE_DRIVER).newInstance();
+		Class.forName(Config.DATABASE_DRIVER).getDeclaredConstructor().newInstance();
 		DatabaseFactory.getInstance().getConnection().close();
 		
 		printSection("IdFactory");

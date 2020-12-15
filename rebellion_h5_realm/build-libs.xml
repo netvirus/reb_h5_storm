@@ -56,7 +56,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.commons}" destdir="${build.classes}"
-			optimize="on" debug="${debug}" source="1.7" target="1.7"
+			optimize="on" debug="${debug}" source="11" target="11"
 			includeantruntime="false" encoding="UTF-8" nowarn="off"
 			classpath="${build.classpath}">
 			<compilerarg value="-Xlint:all,-serial,-rawtypes,-unchecked" />
@@ -178,7 +178,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac destdir="${build.classes}" optimize="on" debug="on"
-			source="1.7" target="1.7" encoding="UTF-8" includeantruntime="false"
+			source="11" target="11" encoding="UTF-8" includeantruntime="false"
 			nowarn="off">
 			<compilerarg value="-Xlint:unchecked">
 			</compilerarg>
@@ -213,7 +213,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.loginserver}" optimize="on" destdir="${build.classes}"
-			debug="${debug}" source="1.7" target="1.7" includeantruntime="false"
+			debug="${debug}" source="11" target="11" includeantruntime="false"
 			encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/commons.jar">
 			<compilerarg value="-Xlint:all,-serial" />
 		</javac>

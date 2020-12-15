@@ -82,8 +82,8 @@ public class PhantomPlayerAI extends PlayerAI implements OnAiEventListener, OnMa
 	private static final int WAIT_TIMER_ID = 0;
 	private static final int BUFF_TIMER_ID = 1;
 	
-	public static final Comparator<Creature> lvlDiff = Comparator.comparingInt(Creature::getLevel);
-	public final Comparator<Creature> distanceComparator = (c1, c2) -> (Integer.compare((int) getActor().getDistance(c1), (int) getActor().getDistance(c2)));
+	public static final Comparator<Creature> lvlDiff = Comparator.comparingInt(creature -> creature.getLevel());
+	public final Comparator<Creature> distanceComparator = Comparator.comparingInt(c -> (int) getActor().getDistance(c));
 	public final Comparator<Creature> targetComparator = distanceComparator.thenComparing(lvlDiff);
 	
 	protected long AI_TASK_ATTACK_DELAY = Config.AI_TASK_ATTACK_DELAY;
