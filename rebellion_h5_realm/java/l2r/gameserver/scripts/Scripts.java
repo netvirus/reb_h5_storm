@@ -317,10 +317,8 @@ public class Scripts
 			}
 			classLoader.clear();
 		}
-
 		return success;
 	}
-
 
 	private void addHandlers(Class<?> clazz)
 	{
