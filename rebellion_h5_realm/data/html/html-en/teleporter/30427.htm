@@ -1,10 +1,17 @@
-Gatekeeper Siff: These ruins were used in the past by the Elves as a
-laboratory to research magic. These days, very dangerous monsters lurk
-nearby, and so Sir Collin Windawood has sealed the entrance and
-forbidden the common folk from coming here. However, we may teleport
-adventurers seeking training to just inside of the entrance. Would you
-like to go inside the ruins?
-
-[scripts_Util:Gatekeeper 48765 248461 -61900|Teleport into the ruins]
-
-[npc_%objectId%_Quest|Quest]
+<font color="F7DC6F">Gatekeeper Siff:</font><br>
+<font color="CCCCFF">These ruins were used in the past by the Elves as a laboratory to research magic.<br1>
+These days, very dangerous monsters lurk  nearby, and so Sir Collin Windawood has sealed the entrance and forbidden the common folk from coming here.<br1>
+However, we may teleport adventurers seeking training to just inside of the entrance.<br1>
+Would you like to go inside the ruins?</font><br>
+<table border=0 cellspacing=0 cellpadding=0 width=280 align="center">
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Teleport into the ruins" action="bypass -h scripts_Util:Gatekeeper 48765 248461 -61900 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="270" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="270" height="25" />
+        </td>
+    </tr>
+</table>
