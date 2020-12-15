@@ -138,7 +138,7 @@ public class ExtractStone extends Skill
 			int itemId = getItemId(target.getNpcId());
 			if(itemId != 0)
 			{
-				double rate = Config.RATE_QUESTS_DROP * player.getBonus().getQuestDropRate();
+				double rate = Config.RATE_QUESTS_DROP * player.getPremiumBonus().getBonusExtractableRate();
 				long count = _id == ExtractScrollSkill ? 1 : Math.min(10, Rnd.get((int) (getLevel() * rate + 1)));
 
 				if(count > 0)

@@ -31,6 +31,7 @@ public class PremiumBonus {
     private double _extractableRate = 1.;
     private double _manorDropRate = 1.;
     private double _questDropRate = 1.;
+    private double _questRewardRate = 1.;
     private double _petExpRate = 1.;
     private double _raidDropChance = 1.;
     private double _raidDropAmount = 1.;
@@ -48,7 +49,7 @@ public class PremiumBonus {
     public PremiumBonus() {}
 
     // Constructor for clone
-    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
+    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
         this._bonusId = _bonusId;
         this._nameBonus = _nameBonus;
         this._auraBonus = _auraBonus;
@@ -68,6 +69,7 @@ public class PremiumBonus {
         this._extractableRate = _extractableRate;
         this._manorDropRate = _manorDropRate;
         this._questDropRate = _questDropRate;
+        this._questRewardRate = _questRewardRate;
         this._petExpRate = _petExpRate;
         this._raidDropChance = _raidDropChance;
         this._raidDropAmount = _raidDropAmount;
@@ -99,6 +101,7 @@ public class PremiumBonus {
                 original.getBonusExtractableRate(),
                 original.getBonusManorDropRate(),
                 original.getBonusQuestDropRate(),
+                original.getBonusQuestRewardRate(),
                 original.getBonusPetExpRate(),
                 original.getBonusRaidDropChance(),
                 original.getBonusRaidDropAmount(),
@@ -130,6 +133,7 @@ public class PremiumBonus {
         setBonusExtractableRate(set.getDouble("extractableRate"));
         setBonusManorDropRate(set.getDouble("manorDropRate"));
         setBonusQuestDropRate(set.getDouble("questDropRate"));
+        setBonusQuestRewardRate(set.getDouble("questRewardRate"));
         setBonusPetExpRate(set.getDouble("petExpRate"));
         setBonusRaidDropChance(set.getDouble("raidDropChance"));
         setBonusRaidDropAmount(set.getDouble("raidDropAmount"));
@@ -255,6 +259,13 @@ public class PremiumBonus {
     public double getBonusQuestDropRate() { return _questDropRate; }
 
     public void setBonusQuestDropRate(double questDrop) { _questDropRate = questDrop; }
+
+    /**
+     * @return the bonus quest items drop rate.
+     */
+    public double getBonusQuestRewardRate() { return _questRewardRate; }
+
+    public void setBonusQuestRewardRate(double questRewardRate) { _questRewardRate = questRewardRate; }
 
     /**
      * @return the bonus exp rate for pet.

@@ -5,15 +5,8 @@ import l2r.commons.threading.SteppingRunnableQueueManager;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
-import l2r.gameserver.dao.AccountBonusDAO;
 import l2r.gameserver.model.Player;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.model.instances.NpcInstance;
-import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
-import l2r.gameserver.network.serverpackets.ExShowScreenMessage;
-import l2r.gameserver.network.serverpackets.ExShowScreenMessage.ScreenMessageAlign;
-import l2r.gameserver.network.serverpackets.components.CustomMessage;
-
 import java.util.concurrent.Future;
 
 public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
