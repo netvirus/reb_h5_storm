@@ -238,6 +238,7 @@ import l2r.gameserver.randoms.PlayerKillsLogManager.KillLog;
 import l2r.gameserver.randoms.Radar;
 import l2r.gameserver.scripts.Events;
 import l2r.gameserver.scripts.Functions;
+import l2r.gameserver.skills.AbnormalEffect;
 import l2r.gameserver.skills.EffectType;
 import l2r.gameserver.skills.TimeStamp;
 import l2r.gameserver.skills.effects.EffectCubic;
@@ -713,6 +714,8 @@ public final class Player extends Playable implements PlayerGroup
 	private PremiumBonus _premiumBonus = null;
 	private boolean _hasPremium = false;
 	private boolean _hasTwoPremium = false;
+	private AbnormalEffect _abnormalEffect = AbnormalEffect.NULL;
+	private boolean _hasAbnormalEffect = false;
 
 	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
@@ -13838,4 +13841,33 @@ public final class Player extends Playable implements PlayerGroup
 	public boolean hasPremiumStatus() { return _hasPremium; }
 
 	public void setPremiumStatus(boolean status) { _hasPremium = status; }
+
+	public AbnormalEffect getPremiumBonusAbnormalEffect()
+	{
+		return _abnormalEffect;
+	}
+
+	public void startPremiumBonusAbnormalEffect(AbnormalEffect eff)
+	{
+		if (eff.getMask() == 0)
+		{
+			_hasAbnormalEffect = false;
+		}
+		else
+		{
+			_hasAbnormalEffect = true;
+		}
+		_abnormalEffect = eff;
+	}
+
+	public void stopPremiumBonusAbnormalEffect(AbnormalEffect eff)
+	{
+		_hasAbnormalEffect = false;
+		stopAbnormalEffect(eff);
+	}
+
+	public boolean hasAbnormalEffect()
+	{
+		return _hasAbnormalEffect;
+	}
 }

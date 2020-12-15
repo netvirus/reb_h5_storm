@@ -7,6 +7,7 @@ import l2r.gameserver.network.serverpackets.ExShowScreenMessage;
 import l2r.gameserver.network.serverpackets.MagicSkillUse;
 import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
 import l2r.gameserver.network.serverpackets.components.NpcString;
+import l2r.gameserver.skills.AbnormalEffect;
 import l2r.gameserver.utils.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,13 +96,18 @@ public class PremiumSystemManager {
 
     /*
      * @param player - active char
-     * @param premium is the object L2PremiumBonus
+     * @param premium is the object PremiumBonus
      * @param boolean state of premium
      */
     private void setPremiumStatus(Player player, PremiumBonus premium, boolean premiumState) {
         player.setPremiumStatus(premiumState);
         player.setPremiumBonus(premium);
         player.sendPacket(new ExBR_PremiumState(player.getObjectId(), premiumState));
+        if (premium.isBonusAuraEnabled()) {
+            player.startPremiumBonusAbnormalEffect(AbnormalEffect.S_AIR_STUN);
+        } else {
+            player.stopPremiumBonusAbnormalEffect(player.getPremiumBonusAbnormalEffect());
+        }
     }
 
     public static PremiumSystemManager getInstance() {
