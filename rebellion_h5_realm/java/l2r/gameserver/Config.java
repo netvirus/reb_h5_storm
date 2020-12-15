@@ -5,7 +5,6 @@ import l2r.commons.net.AdvIP;
 import l2r.commons.net.nio.impl.SelectorConfig;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.model.Creature;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.model.base.ClassId;
 import l2r.gameserver.model.base.Experience;
 import l2r.gameserver.model.quest.Quest;
@@ -82,6 +81,9 @@ public class Config
 	/** CONFIG - DONAT **/
 	public static final String DONATE_REWARD_CONFIG_FILE = "config/donat/DonateReward.properties";
 
+	/** CONFIG - PREMIUM **/
+	public static final String PREMIUM_SYSTEM_CONFIG_FILE = "config/premium/PremiumSystem.properties";
+
 	/** CONFIG - RATES **/
 	public static final String RATES_FILE = "config/rates/rates.properties";
 	public static final String SPOIL_CONFIG_FILE = "config/rates/spoil.properties";
@@ -89,7 +91,7 @@ public class Config
 	/** CONFIG - SERVICES */
 	public static final String ACC_MOVE_FILE = "config/services/CharMove.properties";
 	//	public static final String PAYMENT_FILE = "config/services/payment.properties";
-	public static final String PREMIUM_FILE = "config/services/premium.properties";
+	//  public static final String PREMIUM_FILE = "config/services/premium.properties";
 	public static final String SERVICES_FILE = "config/services/services.properties";
 	public static final String TOP_FILE = "config/services/tops.properties";
 	public static final String WEDDING_FILE = "config/services/Wedding.properties";
@@ -128,13 +130,16 @@ public class Config
 
 	public static boolean ENABLE_HWID_CHECKER;
 	
-	// donation system
+	// Donation system
 	public static boolean ENABLE_DONATION_READER;
 	public static int DONATION_CHECK_DELAY;
 	public static boolean DONATION_WRITE_TO_LOG;
 	public static int DONATION_REWARD_ITEM_ID;
 	public static String DONATION_ITEM_NAME;
 	public static String DONATION_PROJECT_NAME;
+
+	// Premium system
+	public static boolean ENABLE_PREMIUM_SYSTEM;
 
 	 /* --------------------------------------------------------- */
 	// Phantom players
@@ -2407,6 +2412,13 @@ public class Config
 		DONATION_WRITE_TO_LOG = donate.getProperty("DonationWriteToLog", false);
 		DONATION_ITEM_NAME = donate.getProperty("DonationItemName", "Adena");;
 		DONATION_PROJECT_NAME = donate.getProperty("DonationProjectName", "Lineage II L2Relax.fun");;
+	}
+
+	public static void loadPremiumSystemSettings()
+	{
+		ExProperties donate = load(PREMIUM_SYSTEM_CONFIG_FILE);
+
+		ENABLE_PREMIUM_SYSTEM = donate.getProperty("PremiumSystem", false);
 	}
 	
 	public static void loadChatConfig()
@@ -4685,65 +4697,65 @@ public class Config
 		PHANTOM_CLANS = settings.getProperty("PhantomClans", new int[]{});
 	}
 	
-	public static void loadPremiumConfig()
-	{
-		ExProperties premiumConf = load(PREMIUM_FILE);
-		
-		SERVICES_RATE_TYPE = premiumConf.getProperty("RateBonusType", Bonus.NO_BONUS);
-		SERVICES_RATE_CREATE_PA = premiumConf.getProperty("RateBonusCreateChar", 0);
-		SERVICES_RATE_BONUS_PRICE = premiumConf.getProperty("RateBonusPrice", new int[]
-		{
-			1500
-		});
-		SERVICES_RATE_BONUS_ITEM = premiumConf.getProperty("RateBonusItem", new int[]
-		{
-			4037
-		});
-		SERVICES_RATE_BONUS_VALUE = premiumConf.getProperty("RateBonusValue", new double[]
-		{
-			2.
-		});
-		SERVICES_RATE_BONUS_DAYS = premiumConf.getProperty("RateBonusTime", new int[]
-		{
-			30
-		});
-		AUTO_LOOT_PA = premiumConf.getProperty("AutoLootPA", false);
-		ENCHANT_CHANCE_WEAPON_PA = premiumConf.getProperty("EnchantChancePA", 66);
-		ENCHANT_CHANCE_ARMOR_PA = premiumConf.getProperty("EnchantChanceArmorPA", 66);
-		ENCHANT_CHANCE_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceAccessoryPA", 66);
-		ENCHANT_CHANCE_WEAPON_BLESS_PA = premiumConf.getProperty("EnchantChanceBlessPA", 66);
-		ENCHANT_CHANCE_ARMOR_BLESS_PA = premiumConf.getProperty("EnchantChanceArmorBlessPA", 66);
-		ENCHANT_CHANCE_ACCESSORY_BLESS_PA = premiumConf.getProperty("EnchantChanceAccessoryBlessPA", 66);
-		ENCHANT_CHANCE_CRYSTAL_WEAPON_PA = premiumConf.getProperty("EnchantChanceCrystalPA", 66);
-		ENCHANT_CHANCE_CRYSTAL_ARMOR_PA = premiumConf.getProperty("EnchantChanceCrystalArmorPA", 66);
-		ENCHANT_CHANCE_CRYSTAL_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceCrystalAccessory", 66);
-		
-		SERVICES_BONUS_XP = premiumConf.getProperty("RateBonusXp", 1.);
-		SERVICES_BONUS_SP = premiumConf.getProperty("RateBonusSp", 1.);
-		SERVICES_BONUS_ADENA = premiumConf.getProperty("RateBonusAdena", 1.);
-		SERVICES_BONUS_ITEMS = premiumConf.getProperty("RateBonusItems", 1.);
-		SERVICES_BONUS_SPOIL = premiumConf.getProperty("RateBonusSpoil", 1.);
-		
-		USE_ALT_ENCHANT_PA = Boolean.parseBoolean(premiumConf.getProperty("UseAltEnchantPA", "False"));
-		for (String prop : premiumConf.getProperty("EnchantWeaponFighterPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-			ENCHANT_WEAPON_FIGHT_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantWeaponFighterCrystalPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-			ENCHANT_WEAPON_FIGHT_BLESSED_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantWeaponFighterBlessedPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-			ENCHANT_WEAPON_FIGHT_CRYSTAL_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantArmorPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantArmorCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_CRYSTAL_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantArmorBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_BLESSED_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantJewelryPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_JEWELRY_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantJewelryCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_JEWELRY_CRYSTAL_PA.add(Integer.parseInt(prop));
-		for (String prop : premiumConf.getProperty("EnchantJewelryBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-			ENCHANT_ARMOR_JEWELRY_BLESSED_PA.add(Integer.parseInt(prop));
-	}
+//	public static void loadPremiumConfig()
+//	{
+//		ExProperties premiumConf = load(PREMIUM_FILE);
+//
+//		SERVICES_RATE_TYPE = premiumConf.getProperty("RateBonusType", Bonus.NO_BONUS);
+//		SERVICES_RATE_CREATE_PA = premiumConf.getProperty("RateBonusCreateChar", 0);
+//		SERVICES_RATE_BONUS_PRICE = premiumConf.getProperty("RateBonusPrice", new int[]
+//		{
+//			1500
+//		});
+//		SERVICES_RATE_BONUS_ITEM = premiumConf.getProperty("RateBonusItem", new int[]
+//		{
+//			4037
+//		});
+//		SERVICES_RATE_BONUS_VALUE = premiumConf.getProperty("RateBonusValue", new double[]
+//		{
+//			2.
+//		});
+//		SERVICES_RATE_BONUS_DAYS = premiumConf.getProperty("RateBonusTime", new int[]
+//		{
+//			30
+//		});
+//		AUTO_LOOT_PA = premiumConf.getProperty("AutoLootPA", false);
+//		ENCHANT_CHANCE_WEAPON_PA = premiumConf.getProperty("EnchantChancePA", 66);
+//		ENCHANT_CHANCE_ARMOR_PA = premiumConf.getProperty("EnchantChanceArmorPA", 66);
+//		ENCHANT_CHANCE_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceAccessoryPA", 66);
+//		ENCHANT_CHANCE_WEAPON_BLESS_PA = premiumConf.getProperty("EnchantChanceBlessPA", 66);
+//		ENCHANT_CHANCE_ARMOR_BLESS_PA = premiumConf.getProperty("EnchantChanceArmorBlessPA", 66);
+//		ENCHANT_CHANCE_ACCESSORY_BLESS_PA = premiumConf.getProperty("EnchantChanceAccessoryBlessPA", 66);
+//		ENCHANT_CHANCE_CRYSTAL_WEAPON_PA = premiumConf.getProperty("EnchantChanceCrystalPA", 66);
+//		ENCHANT_CHANCE_CRYSTAL_ARMOR_PA = premiumConf.getProperty("EnchantChanceCrystalArmorPA", 66);
+//		ENCHANT_CHANCE_CRYSTAL_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceCrystalAccessory", 66);
+//
+//		SERVICES_BONUS_XP = premiumConf.getProperty("RateBonusXp", 1.);
+//		SERVICES_BONUS_SP = premiumConf.getProperty("RateBonusSp", 1.);
+//		SERVICES_BONUS_ADENA = premiumConf.getProperty("RateBonusAdena", 1.);
+//		SERVICES_BONUS_ITEMS = premiumConf.getProperty("RateBonusItems", 1.);
+//		SERVICES_BONUS_SPOIL = premiumConf.getProperty("RateBonusSpoil", 1.);
+//
+//		USE_ALT_ENCHANT_PA = Boolean.parseBoolean(premiumConf.getProperty("UseAltEnchantPA", "False"));
+//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
+//			ENCHANT_WEAPON_FIGHT_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterCrystalPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
+//			ENCHANT_WEAPON_FIGHT_BLESSED_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterBlessedPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
+//			ENCHANT_WEAPON_FIGHT_CRYSTAL_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantArmorPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantArmorCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_CRYSTAL_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantArmorBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_BLESSED_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantJewelryPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_JEWELRY_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantJewelryCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_JEWELRY_CRYSTAL_PA.add(Integer.parseInt(prop));
+//		for (String prop : premiumConf.getProperty("EnchantJewelryBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
+//			ENCHANT_ARMOR_JEWELRY_BLESSED_PA.add(Integer.parseInt(prop));
+//	}
 	
 	public static void LoadCustom_Config()
 	{
@@ -5355,7 +5367,7 @@ public class Config
 		loadInstancesConfig();
 		loadItemsSettings();
 		abuseLoad();
-		loadPremiumConfig();
+		loadPremiumSystemSettings();
 		loadTriviaSettings();
 		if (ADVIPSYSTEM)
 			ipsLoad();

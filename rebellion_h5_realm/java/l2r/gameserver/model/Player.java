@@ -702,8 +702,6 @@ public final class Player extends Playable implements PlayerGroup
 	private int _ping = -1;
 	private int _mtu = -1;
 	
-	// not used ?private boolean _isStuning, _isParalyzed = false;
-	
 	private List<Integer> _acceptedPMs = new ArrayList<>();
 	
 	private static ScheduledFuture<?> _startTaskMessage;
@@ -712,12 +710,10 @@ public final class Player extends Playable implements PlayerGroup
 	/**
 	 * Premium system for player
 	 */
-	private L2PremiumBonus _premiumBonus = null;
+	private PremiumBonus _premiumBonus = null;
 	private boolean _hasPremium = false;
 	private boolean _hasTwoPremium = false;
-	private Bonus _bonus = new Bonus();
-	private Future<?> _bonusExpiration;
-	
+
 	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
 	 */
@@ -1033,7 +1029,6 @@ public final class Player extends Playable implements PlayerGroup
 
 		broadcastCharInfo();
 		stopWaterTask();
-		stopBonusTask();
 		stopHourlyTask();
 		stopAutoPotionTask(-1);
 		stopVitalityTask();
@@ -1132,7 +1127,6 @@ public final class Player extends Playable implements PlayerGroup
 
 		broadcastCharInfo();
 		stopWaterTask();
-		stopBonusTask();
 		stopAutoPotionTask(-1);
 		stopHourlyTask();
 		stopVitalityTask();
@@ -4849,7 +4843,6 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		startAutoSaveTask();
 		startPcBangPointsTask();
-		startBonusTask();
 		getInventory().startTimers();
 		resumeQuestTimers();
 	}
@@ -4858,7 +4851,6 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		setAgathion(0);
 		stopWaterTask();
-		stopBonusTask();
 		stopHourlyTask();
 		stopAutoPotionTask(-1);
 		stopKickTask();
@@ -9297,42 +9289,6 @@ public final class Player extends Playable implements PlayerGroup
 		}
 	}
 
-	public void startBonusTask()
-	{
-		if (this == null || getClient() == null)
-			return;
-
-		if(Config.SERVICES_RATE_TYPE != Bonus.NO_BONUS)
-		{
-			int bonusExpire = getClient() == null ? 0 : getClient().getBonusExpire();
-			double bonus = getClient() == null ? 0 : getClient().getBonus();
-			if(bonusExpire > System.currentTimeMillis() / 1000L)
-			{
-				getBonus().setRateXp(Config.SERVICES_BONUS_XP * bonus);
-				getBonus().setRateSp(Config.SERVICES_BONUS_SP * bonus);
-				getBonus().setDropAdena(Config.SERVICES_BONUS_ADENA * bonus);
-				getBonus().setDropItems(Config.SERVICES_BONUS_ITEMS * bonus);
-				getBonus().setDropSpoil(Config.SERVICES_BONUS_SPOIL * bonus);
-				getBonus().setBonusExpire(bonusExpire);
-
-				if(_bonusExpiration == null)
-					_bonusExpiration = LazyPrecisionTaskManager.getInstance().startBonusExpirationTask(this);
-			}
-			else if(bonus > 0 && Config.SERVICES_RATE_TYPE == Bonus.BONUS_GLOBAL_ON_GAMESERVER)
-				AccountBonusDAO.getInstance().delete(getAccountName());
-		}
-	}
-
-	public void stopBonusTask()
-	{
-		if(_bonusExpiration != null)
-		{
-			_bonusExpiration.cancel(false);
-			_bonusExpiration = null;
-		}
-	}
-
-
 	@Override
 	public int getInventoryLimit()
 	{
@@ -9556,50 +9512,34 @@ public final class Player extends Playable implements PlayerGroup
 		return _fishing.getFishLoc();
 	}
 
-	public Bonus getBonus()
-	{
-		return _bonus;
-	}
-
-	public boolean hasBonus()
-	{
-		return _bonus.getBonusExpire() > System.currentTimeMillis() / 1000L;
-	}
-
 	@Override
 	public double getRateAdena()
 	{
-		if (PremiumAccountsTable.isPremium(this))
-			return PremiumAccountsTable.getDropBonus(this, 57);
-
-		return _party == null ? _bonus.getDropAdena() : _party._rateAdena;
+		return _party == null ? _premiumBonus.getBonusAdenaDropRate() : _party._rateAdena;
 	}
 
 	@Override
 	public double getRateItems()
 	{
-		if (PremiumAccountsTable.isPremium(this))
-				return PremiumAccountsTable.getDropBonus(this, 0);
-
-		return _party == null ? _bonus.getDropItems() : _party._rateDrop;
+		return _party == null ? _premiumBonus.getBonusDropRate() : _party._rateDrop;
 	}
 
 	@Override
 	public double getRateExp()
 	{
-		return calcStat(Stats.EXP, (_party == null ? _bonus.getRateXp() : _party._rateExp), null, null);
+		return calcStat(Stats.EXP, (_party == null ? _premiumBonus.getBonusExpRate() : _party._rateExp), null, null);
 	}
 
 	@Override
 	public double getRateSp()
 	{
-		return calcStat(Stats.SP, (_party == null ? _bonus.getRateSp() : _party._rateSp), null, null);
+		return calcStat(Stats.SP, (_party == null ? _premiumBonus.getBonusSpRate() : _party._rateSp), null, null);
 	}
 
 	@Override
 	public double getRateSpoil()
 	{
-		return _party == null ? _bonus.getDropSpoil() : _party._rateSpoil;
+		return _party == null ? _premiumBonus.getBonusSpoilRate() : _party._rateSpoil;
 	}
 
 	private boolean _maried = false;
@@ -13883,13 +13823,13 @@ public final class Player extends Playable implements PlayerGroup
 		return _IsPhantom;
 	}
 
-	public L2PremiumBonus getPremiumBonus() { return _premiumBonus; }
+	public PremiumBonus getPremiumBonus() { return _premiumBonus; }
 
 	public void setTwoPremium(boolean state) { _hasTwoPremium = state; }
 
 	public boolean hasTwoPremium() { return _hasTwoPremium; }
 
-	public void setPremiumBonus(L2PremiumBonus premiumBonus) { _premiumBonus = premiumBonus; }
+	public void setPremiumBonus(PremiumBonus premiumBonus) { _premiumBonus = premiumBonus; }
 
 	public boolean isPremiumBonusMain() { return _premiumBonus.isBonusMain(); }
 
