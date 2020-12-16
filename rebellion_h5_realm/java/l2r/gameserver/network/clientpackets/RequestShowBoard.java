@@ -32,7 +32,7 @@ public class RequestShowBoard extends L2GameClientPacket
 	public void runImpl()
 	{
 		Player activeChar = getClient().getActiveChar();
-		if(activeChar == null)
+		if (activeChar == null || activeChar.isBlocked() || activeChar.isCursedWeaponEquipped())
 			return;
 
 		if(Config.COMMUNITYBOARD_ENABLED)
