@@ -21,7 +21,7 @@
     <libelement value="jar://$MODULE_DIR$/lib/slf4j-api-1.7.21.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/slf4j-log4j12-1.7.21.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/javolution-core-java-6.1.0-20140201.140336-13.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/lib/ecj-4.5.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/ecj-4.8.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/commons-math3-3.4.1.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/javax.mail-1.5.5.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/trove-2.1.0.jar!/" />
@@ -219,7 +219,7 @@
     <orderEntry type="module-library">
       <library name="ecj-4.5.1.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/ecj-4.5.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/ecj-4.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

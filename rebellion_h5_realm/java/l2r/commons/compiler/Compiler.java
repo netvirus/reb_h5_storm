@@ -46,7 +46,7 @@ public class Compiler
 		//options.add("-g:none");
 		options.add("-g");
 		options.add("-source");
-		options.add("1.8");
+		options.add("11");
 		//options.add("-deprecation");
 
 		Writer writer = new StringWriter();
