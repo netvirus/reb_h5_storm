@@ -43,8 +43,8 @@
       <sourceFolder url="file://$MODULE_DIR$/data/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/dist/gameserver/config" isTestSource="false" />
     </content>
-    <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="commons-dbcp-1.4.jar">
         <CLASSES>
@@ -217,7 +217,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="ecj-4.5.1.jar">
+      <library name="ecj-4.8.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/ecj-4.8.jar!/" />
         </CLASSES>
