@@ -14,6 +14,7 @@ import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
 import l2r.gameserver.data.xml.holder.BuyListHolder.NpcTradeList;
 import l2r.gameserver.data.xml.holder.MultiSellHolder;
+import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
 import l2r.gameserver.handler.bbs.CommunityBoardManager;
 import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
 import l2r.gameserver.instancemanager.ServerVariables;
@@ -21,6 +22,7 @@ import l2r.gameserver.model.Creature;
 import l2r.gameserver.model.GameObjectsStorage;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.Zone.ZoneType;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.model.base.Element;
 import l2r.gameserver.model.items.ItemInstance;
 import l2r.gameserver.network.AccountData;
@@ -563,48 +565,26 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 	{	
 		html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/index.htm", player);
 		
-		html = html.replace("%currentTime%", "" + TimeUtils.convertDateToString(System.currentTimeMillis()));
-		html = html.replace("%uptime%", Util.formatTime(GameServer.getInstance().uptime()));
-		html = html.replace("%serverRev%", GameServer.getInstance().getVersion().getRevisionNumber());
-		html = html.replace("%buildDate%", GameServer.getInstance().getVersion().getBuildDate());
-		html = html.replace("%Online%",  String.valueOf(ONLINE));
-		html = html.replace("%Offline%", String.valueOf(OFFLINE));
-		html = html.replace("%Offbuff%", String.valueOf(OFFLINE_BUFFER));
 		html = html.replace("%playerClssName%", "" + player.getClassId().getName(player));
 		html = html.replace("%playerIP%", "" + player.getIP());
 		html = html.replace("%playerName%", "" + player.getName() + " (" + player.getLevel() + ")");
-		html = html.replace("%noble%", player.isNoble() ? "Yes" : "No");
-		
-//		PremiumAccount template = PremiumAccountsTable.getPremiumAccount(player);
-//		if (template == PremiumAccountsTable.DEFAULT_PREMIUM_ACCOUNT)
-//			html = html.replace("%premium%", "<a action=\"bypass _bbslink\">Buy Premium</a>");
-//		else
-//			html = html.replace("%premium%", "<font color=\"D7DF01\">" + template.getTemplate().name + "</font> - " + TimeUtils.minutesToFullString((int) (template.getTimeLeftInMilis() / 60000), true, true, false, false) + " left.");
-//
-//		if (PremiumAccountsTable.isPremium(player))
-//		{
-//			int timeRemaning = (int) (PremiumAccountsTable.getPremiumAccount(player).getTimeLeftInMilis() / 1000);
-//			String premiumName = PremiumAccountsTable.getPremiumAccount(player).getTemplate().name;
-//			html = html.replace("%premium%", "" + premiumName + "" + TimeUtils.getConvertedTime(timeRemaning));
-//		}
-			
-		String clanName = "No";
+		html = html.replace("%noble%", player.isNoble() ? "Да" : "Нет");
+
+		if (player.hasPremiumBonus()) {
+			PremiumBonus premiumBonus = PremiumSystemOptionsData.getInstance().findById(player.getPremiumBonus().getBonusId());
+			html = html.replace("%premium%", "Да");
+			html = html.replace("%premium%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, false, false) + " left.");
+		} else {
+			html = html.replace("%premium%", "Нет");
+			html = html.replace("%premium%", "<a action=\"bypass _bbslink\">Buy Premium</a>");
+		}
+
+		String clanName = "Не в клане";
 		if(player.getClan() != null)
 			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + ")";
 		
 		html = html.replace("%playerClan%", "" + clanName);
-		html = html.replace("%serverTime%", "" + TimeUtils.getTimeInServer());
-		html = html.replace("%onlineTime%", "" + Util.formatTime((int) player.getOnlineTime()));
-		
-//		AccountData data =  AccountsDAO.getAccountData(player.getAccountName());
-//		String hwid = "";
-//
-//		if (data != null)
-//			hwid = data.allowedHwids;
-//
-//		html = html.replace("%hwid%", "" + hwid != "" ? "<font color=\"FF8000\"><a action=\"bypass -h user_lock \">Bind HWID</a></font>" : "<font color=\"64FE2E\">HWID Protected</font>");
-//		html = html.replace("%security%", player.getSecurityPassword() == null ? "<font color=\"FE2E2E\"><a action=\"bypass -h user_security \">Set Security</a></font>" : "<font color=\"64FE2E\">Secured</font>");
-		
+
 		return html;
 	
 	}
