@@ -575,18 +575,18 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		html = html.replace("%playerName%", "" + player.getName() + " (" + player.getLevel() + ")");
 		html = html.replace("%noble%", player.isNoble() ? "Yes" : "No");
 		
-		PremiumAccount template = PremiumAccountsTable.getPremiumAccount(player);
-		if (template == PremiumAccountsTable.DEFAULT_PREMIUM_ACCOUNT)
-			html = html.replace("%premium%", "<a action=\"bypass _bbslink\">Buy Premium</a>");
-		else
-			html = html.replace("%premium%", "<font color=\"D7DF01\">" + template.getTemplate().name + "</font> - " + TimeUtils.minutesToFullString((int) (template.getTimeLeftInMilis() / 60000), true, true, false, false) + " left.");
-		
-		if (PremiumAccountsTable.isPremium(player))
-		{
-			int timeRemaning = (int) (PremiumAccountsTable.getPremiumAccount(player).getTimeLeftInMilis() / 1000);
-			String premiumName = PremiumAccountsTable.getPremiumAccount(player).getTemplate().name;
-			html = html.replace("%premium%", "" + premiumName + "" + TimeUtils.getConvertedTime(timeRemaning));
-		}
+//		PremiumAccount template = PremiumAccountsTable.getPremiumAccount(player);
+//		if (template == PremiumAccountsTable.DEFAULT_PREMIUM_ACCOUNT)
+//			html = html.replace("%premium%", "<a action=\"bypass _bbslink\">Buy Premium</a>");
+//		else
+//			html = html.replace("%premium%", "<font color=\"D7DF01\">" + template.getTemplate().name + "</font> - " + TimeUtils.minutesToFullString((int) (template.getTimeLeftInMilis() / 60000), true, true, false, false) + " left.");
+//
+//		if (PremiumAccountsTable.isPremium(player))
+//		{
+//			int timeRemaning = (int) (PremiumAccountsTable.getPremiumAccount(player).getTimeLeftInMilis() / 1000);
+//			String premiumName = PremiumAccountsTable.getPremiumAccount(player).getTemplate().name;
+//			html = html.replace("%premium%", "" + premiumName + "" + TimeUtils.getConvertedTime(timeRemaning));
+//		}
 			
 		String clanName = "No";
 		if(player.getClan() != null)
@@ -596,14 +596,14 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		html = html.replace("%serverTime%", "" + TimeUtils.getTimeInServer());
 		html = html.replace("%onlineTime%", "" + Util.formatTime((int) player.getOnlineTime()));
 		
-		AccountData data =  AccountsDAO.getAccountData(player.getAccountName());
-		String hwid = "";
-		
-		if (data != null)
-			hwid = data.allowedHwids;
-		
-		html = html.replace("%hwid%", "" + hwid != "" ? "<font color=\"FF8000\"><a action=\"bypass -h user_lock \">Bind HWID</a></font>" : "<font color=\"64FE2E\">HWID Protected</font>");
-		html = html.replace("%security%", player.getSecurityPassword() == null ? "<font color=\"FE2E2E\"><a action=\"bypass -h user_security \">Set Security</a></font>" : "<font color=\"64FE2E\">Secured</font>");
+//		AccountData data =  AccountsDAO.getAccountData(player.getAccountName());
+//		String hwid = "";
+//
+//		if (data != null)
+//			hwid = data.allowedHwids;
+//
+//		html = html.replace("%hwid%", "" + hwid != "" ? "<font color=\"FF8000\"><a action=\"bypass -h user_lock \">Bind HWID</a></font>" : "<font color=\"64FE2E\">HWID Protected</font>");
+//		html = html.replace("%security%", player.getSecurityPassword() == null ? "<font color=\"FE2E2E\"><a action=\"bypass -h user_security \">Set Security</a></font>" : "<font color=\"64FE2E\">Secured</font>");
 		
 		return html;
 	
