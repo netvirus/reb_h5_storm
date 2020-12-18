@@ -566,24 +566,22 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/index.htm", player);
 		
 		html = html.replace("%playerClssName%", "" + player.getClassId().getName(player));
-		html = html.replace("%playerIP%", "" + player.getIP());
 		html = html.replace("%playerName%", "" + player.getName() + " (" + player.getLevel() + ")");
+		String clanName = "Не в клане";
+		if(player.getClan() != null)
+			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + ")";
+		html = html.replace("%playerClan%", "" + clanName);
 		html = html.replace("%noble%", player.isNoble() ? "Да" : "Нет");
+		html = html.replace("%playerIP%", "" + player.getIP());
 
 		if (player.hasPremiumBonus()) {
 			PremiumBonus premiumBonus = PremiumSystemOptionsData.getInstance().findById(player.getPremiumBonus().getBonusId());
 			html = html.replace("%premium%", "Да");
-			html = html.replace("%premium%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, false, false) + " left.");
+			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, false, false) + " left.");
 		} else {
 			html = html.replace("%premium%", "Нет");
-			html = html.replace("%premium%", "<a action=\"bypass _bbslink\">Buy Premium</a>");
+			html = html.replace("%premiumData%", "<a action=\"bypass _bbslink\">Купить премиум</a>");
 		}
-
-		String clanName = "Не в клане";
-		if(player.getClan() != null)
-			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + ")";
-		
-		html = html.replace("%playerClan%", "" + clanName);
 
 		return html;
 	
