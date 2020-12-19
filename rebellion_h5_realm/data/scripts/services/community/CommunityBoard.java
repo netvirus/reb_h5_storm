@@ -569,9 +569,9 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		html = html.replace("%playerName%", "" + player.getName() + " (" + player.getLevel() + ")");
 		String clanName = "Не в клане";
 		if(player.getClan() != null)
-			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + ")";
+			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + " лвл)";
 		html = html.replace("%playerClan%", "" + clanName);
-		html = html.replace("%noble%", player.isNoble() ? "Да" : "Нет");
+		html = html.replace("%noble%", player.isNoble() ? "Почетный дворянин" : "Все еще впереди");
 		html = html.replace("%playerIP%", "" + player.getIP());
 
 		if (player.hasPremiumBonus()) {
@@ -579,8 +579,8 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			html = html.replace("%premium%", "Да");
 			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, false, false) + " left.");
 		} else {
-			html = html.replace("%premium%", "Нет");
-			html = html.replace("%premiumData%", "<a action=\"bypass _bbslink\">Купить премиум</a>");
+			html = html.replace("%premium%", "Не имеется");
+			html = html.replace("%premiumData%", "Не имеется");
 		}
 
 		return html;
