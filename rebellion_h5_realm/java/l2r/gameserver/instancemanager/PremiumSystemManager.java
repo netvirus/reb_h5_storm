@@ -8,6 +8,7 @@ import l2r.gameserver.network.serverpackets.MagicSkillUse;
 import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
 import l2r.gameserver.network.serverpackets.components.NpcString;
 import l2r.gameserver.skills.AbnormalEffect;
+import l2r.gameserver.taskmanager.LazyPrecisionTaskManager;
 import l2r.gameserver.utils.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,20 +61,22 @@ public class PremiumSystemManager {
 //        //stopExpireTask(player);
 //    };
 
-    private void startExpireTask(Player player, long delay)
+    private void startExpireTask(Player player)
     {
-        //final ScheduledFuture<?> task = ThreadPoolManager.getInstance().scheduleEvent(new PremiumExpireTask(player), delay);
-        //expiretasks.put(player.getObjectId(), task);
+        final ScheduledFuture<?> task = LazyPrecisionTaskManager.getInstance().startBonusExpirationTask(player);
+        expiretasks.put(player.getObjectId(), task);
     }
 
-    private void stopExpireTask(Player player)
+    public void stopExpireTask(Player player)
     {
-//        ScheduledFuture<?> task = expiretasks.remove(player.getAccountName());
-//        if (task != null)
-//        {
-//            task.cancel(false);
-//            task = null;
-//        }
+        ScheduledFuture<?> task = expiretasks.remove(player.getObjectId());
+        if (task != null)
+        {
+            task.cancel(false);
+            task = null;
+        }
+        if (player.hasTwoPremium())
+            load(player);
     }
 
     private void enablePremiumStatus(Player player, PremiumBonus premium, boolean showVisualEffect) {
@@ -84,9 +87,10 @@ public class PremiumSystemManager {
     private void enablePremiumStatus(Player player, PremiumBonus premium) {
         long timer = premium.getBonusDuration();
         setPremiumStatus(player, premium, true);
-        startExpireTask(player, ((timer * 1000L) - System.currentTimeMillis()));
+        startExpireTask(player);
         String premiumMsg = "Your premium subscription will expire in: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
         player.sendPacket(new ExShowScreenMessage(NpcString.NONE, 7000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, premiumMsg));
+        System.out.println(premiumMsg);
     }
 
     private void disablePremiumStatus(Player player) {
@@ -108,6 +112,10 @@ public class PremiumSystemManager {
         } else {
             player.stopPremiumBonusAbnormalEffect(player.getPremiumBonusAbnormalEffect());
         }
+    }
+
+    public Map<Integer, ScheduledFuture<?>> getExpireTasks() {
+        return expiretasks;
     }
 
     public static PremiumSystemManager getInstance() {

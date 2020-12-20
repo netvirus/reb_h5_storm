@@ -577,7 +577,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		if (player.hasPremiumBonus()) {
 			PremiumBonus premiumBonus = PremiumSystemOptionsData.getInstance().findById(player.getPremiumBonus().getBonusId());
 			html = html.replace("%premium%", "Да");
-			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, false, false) + " left.");
+			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, true, false) + " left.");
 		} else {
 			html = html.replace("%premium%", "Не имеется");
 			html = html.replace("%premiumData%", "Не имеется");

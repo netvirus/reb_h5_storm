@@ -5,9 +5,11 @@ import l2r.commons.threading.SteppingRunnableQueueManager;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
+import l2r.gameserver.instancemanager.PremiumSystemManager;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.instances.NpcInstance;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledFuture;
 
 public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 {
@@ -70,7 +72,7 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 		}, delay, delay);
 	}
 
-	public Future<?> startBonusExpirationTask(final Player player)
+	public ScheduledFuture<?> startBonusExpirationTask(final Player player)
 	{
 		long delay = player.getPremiumBonus().getBonusDuration() * 1000L - System.currentTimeMillis();
 
@@ -79,7 +81,8 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 			@Override
 			public void runImpl() throws Exception
 			{
-				System.out.println("My Premium bonus is started !!!");
+
+				PremiumSystemManager.getInstance().stopExpireTask(player);
 			}
 
 		}, delay);
