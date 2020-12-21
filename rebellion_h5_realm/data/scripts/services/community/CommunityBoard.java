@@ -153,12 +153,12 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			{
 				html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
 				Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
-				for (PremiumBonus premiumBonus : _premiumBonuses.values())
+				for (Map.Entry<Integer, PremiumBonus> premiumBonusEntry : _premiumBonuses.entrySet())
 				{
 					html = html + "<tr>";
-					html = html + "<td width=\"32\"><img src=\"" + premiumBonus.getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
-					html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + premiumBonus.getBonusName() + "</font></td>";
-					html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem:" + premiumBonus.getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
+					html = html + "<td width=\"32\"><img src=\"" + premiumBonusEntry.getValue().getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
+					html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + premiumBonusEntry.getValue().getBonusName() + "</font></td>";
+					html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem:" + premiumBonusEntry.getValue().getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
 					html = html + "</tr>";
 				}
 				html = html.replace("{list}", html);
