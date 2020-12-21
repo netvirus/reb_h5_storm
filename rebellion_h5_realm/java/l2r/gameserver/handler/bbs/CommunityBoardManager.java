@@ -1,7 +1,6 @@
 package l2r.gameserver.handler.bbs;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.templates.StatsSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +13,6 @@ public class CommunityBoardManager
 	private static final CommunityBoardManager _instance = new CommunityBoardManager();
 
 	private final Map<String, ICommunityBoardHandler>_handlers = new HashMap<String, ICommunityBoardHandler>();
-	private final StatsSet _properties = new StatsSet();
 
 	public static CommunityBoardManager getInstance()
 	{

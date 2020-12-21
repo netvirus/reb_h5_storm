@@ -1,15 +1,11 @@
 package services.community;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.GameServer;
-import l2r.gameserver.ThreadPoolManager;
 import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.achievements.PlayerTops;
 import l2r.gameserver.auction.AuctionManager;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.AccountsDAO;
 import l2r.gameserver.dao.PremiumAccountsTable;
-import l2r.gameserver.dao.PremiumAccountsTable.PremiumAccount;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
 import l2r.gameserver.data.xml.holder.BuyListHolder.NpcTradeList;
@@ -19,13 +15,11 @@ import l2r.gameserver.handler.bbs.CommunityBoardManager;
 import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
 import l2r.gameserver.instancemanager.ServerVariables;
 import l2r.gameserver.model.Creature;
-import l2r.gameserver.model.GameObjectsStorage;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.Zone.ZoneType;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.model.base.Element;
 import l2r.gameserver.model.items.ItemInstance;
-import l2r.gameserver.network.AccountData;
 import l2r.gameserver.network.serverpackets.ExBuySellList;
 import l2r.gameserver.network.serverpackets.ExShowVariationCancelWindow;
 import l2r.gameserver.network.serverpackets.ExShowVariationMakeWindow;
@@ -41,7 +35,6 @@ import l2r.gameserver.stats.Formulas;
 import l2r.gameserver.stats.Stats;
 import l2r.gameserver.templates.item.WeaponTemplate.WeaponType;
 import l2r.gameserver.utils.TimeUtils;
-import l2r.gameserver.utils.Util;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -51,7 +44,6 @@ import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import services.PremiumAccountManagment;
 
 public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 {
@@ -108,22 +100,22 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			"_bbsGrandBoss"
 		};
 	}
-	
-	private static int ONLINE = 0;
-	private static int OFFLINE = 0;
-	private static int OFFLINE_BUFFER = 0;
-	static
-	{
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable()
-		{
-			public void run()
-			{
-				ONLINE = GameObjectsStorage.getAllPlayersCount();
-				OFFLINE = GameObjectsStorage.getAllOfflineCount(false);
-				OFFLINE_BUFFER = GameObjectsStorage.getAllOfflineCount(false);
-			}
-		}, 1000, 30000);
-	}
+
+//	private static int ONLINE = 0;
+//	private static int OFFLINE = 0;
+//	private static int OFFLINE_BUFFER = 0;
+//	static
+//	{
+//		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable()
+//		{
+//			public void run()
+//			{
+//				ONLINE = GameObjectsStorage.getAllPlayersCount();
+//				OFFLINE = GameObjectsStorage.getAllOfflineCount(false);
+//				OFFLINE_BUFFER = GameObjectsStorage.getAllOfflineCount(false);
+//			}
+//		}, 1000, 30000);
+//	}
 	
 	@Override
 	public void onBypassCommand(Player player, String bypass)
