@@ -2,10 +2,13 @@ package services;
 
 import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.dao.PremiumAccountsTable.PremiumTemplate;
+import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
 import l2r.gameserver.listener.actor.player.OnAnswerListener;
 import l2r.gameserver.model.Player;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.network.serverpackets.ConfirmDlg;
 import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
+import l2r.gameserver.network.serverpackets.ShowBoard;
 import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
@@ -16,10 +19,35 @@ import l2r.gameserver.utils.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
+
 public class PremiumAccountManagment extends Functions
 {
 	public static final Logger _log = LoggerFactory.getLogger(PremiumAccountManagment.class);
-	
+
+	public void showPremiumBonusList()
+	{
+//		_premiumBonusList.forEach((k, v) -> {
+//			html = html + "<tr>";
+//			html = html + "<td width=\"32\"><img src=\"" + v.getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
+//			html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + v.getBonusName() + "</font></td>";
+//			html = html + "<td><button value=\"\" action=\"bypass -h scripts_services.PremiumAccountManagment:showPremiumBonusInfoById " + v.getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
+//			html = html + "</tr>";
+//		});
+//		_premiumBonusList.clear();
+//		return html;
+	}
+
+	public void showPremiumBonusInfoById(String bonusId)
+	{
+//		html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
+//		html = html + "<tr>";
+//		html = html + "<td>TEXT FOR PREMIUM ID: " + bonusId + "</td>";
+//		html = html + "</tr>";
+//		ShowBoard.separateAndSend(html, player);
+		System.out.println(bonusId);
+	}
+
 	public void buy(String[] param)
 	{
 		String actualCommand = param[0]; // Get actual command

@@ -32,7 +32,8 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
     }
 
     @Override
-    public void parseDocument(Document doc) {
+    public void parseDocument(Document doc)
+    {
         nodeListStreamFilteredByName(doc.getFirstChild().getChildNodes(), "premium").forEach(n -> {
             final StatsSet set = new StatsSet();
             attributeStream(n.getAttributes()).forEach(a -> set.set(a.getNodeName(), a.getNodeValue()));
@@ -46,8 +47,15 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
         return SingletonHolder.INSTANCE;
     }
 
-    public PremiumBonus findById(int bonus_id) {
+    public PremiumBonus findById(int bonus_id)
+    {
+
         return _premiumBonusList.get(bonus_id);
+    }
+
+    public Map<Integer, PremiumBonus> getPremiumBonusList()
+    {
+        return _premiumBonusList;
     }
 
     private static class SingletonHolder {

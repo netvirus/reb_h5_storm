@@ -46,10 +46,12 @@ import l2r.gameserver.utils.Util;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import services.PremiumAccountManagment;
 
 public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 {
@@ -129,7 +131,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		StringTokenizer st = new StringTokenizer(bypass, "_");
 		String cmd = st.nextToken();
 		String html = "";
-		
+
 		if("bbshome".equals(cmd))
 		{
 			StringTokenizer p = new StringTokenizer(Config.BBS_DEFAULT, "_");
@@ -148,7 +150,20 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		else if("bbslink".equals(cmd))
 		{
 			if (Config.ENABLE_DONATE_PAGE)
-				html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/donate/donate-index.htm", player);
+			{
+				html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
+				Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
+				for (PremiumBonus premiumBonus : _premiumBonuses.values())
+				{
+					html = html + "<tr>";
+					html = html + "<td width=\"32\"><img src=\"" + premiumBonus.getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
+					html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + premiumBonus.getBonusName() + "</font></td>";
+					html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem:" + premiumBonus.getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
+					html = html + "</tr>";
+				}
+				html = html.replace("{list}", html);
+				_premiumBonuses.clear();
+			}
 			else
 			{
 				if (Config.ALLOW_BSS_RAIDBOSS)
@@ -160,16 +175,20 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 
 					return;
 				}
-				
-				html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/index.htm", player);
 			}
-			
-			html = html.replace("%currentTime%", TimeUtils.convertDateToString(System.currentTimeMillis()));
-			html = html.replace("%uptime%", Util.formatTime(GameServer.getInstance().uptime()));
-			html = html.replace("%serverRev%", GameServer.getInstance().getVersion().getRevisionNumber());
-			html = html.replace("%buildDate%", GameServer.getInstance().getVersion().getBuildDate());
-			html = html.replace("%Online%", String.valueOf(ONLINE));
-			
+		}
+		else if(bypass.startsWith("_bbslink_listprem"))
+		{
+			String[] b = bypass.split(":");
+			int bonusId = Integer.parseInt(b[1]);
+			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
+			PremiumBonus _premiumBonus = PremiumSystemOptionsData.getInstance().findById(bonusId);
+			html = html + "<tr>";
+			html = html + "<td width=\"32\"><img src=\"" + _premiumBonus.getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
+			html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + _premiumBonus.getBonusName() + "</font></td>";
+			html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem " + _premiumBonus.getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
+			html = html + "</tr>";
+			html = html.replace("{list}", html);
 		}
 		else if(bypass.startsWith("_bbspage"))
 		{
