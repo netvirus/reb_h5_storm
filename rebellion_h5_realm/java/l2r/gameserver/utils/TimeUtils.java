@@ -82,7 +82,7 @@ public class TimeUtils
 		// парсим дни
 		if(period > 1440) // больше 1 суток
 		{
-			sb.append((period - (period % 1440)) / 1440).append(" d.");
+			sb.append((period - (period % 1440)) / 1440).append(" д.");
 			period = period % 1440;
 		}
 
@@ -94,7 +94,7 @@ public class TimeUtils
 				sb.append(", ");
 			}
 
-			sb.append((period - (period % 60)) / 60).append(" h.");
+			sb.append((period - (period % 60)) / 60).append(" ч.");
 
 			period = period % 60;
 		}
@@ -107,11 +107,11 @@ public class TimeUtils
 				sb.append(", ");
 			}
 
-			sb.append(period).append(" min.");
+			sb.append(period).append(" мин.");
 		}
 		if(sb.length() < 1)
 		{
-			sb.append("less than 1 min.");
+			sb.append("меньше 1 мин.");
 		}
 
 		return sb.toString();
@@ -125,9 +125,9 @@ public class TimeUtils
 		if(period > 1440 && days) // больше 1 суток
 		{
 			if (FullString)
-				sb.append((period - (period % 1440)) / 1440).append(" day(s)");
+				sb.append((period - (period % 1440)) / 1440).append(" день(й)");
 			else
-				sb.append((period - (period % 1440)) / 1440).append(" d.");
+				sb.append((period - (period % 1440)) / 1440).append(" д.");
 			period = period % 1440;
 		}
 
@@ -140,9 +140,9 @@ public class TimeUtils
 			}
 
 			if (FullString)
-				sb.append((period - (period % 60)) / 60).append(" hour(s)");
+				sb.append((period - (period % 60)) / 60).append(" час(ов)");
 			else
-				sb.append((period - (period % 60)) / 60).append(" h.");
+				sb.append((period - (period % 60)) / 60).append(" ч.");
 
 			period = period % 60;
 		}
@@ -156,14 +156,14 @@ public class TimeUtils
 			}
 
 			if (FullString)
-				sb.append(period).append(" minute(s)");
+				sb.append(period).append(" минут(ы)");
 			else
-				sb.append(period).append(" min.");
+				sb.append(period).append(" мин.");
 		}
 		
 		if(sb.length() < 1)
 		{
-			sb.append("less than 1 min.");
+			sb.append("меньше 1 мин.");
 		}
 
 		return sb.toString();
