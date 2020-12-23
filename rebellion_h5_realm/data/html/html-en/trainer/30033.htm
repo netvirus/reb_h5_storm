@@ -1,7 +1,23 @@
-Sorcerer Baulro: I'm Sorcerer Baulro, and I'm in charge of teaching
-magic here. All magical power emanates from nature, and from Einhasad,
-god of light. Therefore, magic is borrowed from the god and from nature.
-It cannot be performed only with one's power. Are you here to learn the
-ways of magic? [npc_%objectId%_Chat 1|Ask about Priest Yohanes]
-
-[npc_%objectId%_SkillList|Learn Skills] [npc_%objectId%_Quest|Quest]
+<font color="FFFF00">Sorcerer Baulro:</font><br>
+I'm Sorcerer Baulro, and I'm in charge of teaching magic here.<br1>
+All magical power emanates from nature, and from Einhasad, god of light.<br1>
+Therefore, magic is borrowed from the god and from nature.<br1>
+It cannot be performed only with one's power.<br1>
+Are you here to learn the ways of magic?<br>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Ask about Priest Yohanes" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Learn Skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+</table>

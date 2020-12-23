@@ -182,7 +182,6 @@ public class Util extends Functions
 				}
 			}
 		}
-		
 		player.teleToLocation(Integer.parseInt(param[0]), Integer.parseInt(param[1]), Integer.parseInt(param[2]));
 	}
 
