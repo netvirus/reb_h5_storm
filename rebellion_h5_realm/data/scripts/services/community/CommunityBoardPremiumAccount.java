@@ -59,23 +59,20 @@ public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoard
 		return new String[]
 				{
 						"bbspremiumlist",
-						"premiumlist",
-						"premiumdetail",
-						"premiumbuy",
+						"bbspremiumdetail",
+						"bbspremiumbuy",
 				};
 	}
 
 	@Override
-	public void onBypassCommand(Player player, String bypass) {
-
-		String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/RaidStatus.htm", player);
-
+	public void onBypassCommand(Player player, String bypass)
+	{
 		if (!checkCondition(player))
 			return;
 
-		if ("bbspremiumlist".equals(bypass))
+		if (bypass.equalsIgnoreCase("bbspremiumlist"))
 		{
-			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
+			String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
 			Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
 			StringJoiner htmlTags = new StringJoiner("");
 			_premiumBonuses.forEach((k, v) -> {
@@ -86,11 +83,16 @@ public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoard
 				htmlTags.add("<td><font color=FF6600 name=\"CreditTextNormal\">");
 				htmlTags.add(v.getBonusName());
 				htmlTags.add("</font></td>");
+				htmlTags.add("<td><button value=\"Buy\" action=\"bypass -h bbspremiumlist\" width=32 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 				htmlTags.add("</tr>");
 			});
 			html = html.replace("{list}", htmlTags.toString());
 			_premiumBonuses.clear();
 			ShowBoard.separateAndSend(html, player);
+		}
+		else if (bypass.equalsIgnoreCase("bbspremiumdetail"))
+		{
+			System.out.println("IT WORKS!");
 		}
 	}
 
