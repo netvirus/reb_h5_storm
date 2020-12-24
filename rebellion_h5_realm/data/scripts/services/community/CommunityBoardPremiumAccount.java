@@ -24,49 +24,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.StringTokenizer;
 
 public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoardHandler
 {
 	public static final Logger _log = LoggerFactory.getLogger(CommunityBoardPremiumAccount.class);
-
-	@Override
-	public String[] getBypassCommands() {
-		return new String[]
-				{
-						"_bbs_premium_list",
-						"_bbs_premium_show",
-						"_bbs_premium_buy",
-				};
-	}
-
-	@Override
-	public void onBypassCommand(Player player, String bypass) {
-		StringTokenizer st = new StringTokenizer(bypass, "_");
-		String cmd = st.nextToken();
-
-		String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/RaidStatus.htm", player);
-
-		if (!checkCondition(player))
-			return;
-
-		if ("bbs_premium_list".equals(cmd))
-		{
-			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
-			Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
-			for (Map.Entry<Integer, PremiumBonus> premiumBonusEntry : _premiumBonuses.entrySet())
-			{
-				html = html + "<tr>";
-				html = html + "<td width=\"32\"><img src=\"" + premiumBonusEntry.getValue().getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
-				html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + premiumBonusEntry.getValue().getBonusName() + "</font></td>";
-				html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem:" + premiumBonusEntry.getValue().getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
-				html = html + "</tr>";
-			}
-			html = html.replace("{list}", html);
-			_premiumBonuses.clear();
-			ShowBoard.separateAndSend(html, player);
-		}
-	}
 
 	@Override
 	public void onWriteCommand(Player player, String bypass, String arg1, String arg2, String arg3, String arg4, String arg5) {
@@ -91,6 +54,45 @@ public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoard
 	@Override
 	public void onShutdown() {	}
 
+	@Override
+	public String[] getBypassCommands() {
+		return new String[]
+				{
+						"bbspremiumlist",
+						"premiumlist",
+						"premiumdetail",
+						"premiumbuy",
+				};
+	}
+
+	@Override
+	public void onBypassCommand(Player player, String bypass) {
+
+		String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/RaidStatus.htm", player);
+
+		if (!checkCondition(player))
+			return;
+
+		if ("bbspremiumlist".equals(bypass))
+		{
+			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
+			Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
+			StringJoiner htmlTags = new StringJoiner("");
+			_premiumBonuses.forEach((k, v) -> {
+				htmlTags.add("<tr>");
+				htmlTags.add("<td width=\"32\"><img src=\"");
+				htmlTags.add(v.getBonusIconName());
+				htmlTags.add("\" width=\"32\" height=\"32\"></td>");
+				htmlTags.add("<td><font color=FF6600 name=\"CreditTextNormal\">");
+				htmlTags.add(v.getBonusName());
+				htmlTags.add("</font></td>");
+				htmlTags.add("</tr>");
+			});
+			html = html.replace("{list}", htmlTags.toString());
+			_premiumBonuses.clear();
+			ShowBoard.separateAndSend(html, player);
+		}
+	}
 
 //	public void showPremiumBonusList()
 //	{

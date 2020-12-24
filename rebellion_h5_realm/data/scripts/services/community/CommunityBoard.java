@@ -76,7 +76,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		return new String[]
 		{
 			"_bbshome",
-			"_bbslink",
+			"_bbspremiumlist",
 			"_bbsmultisell",
 			"_bbs_achievements",
 			"_bbs_achievements_cat",
@@ -139,22 +139,14 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 				return;
 			}
 		}
-		else if("bbslink".equals(cmd))
+		else if("bbspremiumlist".equals(cmd))
 		{
 			if (Config.ENABLE_DONATE_PAGE)
 			{
-				html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
-				Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
-				for (Map.Entry<Integer, PremiumBonus> premiumBonusEntry : _premiumBonuses.entrySet())
-				{
-					html = html + "<tr>";
-					html = html + "<td width=\"32\"><img src=\"" + premiumBonusEntry.getValue().getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
-					html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + premiumBonusEntry.getValue().getBonusName() + "</font></td>";
-					html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem:" + premiumBonusEntry.getValue().getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
-					html = html + "</tr>";
-				}
-				html = html.replace("{list}", html);
-				_premiumBonuses.clear();
+				ICommunityBoardHandler handler = CommunityBoardManager.getInstance().getCommunityHandler(cmd);
+				if (handler != null)
+					handler.onBypassCommand(player, cmd);
+				return;
 			}
 			else
 			{
@@ -164,23 +156,9 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 					ICommunityBoardHandler handler = CommunityBoardManager.getInstance().getCommunityHandler(bp);
 					if (handler != null)
 						handler.onBypassCommand(player, bp);
-
 					return;
 				}
 			}
-		}
-		else if(bypass.startsWith("_bbslink_listprem"))
-		{
-			String[] b = bypass.split(":");
-			int bonusId = Integer.parseInt(b[1]);
-			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
-			PremiumBonus _premiumBonus = PremiumSystemOptionsData.getInstance().findById(bonusId);
-			html = html + "<tr>";
-			html = html + "<td width=\"32\"><img src=\"" + _premiumBonus.getBonusIconName() + "\" width=\"32\" height=\"32\"></td>";
-			html = html + "<td><font color=FF6600 name=\"CreditTextNormal\">" + _premiumBonus.getBonusName() + "</font></td>";
-			html = html + "<td><button value=\"\" action=\"bypass -h _bbslink_listprem " + _premiumBonus.getBonusId() + "\" back=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red_Down\" fore=\"l2ui_ct1.Minimap.MiniMap_DF_PlusBtn_Red\" width=\"30\" height=\"30\" /></td>";
-			html = html + "</tr>";
-			html = html.replace("{list}", html);
 		}
 		else if(bypass.startsWith("_bbspage"))
 		{
