@@ -77,8 +77,6 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		{
 			"_bbshome",
 			"_bbspremiumlist",
-			"_bbspremiumdetail",
-			"_bbspremiumbuy",
 			"_bbsmultisell",
 			"_bbs_achievements",
 			"_bbs_achievements_cat",
@@ -143,15 +141,10 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		}
 		else if("bbspremiumlist".equals(cmd))
 		{
-			html = startCommunityBoardPremiumAccountManager(player, cmd);
-		}
-		else if("bbspremiumdetail".equals(cmd))
-		{
-			html = startCommunityBoardPremiumAccountManager(player, cmd);
-		}
-		else if("bbspremiumbuy".equals(cmd))
-		{
-			html = startCommunityBoardPremiumAccountManager(player, cmd);
+			if (Config.ENABLE_DONATE_PAGE)
+			{
+				html = CommunityBoardPremiumAccount.getInstance().getAction(player, "list");
+			}
 		}
 		else if(bypass.startsWith("_bbspage"))
 		{
@@ -569,15 +562,6 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 	
 	}
 
-	private String startCommunityBoardPremiumAccountManager(Player player, String cmd)
-	{
-		if (Config.ENABLE_DONATE_PAGE)
-		{
-			return CommunityBoardPremiumAccount.getInstance().getAction(player, cmd);
-		}
-		return null;
-	}
-	
 	private String getGrandBossStatus(String boss)
 	{
 		SimpleDateFormat SIMPLE_FORMAT = new SimpleDateFormat("HH:** dd/MM/yyyy");

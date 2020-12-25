@@ -2,17 +2,75 @@
 <body>
 <title>Community Board - Premium Detail</title>
 <center>
-	<br><br>
+	<br>
 	<!-- Общая таблица размер 780x475 -->
 	<table width=755 height=475 cellpadding="1" cellspacing="1" border="0" background="L2UI_CH3.refinewnd_back_Pattern">
 		<tr>
-			<td>
-				<br><br><br>
+			<td colspan="2">
 				<center>
-					<table width=560 height=340 border="0" align=center valign=center>
-						{list}
-					</table>
+				<br><font name="hs10">Информация о рейтах - {bonus_name}</font>
 				</center>
+			</td>
+		</tr>
+		<tr>
+			<td width=377 align="center" height=20>
+				<font color="FF5733" name="hs10">Ваши рейты до активации ПА</font>
+			</td>
+			<td width=377 align="center" height=20>
+				<font color="FF5733" name="hs10">Ваши рейты после активации ПА</font>
+			</td>
+		</tr>
+		<tr>
+			<td width=377 height=453>
+				&nbsp;<font color="ECF617" name="hs10">XP:</font> <font color="698AF3" name="hs10">{xp_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">SP:</font> <font color="698AF3" name="hs10">{sp_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп:</font> <font color="698AF3" name="hs10">{drop_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп шанс:</font> <font color="698AF3" name="hs10">{drop_chance_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп кол-во:</font> <font color="698AF3" name="hs10">{drop_amount_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл:</font> <font color="698AF3" name="hs10">{spoil_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл шанс:</font> <font color="698AF3" name="hs10">{spoil_chance_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл кол-во:</font> <font color="698AF3" name="hs10">{spoil_amount_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Адена:</font> <font color="698AF3" name="hs10">{adena_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Переносимый вес:</font> <font color="698AF3" name="hs10">{weight_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Крафт шанс:</font> <font color="698AF3" name="hs10">{craft_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Мастер крафт шанс:</font> <font color="698AF3" name="hs10">{m_craft_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Извлечь кол-во:</font> <font color="698AF3" name="hs10">{extract_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Манор:</font> <font color="698AF3" name="hs10">{manor_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Квест дроп:</font> <font color="698AF3" name="hs10">{quest_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Квест награда:</font> <font color="698AF3" name="hs10">{quest_reward_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Пет XP:</font> <font color="698AF3" name="hs10">{pet_xp_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Рейд шанс:</font> <font color="698AF3" name="hs10">{raid_drop_chance_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Рейд кол-во:</font> <font color="698AF3" name="hs10">{raid_drop_amount_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Гербы шанс:</font> <font color="698AF3" name="hs10">{herb_drop_chance_n}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Гербы кол-во:</font> <font color="698AF3" name="hs10">{herb_drop_amount_n}</font>
+			</td>
+			<td width=377 height=453>
+				&nbsp;<font color="ECF617" name="hs10">XP:</font> <font color="2CDE3F" name="hs10">{xp_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">SP:</font> <font color="2CDE3F" name="hs10">{sp_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп:</font> <font color="2CDE3F" name="hs10">{drop_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп шанс:</font> <font color="2CDE3F" name="hs10">{drop_chance_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Дроп кол-во:</font> <font color="2CDE3F" name="hs10">{drop_amount_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл:</font> <font color="2CDE3F" name="hs10">{spoil_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл шанс:</font> <font color="2CDE3F" name="hs10">{spoil_chance_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Спойл кол-во:</font> <font color="2CDE3F" name="hs10">{spoil_amount_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Адена:</font> <font color="2CDE3F" name="hs10">{adena_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Переносимый вес:</font> <font color="2CDE3F" name="hs10">{weight_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Крафт шанс:</font> <font color="2CDE3F" name="hs10">{craft_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Мастер крафт шанс:</font> <font color="2CDE3F" name="hs10">{m_craft_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Извлечь кол-во:</font> <font color="2CDE3F" name="hs10">{extract_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Манор:</font> <font color="2CDE3F" name="hs10">{manor_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Квест дроп:</font> <font color="2CDE3F" name="hs10">{quest_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Квест награда:</font> <font color="2CDE3F" name="hs10">{quest_reward_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Пет XP:</font> <font color="2CDE3F" name="hs10">{pet_xp_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Рейд шанс:</font> <font color="2CDE3F" name="hs10">{raid_drop_chance_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Рейд кол-во:</font> <font color="2CDE3F" name="hs10">{raid_drop_amount_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Гербы шанс:</font> <font color="2CDE3F" name="hs10">{herb_drop_chance_h}</font><br1>
+				&nbsp;<font color="ECF617" name="hs10">Гербы кол-во:</font> <font color="2CDE3F" name="hs10">{herb_drop_amount_h}</font>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				{button_to_buy}
 			</td>
 		</tr>
 	</table>
