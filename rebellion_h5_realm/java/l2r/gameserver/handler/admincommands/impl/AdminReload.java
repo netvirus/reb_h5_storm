@@ -33,6 +33,7 @@ import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.randoms.Visuals;
 import l2r.gameserver.scripts.Functions;
+import l2r.gameserver.scripts.Scripts;
 import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.tables.FakePcsTable;
 import l2r.gameserver.tables.PetDataTable;
@@ -74,7 +75,8 @@ public class AdminReload implements IAdminCommandHandler
 		admin_reload_academyrewards,
 		admin_reload_cbaugment,
 		admin_reload_instances,
-		admin_reload_betaaccess
+		admin_reload_betaaccess,
+		admin_reload_scripts
 	}
 
 	@Override
@@ -308,8 +310,10 @@ public class AdminReload implements IAdminCommandHandler
 				activeChar.sendMessage("Beta Server configs has been reloaded...");
 				return true;
 			}
-			
-			
+			case admin_reload_scripts:
+			{
+				Scripts.getInstance().reload();
+			}
 		}
 		activeChar.sendPacket(new NpcHtmlMessage(5).setFile("admin/reload.htm"));
 		return true;

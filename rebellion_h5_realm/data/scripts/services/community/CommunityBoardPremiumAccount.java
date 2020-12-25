@@ -1,100 +1,57 @@
 package services.community;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
-import l2r.gameserver.dao.PremiumAccountsTable.PremiumTemplate;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
-import l2r.gameserver.handler.bbs.CommunityBoardManager;
-import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
-import l2r.gameserver.listener.actor.player.OnAnswerListener;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;
-import l2r.gameserver.network.serverpackets.ConfirmDlg;
-import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
-import l2r.gameserver.network.serverpackets.ShowBoard;
-import l2r.gameserver.network.serverpackets.components.ChatType;
-import l2r.gameserver.network.serverpackets.components.CustomMessage;
-import l2r.gameserver.network.serverpackets.components.SystemMsg;
-import l2r.gameserver.scripts.ScriptFile;
-import l2r.gameserver.utils.Log;
-import l2r.gameserver.utils.Util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
-import java.util.StringJoiner;
-import java.util.StringTokenizer;
 
-public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoardHandler
+class CommunityBoardPremiumAccount
 {
 	public static final Logger _log = LoggerFactory.getLogger(CommunityBoardPremiumAccount.class);
 
-	@Override
-	public void onWriteCommand(Player player, String bypass, String arg1, String arg2, String arg3, String arg4, String arg5) {
-
+	private CommunityBoardPremiumAccount() {
+		// visibility
 	}
 
-	@Override
-	public void onLoad() {
-		if (Config.ENABLE_PREMIUM_SYSTEM)
-		{
-			_log.info("CommunityBoard: Premium Account loaded.");
-			CommunityBoardManager.getInstance().registerHandler(this);
-		}
-	}
-
-	@Override
-	public void onReload() {
-		if (Config.ENABLE_PREMIUM_SYSTEM)
-			CommunityBoardManager.getInstance().removeHandler(this);
-	}
-
-	@Override
-	public void onShutdown() {	}
-
-	@Override
-	public String[] getBypassCommands() {
-		return new String[]
-				{
-						"bbspremiumlist",
-						"bbspremiumdetail",
-						"bbspremiumbuy",
-				};
-	}
-
-	@Override
-	public void onBypassCommand(Player player, String bypass)
+	public String getAction(Player player, String bypass)
 	{
-		if (!checkCondition(player))
-			return;
-
+		String finalHtml = "";
 		if (bypass.equalsIgnoreCase("bbspremiumlist"))
 		{
 			String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/index.htm", player);
 			Map<Integer, PremiumBonus> _premiumBonuses = PremiumSystemOptionsData.getInstance().getPremiumBonusList();
-			StringJoiner htmlTags = new StringJoiner("");
+			StringBuilder htmlTags = new StringBuilder();
 			_premiumBonuses.forEach((k, v) -> {
-				htmlTags.add("<tr>");
-				htmlTags.add("<td width=\"32\"><img src=\"");
-				htmlTags.add(v.getBonusIconName());
-				htmlTags.add("\" width=\"32\" height=\"32\"></td>");
-				htmlTags.add("<td><font color=FF6600 name=\"CreditTextNormal\">");
-				htmlTags.add(v.getBonusName());
-				htmlTags.add("</font></td>");
-				htmlTags.add("<td><button value=\"Buy\" action=\"bypass -h bbspremiumlist\" width=32 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-				htmlTags.add("</tr>");
+				htmlTags.append("<tr>");
+				htmlTags.append("<td width=\"32\"><img src=\"");
+				htmlTags.append(v.getBonusIconName());
+				htmlTags.append("\" width=\"32\" height=\"32\"></td>");
+				htmlTags.append("<td><font color=FF6600 name=\"CreditTextNormal\">");
+				htmlTags.append(v.getBonusName());
+				htmlTags.append("</font></td>");
+				htmlTags.append("<td><button value=\"Подробнее\" action=\"bypass -h _bbspremiumdetail\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+				htmlTags.append("</tr>");
 			});
-			html = html.replace("{list}", htmlTags.toString());
-			_premiumBonuses.clear();
-			ShowBoard.separateAndSend(html, player);
+			finalHtml = html.replace("{list}", htmlTags.toString());
 		}
 		else if (bypass.equalsIgnoreCase("bbspremiumdetail"))
 		{
-			System.out.println("IT WORKS!");
+			System.out.println("IT WORKS! - bbspremiumdetail");
 		}
+		else if (bypass.equalsIgnoreCase("bbspremiumbuy"))
+		{
+			System.out.println("IT WORKS! - bbspremiumbuy");
+		}
+		return finalHtml;
 	}
+
+
 
 //	public void showPremiumBonusList()
 //	{
@@ -259,5 +216,13 @@ public class CommunityBoardPremiumAccount implements ScriptFile, ICommunityBoard
 		if (!Config.ENABLE_PREMIUM_SYSTEM || player == null)
 			return false;
 		return true;
+	}
+
+	public static CommunityBoardPremiumAccount getInstance() {
+		return CommunityBoardPremiumAccount.SingletonHolder.INSTANCE;
+	}
+
+	private static class SingletonHolder {
+		protected static final CommunityBoardPremiumAccount INSTANCE = new CommunityBoardPremiumAccount();
 	}
 }
