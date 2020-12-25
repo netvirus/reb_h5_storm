@@ -44,7 +44,7 @@ public class CommunityBoardPremiumAccount
 			String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
 			PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
 			if (premium != null) {
-				html.replace("{bonus_name}", String.valueOf(premium.getBonusName()));
+				html.replace("{bonus_name}", premium.getBonusName());
 				// Not have
 				html.replace("{xp_n}", String.valueOf(player.getRateExp()));
 				html.replace("{sp_n}", String.valueOf(player.getRateSp()));
