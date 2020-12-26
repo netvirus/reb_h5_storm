@@ -14,7 +14,7 @@ public class PremiumBonus {
     private String _nameBonus = "";
     private String _iconNameBonus = "";
     private boolean _auraBonus = false;
-    private boolean _typeBonus = true;
+    private boolean _typeBonus = false;
     // rates
     private double _expRate = 1.;
     private double _spRate = 1.;
