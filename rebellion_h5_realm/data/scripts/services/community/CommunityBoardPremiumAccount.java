@@ -51,10 +51,11 @@ public class CommunityBoardPremiumAccount {
                 }
 
                 if ((!hasMainPremium && !hasHourBonus) || (premium.isBonusMain() && !hasMainPremium) || (!premium.isBonusMain() && !hasHourBonus)) {
-                    StringBuilder buyTags = new StringBuilder();
 					String itemName = ItemsDAO.getInstance().getItemsByItemId(premium.getBonusItemId()).stream().findFirst().get().getName();
                 	html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
-                    html = html.replace("{bonus_name}", premium.getBonusName());
+                	String price = premium.getBonusItemAmount() + " " + itemName;
+                    html = html.replace("{bonus_title}", premium.getBonusName());
+                    html = html.replace("{bonus_price}", price);
                     // Not have
                     html = html.replace("{xp_n}", String.valueOf(player.getRateExp()));
                     html = html.replace("{sp_n}", String.valueOf(player.getRateSp()));
@@ -98,13 +99,11 @@ public class CommunityBoardPremiumAccount {
                     html = html.replace("{raid_drop_chance_h}", String.valueOf(premium.getBonusRaidDropChance()));
                     html = html.replace("{raid_drop_amount_h}", String.valueOf(premium.getBonusRaidDropAmount()));
                     html = html.replace("{herb_drop_chance_h}", String.valueOf(premium.getBonusHerbDropChance()));
-                    html = html.replace("{herb_drop_amount_h}", String.valueOf(premium.getBonusHerbDropAmount()));
-                	buyTags.append("Цена: ").append(premium.getBonusItemAmount()).append(" ").append(itemName).append("<br1>");
-                	buyTags.append("<button value=\"Купить\" action=\"bypass -h premium_buy_").append(premium.getBonusId()).append("\" width=65 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-                	html = html.replace("{buy}", buyTags.toString());
+                    finalHtml = html.replace("{herb_drop_amount_h}", String.valueOf(premium.getBonusHerbDropAmount()));
+                    //finalHtml = html.replace("{buy}", "<button value=\"Купить\" action=\"bypass -h premium_buy_" + premium.getBonusId() + "\" width=65 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
                 }
             }
-            ShowBoard.separateAndSend(html, player);
+            ShowBoard.separateAndSend(finalHtml, player);
     }
     else if(bypass.equalsIgnoreCase("buy_"))
     {
