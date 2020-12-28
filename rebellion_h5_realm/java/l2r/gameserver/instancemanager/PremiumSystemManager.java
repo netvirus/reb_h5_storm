@@ -79,8 +79,8 @@ public class PremiumSystemManager {
             load(player);
     }
 
-    private void enablePremiumStatus(Player player, PremiumBonus premium, boolean showVisualEffect) {
-        enablePremiumStatus(player, premium);
+    public void enablePremiumStatusFromComminityBoardPremiumAccount(Player player, PremiumBonus premium, boolean showVisualEffect) {
+        load(player);
         player.broadcastPacket(new MagicSkillUse(player, player, 6463, 1, 0, 0));
     }
 
@@ -90,7 +90,6 @@ public class PremiumSystemManager {
         startExpireTask(player);
         String premiumMsg = "Your premium subscription will expire in: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
         player.sendPacket(new ExShowScreenMessage(NpcString.NONE, 7000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, premiumMsg));
-        System.out.println(premiumMsg);
     }
 
     private void disablePremiumStatus(Player player) {

@@ -1,6 +1,7 @@
 package l2r.gameserver.model.actor.instances.player;
 
 import l2r.gameserver.model.StatsSet;
+import l2r.gameserver.utils.TimeUtils;
 
 /**
  * Class for the Premium Bonus object
@@ -41,7 +42,7 @@ public class PremiumBonus {
     private int _days = 0;
     private int _hours = 0;
     private int _minutes = 0;
-    private long _duration = 0;
+    private long _duration;
     // price
     private int _itemId = 0;
     private int _itemAmount = 0;
@@ -367,9 +368,20 @@ public class PremiumBonus {
     public void setBonusItemAmount(int itemAmount) { _itemAmount = itemAmount; }
 
     /**
-     * @return the bonus duration in millisec
+     * @return Profile the bonus duration in millisec
      */
-    public long getBonusDuration() { return _duration; }
+    public long getBonusDurationFromProfile()
+    {
+        return TimeUtils.getMillisecondsFromDaysHoursMinutes(getBonusDayes(), getBonusHours(), getBonusMinutes());
+    }
 
-    public void setBonusDuration(long duration) { _duration = duration; }
+    public long getBonusDuration()
+    {
+        return _duration;
+    }
+
+    public void setBonusDuration(long duration)
+    {
+        _duration = duration;
+    }
 }

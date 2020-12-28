@@ -382,4 +382,24 @@ public class TimeUtils
 		}
 		return five;
 	}
+
+	public static long getMillisecondsFromDaysHoursMinutes(int days, int hours, int minutes)
+	{
+		long duration = 0;
+		if (days > 0)
+		{
+			duration += days * 86400;
+		}
+
+		if (hours > 0)
+		{
+			duration += hours * 3600;
+		}
+
+		if (minutes > 0)
+		{
+			duration += minutes * 60;
+		}
+		return duration;
+	}
 }

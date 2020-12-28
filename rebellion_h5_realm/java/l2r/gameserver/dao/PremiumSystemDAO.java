@@ -39,7 +39,6 @@ public class PremiumSystemDAO {
             statement = con.prepareStatement(SELECT);
             statement.setInt(1, objectId);
             rset = statement.executeQuery();
-
             while(rset.next()) {
                 if (rset.getLong("bonus_expire") > (System.currentTimeMillis() / 1000L)) {
                     PremiumBonus premium = new PremiumBonus(PremiumSystemOptionsData.getInstance().findById(rset.getInt("bonus_id")));
@@ -64,34 +63,33 @@ public class PremiumSystemDAO {
     public void insert(int objectId, int bonusId, Long duration) {
         Connection con = null;
         PreparedStatement statement = null;
-        ResultSet rset = null;
-        try {
+        try
+        {
             con = DatabaseFactory.getInstance().getConnection();
             statement = con.prepareStatement(INSERT);
             statement.setInt(1, objectId);
             statement.setInt(2, bonusId);
             statement.setLong(3, duration);
-            rset = statement.executeQuery();
+            statement.execute();
         } catch (SQLException e) {
             LOG.error("Failed insert premium data for owner ID: " + objectId, e);
         } finally {
-            DbUtils.closeQuietly(con, statement, rset);
+            DbUtils.closeQuietly(con, statement);
         }
     }
 
     public void disable(int id) {
         Connection con = null;
         PreparedStatement statement = null;
-        ResultSet rset = null;
         try {
             con = DatabaseFactory.getInstance().getConnection();
             statement = con.prepareStatement(DISABLE);
             statement.setInt(1, id);
-            rset = statement.executeQuery();
+            statement.execute();
         } catch (SQLException e) {
             LOG.error("Failed disable premium data for ID: " + id, e);
         } finally {
-            DbUtils.closeQuietly(con, statement, rset);
+            DbUtils.closeQuietly(con, statement);
         }
     }
 

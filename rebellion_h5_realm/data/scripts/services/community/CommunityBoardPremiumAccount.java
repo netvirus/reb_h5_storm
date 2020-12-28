@@ -2,12 +2,15 @@ package services.community;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.dao.ItemsDAO;
+import l2r.gameserver.dao.PremiumSystemDAO;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
+import l2r.gameserver.instancemanager.PremiumSystemManager;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 
 import l2r.gameserver.model.items.ItemInstance;
+import l2r.gameserver.network.serverpackets.HideBoard;
 import l2r.gameserver.network.serverpackets.ShowBoard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -99,15 +102,28 @@ public class CommunityBoardPremiumAccount {
                     html = html.replace("{raid_drop_chance_h}", String.valueOf(premium.getBonusRaidDropChance()));
                     html = html.replace("{raid_drop_amount_h}", String.valueOf(premium.getBonusRaidDropAmount()));
                     html = html.replace("{herb_drop_chance_h}", String.valueOf(premium.getBonusHerbDropChance()));
-                    finalHtml = html.replace("{herb_drop_amount_h}", String.valueOf(premium.getBonusHerbDropAmount()));
-                    //finalHtml = html.replace("{buy}", "<button value=\"Купить\" action=\"bypass -h premium_buy_" + premium.getBonusId() + "\" width=65 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+                    html = html.replace("{herb_drop_amount_h}", String.valueOf(premium.getBonusHerbDropAmount()));
+                    String button = "";
+                    button += "<button value=\"Подключить\" action=\"bypass -h premium_buy_";
+                    button += premium.getBonusId();
+                    button += "\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"250\" height=\"30\" />";
+                    finalHtml = html.replace("{buy}", button);
                 }
             }
             ShowBoard.separateAndSend(finalHtml, player);
     }
-    else if(bypass.equalsIgnoreCase("buy_"))
+    else if(bypass.startsWith("buy_"))
     {
-        System.out.println("IT WORKS! - bbspremiumbuy");
+        player.sendPacket(new HideBoard());
+        String bonusId = bypass.substring(4).trim();
+        PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
+        if (premium != null)
+        {
+            long bonusPeriod = (System.currentTimeMillis() / 1000) + premium.getBonusDurationFromProfile();
+            PremiumSystemDAO.getInstance().insert(player.getObjectId(), Integer.parseInt(bonusId), bonusPeriod);
+            PremiumSystemManager.getInstance().enablePremiumStatusFromComminityBoardPremiumAccount(player, premium, premium.isBonusAuraEnabled());
+            _log.info("Player: " + player.getName() + " has activated " + premium.getBonusName());
+        }
     }
         return finalHtml;
 }
