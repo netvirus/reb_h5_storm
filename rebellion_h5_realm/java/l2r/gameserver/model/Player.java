@@ -13834,7 +13834,10 @@ public final class Player extends Playable implements PlayerGroup
 
 	public void setPremiumBonus(PremiumBonus premiumBonus) { _premiumBonus = premiumBonus; }
 
-	public boolean isPremiumBonusMain() { return _premiumBonus.isBonusMain(); }
+	public boolean hasPremiumBonusMain()
+	{
+		return _premiumBonus.isBonusMain();
+	}
 
 	public boolean hasPremiumBonus() { return (_premiumBonus.getBonusId() != 0); }
 
