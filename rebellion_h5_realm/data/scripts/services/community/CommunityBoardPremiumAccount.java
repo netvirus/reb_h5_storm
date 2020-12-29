@@ -10,13 +10,16 @@ import l2r.gameserver.model.Player;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 
 import l2r.gameserver.model.items.ItemInstance;
+import l2r.gameserver.network.serverpackets.ExShowScreenMessage;
 import l2r.gameserver.network.serverpackets.HideBoard;
+import l2r.gameserver.network.serverpackets.PlaySound;
 import l2r.gameserver.network.serverpackets.ShowBoard;
+import l2r.gameserver.network.serverpackets.components.NpcString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
 import java.util.Map;
+import java.util.function.Function;
 
 public class CommunityBoardPremiumAccount {
     public static final Logger _log = LoggerFactory.getLogger(CommunityBoardPremiumAccount.class);
@@ -44,12 +47,9 @@ public class CommunityBoardPremiumAccount {
             String html = "Ошибка загрузки премиум системы. Сообщите администратору!";
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
-                boolean hasMainPremium = player.getPremiumBonus().isBonusMain();
-                boolean hasHourBonus = (player.hasPremiumBonus() && !hasMainPremium);
-
-                if (!player.hasTwoPremium())
+                if (!player.getDoublePremiumState())
                 {
-                    if ((hasMainPremium && !premium.isBonusMain()) || (hasHourBonus && premium.isBonusMain()))
+                    if ((player.getPremiumMainTypeState() && !premium.isBonusMain()) || (player.getPremiumSecondTypeState() && premium.isBonusMain()))
                     {
                         String itemName = ItemsDAO.getInstance().getItemsByItemId(premium.getBonusItemId()).stream().findFirst().get().getName();
                         html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
@@ -105,8 +105,7 @@ public class CommunityBoardPremiumAccount {
                         button += premium.getBonusId();
                         button += "\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"250\" height=\"30\" />";
                         finalHtml = html.replace("{buy}", button);
-                    }
-                    else {
+                    } else {
                         finalHtml = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/alreadyhaveall.htm", player);
                     }
                 } else {
@@ -119,10 +118,18 @@ public class CommunityBoardPremiumAccount {
             String bonusId = bypass.substring(4).trim();
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
-                long bonusPeriod = (System.currentTimeMillis() / 1000) + premium.getBonusDurationFromProfile();
-                PremiumSystemDAO.getInstance().insert(player.getObjectId(), Integer.parseInt(bonusId), bonusPeriod);
-                PremiumSystemManager.getInstance().enablePremiumStatusFromComminityBoardPremiumAccount(player, premium, premium.isBonusAuraEnabled());
-                _log.info("Player: " + player.getName() + " has activated " + premium.getBonusName());
+                if (player.getInventory().getItemByItemId(premium.getBonusItemId()).getCount() >= premium.getBonusItemAmount())
+                {
+                    long bonusPeriod = (System.currentTimeMillis() / 1000) + premium.getBonusDurationFromProfile();
+                    PremiumSystemDAO.getInstance().insert(player.getObjectId(), Integer.parseInt(bonusId), bonusPeriod);
+                    PremiumSystemManager.getInstance().enablePremiumStatusFromCommunityBoardPremiumAccount(player);
+                    _log.info("Player: " + player.getName() + " has activated " + premium.getBonusName());
+                }
+                else
+                {
+                    player.sendPacket(new ExShowScreenMessage(NpcString.NONE, 5000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, "Нет нужного кол-ва предметов для покупки!"));
+                    player.sendPacket(PlaySound.BROKEN_KEY);
+                }
             }
         }
         return finalHtml;

@@ -709,13 +709,13 @@ public final class Player extends Playable implements PlayerGroup
 	private static ScheduledFuture<?> _startTaskPunishWyvern;
 
 	/**
-	 * Premium system for player
+	 * Premium status parameters
 	 */
 	private PremiumBonus _premiumBonus = null;
-	private boolean _hasPremium = false;
-	private boolean _hasTwoPremium = false;
-	private AbnormalEffect _abnormalEffect = AbnormalEffect.NULL;
-	private boolean _hasAbnormalEffect = false;
+	private boolean _premiumMainType = false;
+	private boolean _premiumSecondType = false;
+	private AbnormalEffect _premiumabnormalEffectType = AbnormalEffect.NULL;
+	private boolean _premiumAbnormalEffectState = false;
 
 	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
@@ -3724,7 +3724,7 @@ public final class Player extends Playable implements PlayerGroup
 		
 		if (Config.AUTO_LOOT_PA)
 		{
-			if (!hasPremiumStatus())
+			if (!getPlayerAnyActivePremiumType())
 			{
 				item.dropToTheGround(this, fromNpc, true);
 				sendMessage(isLangRus() ? "Вам нужно купить премиум аккаунт." : "You need to buy Premium Account.");
@@ -13826,51 +13826,128 @@ public final class Player extends Playable implements PlayerGroup
 		return _IsPhantom;
 	}
 
-	public PremiumBonus getPremiumBonus() { return _premiumBonus; }
-
-	public void setTwoPremium(boolean state) { _hasTwoPremium = state; }
-
-	public boolean hasTwoPremium() { return _hasTwoPremium; }
-
-	public void setPremiumBonus(PremiumBonus premiumBonus) { _premiumBonus = premiumBonus; }
-
-	public boolean hasPremiumBonusMain()
+	/**
+	 * To get an active premium player subscription
+	 * @return premium bonus object link
+	 */
+	public PremiumBonus getPremiumBonus()
 	{
-		return _premiumBonus.isBonusMain();
+		return _premiumBonus;
 	}
 
-	public boolean hasPremiumBonus() { return (_premiumBonus.getBonusId() != 0); }
-
-	public boolean hasPremiumStatus() { return _hasPremium; }
-
-	public void setPremiumStatus(boolean status) { _hasPremium = status; }
-
-	public AbnormalEffect getPremiumBonusAbnormalEffect()
+	/**
+	 * Activates premium player subscription
+	 * @param premiumBonus
+	 */
+	public void setPremiumBonus(PremiumBonus premiumBonus)
 	{
-		return _abnormalEffect;
+		_premiumBonus = premiumBonus;
 	}
 
+	/**
+	 * Assign the flag that this player has two active premium accounts
+	 * @param param
+	 */
+	public void setDoublePremiumState(boolean param) {
+		_premiumMainType = param;
+		_premiumSecondType = param;
+	}
+
+	/**
+	 * Used to check if a player has two active premium subscriptions
+	 * @return state of variables main premium and second
+	 */
+	public boolean getDoublePremiumState()
+	{
+		if (_premiumMainType && _premiumSecondType)
+			return true;
+		return false;
+	}
+
+	/**
+	 * Used to check if a player has a main premium subscription
+	 * @return true or false
+	 */
+	public boolean getPremiumMainTypeState()
+	{
+		return _premiumMainType;
+	}
+
+	/**
+	 * Sets the state of the value that the player has a main premium subscription
+	 * @param param
+	 */
+	public void setPremiumMainTypeState(boolean param)
+	{
+		_premiumMainType = param;
+	}
+
+	/**
+	 * Used to check if a player has a second premium subscription
+	 * @return true or false
+	 */
+	public boolean getPremiumSecondTypeState()
+	{
+		return _premiumSecondType;
+	}
+
+	/**
+	 * Sets the state of the value that the player has a second premium subscription
+	 * @param param
+	 */
+	public void setPremiumSecondTypeState(boolean param)
+	{
+		_premiumSecondType = param;
+	}
+
+	/**
+	 * Used to check if the player has any active premium subscription
+	 * @return true or false
+	 */
+	public boolean getPlayerAnyActivePremiumType()
+	{
+		if (_premiumMainType || _premiumSecondType)
+			return true;
+		return false;
+	}
+
+	/**
+	 * @return active premium abnormal effect
+	 */
+	public AbnormalEffect getPremiumBonusAbnormalEffectType()
+	{
+		return _premiumabnormalEffectType;
+	}
+
+	/**
+	 * Enable visual abnormal effect
+	 * @param eff
+	 */
 	public void startPremiumBonusAbnormalEffect(AbnormalEffect eff)
 	{
 		if (eff.getMask() == 0)
 		{
-			_hasAbnormalEffect = false;
+			_premiumAbnormalEffectState = false;
 		}
 		else
 		{
-			_hasAbnormalEffect = true;
+			_premiumAbnormalEffectState = true;
 		}
-		_abnormalEffect = eff;
+		_premiumabnormalEffectType = eff;
 	}
 
+	/**
+	 * Disable visual abnormal effect
+	 * @param eff
+	 */
 	public void stopPremiumBonusAbnormalEffect(AbnormalEffect eff)
 	{
-		_hasAbnormalEffect = false;
+		_premiumAbnormalEffectState = false;
 		stopAbnormalEffect(eff);
 	}
 
-	public boolean hasAbnormalEffect()
+	public boolean getPremiumBonusAbnormalEffectState()
 	{
-		return _hasAbnormalEffect;
+		return _premiumAbnormalEffectState;
 	}
 }
