@@ -118,12 +118,15 @@ public class CommunityBoardPremiumAccount {
             String bonusId = bypass.substring(4).trim();
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
-                if (player.getInventory().getItemByItemId(premium.getBonusItemId()).getCount() >= premium.getBonusItemAmount())
+                ItemInstance item = player.getInventory().getItemByItemId(premium.getBonusItemId());
+                int amountItems = premium.getBonusItemAmount();
+                if (item.getCount() >= amountItems)
                 {
                     long bonusPeriod = (System.currentTimeMillis() / 1000) + premium.getBonusDurationFromProfile();
                     PremiumSystemDAO.getInstance().insert(player.getObjectId(), Integer.parseInt(bonusId), bonusPeriod);
                     PremiumSystemManager.getInstance().enablePremiumStatusFromCommunityBoardPremiumAccount(player);
                     _log.info("Player: " + player.getName() + " has activated " + premium.getBonusName());
+                    player.getInventory().destroyItem(item, amountItems);
                 }
                 else
                 {
