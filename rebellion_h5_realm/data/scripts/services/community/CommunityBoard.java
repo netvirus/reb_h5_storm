@@ -549,7 +549,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		html = html.replace("%noble%", player.isNoble() ? "Почетный дворянин" : "Все еще впереди");
 		html = html.replace("%playerIP%", "" + player.getIP());
 
-		if (player.hasPremiumBonus()) {
+		if (player.getPlayerAnyActivePremiumType()) {
 			PremiumBonus premiumBonus = PremiumSystemOptionsData.getInstance().findById(player.getPremiumBonus().getBonusId());
 			html = html.replace("%premium%", "Да");
 			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, true, false) + " left.");
