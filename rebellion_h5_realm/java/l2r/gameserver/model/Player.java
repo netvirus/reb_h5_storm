@@ -13934,6 +13934,7 @@ public final class Player extends Playable implements PlayerGroup
 			_premiumAbnormalEffectState = true;
 		}
 		_premiumabnormalEffectType = eff;
+		startAbnormalEffect(_premiumabnormalEffectType);
 	}
 
 	/**

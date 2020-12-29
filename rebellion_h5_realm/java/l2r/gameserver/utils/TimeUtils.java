@@ -2,6 +2,7 @@ package l2r.gameserver.utils;
 
 import l2r.gameserver.GameTimeController;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -64,7 +65,14 @@ public class TimeUtils
 		
 		return stringDate;
 	}
-	
+
+	public static String getHumanSyntaxDateFromTimeshtamp(long timeshtamp)
+	{
+		Timestamp ts = new Timestamp(timeshtamp);
+		Date date = ts;
+		return date.toString();
+	}
+
 	public static String toSimpleFormat(long cal)
 	{
 		return DATE_HOUR_FORMAT.format(cal);
@@ -226,11 +234,6 @@ public class TimeUtils
 		
 		String time = hour + ":" + minute + " (" + type + ")";
 		return time;
-	}
-
-	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent)
-	{
-		return getMilisecondsToNextDay(days, hourOfTheEvent, 5);
 	}
 
 	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent, int minuteOfTheEvent)

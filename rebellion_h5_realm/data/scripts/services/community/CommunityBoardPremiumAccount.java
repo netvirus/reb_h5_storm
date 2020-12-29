@@ -109,7 +109,7 @@ public class CommunityBoardPremiumAccount {
                 } else {
                     html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/alreadyhaveall.htm", player);
                 }
-                html = html.replace("{bonus_title}", premium.getBonusName());
+                html = html.replace("{bonus_title}", player.getPremiumBonus().getBonusName());
                 // Not have
                 html = html.replace("{xp_n}", String.valueOf(player.getRateExp()));
                 html = html.replace("{sp_n}", String.valueOf(player.getRateSp()));
@@ -132,7 +132,7 @@ public class CommunityBoardPremiumAccount {
                 html = html.replace("{raid_drop_amount_n}", "x");
                 html = html.replace("{herb_drop_chance_n}", String.valueOf(Config.RATE_DROP_HERBS));
                 html = html.replace("{herb_drop_amount_n}", "x");
-                html = html.replace("{time}", TimeUtils.formatTime((int) premium.getBonusDuration()));
+                html = html.replace("{time}", TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000));
         }
         ShowBoard.separateAndSend(html, player);
     } else if(bypass.startsWith("buy_")) {

@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 
 public class PremiumSystemManager {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PremiumSystemManager.class);
+    private static final Logger _log = LoggerFactory.getLogger(PremiumSystemManager.class);
     private final Map<Integer, ScheduledFuture<?>> expiretasks = new HashMap<>();
 
     private PremiumSystemManager()
@@ -92,6 +92,7 @@ public class PremiumSystemManager {
             activeChar.stopPremiumBonusAbnormalEffect(activeChar.getPremiumBonusAbnormalEffectType());
         // Load any active premium subscription
         load(activeChar);
+        _log.info("Disabled premium for player: " + activeChar.getName());
     }
 
     /**
@@ -107,26 +108,26 @@ public class PremiumSystemManager {
         }
         else
         {
+            activeChar.setPremiumMainTypeState(true);
             activeChar.setPremiumSecondTypeState(true);
         }
     }
 
-    private void startExpireTask(Player player)
+    private void startExpireTask(Player activeChar)
     {
-        final ScheduledFuture<?> task = LazyPrecisionTaskManager.getInstance().startBonusExpirationTask(player);
-        expiretasks.put(player.getObjectId(), task);
+        final ScheduledFuture<?> task = LazyPrecisionTaskManager.getInstance().startBonusExpirationTask(activeChar);
+        expiretasks.put(activeChar.getObjectId(), task);
     }
 
-    public void stopExpireTask(Player player)
+    public void stopExpireTask(Player activeChar)
     {
-        ScheduledFuture<?> task = expiretasks.remove(player.getObjectId());
+        ScheduledFuture<?> task = expiretasks.remove(activeChar.getObjectId());
         if (task != null)
         {
             task.cancel(false);
-            task = null;
         }
-        if (player.getDoublePremiumState())
-            load(player);
+            disablePremiumState(activeChar);
+            load(activeChar);
     }
 
     public Map<Integer, ScheduledFuture<?>> getExpireTasks() {
