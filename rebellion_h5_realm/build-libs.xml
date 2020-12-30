@@ -24,15 +24,6 @@
 		</fileset>
 	</path>
 
-	<target name="check_os">
-		<condition property="isWindows">
-			<os family="windows" />
-		</condition>
-		<condition property="isLinux">
-			<os family="unix" />
-		</condition>
-	</target>
-
 	<pathconvert property="jar.list" pathsep=" " refid="classpath">
 		<mapper type="flatten" />
 	</pathconvert>
@@ -56,42 +47,19 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.commons}" destdir="${build.classes}"
-			optimize="on" debug="${debug}" source="1.7" target="1.7"
+			optimize="on" debug="${debug}" source="11" target="11"
 			includeantruntime="false" encoding="UTF-8" nowarn="off"
 			classpath="${build.classpath}">
 			<compilerarg value="-Xlint:all,-serial,-rawtypes,-unchecked" />
 		</javac>
-		<echo message="Protecting Common" />
-		<java classname="ru.catssoftware.CatsByteGuard">
-			<arg value="${build.classes}" />
-			<classpath>
-				<path location="${lib}/CatsByteGuard.jar" />
-			</classpath>
-		</java>
-		<echo message="Protecting Common Done" />
 	</target>
 
-	<target name="commons_if_windows" depends="check_os" if="isWindows">
-		<exec dir="${basedir}" executable="${lib}\libs_svn\svnversion.exe"
-			outputproperty="build.revision" failifexecutionfails="false">
-			<arg line="-n ${src.commons}" />
-		</exec>
-	</target>
-	<target name="commons_if_unix" depends="check_os" if="isLinux">
-		<exec dir="${basedir}" executable="svnversion" outputproperty="build.revision"
-			failifexecutionfails="false">
-			<arg line="-n ${src.commons}" />
-		</exec>
-	</target>
-
-	<target name="commons-jar"
-		depends="compile-commons, commons_if_windows, commons_if_unix">
+	<target name="commons-jar">
 		<jar destfile="${build}/commons.jar">
 			<fileset dir="${build.classes}" />
 			<manifest>
 				<attribute name="Build-By" value="${user.name}" />
 				<attribute name="Build-Date" value="${build.tstamp}" />
-				<attribute name="Implementation-Build" value="${build.revision}" />
 				<attribute name="Implementation-Version" value="${build.version}" />
 			</manifest>
 		</jar>
@@ -103,37 +71,16 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.gameserver}" optimize="on" destdir="${build.classes}"
-			debug="${debug}" source="1.7" target="1.7" includeantruntime="false"
+			debug="${debug}" source="11" target="11" includeantruntime="false"
 			encoding="UTF-8" nowarn="off"
 			classpath="${build.classpath}:${build}/commons.jar:${build}/loginserver.jar">
 			<compilerarg
 				value="-Xlint:all,-serial,-rawtypes,-unchecked,-deprecation,-static" />
 		</javac>
-		<echo message="Protecting GameServer" />
-		<java classname="ru.catssoftware.CatsByteGuard">
-			<arg value="${build.classes}" />
-			<classpath>
-				<path location="${lib}/CatsByteGuard.jar" />
-			</classpath>
-		</java>
-		<echo message="Protecting GameServer Done" />
-	</target>
-
-	<target name="gameserver_if_windows" depends="check_os" if="isWindows">
-		<exec dir="${basedir}" executable="${lib}\libs_svn\svnversion.exe"
-			outputproperty="build.revision" failifexecutionfails="false">
-			<arg line="-n ${src.gameserver}" />
-		</exec>
-	</target>
-	<target name="gameserver_if_unix" depends="check_os" if="isLinux">
-		<exec dir="${basedir}" executable="svnversion" outputproperty="build.revision"
-			failifexecutionfails="false">
-			<arg line="-n ${src.gameserver}" />
-		</exec>
 	</target>
 
 	<target name="gameserver-jar"
-		depends="compile-gameserver, gameserver_if_windows, gameserver_if_unix">
+		depends="compile-gameserver">
 		<jar destfile="${build}/gameserver.jar">
 			<fileset dir="${build.classes}" />
 			<manifest>
@@ -141,7 +88,6 @@
 				<attribute name="Class-Path" value=". " />
 				<attribute name="Build-By" value="${user.name}" />
 				<attribute name="Build-Date" value="${build.tstamp}" />
-				<attribute name="Implementation-Build" value="${build.revision}" />
 				<attribute name="Implementation-Version" value="${build.version}" />
 			</manifest>
 		</jar>
@@ -178,21 +124,13 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac destdir="${build.classes}" optimize="on" debug="on"
-			source="1.7" target="1.7" encoding="UTF-8" includeantruntime="false"
+			source="11" target="11" encoding="UTF-8" includeantruntime="false"
 			nowarn="off">
 			<compilerarg value="-Xlint:unchecked">
 			</compilerarg>
 			<src path="${src.scripts}" />
 			<classpath refid="classpath" />
 		</javac>
-		<echo message="Protecting Scripts" />
-		<java classname="ru.catssoftware.CatsByteGuard">
-			<arg value="${build.classes}" />
-			<classpath>
-				<path location="${lib}/CatsByteGuard.jar" />
-			</classpath>
-		</java>
-		<echo message="Protecting Scripts Done" />
 	</target>
 
 	<target name="scripts-jar" depends="compile-scripts">
@@ -213,35 +151,14 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.loginserver}" optimize="on" destdir="${build.classes}"
-			debug="${debug}" source="1.7" target="1.7" includeantruntime="false"
+			debug="${debug}" source="11" target="11" includeantruntime="false"
 			encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/commons.jar">
 			<compilerarg value="-Xlint:all,-serial" />
 		</javac>
-		<echo message="Protecting LoginServer" />
-		<java classname="ru.catssoftware.CatsByteGuard">
-			<arg value="${build.classes}" />
-			<classpath>
-				<path location="${lib}/CatsByteGuard.jar" />
-			</classpath>
-		</java>
-		<echo message="Protecting LoginServer Done" />
-	</target>
-
-	<target name="loginserver_if_windows" depends="check_os" if="isWindows">
-		<exec dir="${basedir}" executable="${lib}\libs_svn\svnversion.exe"
-			outputproperty="build.revision" failifexecutionfails="false">
-			<arg line="-n ${src.loginserver}" />
-		</exec>
-	</target>
-	<target name="loginserver_if_unix" depends="check_os" if="isLinux">
-		<exec dir="${basedir}" executable="svnversion" outputproperty="build.revision"
-			failifexecutionfails="false">
-			<arg line="-n ${src.loginserver}" />
-		</exec>
 	</target>
 
 	<target name="loginserver-jar"
-		depends="compile-loginserver, loginserver_if_windows, loginserver_if_unix">
+		depends="compile-loginserver">
 		<jar destfile="${build}/loginserver.jar">
 			<fileset dir="${build.classes}" />
 			<manifest>
@@ -249,7 +166,6 @@
 				<attribute name="Class-Path" value="${jar.list} commons.jar" />
 				<attribute name="Build-By" value="${user.name}" />
 				<attribute name="Build-Date" value="${build.tstamp}" />
-				<attribute name="Implementation-Build" value="${build.revision}" />
 				<attribute name="Implementation-Version" value="${build.version}" />
 			</manifest>
 		</jar>
@@ -278,14 +194,12 @@
 				<include name="*.jar" />
 				<exclude name="loginserver.jar" />
 				<exclude name="lameguard-1.9.5.jar" />
-				<exclude name="CatsByteGuard.jar" />
 			</fileset>
 		</copy>
 		<copy todir="${build.dist}/gameserver/libs">
 			<fileset dir="${lib}">
 				<include name="*.jar" />
 				<exclude name="gameserver.jar" />
-				<exclude name="CatsByteGuard.jar" />
 			</fileset>
 		</copy>
 

@@ -279,7 +279,7 @@ public class EventBuffer
 		if(scheme == null)
 			return;
 		
-		_buffs.get(player.getPlayersId()).get(scheme).remove(new Integer(buffId));
+		_buffs.get(player.getPlayersId()).get(scheme).remove(Integer.valueOf(buffId));
 		addModifiedBuffs(player, scheme);
 	}
 	

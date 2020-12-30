@@ -189,7 +189,7 @@ public class GameServer
 		// Check binding address
 		checkFreePorts();
 		// Initialize database
-		Class.forName(Config.DATABASE_DRIVER).newInstance();
+		Class.forName(Config.DATABASE_DRIVER).getDeclaredConstructor().newInstance();
 		DatabaseFactory.getInstance().getConnection().close();
 		
 		printSection("IdFactory");
@@ -328,11 +328,11 @@ public class GameServer
 		//SMSWayToPay.getInstance();
 		
 		PlayerTops.getInstance();
-		
-		//PremiumAccountsTable.init();
-		printSection("Premium system");
-		PremiumSystemOptionsData.getInstance();
-		PremiumSystemManager.getInstance();
+
+		if (Config.ENABLE_PREMIUM_SYSTEM) {
+			printSection("Premium system");
+			PremiumSystemOptionsData.getInstance();
+		}
 
 		if (Config.ENABLE_ACHIEVEMENTS)
 			Achievements.getInstance();

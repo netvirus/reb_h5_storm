@@ -533,20 +533,6 @@ public class ClanTable
 			DbUtils.closeQuietly(con, statement, rset);
 		}
 	}
-
-	public static void unload()
-	{
-		if (_instance != null)
-		{
-			try
-			{
-				_instance.finalize();
-			}
-			catch (Throwable e)
-			{
-			}
-		}
-	}
 	
 	public void scheduleRemoveClan(final int clanId, long dissolvedClanTime)
 	{

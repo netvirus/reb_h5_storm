@@ -14,7 +14,6 @@ import l2r.gameserver.data.xml.holder.MultiSellHolder.MultiSellListContainer;
 import l2r.gameserver.data.xml.holder.SkillAcquireHolder;
 import l2r.gameserver.database.DatabaseFactory;
 import l2r.gameserver.instancemanager.CursedWeaponsManager;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.model.base.AcquireType;
 import l2r.gameserver.model.base.ClassId;
 import l2r.gameserver.model.base.Experience;
@@ -387,12 +386,12 @@ public class PhantomPlayers
 			else
 				newChar.setTitle(title);
 			
-			if (Config.SERVICES_RATE_TYPE != Bonus.NO_BONUS && Config.SERVICES_RATE_CREATE_PA != 0 && newChar.getBonus() == null)
-			{
-				newChar.getBonus().setBonusExpire((int) (System.currentTimeMillis() / 1000L * (60 * 60 * 24 * Config.SERVICES_RATE_CREATE_PA)));
-				newChar.stopBonusTask();
-				newChar.startBonusTask();
-			}
+//			if (Config.SERVICES_RATE_TYPE != Bonus.NO_BONUS && Config.SERVICES_RATE_CREATE_PA != 0 && newChar.getBonus() == null)
+//			{
+//				newChar.getBonus().setBonusExpire((int) (System.currentTimeMillis() / 1000L * (60 * 60 * 24 * Config.SERVICES_RATE_CREATE_PA)));
+//				newChar.stopBonusTask();
+//				newChar.startBonusTask();
+//			}
 			
 			for (CreateItem i : newChar.getTemplate().getItems())
 			{
@@ -830,7 +829,7 @@ public class PhantomPlayers
 					}
 					
 					// Do not spawn more than max phantoms.
-					if (GameObjectsStorage.getAllPlayersStream().filter(Player::isPhantom).count() >= Config.PHANTOM_MAX_PLAYERS)
+					if (GameObjectsStorage.getAllPlayersStream().filter(player -> player.isPhantom()).count() >= Config.PHANTOM_MAX_PLAYERS)
 					{
 						_log.info("PhantomsEngine: Error! Reached maximum allowed spawns of: " + Config.PHANTOM_MAX_PLAYERS + " players.");
 						cancel();

@@ -2,10 +2,8 @@ package l2r.gameserver.network.loginservercon.lspackets;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.AccountBonusDAO;
 import l2r.gameserver.dao.AccountsDAO;
 import l2r.gameserver.model.Player;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.network.GameClient;
 import l2r.gameserver.network.loginservercon.AuthServerCommunication;
 import l2r.gameserver.network.loginservercon.ReceivablePacket;
@@ -56,21 +54,6 @@ public class PlayerAuthResponse extends ReceivablePacket
 		{
 			client.setAuthed(true);
 			client.setState(GameClient.GameClientState.AUTHED);
-			switch(Config.SERVICES_RATE_TYPE)
-			{
-				case Bonus.NO_BONUS:
-					bonus = 1.;
-					bonusExpire = 0;
-					break;
-				case Bonus.BONUS_GLOBAL_ON_GAMESERVER:
-					double[] bonuses = AccountBonusDAO.getInstance().select(account);
-					bonus = bonuses[0];
-					bonusExpire = (int)bonuses[1];
-					break;
-			}
-			client.setBonus(bonus);
-			client.setBonusExpire(bonusExpire);
-
 			GameClient oldClient = AuthServerCommunication.getInstance().addAuthedClient(client);
 			if(oldClient != null)
 			{

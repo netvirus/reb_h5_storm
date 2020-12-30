@@ -741,7 +741,7 @@ public abstract class Skill extends StatTemplate implements Cloneable
 		_flyingTransformUsage = set.getBool("flyingTransformUsage", false);
 		_canUseTeleport = set.getBool("canUseTeleport", true);
 
-		if(NumberUtils.isNumber(set.getString("element", "NONE")))
+		if(NumberUtils.isCreatable(set.getString("element", "NONE")))
 			_element = Element.getElementById(set.getInteger("element", -1));
 		else
 			_element = Element.getElementByName(set.getString("element", "none").toUpperCase());
@@ -1693,7 +1693,6 @@ public abstract class Skill extends StatTemplate implements Cloneable
 	 * @param effected персонаж, на которого действует скилл
 	 * @param calcChance если true, то расчитывать шанс наложения эффекта
 	 * @param applyOnCaster если true, накладывать только эффекты предназанченные для кастующего  
-	 * @param timeConst изменить время действия эффектов до данной константы (в миллисекундах)
 	 * @param timeMilis изменить время действия эффектов до данной константы (в миллисекундах)
 	 * @param skillReflected означает что скилл был отражен и эффекты тоже нужно отразить
 	 */

@@ -1,6 +1,6 @@
 package l2r.gameserver.data.xml.parser;
 
-import l2r.gameserver.model.L2PremiumBonus;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.model.StatsSet;
 import l2r.gameserver.utils.IXmlReader;
 import l2r.gameserver.utils.IXmlStreamReader;
@@ -20,7 +20,7 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
 
     private static final Logger LOG = LoggerFactory.getLogger(PremiumSystemOptionsData.class);
 
-    private final Map<Integer, L2PremiumBonus> _premiumBonusList = new LinkedHashMap<>();
+    private final Map<Integer, PremiumBonus> _premiumBonusList = new LinkedHashMap<>();
 
     public PremiumSystemOptionsData() { load(); }
 
@@ -32,17 +32,14 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
     }
 
     @Override
-    public void parseDocument(Document doc) {
+    public void parseDocument(Document doc)
+    {
         nodeListStreamFilteredByName(doc.getFirstChild().getChildNodes(), "premium").forEach(n -> {
             final StatsSet set = new StatsSet();
             attributeStream(n.getAttributes()).forEach(a -> set.set(a.getNodeName(), a.getNodeValue()));
-            Map<String, String> columnParam = new LinkedHashMap<>();
-            columnParam.put("rates", "rates");
-            columnParam.put("time", "time");
-            columnParam.put("price", "price");
-            nodeListStreamFilteredByMap(n.getChildNodes(), columnParam)
+            nodeListStreamFilteredByMap(n.getChildNodes(), Map.of("rates", "rates", "time", "time", "price", "price"))
                     .forEach(p -> attributeStream(p.getAttributes()).forEach(k -> set.set(k.getNodeName(), k.getNodeValue())));
-            _premiumBonusList.put(set.getInt("id"), new L2PremiumBonus(set));
+            _premiumBonusList.put(set.getInt("id"), new PremiumBonus(set));
         });
     }
 
@@ -50,8 +47,15 @@ public class PremiumSystemOptionsData implements IXmlReader, IXmlStreamReader {
         return SingletonHolder.INSTANCE;
     }
 
-    public L2PremiumBonus findById(int bonus_id) {
+    public PremiumBonus findById(int bonus_id)
+    {
+
         return _premiumBonusList.get(bonus_id);
+    }
+
+    public Map<Integer, PremiumBonus> getPremiumBonusList()
+    {
+        return _premiumBonusList;
     }
 
     private static class SingletonHolder {

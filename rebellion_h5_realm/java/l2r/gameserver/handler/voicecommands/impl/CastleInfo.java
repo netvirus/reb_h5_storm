@@ -60,7 +60,7 @@ public class CastleInfo implements IVoicedCommandHandler
 			
 			if (!args.isEmpty() || args != null)
 			{
-				if (!NumberUtils.isNumber(args))
+				if (!NumberUtils.isCreatable(args))
 					return false;
 				
 				int castleID = Integer.valueOf(args);

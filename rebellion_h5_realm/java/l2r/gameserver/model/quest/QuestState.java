@@ -579,7 +579,7 @@ public final class QuestState
 	public double getRateQuestsDrop()
 	{
 		Player player = getPlayer();
-		double Bonus = player == null ? 1. : player.getBonus().getQuestDropRate();
+		double questDropBonus = player == null ? 1. : player.getPremiumBonus().getBonusQuestDropRate();
 		
 		if (Config.ALLOW_QUETS_ADDONS_CONFIG)
 		{
@@ -587,16 +587,16 @@ public final class QuestState
 			if (rate > 0)
 				return rate;
 			else
-				return Config.RATE_QUESTS_DROP * Bonus;
+				return Config.RATE_QUESTS_DROP * questDropBonus;
 		}
 		
-		return Config.RATE_QUESTS_DROP * Bonus;
+		return Config.RATE_QUESTS_DROP * questDropBonus;
 	}
 
 	public double getRateQuestsReward()
 	{
 		Player player = getPlayer();
-		double Bonus = player == null ? 1. : player.getBonus().getQuestRewardRate();
+		double questRewardBonus = player == null ? 1. : player.getPremiumBonus().getBonusQuestRewardRate();
 		
 		if (Config.ALLOW_QUETS_ADDONS_CONFIG)
 		{
@@ -604,10 +604,10 @@ public final class QuestState
 			if (rate > 0)
 				return rate;
 			else
-				return Config.RATE_QUESTS_REWARD * Bonus;
+				return Config.RATE_QUESTS_REWARD * questRewardBonus;
 		}
 		
-		return Config.RATE_QUESTS_REWARD * Bonus;
+		return Config.RATE_QUESTS_REWARD * questRewardBonus;
 	}
 	
 	public double getRateQuestsRewardExpSp()
