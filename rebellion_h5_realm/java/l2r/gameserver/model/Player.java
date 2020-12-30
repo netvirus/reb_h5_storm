@@ -711,7 +711,7 @@ public final class Player extends Playable implements PlayerGroup
 	/**
 	 * Premium status parameters
 	 */
-	private PremiumBonus _premiumBonus = null;
+	private PremiumBonus _premiumBonus = new PremiumBonus();
 	private boolean _premiumMainType = false;
 	private boolean _premiumSecondType = false;
 	private AbnormalEffect _premiumabnormalEffectType = AbnormalEffect.NULL;

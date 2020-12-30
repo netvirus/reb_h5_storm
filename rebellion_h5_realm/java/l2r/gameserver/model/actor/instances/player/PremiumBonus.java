@@ -42,7 +42,7 @@ public class PremiumBonus {
     private int _days = 0;
     private int _hours = 0;
     private int _minutes = 0;
-    private long _duration;
+    private long _duration = 0;
     // price
     private int _itemId = 0;
     private int _itemAmount = 0;
@@ -50,11 +50,12 @@ public class PremiumBonus {
     public PremiumBonus() {}
 
     // Constructor for clone
-    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
+    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, long _duration, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
         this._bonusId = _bonusId;
         this._nameBonus = _nameBonus;
         this._auraBonus = _auraBonus;
         this._typeBonus = _typeBonus;
+        this._duration = _duration;
         this._expRate = _expRate;
         this._spRate = _spRate;
         this._dropRate = _dropRate;
@@ -86,6 +87,7 @@ public class PremiumBonus {
                 original.getBonusName(),
                 original.isBonusAuraEnabled(),
                 original.isBonusMain(),
+                original.getBonusDuration(),
                 // rates
                 original.getBonusExpRate(),
                 original.getBonusSpRate(),

@@ -48,7 +48,7 @@ public class CommunityBoardPremiumAccount {
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
                 if (!player.getDoublePremiumState()) {
-                    if ((player.getPremiumMainTypeState() && !premium.isBonusMain()) || (player.getPremiumSecondTypeState() && premium.isBonusMain())) {
+                    if ((player.getPremiumMainTypeState() && !premium.isBonusMain()) || (player.getPremiumSecondTypeState() && premium.isBonusMain()) || (!player.getPlayerAnyActivePremiumType())) {
                         String itemName = ItemsDAO.getInstance().getItemsByItemId(premium.getBonusItemId()).stream().findFirst().get().getName();
                         html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
                         String price = premium.getBonusItemAmount() + " " + itemName;
@@ -105,11 +105,13 @@ public class CommunityBoardPremiumAccount {
                         html = html.replace("{buy}", button);
                     } else {
                         html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/thesame.htm", player);
+                        if ((player.getPremiumMainTypeState() && premium.isBonusMain() || (player.getPremiumSecondTypeState() && !premium.isBonusMain())))
+                            html = html.replace("{bonus_title}", "Вы уже имеете активпый ПА этого типа. <br1>Вашы рейты сейчас:");
                     }
                 } else {
                     html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/alreadyhaveall.htm", player);
+                    html = html.replace("{bonus_title}", player.getPremiumBonus().getBonusName());
                 }
-                html = html.replace("{bonus_title}", player.getPremiumBonus().getBonusName());
                 // Not have
                 html = html.replace("{xp_n}", String.valueOf(player.getRateExp()));
                 html = html.replace("{sp_n}", String.valueOf(player.getRateSp()));
@@ -132,7 +134,7 @@ public class CommunityBoardPremiumAccount {
                 html = html.replace("{raid_drop_amount_n}", "x");
                 html = html.replace("{herb_drop_chance_n}", String.valueOf(Config.RATE_DROP_HERBS));
                 html = html.replace("{herb_drop_amount_n}", "x");
-                html = html.replace("{time}", TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000));
+                html = html.replace("{time}", TimeUtils.formatTime((int) player.getPremiumBonus().getBonusDuration() * 1000));
         }
         ShowBoard.separateAndSend(html, player);
     } else if(bypass.startsWith("buy_")) {

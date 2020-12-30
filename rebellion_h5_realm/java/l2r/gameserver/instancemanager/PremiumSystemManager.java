@@ -68,7 +68,7 @@ public class PremiumSystemManager {
         if (premium.isBonusAuraEnabled())
             activeChar.startPremiumBonusAbnormalEffect(AbnormalEffect.S_AIR_STUN);
 
-        String premiumMsg = "Your premium subscription will expire in: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
+        String premiumMsg = "Ваша премиум подписка закончится через: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
         activeChar.sendPacket(new ExShowScreenMessage(NpcString.NONE, 7000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, premiumMsg));
 
         startExpireTask(activeChar);

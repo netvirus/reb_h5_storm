@@ -352,19 +352,19 @@ public class TimeUtils
 		switch (word)
 		{
 			case DAYS:
-				one = new String("Day");
-				two = new String("Days");
-				five = new String("Days");
+				one = new String("день");
+				two = new String("дня");
+				five = new String("дней");
 				break;
 			case HOUR:
-				one = new String("Hour");
-				two = new String("Hours");
-				five = new String("Hours");
+				one = new String("час");
+				two = new String("часа");
+				five = new String("часов");
 				break;
 			case MINUTES:
-				one = new String("Minute");
-				two = new String("Minutes");
-				five = new String("Minutes");
+				one = new String("минута");
+				two = new String("минуты");
+				five = new String("минут");
 				break;
 		}
 		if (count > 100L)
