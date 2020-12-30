@@ -60,7 +60,7 @@ public class PremiumSystemDAO {
         return premiumType;
     }
 
-    public void insert(int objectId, int bonusId, Long duration) {
+    public void insert(int objectId, int bonusId, long duration) {
         Connection con = null;
         PreparedStatement statement = null;
         try

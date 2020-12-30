@@ -134,7 +134,7 @@ public class CommunityBoardPremiumAccount {
                 html = html.replace("{raid_drop_amount_n}", "x");
                 html = html.replace("{herb_drop_chance_n}", String.valueOf(Config.RATE_DROP_HERBS));
                 html = html.replace("{herb_drop_amount_n}", "x");
-                html = html.replace("{time}", TimeUtils.formatTime((int) player.getPremiumBonus().getBonusDuration() * 1000));
+                html = html.replace("{time}", TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000));
         }
         ShowBoard.separateAndSend(html, player);
     } else if(bypass.startsWith("buy_")) {
@@ -165,7 +165,7 @@ public class CommunityBoardPremiumAccount {
         return CommunityBoardPremiumAccount.SingletonHolder.INSTANCE;
     }
 
-private static class SingletonHolder {
-    protected static final CommunityBoardPremiumAccount INSTANCE = new CommunityBoardPremiumAccount();
-}
+    private static class SingletonHolder {
+        protected static final CommunityBoardPremiumAccount INSTANCE = new CommunityBoardPremiumAccount();
+    }
 }
