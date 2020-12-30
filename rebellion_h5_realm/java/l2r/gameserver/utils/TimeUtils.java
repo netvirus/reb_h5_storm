@@ -2,6 +2,7 @@ package l2r.gameserver.utils;
 
 import l2r.gameserver.GameTimeController;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -64,7 +65,14 @@ public class TimeUtils
 		
 		return stringDate;
 	}
-	
+
+	public static String getHumanSyntaxDateFromTimeshtamp(long timeshtamp)
+	{
+		Timestamp ts = new Timestamp(timeshtamp);
+		Date date = ts;
+		return date.toString();
+	}
+
 	public static String toSimpleFormat(long cal)
 	{
 		return DATE_HOUR_FORMAT.format(cal);
@@ -82,7 +90,7 @@ public class TimeUtils
 		// парсим дни
 		if(period > 1440) // больше 1 суток
 		{
-			sb.append((period - (period % 1440)) / 1440).append(" d.");
+			sb.append((period - (period % 1440)) / 1440).append(" д.");
 			period = period % 1440;
 		}
 
@@ -94,7 +102,7 @@ public class TimeUtils
 				sb.append(", ");
 			}
 
-			sb.append((period - (period % 60)) / 60).append(" h.");
+			sb.append((period - (period % 60)) / 60).append(" ч.");
 
 			period = period % 60;
 		}
@@ -107,11 +115,11 @@ public class TimeUtils
 				sb.append(", ");
 			}
 
-			sb.append(period).append(" min.");
+			sb.append(period).append(" мин.");
 		}
 		if(sb.length() < 1)
 		{
-			sb.append("less than 1 min.");
+			sb.append("меньше 1 мин.");
 		}
 
 		return sb.toString();
@@ -125,9 +133,9 @@ public class TimeUtils
 		if(period > 1440 && days) // больше 1 суток
 		{
 			if (FullString)
-				sb.append((period - (period % 1440)) / 1440).append(" day(s)");
+				sb.append((period - (period % 1440)) / 1440).append(" день(й)");
 			else
-				sb.append((period - (period % 1440)) / 1440).append(" d.");
+				sb.append((period - (period % 1440)) / 1440).append(" д.");
 			period = period % 1440;
 		}
 
@@ -140,9 +148,9 @@ public class TimeUtils
 			}
 
 			if (FullString)
-				sb.append((period - (period % 60)) / 60).append(" hour(s)");
+				sb.append((period - (period % 60)) / 60).append(" час(ов)");
 			else
-				sb.append((period - (period % 60)) / 60).append(" h.");
+				sb.append((period - (period % 60)) / 60).append(" ч.");
 
 			period = period % 60;
 		}
@@ -156,14 +164,14 @@ public class TimeUtils
 			}
 
 			if (FullString)
-				sb.append(period).append(" minute(s)");
+				sb.append(period).append(" минут(ы)");
 			else
-				sb.append(period).append(" min.");
+				sb.append(period).append(" мин.");
 		}
 		
 		if(sb.length() < 1)
 		{
-			sb.append("less than 1 min.");
+			sb.append("меньше 1 мин.");
 		}
 
 		return sb.toString();
@@ -226,11 +234,6 @@ public class TimeUtils
 		
 		String time = hour + ":" + minute + " (" + type + ")";
 		return time;
-	}
-
-	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent)
-	{
-		return getMilisecondsToNextDay(days, hourOfTheEvent, 5);
 	}
 
 	public static long getMilisecondsToNextDay(List<Integer> days, int hourOfTheEvent, int minuteOfTheEvent)
@@ -349,19 +352,19 @@ public class TimeUtils
 		switch (word)
 		{
 			case DAYS:
-				one = new String("Day");
-				two = new String("Days");
-				five = new String("Days");
+				one = new String("день");
+				two = new String("дня");
+				five = new String("дней");
 				break;
 			case HOUR:
-				one = new String("Hour");
-				two = new String("Hours");
-				five = new String("Hours");
+				one = new String("час");
+				two = new String("часа");
+				five = new String("часов");
 				break;
 			case MINUTES:
-				one = new String("Minute");
-				two = new String("Minutes");
-				five = new String("Minutes");
+				one = new String("минута");
+				two = new String("минуты");
+				five = new String("минут");
 				break;
 		}
 		if (count > 100L)
@@ -381,5 +384,25 @@ public class TimeUtils
 			return two;
 		}
 		return five;
+	}
+
+	public static long getMillisecondsFromDaysHoursMinutes(int days, int hours, int minutes)
+	{
+		long duration = 0;
+		if (days > 0)
+		{
+			duration += days * 86400;
+		}
+
+		if (hours > 0)
+		{
+			duration += hours * 3600;
+		}
+
+		if (minutes > 0)
+		{
+			duration += minutes * 60;
+		}
+		return duration;
 	}
 }

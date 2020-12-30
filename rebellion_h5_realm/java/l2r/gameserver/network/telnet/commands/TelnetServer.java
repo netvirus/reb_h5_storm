@@ -62,7 +62,7 @@ public class TelnetServer implements TelnetCommandHolder
 
 				StringBuilder sb = new StringBuilder();
 
-				if(NumberUtils.isNumber(args[0]))
+				if(NumberUtils.isCreatable(args[0]))
 				{
 					int val = NumberUtils.toInt(args[0]);
 					Shutdown.getInstance().Telnetschedule(val, Shutdown.RESTART);
@@ -114,7 +114,7 @@ public class TelnetServer implements TelnetCommandHolder
 
 				StringBuilder sb = new StringBuilder();
 
-				if(NumberUtils.isNumber(args[0]))
+				if(NumberUtils.isCreatable(args[0]))
 				{
 					int val = NumberUtils.toInt(args[0]);
 					Shutdown.getInstance().Telnetschedule(val, Shutdown.SHUTDOWN);

@@ -1,19 +1,21 @@
-package l2r.gameserver.model;
+package l2r.gameserver.model.actor.instances.player;
+
+import l2r.gameserver.model.StatsSet;
+import l2r.gameserver.utils.TimeUtils;
 
 /**
  * Class for the Premium Bonus object
- *
  * @author netvirus
  */
 
-public class L2PremiumBonus {
+public class PremiumBonus {
 
     // premium
     private int _bonusId = 0;
     private String _nameBonus = "";
     private String _iconNameBonus = "";
     private boolean _auraBonus = false;
-    private boolean _typeBonus = true;
+    private boolean _typeBonus = false;
     // rates
     private double _expRate = 1.;
     private double _spRate = 1.;
@@ -30,6 +32,7 @@ public class L2PremiumBonus {
     private double _extractableRate = 1.;
     private double _manorDropRate = 1.;
     private double _questDropRate = 1.;
+    private double _questRewardRate = 1.;
     private double _petExpRate = 1.;
     private double _raidDropChance = 1.;
     private double _raidDropAmount = 1.;
@@ -44,14 +47,15 @@ public class L2PremiumBonus {
     private int _itemId = 0;
     private int _itemAmount = 0;
 
-    public L2PremiumBonus() {}
+    public PremiumBonus() {}
 
     // Constructor for clone
-    public L2PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
+    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, long _duration, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
         this._bonusId = _bonusId;
         this._nameBonus = _nameBonus;
         this._auraBonus = _auraBonus;
         this._typeBonus = _typeBonus;
+        this._duration = _duration;
         this._expRate = _expRate;
         this._spRate = _spRate;
         this._dropRate = _dropRate;
@@ -67,6 +71,7 @@ public class L2PremiumBonus {
         this._extractableRate = _extractableRate;
         this._manorDropRate = _manorDropRate;
         this._questDropRate = _questDropRate;
+        this._questRewardRate = _questRewardRate;
         this._petExpRate = _petExpRate;
         this._raidDropChance = _raidDropChance;
         this._raidDropAmount = _raidDropAmount;
@@ -75,13 +80,14 @@ public class L2PremiumBonus {
     }
 
     // Do clone
-    public L2PremiumBonus(L2PremiumBonus original) {
+    public PremiumBonus(PremiumBonus original) {
         this(
                 // premium
                 original.getBonusId(),
                 original.getBonusName(),
                 original.isBonusAuraEnabled(),
                 original.isBonusMain(),
+                original.getBonusDuration(),
                 // rates
                 original.getBonusExpRate(),
                 original.getBonusSpRate(),
@@ -98,6 +104,7 @@ public class L2PremiumBonus {
                 original.getBonusExtractableRate(),
                 original.getBonusManorDropRate(),
                 original.getBonusQuestDropRate(),
+                original.getBonusQuestRewardRate(),
                 original.getBonusPetExpRate(),
                 original.getBonusRaidDropChance(),
                 original.getBonusRaidDropAmount(),
@@ -106,7 +113,7 @@ public class L2PremiumBonus {
         );
     }
 
-    public L2PremiumBonus(StatsSet set) {
+    public PremiumBonus(StatsSet set) {
         // premium
         setBonusId(set.getInt("id"));
         setBonusName(set.getString("name"));
@@ -129,6 +136,7 @@ public class L2PremiumBonus {
         setBonusExtractableRate(set.getDouble("extractableRate"));
         setBonusManorDropRate(set.getDouble("manorDropRate"));
         setBonusQuestDropRate(set.getDouble("questDropRate"));
+        setBonusQuestRewardRate(set.getDouble("questRewardRate"));
         setBonusPetExpRate(set.getDouble("petExpRate"));
         setBonusRaidDropChance(set.getDouble("raidDropChance"));
         setBonusRaidDropAmount(set.getDouble("raidDropAmount"));
@@ -256,6 +264,13 @@ public class L2PremiumBonus {
     public void setBonusQuestDropRate(double questDrop) { _questDropRate = questDrop; }
 
     /**
+     * @return the bonus quest items drop rate.
+     */
+    public double getBonusQuestRewardRate() { return _questRewardRate; }
+
+    public void setBonusQuestRewardRate(double questRewardRate) { _questRewardRate = questRewardRate; }
+
+    /**
      * @return the bonus exp rate for pet.
      */
     public double getBonusPetExpRate() { return _petExpRate; }
@@ -355,9 +370,20 @@ public class L2PremiumBonus {
     public void setBonusItemAmount(int itemAmount) { _itemAmount = itemAmount; }
 
     /**
-     * @return the bonus duration in millisec
+     * @return Profile the bonus duration in millisec
      */
-    public long getBonusDuration() { return _duration; }
+    public long getBonusDurationFromProfile()
+    {
+        return TimeUtils.getMillisecondsFromDaysHoursMinutes(getBonusDayes(), getBonusHours(), getBonusMinutes());
+    }
 
-    public void setBonusDuration(long duration) { _duration = duration; }
+    public long getBonusDuration()
+    {
+        return _duration;
+    }
+
+    public void setBonusDuration(long duration)
+    {
+        _duration = duration;
+    }
 }

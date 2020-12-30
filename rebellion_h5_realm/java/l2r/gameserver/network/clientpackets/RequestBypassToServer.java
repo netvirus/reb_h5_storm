@@ -32,6 +32,7 @@ import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import services.community.CommunityBoardPremiumAccount;
 
 public class RequestBypassToServer extends L2GameClientPacket
 {
@@ -128,6 +129,12 @@ public class RequestBypassToServer extends L2GameClientPacket
 					vch.useVoicedCommand(word, activeChar, args);
 				else
 					_log.warn("Unknow voiced command '" + word + "'");
+			}
+			else if(bp.bypass.startsWith("premium_"))
+			{
+				String command = bp.bypass.substring(8).trim();
+				String word = command.split("\\s+")[0];
+				CommunityBoardPremiumAccount.getInstance().getAction(activeChar, word);
 			}
 			else if(bp.bypass.startsWith("npc_"))
 			{

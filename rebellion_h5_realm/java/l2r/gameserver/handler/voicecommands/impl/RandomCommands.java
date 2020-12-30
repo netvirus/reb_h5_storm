@@ -117,7 +117,7 @@ public class RandomCommands extends Functions implements IVoicedCommandHandler
 		else if (command.equalsIgnoreCase("sc") || command.equalsIgnoreCase("scinfo") && Config.ENABLE_SC_INFO_COMMAND)
 		{
 			int page = 1;
-			if (args != null && !args.isEmpty() && NumberUtils.isNumber(args))
+			if (args != null && !args.isEmpty() && NumberUtils.isCreatable(args))
 				page = Integer.parseInt(args);
 			
 			int blockforvisual = 0;

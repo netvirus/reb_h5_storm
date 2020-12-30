@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="premiumSystemOptionsData.xsd">
-	<premium id="1" name="Premium subscription for 1 day" icon="branchsys2.br_vitality_day_i00" aura="false" main="true">
-		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
+	<premium id="1" name="Премиум подписка на 1 день" icon="br_cashtex.item.br_cash_rune_of_exp_i00" aura="false" main="true">
+		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." questRewardRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
 		<time days="1" hours="0" minutes="0"/>
 		<price itemId="4037" itemAmount="1"/>
 	</premium>
-	<premium id="2" name="Premium subscription for 7 days" icon="branchsys2.br_vitality_day_i00" aura="false" main="true">
-		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
+	<premium id="2" name="Премиум подписка на 7 дней" icon="br_cashtex.item.br_cash_rune_of_exp_i00" aura="false" main="true">
+		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." questRewardRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
 		<time days="7" hours="0" minutes="0"/>
 		<price itemId="4037" itemAmount="5"/>
 	</premium>
-	<premium id="3" name="Premium subscription for 30 days" icon="branchsys2.br_vitality_day_i00" aura="false" main="true">
-		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
+	<premium id="3" name="Премиум подписка на 30 дней" icon="br_cashtex.item.br_cash_rune_of_exp_i00" aura="false" main="true">
+		<rates expRate="2." spRate="2." dropRate="1." dropChance="2." dropAmount="1." spoilRate="2." spoilChance="2." spoilAmount="1." adenaDropRate="2." weightLimitRate="2." craftChance="2." mCraftChance="2." extractableRate="2." manorDropRate="2." questDropRate="2." questRewardRate="2." petExpRate="2." raidDropChance="2." raidDropAmount="2." herbDropChance="2." herbDropAmount="1." />
 		<time days="30" hours="0" minutes="0"/>
 		<price itemId="4037" itemAmount="10"/>
 	</premium>
-	<premium id="4" name="Premium subscription for 1 hour - Super pumping" icon="branchsys2.br_vitality_day_i00" aura="true" main="false">
-		<rates expRate="3." spRate="3." dropRate="1." dropChance="1." dropAmount="1." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="1." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." petExpRate="3." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
+	<premium id="4" name="Премиум подписка на 1 час - Супер прокачка" icon="icon.skill0017" aura="true" main="false">
+		<rates expRate="3." spRate="3." dropRate="1." dropChance="1." dropAmount="1." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="1." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." questRewardRate="1." petExpRate="3." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
 		<time days="0" hours="1" minutes="0"/>
 		<price itemId="4037" itemAmount="2"/>
 	</premium>
-	<premium id="5" name="Premium subscription for 1 hour - Super spoil" icon="branchsys2.br_vitality_day_i00" aura="true" main="false">
-		<rates expRate="1." spRate="1." dropRate="1." dropChance="1." dropAmount="1." spoilRate="3." spoilChance="3." spoilAmount="2." adenaDropRate="1." weightLimitRate="3." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
+	<premium id="5" name="Премиум подписка на 1 час - Супер спойл" icon="icon.skill0444" aura="true" main="false">
+		<rates expRate="1." spRate="1." dropRate="1." dropChance="1." dropAmount="1." spoilRate="3." spoilChance="3." spoilAmount="2." adenaDropRate="1." weightLimitRate="3." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." questRewardRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
 		<time days="0" hours="1" minutes="0"/>
 		<price itemId="4037" itemAmount="2"/>
 	</premium>
-	<premium id="6" name="Premium subscription for 1 hour - Super drop" icon="branchsys2.br_vitality_day_i00" aura="true" main="false">
-		<rates expRate="1." spRate="1." dropRate="3." dropChance="3." dropAmount="2." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="3." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
+	<premium id="6" name="Премиум подписка на 1 час - Супер дроп" icon="icon.skill0629" aura="true" main="false">
+		<rates expRate="1." spRate="1." dropRate="3." dropChance="3." dropAmount="2." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="3." craftChance="1." mCraftChance="1." extractableRate="1." manorDropRate="1." questDropRate="1." questRewardRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
 		<time days="0" hours="1" minutes="0"/>
 		<price itemId="4037" itemAmount="2"/>
 	</premium>
-	<premium id="7" name="Premium subscription for 1 hour - Super craft" icon="branchsys2.br_vitality_day_i00" aura="true" main="false">
-		<rates expRate="1." spRate="1." dropRate="1." dropChance="1." dropAmount="1." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="3." craftChance="3." mCraftChance="3." extractableRate="1." manorDropRate="1." questDropRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
+	<premium id="7" name="Премиум подписка на 1 час - Супер крафт" icon="icon.skill0818" aura="true" main="false">
+		<rates expRate="1." spRate="1." dropRate="1." dropChance="1." dropAmount="1." spoilRate="1." spoilChance="1." spoilAmount="1." adenaDropRate="1." weightLimitRate="3." craftChance="3." mCraftChance="3." extractableRate="1." manorDropRate="1." questDropRate="1." questRewardRate="1." petExpRate="1." raidDropChance="1." raidDropAmount="1." herbDropChance="1." herbDropAmount="1." />
 		<time days="0" hours="1" minutes="0"/>
 		<price itemId="4037" itemAmount="2"/>
 	</premium>

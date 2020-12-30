@@ -7,7 +7,6 @@ import l2r.gameserver.data.xml.holder.SkillAcquireHolder;
 import l2r.gameserver.instancemanager.QuestManager;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.SkillLearn;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.model.actor.instances.player.ShortCut;
 import l2r.gameserver.model.base.AcquireType;
 import l2r.gameserver.model.base.ClassId;
@@ -112,13 +111,6 @@ public class CharacterCreate extends L2GameClientPacket
 		else
 			newChar.setTitle("");
 
-		if(Config.SERVICES_RATE_TYPE != Bonus.NO_BONUS && Config.SERVICES_RATE_CREATE_PA != 0 && newChar.getBonus() == null)
-		{
-			newChar.getBonus().setBonusExpire((int)(System.currentTimeMillis() / 1000L * (60 * 60 * 24 *  Config.SERVICES_RATE_CREATE_PA)));
-			newChar.stopBonusTask();
-			newChar.startBonusTask();
-		}
-		
 		if (Config.PREMIUM_FOR_NEW_ACC && (PremiumAccountsTable.getPremiumAccount(client.getLogin()) != null && !PremiumAccountsTable.getPremiumAccount(client.getLogin()).isActive()))
 			PremiumAccountsTable.savePremium(client.getLogin(), Config.PREMIUM_TEMPLATE_NEW_ACC, (System.currentTimeMillis() + Config.PREMIUM_TIME_FOR_NEW_ACC));
 		

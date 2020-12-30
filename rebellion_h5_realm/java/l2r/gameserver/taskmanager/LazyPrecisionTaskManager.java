@@ -5,16 +5,11 @@ import l2r.commons.threading.SteppingRunnableQueueManager;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
-import l2r.gameserver.dao.AccountBonusDAO;
+import l2r.gameserver.instancemanager.PremiumSystemManager;
 import l2r.gameserver.model.Player;
-import l2r.gameserver.model.actor.instances.player.Bonus;
 import l2r.gameserver.model.instances.NpcInstance;
-import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
-import l2r.gameserver.network.serverpackets.ExShowScreenMessage;
-import l2r.gameserver.network.serverpackets.ExShowScreenMessage.ScreenMessageAlign;
-import l2r.gameserver.network.serverpackets.components.CustomMessage;
-
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledFuture;
 
 public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 {
@@ -77,35 +72,17 @@ public class LazyPrecisionTaskManager extends SteppingRunnableQueueManager
 		}, delay, delay);
 	}
 
-	public Future<?> startBonusExpirationTask(final Player player)
+	public ScheduledFuture<?> startBonusExpirationTask(final Player player)
 	{
-		long delay = player.getBonus().getBonusExpire() * 1000L - System.currentTimeMillis();
+		long delay = player.getPremiumBonus().getBonusDuration() * 1000L - System.currentTimeMillis();
 
 		return schedule(new RunnableImpl(){
 
 			@Override
 			public void runImpl() throws Exception
 			{
-				player.getBonus().setBonusExpire(0);
 
-				player.getBonus().setRateXp(1.);
-				player.getBonus().setRateSp(1.);
-				player.getBonus().setDropAdena(1.);
-				player.getBonus().setDropItems(1.);
-				player.getBonus().setDropSpoil(1.);
-
-				player.getBonus().setQuestDropRate(1.);
-				player.getBonus().setQuestRewardRate(1.);
-
-				if(player.getParty() != null)
-					player.getParty().recalculatePartyData();
-
-				String msg = new CustomMessage("scripts.services.RateBonus.LuckEnded", player).toString();
-				player.sendPacket(new ExShowScreenMessage(msg, 10000, ScreenMessageAlign.TOP_CENTER, true), new ExBR_PremiumState(player.getObjectId(), false));
-				player.sendMessage(msg);
-
-				if(Config.SERVICES_RATE_TYPE == Bonus.BONUS_GLOBAL_ON_GAMESERVER)
-					AccountBonusDAO.getInstance().delete(player.getAccountName());
+				PremiumSystemManager.getInstance().stopExpireTask(player);
 			}
 
 		}, delay);

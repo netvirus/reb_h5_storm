@@ -328,11 +328,11 @@ public class GameServer
 		//SMSWayToPay.getInstance();
 		
 		PlayerTops.getInstance();
-		
-		//PremiumAccountsTable.init();
-		printSection("Premium system");
-		PremiumSystemOptionsData.getInstance();
-		PremiumSystemManager.getInstance();
+
+		if (Config.ENABLE_PREMIUM_SYSTEM) {
+			printSection("Premium system");
+			PremiumSystemOptionsData.getInstance();
+		}
 
 		if (Config.ENABLE_ACHIEVEMENTS)
 			Achievements.getInstance();

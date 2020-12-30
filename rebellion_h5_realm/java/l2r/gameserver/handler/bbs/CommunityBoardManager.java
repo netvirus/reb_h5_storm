@@ -1,13 +1,11 @@
 package l2r.gameserver.handler.bbs;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.templates.StatsSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class CommunityBoardManager
 {
@@ -15,7 +13,6 @@ public class CommunityBoardManager
 	private static final CommunityBoardManager _instance = new CommunityBoardManager();
 
 	private final Map<String, ICommunityBoardHandler>_handlers = new HashMap<String, ICommunityBoardHandler>();
-	private final StatsSet _properties = new StatsSet();
 
 	public static CommunityBoardManager getInstance()
 	{
@@ -50,25 +47,6 @@ public class CommunityBoardManager
 		if(!Config.COMMUNITYBOARD_ENABLED || _handlers.isEmpty())
 			return null;
 
-		for(Map.Entry<String, ICommunityBoardHandler> entry : _handlers.entrySet())
-			if(bypass.contains(entry.getKey()))
-				return entry.getValue();
-
-		return null;
-	}
-
-	public void setProperty(String name, String val)
-	{
-		_properties.set(name, val);
-	}
-
-	public void setProperty(String name, int val)
-	{
-		_properties.set(name, val);
-	}
-
-	public int getIntProperty(String name)
-	{
-		return _properties.getInteger(name, 0);
+		return _handlers.get(bypass);
 	}
 }

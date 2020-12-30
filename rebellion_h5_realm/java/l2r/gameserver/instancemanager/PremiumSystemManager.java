@@ -1,15 +1,15 @@
 package l2r.gameserver.instancemanager;
 
-import l2r.gameserver.listener.PlayerListener;
-import l2r.gameserver.listener.actor.player.OnPlayerEnterListener;
-import l2r.gameserver.model.L2PremiumBonus;
+import l2r.gameserver.dao.PremiumSystemDAO;
 import l2r.gameserver.model.Player;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.network.serverpackets.ExShowScreenMessage;
 import l2r.gameserver.network.serverpackets.MagicSkillUse;
 import l2r.gameserver.network.serverpackets.ExBR_PremiumState;
 import l2r.gameserver.network.serverpackets.components.NpcString;
+import l2r.gameserver.skills.AbnormalEffect;
+import l2r.gameserver.taskmanager.LazyPrecisionTaskManager;
 import l2r.gameserver.utils.TimeUtils;
-import org.napile.primitive.Containers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,104 +22,120 @@ import java.util.concurrent.ScheduledFuture;
  * @author netvirus
  */
 
-public class PremiumSystemManager implements OnPlayerEnterListener {
+public class PremiumSystemManager {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PremiumSystemManager.class);
+    private static final Logger _log = LoggerFactory.getLogger(PremiumSystemManager.class);
     private final Map<Integer, ScheduledFuture<?>> expiretasks = new HashMap<>();
 
-    @Override
-    public void onPlayerEnter(Player player) {
-        System.out.println("JH{OUG{IUG{IGUOGHOHIPHPIHOUGIUGIUGrgeohior0eet9u7");
+    private PremiumSystemManager()
+    {
+        // Visibility
     }
 
-//    protected PremiumSystemManager()
-//    {
-//        listenerContainer.addListener(new ConsumerEventListener(listenerContainer, EventType.ON_PLAYER_LOGIN, playerLoginEvent, this));
-//        listenerContainer.addListener(new ConsumerEventListener(listenerContainer, EventType.ON_PLAYER_LOGOUT, playerLogoutEvent, this));
-//    }
-//
-//    private final Consumer<OnPlayerLogin> playerLoginEvent = (event) ->
-//    {
-//        Map<Boolean, L2PremiumBonus> premiums = DAOFactory.getInstance().getPremiumSystemDAO().load(event.getActiveChar().getObjectId());
-//        Player player = event.getActiveChar();
-//        if (!premiums.isEmpty()) {
-//            L2PremiumBonus premium = null;
-//            switch (premiums.size()) {
-//                // Have one premium
-//                case 1: {
-//                    premium = premiums.get(premiums.keySet().stream().findFirst().get());
-//                    player.setTwoPremium(false);
-//                    break;
-//                }
-//                // Have two premium
-//                case 2: {
-//                    premium = premiums.get(false);
-//                    player.setTwoPremium(true);
-//                    break;
-//                }
-//            }
-//            // Enable premium status
-//            enablePremiumStatus(player, premium);
-//        } else {
-//            // Disable premium status
-//            disablePremiumStatus(player);
-//        }
-//        premiums.clear();
-//    };
-//
-//    private final Consumer<OnPlayerLogout> playerLogoutEvent = (event) ->
-//    {
-//        //TODO Implement update time for not main premium
-//        //stopExpireTask(player);
-//    };
-//
-//    private void startExpireTask(Player player, long delay)
-//    {
-//        //final ScheduledFuture<?> task = ThreadPoolManager.getInstance().scheduleEvent(new PremiumExpireTask(player), delay);
-//        //expiretasks.put(player.getObjectId(), task);
-//    }
-//
-//    private void stopExpireTask(Player player)
-//    {
-////        ScheduledFuture<?> task = expiretasks.remove(player.getAccountName());
-////        if (task != null)
-////        {
-////            task.cancel(false);
-////            task = null;
-////        }
-//    }
-//
-//    private void enablePremiumStatus(Player player, L2PremiumBonus premium, boolean showVisualEffect) {
-//        enablePremiumStatus(player, premium);
-//        player.broadcastPacket(new MagicSkillUse(player, player, 6463, 1, 0, 0));
-//    }
-//
-//    private void enablePremiumStatus(Player player, L2PremiumBonus premium) {
-//        long timer = premium.getBonusDuration();
-//        setPremiumStatus(player, premium, true);
-//        startExpireTask(player, ((timer * 1000L) - System.currentTimeMillis()));
-//        String premiumMsg = "Your premium subscription will expire in: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
-//        player.sendPacket(new ExShowScreenMessage(NpcString.NONE, 7000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, premiumMsg));
-//    }
-//
-//    private void disablePremiumStatus(Player player) {
-//        setPremiumStatus(player, new L2PremiumBonus(), false);
-//        player.setTwoPremium(false);
-//    }
-//
-//    /*
-//     * @param player - active char
-//     * @param premium is the object L2PremiumBonus
-//     * @param boolean state of premium
-//     */
-//    private void setPremiumStatus(Player player, L2PremiumBonus premium, boolean premiumState) {
-//        player.setPremiumStatus(premiumState);
-//        player.setPremiumBonus(premium);
-//        player.sendPacket(new ExBR_PremiumState(player.getObjectId(), premiumState));
-//    }
+    public void load(Player activeChar)
+    {
+        Map<Boolean, PremiumBonus> premiums = PremiumSystemDAO.getInstance().load(activeChar.getObjectId());
+        if (!premiums.isEmpty()) {
+            PremiumBonus premium = null;
+            if (premiums.size() == 1)
+            {
+                premium = premiums.get(premiums.keySet().stream().findFirst().get());
+                activeChar.setDoublePremiumState(false);
+            }
+            else if (premiums.size() == 2)
+            {
+                premium = premiums.get(false);
+                activeChar.setDoublePremiumState(true);
+            }
+            enablePremiumState(activeChar, premium);
+        }
+        premiums.clear();
+    };
+
+    public void enablePremiumStatusFromCommunityBoardPremiumAccount(Player activeChar) {
+        load(activeChar);
+        activeChar.broadcastPacket(new MagicSkillUse(activeChar, activeChar, 6463, 1, 0, 0));
+    }
+
+    private void enablePremiumState(Player activeChar, PremiumBonus premium) {
+        long timer = premium.getBonusDuration();
+
+        changePlayerPremiumBonusState(activeChar, premium);
+
+        activeChar.setPremiumBonus(premium);
+        activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), true));
+
+        if (premium.isBonusAuraEnabled())
+            activeChar.startPremiumBonusAbnormalEffect(AbnormalEffect.S_AIR_STUN);
+
+        String premiumMsg = "Ваша премиум подписка закончится через: " + TimeUtils.formatTime((int) (timer - (System.currentTimeMillis() / 1000)));
+        activeChar.sendPacket(new ExShowScreenMessage(NpcString.NONE, 7000, ExShowScreenMessage.ScreenMessageAlign.TOP_CENTER, premiumMsg));
+
+        startExpireTask(activeChar);
+    }
+
+    /**
+     * Disable any premium state on player active premium bonus
+     * @param activeChar
+     */
+    private void disablePremiumState(Player activeChar) {
+        // Get player's active premium bonus
+        PremiumBonus premiumBonus = activeChar.getPremiumBonus();
+        // Change premium bonus type state to disabled (false)
+        changePlayerPremiumBonusState(activeChar, premiumBonus);
+        // Reset rates to default
+        activeChar.setPremiumBonus(new PremiumBonus());
+        // Disable premium frame
+        activeChar.sendPacket(new ExBR_PremiumState(activeChar.getObjectId(), false));
+        // Disable premium abnormal visual effect
+        if (activeChar.getPremiumBonusAbnormalEffectState())
+            activeChar.stopPremiumBonusAbnormalEffect(activeChar.getPremiumBonusAbnormalEffectType());
+        // Load any active premium subscription
+        load(activeChar);
+        _log.info("Disabled premium for player: " + activeChar.getName());
+    }
+
+    /**
+     * Checks the type of premium subscription and changes the values of the variables depending on the passed type
+     * @param activeChar
+     * @param premiumBonus
+     */
+    private void changePlayerPremiumBonusState(Player activeChar, PremiumBonus premiumBonus)
+    {
+        if (premiumBonus.isBonusMain())
+        {
+            activeChar.setPremiumMainTypeState(true);
+        }
+        else
+        {
+            activeChar.setPremiumMainTypeState(true);
+            activeChar.setPremiumSecondTypeState(true);
+        }
+    }
+
+    private void startExpireTask(Player activeChar)
+    {
+        final ScheduledFuture<?> task = LazyPrecisionTaskManager.getInstance().startBonusExpirationTask(activeChar);
+        expiretasks.put(activeChar.getObjectId(), task);
+    }
+
+    public void stopExpireTask(Player activeChar)
+    {
+        ScheduledFuture<?> task = expiretasks.remove(activeChar.getObjectId());
+        if (task != null)
+        {
+            task.cancel(false);
+        }
+            disablePremiumState(activeChar);
+            load(activeChar);
+    }
+
+    public Map<Integer, ScheduledFuture<?>> getExpireTasks() {
+        return expiretasks;
+    }
 
     public static PremiumSystemManager getInstance() {
-        return SingletonHolder.INSTANCE;
+        return PremiumSystemManager.SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {
