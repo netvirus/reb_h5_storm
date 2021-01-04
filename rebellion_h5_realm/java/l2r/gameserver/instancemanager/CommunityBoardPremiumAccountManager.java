@@ -1,11 +1,10 @@
-package services.community;
+package l2r.gameserver.instancemanager;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.dao.ItemsDAO;
 import l2r.gameserver.dao.PremiumSystemDAO;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
-import l2r.gameserver.instancemanager.PremiumSystemManager;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 
@@ -20,12 +19,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
-import java.util.function.Function;
 
-public class CommunityBoardPremiumAccount {
-    public static final Logger _log = LoggerFactory.getLogger(CommunityBoardPremiumAccount.class);
+public class CommunityBoardPremiumAccountManager {
+    public static final Logger _log = LoggerFactory.getLogger(CommunityBoardPremiumAccountManager.class);
 
-    private CommunityBoardPremiumAccount() {
+    private CommunityBoardPremiumAccountManager() {
         // visibility
     }
 
@@ -161,11 +159,11 @@ public class CommunityBoardPremiumAccount {
         return html;
 }
 
-    public static CommunityBoardPremiumAccount getInstance() {
-        return CommunityBoardPremiumAccount.SingletonHolder.INSTANCE;
+    public static CommunityBoardPremiumAccountManager getInstance() {
+        return CommunityBoardPremiumAccountManager.SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {
-        protected static final CommunityBoardPremiumAccount INSTANCE = new CommunityBoardPremiumAccount();
+        protected static final CommunityBoardPremiumAccountManager INSTANCE = new CommunityBoardPremiumAccountManager();
     }
 }

@@ -13,6 +13,7 @@ import l2r.gameserver.data.xml.holder.MultiSellHolder;
 import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
 import l2r.gameserver.handler.bbs.CommunityBoardManager;
 import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
+import l2r.gameserver.instancemanager.CommunityBoardPremiumAccountManager;
 import l2r.gameserver.instancemanager.ServerVariables;
 import l2r.gameserver.model.Creature;
 import l2r.gameserver.model.Player;
@@ -39,7 +40,6 @@ import l2r.gameserver.utils.TimeUtils;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
@@ -143,7 +143,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		{
 			if (Config.ENABLE_DONATE_PAGE)
 			{
-				html = CommunityBoardPremiumAccount.getInstance().getAction(player, "list");
+				html = CommunityBoardPremiumAccountManager.getInstance().getAction(player, "list");
 			}
 		}
 		else if(bypass.startsWith("_bbspage"))

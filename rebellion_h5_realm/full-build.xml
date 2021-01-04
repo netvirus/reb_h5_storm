@@ -66,6 +66,7 @@
 
 	<!-- gameserver.jar -->
 	<target name="compile-gameserver" depends="commons-jar">
+		<record name="build/build-compile-gameserver.log" append="true"  loglevel="verbose" action="start"/>
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 		<javac srcdir="${src.gameserver}" optimize="on" destdir="${build.classes}" debug="${debug}" source="11" target="11" includeantruntime="false" encoding="UTF-8" nowarn="true" classpath="${build.classpath}:${build}/commons.jar:${build}/loginserver.jar">
@@ -74,6 +75,7 @@
 	</target>
 
 	<target name="gameserver-jar" depends="compile-gameserver">
+		<record name="build/build-gameserver-jar.log" append="true"  loglevel="verbose" action="start"/>
 		<jar destfile="${build}/gameserver.jar">
 			<fileset dir="${build.classes}" />
 			<manifest>

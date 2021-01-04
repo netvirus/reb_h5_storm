@@ -32,7 +32,7 @@ import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import services.community.CommunityBoardPremiumAccount;
+import l2r.gameserver.instancemanager.CommunityBoardPremiumAccountManager;
 
 public class RequestBypassToServer extends L2GameClientPacket
 {
@@ -134,7 +134,7 @@ public class RequestBypassToServer extends L2GameClientPacket
 			{
 				String command = bp.bypass.substring(8).trim();
 				String word = command.split("\\s+")[0];
-				CommunityBoardPremiumAccount.getInstance().getAction(activeChar, word);
+				CommunityBoardPremiumAccountManager.getInstance().getAction(activeChar, word);
 			}
 			else if(bp.bypass.startsWith("npc_"))
 			{
