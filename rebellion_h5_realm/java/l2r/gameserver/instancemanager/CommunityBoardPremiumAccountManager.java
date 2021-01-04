@@ -143,7 +143,7 @@ public class CommunityBoardPremiumAccountManager {
             if (premium != null) {
                 ItemInstance item = player.getInventory().getItemByItemId(premium.getBonusItemId());
                 int amountItems = premium.getBonusItemAmount();
-                if ((item != null) || (item.getCount() >= amountItems)) {
+                if (item != null && item.getCount() >= amountItems) {
                     long bonusPeriod = (System.currentTimeMillis() / 1000) + premium.getBonusDurationFromProfile();
                     PremiumSystemDAO.getInstance().insert(player.getObjectId(), Integer.parseInt(bonusId), bonusPeriod);
                     PremiumSystemManager.getInstance().enablePremiumStatusFromCommunityBoardPremiumAccount(player);
