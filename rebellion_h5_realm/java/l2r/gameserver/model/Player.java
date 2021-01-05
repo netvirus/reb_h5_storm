@@ -2681,8 +2681,9 @@ public final class Player extends Playable implements PlayerGroup
 
 		if(applyRate)
 		{
-			addToExp *= Config.RATE_XP * getRateExp();
-			addToSp *= Config.RATE_SP * getRateSp();
+			addToExp *= getConfigXPRateWithPremiumBonusXPRates() * getRateExp();
+			addToSp *= getConfigSPRateWithPremiumBonusSPRates() * getRateSp();
+
 		}
 
 		Summon pet = getPet();
@@ -2700,12 +2701,14 @@ public final class Player extends Playable implements PlayerGroup
 					else if(pet.isPet() && pet.getExpPenalty() > 0f)
 						if(pet.getLevel() > getLevel() - 20 && pet.getLevel() < getLevel() + 5)
 						{
-							pet.addExpAndSp((long) (addToExp * pet.getExpPenalty()), 0);
+							long addToExpWithPremiumBonus = (long) (addToExp * _premiumBonus.getBonusPetExpRate());
+							pet.addExpAndSp((long) (addToExpWithPremiumBonus * pet.getExpPenalty()), 0);
 							addToExp *= 1. - pet.getExpPenalty();
 						}
 						else
 						{
-							pet.addExpAndSp((long) (addToExp * pet.getExpPenalty() / 5.), 0);
+							long addToExpWithPremiumBonus = (long) (addToExp * _premiumBonus.getBonusPetExpRate());
+							pet.addExpAndSp((long) (addToExpWithPremiumBonus * pet.getExpPenalty() / 5.), 0);
 							addToExp *= 1. - pet.getExpPenalty() / 5.;
 						}
 					else if(pet.isSummon())
@@ -2718,10 +2721,6 @@ public final class Player extends Playable implements PlayerGroup
 
 			if(_karma < 0)
 				_karma = 0;
-
-			// Premium System
-			addToExp *= PremiumAccountsTable.getExpBonus(this);
-			addToSp  *= PremiumAccountsTable.getSpBonus(this);
 			
 			long max_xp = getVarB("NoExp") ? Experience.LEVEL[getLevel() + 1] - 1 : getMaxExp();
 			addToExp = Math.min(addToExp, max_xp - getExp());
@@ -13950,5 +13949,13 @@ public final class Player extends Playable implements PlayerGroup
 	public boolean getPremiumBonusAbnormalEffectState()
 	{
 		return _premiumAbnormalEffectState;
+	}
+
+	public double getConfigXPRateWithPremiumBonusXPRates() {
+		return Config.RATE_XP * _premiumBonus.getBonusExpRate();
+	}
+
+	public double getConfigSPRateWithPremiumBonusSPRates() {
+		return Config.RATE_SP * _premiumBonus.getBonusSpRate();
 	}
 }

@@ -108,7 +108,7 @@ public class RequestBuyItem extends L2GameClientPacket
 		// For beta test servers
 		boolean betaTest = BetaServer.isBetaServerAvailable() && BetaServer.canAccessGmshop();
 		
-		if(!betaTest && !activeChar.canOverrideCond(PcCondOverride.ITEM_SHOP_CONDITIONS) && (merchant == null || !isValidMerchant || !activeChar.isInRange(merchant, Creature.INTERACTION_DISTANCE)))
+		if(!activeChar.isGM() && !betaTest && !activeChar.canOverrideCond(PcCondOverride.ITEM_SHOP_CONDITIONS) && (merchant == null || !isValidMerchant || !activeChar.isInRange(merchant, Creature.INTERACTION_DISTANCE)))
 		{
 			activeChar.sendActionFailed();
 			return;
@@ -155,7 +155,7 @@ public class RequestBuyItem extends L2GameClientPacket
 					}
 
 				// Beta testers are allowed.
-				if(price == 0 && !betaTest && (!activeChar.canOverrideCond(PcCondOverride.ITEM_SHOP_CONDITIONS) || !activeChar.getAccessLevel().allowTransaction()))
+				if(price == 0 && !activeChar.isGM() && !betaTest && (!activeChar.canOverrideCond(PcCondOverride.ITEM_SHOP_CONDITIONS) || !activeChar.getAccessLevel().allowTransaction()))
 				{
 					_log.warn("[RequestBuyItem] possible client hacker: " + activeChar.getName() + " attempting to buy from GM shop! < Ban him!");
 					_log.warn("itemId :" + itemId + " / count = " + count + " / price = " + price);
