@@ -144,7 +144,7 @@ public class RewardGroup implements Cloneable
 					return rollAdena(mod, Config.RATE_DROP_AA_ADENA, player.getRateAdena());
 				
 				if(isRaid && !isBoss)
-					return rollItems(mod, Config.RATE_DROP_RAIDBOSS, 1.0);
+					return rollItems(mod, Config.RATE_DROP_RAIDBOSS, player.getConfigRaidDropChanceWithPremiumBonusRates());
 				
 				if(isRaid && isBoss)
 					return rollItems(mod, 1.0, 1.0);
@@ -238,7 +238,6 @@ public class RewardGroup implements Cloneable
 				{
 					t.count = SafeMath.addAndLimit(t.count, count);
 				}
-
 				break;
 			}
 		}

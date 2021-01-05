@@ -4373,9 +4373,6 @@ public final class Player extends Playable implements PlayerGroup
 			dropRate = _pkKills * Config.KARMA_DROPCHANCE_MOD + Config.KARMA_DROPCHANCE_BASE;
 		else
 			dropRate = Config.NORMAL_DROPCHANCE_BASE;
-
-		// Premium System
-		dropRate *= PremiumAccountsTable.getKarmaDrop(this);
 		
 		int dropEquipCount = 0, dropWeaponCount = 0, dropItemCount = 0;
 
@@ -13951,11 +13948,25 @@ public final class Player extends Playable implements PlayerGroup
 		return _premiumAbnormalEffectState;
 	}
 
+	/**
+	 * @return Exp rates from config and premium
+	 */
 	public double getConfigXPRateWithPremiumBonusXPRates() {
 		return Config.RATE_XP * _premiumBonus.getBonusExpRate();
 	}
 
+	/**
+	 * @return SP rates from config and premium
+	 */
 	public double getConfigSPRateWithPremiumBonusSPRates() {
 		return Config.RATE_SP * _premiumBonus.getBonusSpRate();
+	}
+
+	/**
+	 * @return drop rates from config and premium
+	 */
+	public double getConfigRaidDropChanceWithPremiumBonusRates()
+	{
+		return _premiumBonus.getBonusDropRate();
 	}
 }
