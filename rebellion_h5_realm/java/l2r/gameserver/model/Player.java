@@ -2013,11 +2013,11 @@ public final class Player extends Playable implements PlayerGroup
 		// Fitted exponential curve to the data
 		int con = getCON();
 		if(con < 1)
-			return (int) (31000 * Config.MAXLOAD_MODIFIER);
+			return (int) (31000 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate());
 		else if(con > 59)
-			return (int) (176000 * Config.MAXLOAD_MODIFIER);
+			return (int) (176000 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate());
 		else
-			return (int) calcStat(Stats.MAX_LOAD, Math.pow(1.029993928, con) * 30495.627366 * Config.MAXLOAD_MODIFIER, this, null);
+			return (int) calcStat(Stats.MAX_LOAD, Math.pow(1.029993928, con) * 30495.627366 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate(), this, null);
 	}
 
 	private Future<?> _updateEffectIconsTask;
