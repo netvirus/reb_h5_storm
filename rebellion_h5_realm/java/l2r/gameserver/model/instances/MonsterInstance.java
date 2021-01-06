@@ -15,6 +15,7 @@ import l2r.gameserver.model.Party;
 import l2r.gameserver.model.Playable;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.Skill;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.model.base.Experience;
 import l2r.gameserver.model.base.TeamType;
 import l2r.gameserver.model.entity.Reflection;
@@ -503,7 +504,17 @@ public class MonsterInstance extends NpcInstance
 			return;
 
 		for(Map.Entry<RewardType, RewardList> entry : getTemplate().getRewards().entrySet())
+		{
+			final String type = entry.getKey().toString();
+			if (!type.equals("NOT_RATED_GROUPED") && !type.equals("NOT_RATED_NOT_GROUPED"))
+			{
+				entry.getValue().forEach(rewardGroup -> {
+					double premiumChance = (type.equals("SWEEP")) ? killer.getPremiumBonus().getBonusSpoilChance() : killer.getPremiumBonus().getBonusDropChance();
+					rewardGroup.setChance(rewardGroup.getChance() + premiumChance);
+				});
+			}
 			rollRewards(entry, lastAttacker, topDamager);
+		}
 	}
 
 	@Override
@@ -757,7 +768,7 @@ public class MonsterInstance extends NpcInstance
 		final int diff = calculateLevelDiffForDrop(topDamager.getLevel());
 		double mod = calcStat(Stats.REWARD_MULTIPLIER, 1., activeChar, null);
 		mod *= Experience.penaltyModifier(diff, 9);
-		
+
 		if (getChampionTemplate() != null)
 		{
 			if (type == RewardType.SWEEP)
@@ -765,7 +776,7 @@ public class MonsterInstance extends NpcInstance
 			else
 				mod *= getChampionTemplate().itemDropMultiplier;
 		}
-		
+
 		List<RewardItemResult> rewardItems = list.roll(activePlayer, mod, isRaid(), isBoss(), isChampion());
 		switch(type)
 		{
