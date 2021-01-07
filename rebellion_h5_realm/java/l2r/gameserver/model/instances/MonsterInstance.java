@@ -505,14 +505,6 @@ public class MonsterInstance extends NpcInstance
 
 		for(Map.Entry<RewardType, RewardList> entry : getTemplate().getRewards().entrySet())
 		{
-			final String type = entry.getKey().toString();
-			if (!type.equals("NOT_RATED_GROUPED") && !type.equals("NOT_RATED_NOT_GROUPED"))
-			{
-				entry.getValue().forEach(rewardGroup -> {
-					double premiumChance = (type.equals("SWEEP")) ? killer.getPremiumBonus().getBonusSpoilChance() : killer.getPremiumBonus().getBonusDropChance();
-					rewardGroup.setChance(rewardGroup.getChance() + premiumChance);
-				});
-			}
 			rollRewards(entry, lastAttacker, topDamager);
 		}
 	}
@@ -768,6 +760,18 @@ public class MonsterInstance extends NpcInstance
 		final int diff = calculateLevelDiffForDrop(topDamager.getLevel());
 		double mod = calcStat(Stats.REWARD_MULTIPLIER, 1., activeChar, null);
 		mod *= Experience.penaltyModifier(diff, 9);
+
+		if (activePlayer.getPlayerAnyActivePremiumType())
+		{
+			if (type == RewardType.SWEEP)
+			{
+				mod *= activePlayer.getPremiumBonus().getBonusSpoilAmount();
+			}
+			else
+			{
+				mod *= activePlayer.getPremiumBonus().getBonusDropAmount();
+			}
+		}
 
 		if (getChampionTemplate() != null)
 		{
