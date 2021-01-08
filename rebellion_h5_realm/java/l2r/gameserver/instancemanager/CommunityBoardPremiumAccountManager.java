@@ -43,6 +43,8 @@ public class CommunityBoardPremiumAccountManager {
             html = html.replace("{list}", builder.toString());
         } else if (bypass.startsWith("show_")) {
             String bonusId = bypass.substring(5).trim();
+            double xp = (Config.RATE_XP < 1.0) ? 1.0 : Config.RATE_XP; // Прячем от игроков совсем низкие рейты
+            double sp = (Config.RATE_SP < 1.0) ? 1.0 : Config.RATE_SP; // Пусть думают что они не ниже х1
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
                 if (!player.getDoublePremiumState()) {
@@ -53,49 +55,43 @@ public class CommunityBoardPremiumAccountManager {
                         html = html.replace("{bonus_title}", premium.getBonusName());
                         html = html.replace("{bonus_price}", price);
                         // Not have
-                        html = html.replace("{xp_n}", String.valueOf(player.getRateExp()));
-                        html = html.replace("{sp_n}", String.valueOf(player.getRateSp()));
-                        html = html.replace("{drop_n}", String.valueOf(player.getRateItems()));
-                        html = html.replace("{drop_chance_n}", "x");
-                        html = html.replace("{drop_amount_n}", "x");
-                        html = html.replace("{spoil_n}", String.valueOf(player.getRateSpoil()));
-                        html = html.replace("{spoil_chance_n}", "x");
-                        html = html.replace("{spoil_amount_n}", "x");
-                        html = html.replace("{adena_n}", String.valueOf(player.getRateAdena()));
-                        html = html.replace("{weight_n}", String.valueOf(player.getWeightPercents()));
-                        html = html.replace("{craft_n}", "x");
-                        html = html.replace("{m_craft_n}", "x");
-                        html = html.replace("{extract_n}", "x");
-                        html = html.replace("{manor_n}", String.valueOf(Config.RATE_MANOR));
+                        html = html.replace("{xp_n}", String.valueOf(xp));
+                        html = html.replace("{sp_n}", String.valueOf(sp));
+                        html = html.replace("{drop_n}", String.valueOf(Config.RATE_DROP_ITEMS));
+                        html = html.replace("{drop_chance_n}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS));
+                        html = html.replace("{drop_amount_n}", String.valueOf(Config.RATE_DROP_SPOIL));
+                        html = html.replace("{spoil_n}", String.valueOf(Config.RATE_DROP_SPOIL));
+                        html = html.replace("{spoil_chance_n}", String.valueOf(Config.RATE_CHANCE_SPOIL)); // На самом деле добавляет к параметру Config.BASE_SPOIL_RATE но для игрока лучше видеть это!
+                        html = html.replace("{spoil_amount_n}", String.valueOf(Config.RATE_DROP_SPOIL));
+                        html = html.replace("{adena_n}", String.valueOf(Config.RATE_DROP_ADENA));
+                        html = html.replace("{weight_n}", String.valueOf(Config.MAXLOAD_MODIFIER));
+                        html = html.replace("{craft_n}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE)); // Нет такого множителя, базовая цифра берется с Рецепта
+                        html = html.replace("{m_craft_n}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE));
+                        html = html.replace("{d_craft_n}", String.valueOf(Config.CRAFT_DOUBLECRAFT_CHANCE));
+                        html = html.replace("{extract_n}", String.valueOf(Config.RATE_QUESTS_DROP)); // В UseSkill используется этот множитель
                         html = html.replace("{quest_n}", String.valueOf(Config.RATE_QUESTS_DROP));
                         html = html.replace("{quest_reward_n}", String.valueOf(Config.RATE_QUESTS_REWARD));
-                        html = html.replace("{pet_xp_n}", "x");
+                        html = html.replace("{pet_xp_n}", String.valueOf(xp));
                         html = html.replace("{raid_drop_chance_n}", String.valueOf(Config.RATE_DROP_RAIDBOSS));
-                        html = html.replace("{raid_drop_amount_n}", "x");
-                        html = html.replace("{herb_drop_chance_n}", String.valueOf(Config.RATE_DROP_HERBS));
-                        html = html.replace("{herb_drop_amount_n}", "x");
                         // Have
-                        html = html.replace("{xp_h}", String.valueOf(player.getRateExp() + premium.getBonusExpRate()));
-                        html = html.replace("{sp_h}", String.valueOf(player.getRateSp() + premium.getBonusSpRate()));
-                        html = html.replace("{drop_h}", String.valueOf(player.getRateItems() + premium.getBonusDropRate()));
-                        html = html.replace("{drop_chance_h}", String.valueOf(premium.getBonusDropChance()));
-                        html = html.replace("{drop_amount_h}", String.valueOf(premium.getBonusDropAmount()));
-                        html = html.replace("{spoil_h}", String.valueOf(premium.getBonusSpoilRate()));
-                        html = html.replace("{spoil_chance_h}", String.valueOf(premium.getBonusSpoilChance()));
-                        html = html.replace("{spoil_amount_h}", String.valueOf(premium.getBonusSpoilAmount()));
-                        html = html.replace("{adena_h}", String.valueOf(premium.getBonusAdenaDropRate()));
-                        html = html.replace("{weight_h}", String.valueOf(premium.getBonusWeightLimitRate()));
-                        html = html.replace("{craft_h}", String.valueOf(premium.getBonusCraftChance()));
-                        html = html.replace("{m_craft_h}", String.valueOf(premium.getBonusMasterCraftChance()));
-                        html = html.replace("{extract_h}", String.valueOf(premium.getBonusExtractableRate()));
-                        html = html.replace("{manor_h}", String.valueOf(premium.getBonusManorDropRate()));
-                        html = html.replace("{quest_h}", String.valueOf(premium.getBonusQuestDropRate()));
-                        html = html.replace("{quest_reward_h}", String.valueOf(premium.getBonusQuestRewardRate()));
-                        html = html.replace("{pet_xp_h}", String.valueOf(premium.getBonusPetExpRate()));
-                        html = html.replace("{raid_drop_chance_h}", String.valueOf(premium.getBonusRaidDropChance()));
-                        html = html.replace("{raid_drop_amount_h}", String.valueOf(premium.getBonusRaidDropAmount()));
-                        html = html.replace("{herb_drop_chance_h}", String.valueOf(premium.getBonusHerbDropChance()));
-                        html = html.replace("{herb_drop_amount_h}", String.valueOf(premium.getBonusHerbDropAmount()));
+                        html = html.replace("{xp_h}", String.valueOf(xp * premium.getBonusExpRate()));
+                        html = html.replace("{sp_h}", String.valueOf(sp * premium.getBonusSpRate()));
+                        html = html.replace("{drop_h}", String.valueOf(Config.RATE_DROP_ITEMS * premium.getBonusDropRate()));
+                        html = html.replace("{drop_chance_h}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS * premium.getBonusDropChance()));
+                        html = html.replace("{drop_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusDropAmount()));
+                        html = html.replace("{spoil_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusSpoilRate()));
+                        html = html.replace("{spoil_chance_h}", String.valueOf(Config.RATE_CHANCE_SPOIL + premium.getBonusSpoilChance()));
+                        html = html.replace("{spoil_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusSpoilAmount()));
+                        html = html.replace("{adena_h}", String.valueOf(Config.RATE_DROP_ADENA * premium.getBonusAdenaDropRate()));
+                        html = html.replace("{weight_h}", String.valueOf(Config.MAXLOAD_MODIFIER * premium.getBonusWeightLimitRate()));
+                        html = html.replace("{craft_h}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE * premium.getBonusCraftChance()));
+                        html = html.replace("{m_craft_h}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE * premium.getBonusMasterCraftChance()));
+                        html = html.replace("{d_craft_h}", String.valueOf(Config.CRAFT_DOUBLECRAFT_CHANCE * premium.getBonusDoubleCraftChance()));
+                        html = html.replace("{extract_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusExtractableRate()));
+                        html = html.replace("{quest_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusQuestDropRate()));
+                        html = html.replace("{quest_reward_h}", String.valueOf(Config.RATE_QUESTS_REWARD * premium.getBonusQuestRewardRate()));
+                        html = html.replace("{pet_xp_h}", String.valueOf(xp * premium.getBonusPetExpRate()));
+                        html = html.replace("{raid_drop_chance_h}", String.valueOf(Config.RATE_DROP_RAIDBOSS * premium.getBonusRaidDropChance()));
                         String button = "";
                         button += "<button value=\"Подключить\" action=\"bypass -h premium_buy_";
                         button += premium.getBonusId();
@@ -103,35 +99,33 @@ public class CommunityBoardPremiumAccountManager {
                         html = html.replace("{buy}", button);
                     } else {
                         html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/thesame.htm", player);
-                        if ((player.getPremiumMainTypeState() && premium.isBonusMain() || (player.getPremiumSecondTypeState() && !premium.isBonusMain())))
+                        if ((player.getPremiumMainTypeState() && premium.isBonusMain()) || (player.getPremiumSecondTypeState() && !premium.isBonusMain()))
                             html = html.replace("{bonus_title}", "Вы уже имеете активпый ПА этого типа. <br1>Вашы рейты сейчас:");
                     }
                 } else {
                     html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/alreadyhaveall.htm", player);
                     html = html.replace("{bonus_title}", player.getPremiumBonus().getBonusName());
                 }
-                // Not have
-                html = html.replace("{xp_n}", String.valueOf(player.getRateExp()));
-                html = html.replace("{sp_n}", String.valueOf(player.getRateSp()));
-                html = html.replace("{drop_n}", String.valueOf(player.getRateItems()));
-                html = html.replace("{drop_chance_n}", "x");
-                html = html.replace("{drop_amount_n}", "x");
-                html = html.replace("{spoil_n}", String.valueOf(player.getRateSpoil()));
-                html = html.replace("{spoil_chance_n}", "x");
-                html = html.replace("{spoil_amount_n}", "x");
-                html = html.replace("{adena_n}", String.valueOf(player.getRateAdena()));
-                html = html.replace("{weight_n}", String.valueOf(player.getWeightPercents()));
-                html = html.replace("{craft_n}", "x");
-                html = html.replace("{m_craft_n}", "x");
-                html = html.replace("{extract_n}", "x");
-                html = html.replace("{manor_n}", String.valueOf(Config.RATE_MANOR));
-                html = html.replace("{quest_n}", String.valueOf(Config.RATE_QUESTS_DROP));
-                html = html.replace("{quest_reward_n}", String.valueOf(Config.RATE_QUESTS_REWARD));
-                html = html.replace("{pet_xp_n}", "x");
-                html = html.replace("{raid_drop_chance_n}", String.valueOf(Config.RATE_DROP_RAIDBOSS));
-                html = html.replace("{raid_drop_amount_n}", "x");
-                html = html.replace("{herb_drop_chance_n}", String.valueOf(Config.RATE_DROP_HERBS));
-                html = html.replace("{herb_drop_amount_n}", "x");
+                // Have
+                premium = player.getPremiumBonus();
+                html = html.replace("{xp_h}", String.valueOf(xp * premium.getBonusExpRate()));
+                html = html.replace("{sp_h}", String.valueOf(sp * premium.getBonusSpRate()));
+                html = html.replace("{drop_h}", String.valueOf(Config.RATE_DROP_ITEMS * premium.getBonusDropRate()));
+                html = html.replace("{drop_chance_h}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS * premium.getBonusDropChance()));
+                html = html.replace("{drop_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusDropAmount()));
+                html = html.replace("{spoil_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusSpoilRate()));
+                html = html.replace("{spoil_chance_h}", String.valueOf(Config.RATE_CHANCE_SPOIL + premium.getBonusSpoilChance()));
+                html = html.replace("{spoil_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusSpoilAmount()));
+                html = html.replace("{adena_h}", String.valueOf(Config.RATE_DROP_ADENA * premium.getBonusAdenaDropRate()));
+                html = html.replace("{weight_h}", String.valueOf(Config.MAXLOAD_MODIFIER * premium.getBonusWeightLimitRate()));
+                html = html.replace("{craft_h}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE * premium.getBonusCraftChance()));
+                html = html.replace("{m_craft_h}", String.valueOf(Config.CRAFT_MASTERWORK_CHANCE * premium.getBonusMasterCraftChance()));
+                html = html.replace("{d_craft_h}", String.valueOf(Config.CRAFT_DOUBLECRAFT_CHANCE * premium.getBonusDoubleCraftChance()));
+                html = html.replace("{extract_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusExtractableRate()));
+                html = html.replace("{quest_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusQuestDropRate()));
+                html = html.replace("{quest_reward_h}", String.valueOf(Config.RATE_QUESTS_REWARD * premium.getBonusQuestRewardRate()));
+                html = html.replace("{pet_xp_h}", String.valueOf(xp * premium.getBonusPetExpRate()));
+                html = html.replace("{raid_drop_chance_h}", String.valueOf(Config.RATE_DROP_RAIDBOSS * premium.getBonusRaidDropChance()));
                 html = html.replace("{time}", TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000));
         }
         ShowBoard.separateAndSend(html, player);

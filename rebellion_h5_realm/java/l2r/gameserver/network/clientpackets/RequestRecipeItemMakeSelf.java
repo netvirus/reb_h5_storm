@@ -127,19 +127,17 @@ public class RequestRecipeItemMakeSelf extends L2GameClientPacket
 		activeChar.resetWaitSitTime();
 		activeChar.reduceCurrentMp(recipeList.getMpCost(), null);
 		PremiumBonus premiumBonus = activeChar.getPremiumBonus();
-		double craftChance = premiumBonus.getBonusCraftChance();
-		double mCraftChance = premiumBonus.getBonusMasterCraftChance();
 
 		int tryCount = 1;
 		boolean success = false;
-		if(Rnd.chance(Config.CRAFT_DOUBLECRAFT_CHANCE * craftChance))
+		if(Rnd.chance(Config.CRAFT_DOUBLECRAFT_CHANCE * premiumBonus.getBonusDoubleCraftChance()))
 			tryCount++;
 
 		for(int i = 0; i < tryCount; i++)
 		{
-			if(Rnd.chance(recipeList.getSuccessRate() * craftChance))
+			if(Rnd.chance(recipeList.getSuccessRate() * premiumBonus.getBonusCraftChance()))
 			{
-				int itemId = recipeList.getFoundation() != 0 ? Rnd.chance(Config.CRAFT_MASTERWORK_CHANCE * mCraftChance) ? recipeList.getFoundation() : recipeList.getItemId() : recipeList.getItemId();
+				int itemId = recipeList.getFoundation() != 0 ? Rnd.chance(Config.CRAFT_MASTERWORK_CHANCE * premiumBonus.getBonusMasterCraftChance()) ? recipeList.getFoundation() : recipeList.getItemId() : recipeList.getItemId();
 				long count = recipeList.getCount();
 				ItemFunctions.addItem(activeChar, itemId, count, true);
 				

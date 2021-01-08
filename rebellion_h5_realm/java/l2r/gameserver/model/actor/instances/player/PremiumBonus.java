@@ -9,7 +9,6 @@ import l2r.gameserver.utils.TimeUtils;
  */
 
 public class PremiumBonus {
-
     // premium
     private int _bonusId = 0;
     private String _nameBonus = "";
@@ -29,15 +28,12 @@ public class PremiumBonus {
     private double _weightLimitRate = 1.;
     private double _craftChance = 1.;
     private double _masterCraftChance = 1.;
+    private double _doubleCraftChance = 1.0;
     private double _extractableRate = 1.;
-    private double _manorDropRate = 1.;
     private double _questDropRate = 1.;
     private double _questRewardRate = 1.;
     private double _petExpRate = 1.;
     private double _raidDropChance = 1.;
-    private double _raidDropAmount = 1.;
-    private double _herbDropChance = 1.;
-    private double _herbDropAmount = 1.;
     // time
     private int _days = 0;
     private int _hours = 0;
@@ -50,7 +46,7 @@ public class PremiumBonus {
     public PremiumBonus() {}
 
     // Constructor for clone
-    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, long _duration, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _extractableRate, double _manorDropRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance, double _raidDropAmount, double _herbDropChance, double _herbDropAmount) {
+    public PremiumBonus(int _bonusId, String _nameBonus, boolean _auraBonus, boolean _typeBonus, long _duration, double _expRate, double _spRate, double _dropRate, double _dropChance, double _dropAmount, double _spoilRate, double _spoilChance, double _spoilAmount, double _adenaDropRate, double _weightLimitRate, double _craftChance, double _masterCraftChance, double _doubleCraftChance, double _extractableRate, double _questDropRate, double _questRewardRate, double _petExpRate, double _raidDropChance) {
         this._bonusId = _bonusId;
         this._nameBonus = _nameBonus;
         this._auraBonus = _auraBonus;
@@ -68,15 +64,12 @@ public class PremiumBonus {
         this._weightLimitRate = _weightLimitRate;
         this._craftChance = _craftChance;
         this._masterCraftChance = _masterCraftChance;
+        this._doubleCraftChance = _doubleCraftChance;
         this._extractableRate = _extractableRate;
-        this._manorDropRate = _manorDropRate;
         this._questDropRate = _questDropRate;
         this._questRewardRate = _questRewardRate;
         this._petExpRate = _petExpRate;
         this._raidDropChance = _raidDropChance;
-        this._raidDropAmount = _raidDropAmount;
-        this._herbDropChance = _herbDropChance;
-        this._herbDropAmount = _herbDropAmount;
     }
 
     // Do clone
@@ -101,15 +94,12 @@ public class PremiumBonus {
                 original.getBonusWeightLimitRate(),
                 original.getBonusCraftChance(),
                 original.getBonusMasterCraftChance(),
+                original.getBonusDoubleCraftChance(),
                 original.getBonusExtractableRate(),
-                original.getBonusManorDropRate(),
                 original.getBonusQuestDropRate(),
                 original.getBonusQuestRewardRate(),
                 original.getBonusPetExpRate(),
-                original.getBonusRaidDropChance(),
-                original.getBonusRaidDropAmount(),
-                original.getBonusHerbDropChance(),
-                original.getBonusHerbDropAmount()
+                original.getBonusRaidDropChance()
         );
     }
 
@@ -133,15 +123,12 @@ public class PremiumBonus {
         setBonusWeightLimitRate(set.getDouble("weightLimitRate"));
         setBonusCraftChance(set.getDouble("craftChance"));
         setBonusMasterCraftChance(set.getDouble("mCraftChance"));
+        setBonusDoubleCraftChance(set.getDouble("doubleCraftChance"));
         setBonusExtractableRate(set.getDouble("extractableRate"));
-        setBonusManorDropRate(set.getDouble("manorDropRate"));
         setBonusQuestDropRate(set.getDouble("questDropRate"));
         setBonusQuestRewardRate(set.getDouble("questRewardRate"));
         setBonusPetExpRate(set.getDouble("petExpRate"));
         setBonusRaidDropChance(set.getDouble("raidDropChance"));
-        setBonusRaidDropAmount(set.getDouble("raidDropAmount"));
-        setBonusHerbDropChance(set.getDouble("herbDropChance"));
-        setBonusHerbDropAmount(set.getDouble("herbDropAmount"));
         // time
         setBonusDays(set.getInt("days"));
         setBonusHours(set.getInt("hours"));
@@ -233,7 +220,14 @@ public class PremiumBonus {
      */
     public double getBonusMasterCraftChance() { return _masterCraftChance; }
 
-    public void setBonusMasterCraftChance(double masterCraftChance) { _masterCraftChance = masterCraftChance; }
+    public void setBonusMasterCraftChance(double doubleCraftChance) { _doubleCraftChance = doubleCraftChance; }
+
+    /**
+     * @return the bonus double craft chance %.
+     */
+    public double getBonusDoubleCraftChance() { return _doubleCraftChance; }
+
+    public void setBonusDoubleCraftChance(double masterCraftChance) { _masterCraftChance = masterCraftChance; }
 
     /**
      * @return the bonus weight limit rate.
@@ -248,13 +242,6 @@ public class PremiumBonus {
     public double getBonusExtractableRate() { return _extractableRate; }
 
     public void setBonusExtractableRate(double extractableRate) { _extractableRate = extractableRate; }
-
-    /**
-     * @return the bonus manor drop rate.
-     */
-    public double getBonusManorDropRate() { return _manorDropRate; }
-
-    public void setBonusManorDropRate(double manorDrop) { _manorDropRate = manorDrop; }
 
     /**
      * @return the bonus quest items drop rate.
@@ -283,27 +270,6 @@ public class PremiumBonus {
     public double getBonusRaidDropChance() { return _raidDropChance; }
 
     public void setBonusRaidDropChance(double raidDropChance) { _raidDropChance = raidDropChance; }
-
-    /**
-     * @return the bonus raidboss drop amount.
-     */
-    public double getBonusRaidDropAmount() { return _raidDropAmount; }
-
-    public void setBonusRaidDropAmount(double raidDropAmount) { _raidDropAmount = raidDropAmount; }
-
-    /**
-     * @return the bonus herb drop chance.
-     */
-    public double getBonusHerbDropChance() { return _herbDropChance; }
-
-    public void setBonusHerbDropChance(double herbDropChance) { _herbDropChance = herbDropChance; }
-
-    /**
-     * @return the bonus herb drop amount.
-     */
-    public double getBonusHerbDropAmount() { return _herbDropAmount; }
-
-    public void setBonusHerbDropAmount(double herbDropAmount) { _herbDropAmount = herbDropAmount; }
 
     /**
      * @return the bonus is main or not.
