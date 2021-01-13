@@ -420,6 +420,7 @@ public class _417_PathToScavenger extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		MonsterInstance mob = (MonsterInstance) npc;
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		boolean cond = st.getCond() > 0;
 		if(npcId == HunterBear)
 		{
@@ -431,7 +432,7 @@ public class _417_PathToScavenger extends Quest implements ScriptFile
 			if(cond && st.getQuestItemsCount(BEAR_PIC) >= 1 && st.getQuestItemsCount(HONEY_JAR) < 5)
 				if(mob.isSpoiled())
 				{
-					st.giveItems(HONEY_JAR, 1);
+					st.giveItems(HONEY_JAR, questItemCountWithPremiumBonus);
 					if(st.getQuestItemsCount(HONEY_JAR) >= 5)
 					{
 						st.playSound(SOUND_MIDDLE);
@@ -446,7 +447,7 @@ public class _417_PathToScavenger extends Quest implements ScriptFile
 				if(mob.isSpoiled())
 					if(Rnd.chance(50))
 					{
-						st.giveItems(BEAD, 1);
+						st.giveItems(BEAD, questItemCountWithPremiumBonus);
 						if(st.getQuestItemsCount(BEAD) >= 20)
 						{
 							st.playSound(SOUND_MIDDLE);

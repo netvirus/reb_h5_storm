@@ -269,11 +269,12 @@ public class _412_PathToDarkwizard extends Quest implements ScriptFile
 	public String onKill(NpcInstance npc, QuestState st)
 	{
 		//DROPLIST [MOB_ID, REQUIRED, ITEM, NEED_COUNT]
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		for(int[] element : DROPLIST)
 			if(st.getCond() == 1 && npc.getNpcId() == element[0] && st.getQuestItemsCount(element[1]) > 0)
 				if(Rnd.chance(50) && st.getQuestItemsCount(element[2]) < element[3])
 				{
-					st.giveItems(element[2], 1);
+					st.giveItems(element[2], questItemCountWithPremiumBonus);
 					if(st.getQuestItemsCount(element[2]) >= element[3])
 						st.playSound(SOUND_MIDDLE);
 					else

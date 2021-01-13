@@ -202,29 +202,30 @@ public class _407_PathToElvenScout extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == OL_MAHUM_PATROL && cond == 2)
 		{
 			if(st.getQuestItemsCount(PRIGUNS_TEAR_LETTER1_ID) == 0)
 			{
-				st.giveItems(PRIGUNS_TEAR_LETTER1_ID, 1);
+				st.giveItems(PRIGUNS_TEAR_LETTER1_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_ITEMGET);
 				return null;
 			}
 			if(st.getQuestItemsCount(PRIGUNS_TEAR_LETTER2_ID) == 0)
 			{
-				st.giveItems(PRIGUNS_TEAR_LETTER2_ID, 1);
+				st.giveItems(PRIGUNS_TEAR_LETTER2_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_ITEMGET);
 				return null;
 			}
 			if(st.getQuestItemsCount(PRIGUNS_TEAR_LETTER3_ID) == 0)
 			{
-				st.giveItems(PRIGUNS_TEAR_LETTER3_ID, 1);
+				st.giveItems(PRIGUNS_TEAR_LETTER3_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_ITEMGET);
 				return null;
 			}
 			if(st.getQuestItemsCount(PRIGUNS_TEAR_LETTER4_ID) == 0)
 			{
-				st.giveItems(PRIGUNS_TEAR_LETTER4_ID, 1);
+				st.giveItems(PRIGUNS_TEAR_LETTER4_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(3);
 				return null;
@@ -232,7 +233,7 @@ public class _407_PathToElvenScout extends Quest implements ScriptFile
 		}
 		else if(npcId == OL_MAHUM_SENTRY && cond == 5 && Rnd.chance(60))
 		{
-			st.giveItems(RUSTED_KEY_ID, 1);
+			st.giveItems(RUSTED_KEY_ID, questItemCountWithPremiumBonus);
 			st.playSound(SOUND_MIDDLE);
 			st.setCond(6);
 		}

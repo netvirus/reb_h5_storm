@@ -242,10 +242,11 @@ public class _405_PathToCleric extends Quest implements ScriptFile
 	public String onKill(NpcInstance npc, QuestState st)
 	{
 		int npcId = npc.getNpcId();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == RUIN_ZOMBIE | npcId == RUIN_ZOMBIE_LEADER)
 			if(st.getCond() == 1 && st.getQuestItemsCount(PENDANT_OF_MOTHER) < 1)
 			{
-				st.giveItems(PENDANT_OF_MOTHER, 1);
+				st.giveItems(PENDANT_OF_MOTHER, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 			}
 		return null;

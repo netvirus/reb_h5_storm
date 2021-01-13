@@ -211,10 +211,11 @@ public class _413_PathToShillienOracle extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == DARK_SUCCUBUS)
 			if(cond == 2 && st.getQuestItemsCount(BLANK_SHEET1_ID) > 0)
 			{
-				st.giveItems(BLOODY_RUNE1_ID, 1);
+				st.giveItems(BLOODY_RUNE1_ID, questItemCountWithPremiumBonus);
 				st.takeItems(BLANK_SHEET1_ID, 1);
 				if(st.getQuestItemsCount(BLANK_SHEET1_ID) < 1)
 				{
@@ -227,7 +228,7 @@ public class _413_PathToShillienOracle extends Quest implements ScriptFile
 		for(int i : ASHEN_BONES_DROP)
 			if(npcId == i && cond == 5 && st.getQuestItemsCount(ASHEN_BONES_ID) < 10)
 			{
-				st.giveItems(ASHEN_BONES_ID, 1);
+				st.giveItems(ASHEN_BONES_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(ASHEN_BONES_ID) > 9)
 				{
 					st.playSound(SOUND_MIDDLE);

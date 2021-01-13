@@ -1,6 +1,7 @@
 package quests;
 
 import l2r.commons.util.Rnd;
+import l2r.gameserver.model.Player;
 import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.model.quest.Quest;
 import l2r.gameserver.model.quest.QuestState;
@@ -451,10 +452,11 @@ public class _402_PathToKnight extends Quest implements ScriptFile
 	public String onKill(NpcInstance npc, QuestState st)
 	{
 		int npcId = npc.getNpcId();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		for(int[] element : DROPLIST)
 			if(st.getCond() > 0 && npcId == element[0] && st.getQuestItemsCount(element[1]) > 0 && st.getQuestItemsCount(element[2]) < element[3] && Rnd.chance(element[4]))
 			{
-				st.giveItems(element[2], 1);
+				st.giveItems(element[2], questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(element[2]) >= element[3])
 					st.playSound(SOUND_MIDDLE);
 				else

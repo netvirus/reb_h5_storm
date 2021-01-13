@@ -268,11 +268,12 @@ public class _408_PathToElvenwizard extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == PINCER_SPIDER)
 		{
 			if(cond > 0 && st.getQuestItemsCount(CHARM_OF_GRAIN_ID) > 0 && st.getQuestItemsCount(RED_DOWN_ID) < 5 && Rnd.chance(70))
 			{
-				st.giveItems(RED_DOWN_ID, 1);
+				st.giveItems(RED_DOWN_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(RED_DOWN_ID) < 5)
 					st.playSound(SOUND_ITEMGET);
 				else
@@ -283,7 +284,7 @@ public class _408_PathToElvenwizard extends Quest implements ScriptFile
 		{
 			if(cond > 0 && st.getQuestItemsCount(SAP_OF_WORLD_TREE_ID) > 0 && st.getQuestItemsCount(GOLD_LEAVES_ID) < 5 && Rnd.chance(40))
 			{
-				st.giveItems(GOLD_LEAVES_ID, 1);
+				st.giveItems(GOLD_LEAVES_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(GOLD_LEAVES_ID) < 5)
 					st.playSound(SOUND_ITEMGET);
 				else
@@ -293,7 +294,7 @@ public class _408_PathToElvenwizard extends Quest implements ScriptFile
 		else if(npcId == SUKAR_WERERAT_LEADER)
 			if(cond > 0 && st.getQuestItemsCount(LUCKY_POTPOURI_ID) > 0 && st.getQuestItemsCount(AMETHYST_ID) < 2 && Rnd.chance(40))
 			{
-				st.giveItems(AMETHYST_ID, 1);
+				st.giveItems(AMETHYST_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(AMETHYST_ID) < 2)
 					st.playSound(SOUND_ITEMGET);
 				else

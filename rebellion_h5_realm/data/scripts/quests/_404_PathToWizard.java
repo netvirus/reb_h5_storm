@@ -254,11 +254,12 @@ public class _404_PathToWizard extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == RATMAN_WARRIOR)
 		{
 			if(cond == 2)
 			{
-				st.giveItems(KEY_OF_FLAME_ID, 1);
+				st.giveItems(KEY_OF_FLAME_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(3);
 			}
@@ -267,7 +268,7 @@ public class _404_PathToWizard extends Quest implements ScriptFile
 		{
 			if(cond == 8 && st.getQuestItemsCount(SPARKLE_PEBBLE_ID) < 2)
 			{
-				st.giveItems(SPARKLE_PEBBLE_ID, 1);
+				st.giveItems(SPARKLE_PEBBLE_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(SPARKLE_PEBBLE_ID) >= 2)
 				{
 					st.playSound(SOUND_MIDDLE);
@@ -280,7 +281,7 @@ public class _404_PathToWizard extends Quest implements ScriptFile
 		else if(npcId == RED_BEAR)
 			if(cond == 11)
 			{
-				st.giveItems(RED_SOIL_ID, 1);
+				st.giveItems(RED_SOIL_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(12);
 			}
