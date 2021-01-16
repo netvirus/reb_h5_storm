@@ -238,7 +238,7 @@ public class _403_PathToRogue extends Quest implements ScriptFile
 						if(npcId == element[0] && Rnd.chance(10 * element[1]) && st.getQuestItemsCount(SPATOIS_BONES_ID) < 10)
 						{
 							st.giveItems(SPATOIS_BONES_ID, questItemCountWithPremiumBonus);
-							if(st.getQuestItemsCount(SPATOIS_BONES_ID) == 10)
+							if(st.getQuestItemsCount(SPATOIS_BONES_ID) >= 10)
 							{
 								st.playSound(SOUND_MIDDLE);
 								st.setCond(3);
