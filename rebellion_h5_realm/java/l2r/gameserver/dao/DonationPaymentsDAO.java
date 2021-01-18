@@ -22,9 +22,9 @@ public class DonationPaymentsDAO {
     private static final DonationPaymentsDAO _instance = new DonationPaymentsDAO();
 
     // SQL
-    public static final String SELECT_SQL_QUERY = "SELECT * FROM character_payments WHERE unit_status = 1 AND status <> 1";
-    public static final String UPDATE_SQL_QUERY = "UPDATE character_payments SET status = 1 WHERE char_name=? AND id=?";
-    public static final String INSERT_SQL_QUERY = "INSERT INTO character_payments(char_name, amount, pay_data) VALUES (?,?,?)";
+    public static final String SELECT_SQL_QUERY = "SELECT * FROM unitpay_payments WHERE delivered = 0 AND status <> 1";
+    public static final String UPDATE_SQL_QUERY = "UPDATE unitpay_payments SET delivered = 1 WHERE char_name=? AND id=?";
+    public static final String INSERT_SQL_QUERY = "INSERT INTO unitpay_payments (char_name, amount) VALUES (?,?)";
 
     public ArrayList<Payment> getPayments()
     {
@@ -42,7 +42,7 @@ public class DonationPaymentsDAO {
             {
                 while (rset.next())
                 {
-                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("amount"), rset.getInt("pay_data"), rset.getInt("status")));
+                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("amount"), rset.getString("dateComplete"), rset.getBoolean("delivered")));
                 }
             }
         }
@@ -57,7 +57,7 @@ public class DonationPaymentsDAO {
         return payments;
     }
 
-    public void changeStatusToReceived(Payment payment)
+    public void changeStatusToDelivered(Payment payment)
     {
         Connection con = null;
         PreparedStatement statement = null;
@@ -79,7 +79,7 @@ public class DonationPaymentsDAO {
         }
     }
 
-    public void addPayment(String charName, int amount, int payData)
+    public void addPayment(String charName, int amount)
     {
         Connection con = null;
         PreparedStatement statement = null;
@@ -89,12 +89,11 @@ public class DonationPaymentsDAO {
             statement = con.prepareStatement(INSERT_SQL_QUERY);
             statement.setString(1, charName);
             statement.setInt(2, amount);
-            statement.setInt(3, payData);
             statement.execute();
         }
         catch (Exception e)
         {
-            _log.error("DonationPaymentsDAO.addPayment(String charName, int amount, int payData): " + e, e);
+            _log.error("DonationPaymentsDAO.addPayment(String charName, int amount): " + e, e);
         }
         finally
         {
