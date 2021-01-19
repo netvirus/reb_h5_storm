@@ -1,6 +1,21 @@
-Item Broker Adventure Guildsman: Welcome! I have never-before-seen items
-here available for purchase. But since I only have a few, I will auction
-them off to the highest bidders. Interested? [npc_%objectId%_Chat 1|View
-auction rules.] [npc_%objectId%_auction show|Buy Items.]
-
-[npc_%objectId%_auction cancel|Retrieve cancelled bids.]
+<font color="FFFF00">Item Broker Adventure Guildsman:</font><br>
+Welcome! I have never-before-seen items here available for purchase.<br1>
+But since I only have a few, I will auction them off to the highest bidders.<br1>
+Interested?<br>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="View auction rules" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Buy Items" action="bypass -h npc_%objectId%_auction show" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Retrieve cancelled bids" action="bypass -h npc_%objectId%_auction cancel" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+</table>
