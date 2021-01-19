@@ -22,7 +22,7 @@ public class DonationPaymentsDAO {
     private static final DonationPaymentsDAO _instance = new DonationPaymentsDAO();
 
     // SQL
-    public static final String SELECT_SQL_QUERY = "SELECT * FROM unitpay_payments WHERE delivered = 0 AND status <> 1";
+    public static final String SELECT_SQL_QUERY = "SELECT * FROM unitpay_payments WHERE delivered = 0 AND status = 1";
     public static final String UPDATE_SQL_QUERY = "UPDATE unitpay_payments SET delivered = 1 WHERE char_name=? AND id=?";
     public static final String INSERT_SQL_QUERY = "INSERT INTO unitpay_payments (char_name, amount) VALUES (?,?)";
 
