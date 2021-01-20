@@ -233,8 +233,6 @@ import l2r.gameserver.network.serverpackets.components.SystemMsg;
 import l2r.gameserver.nexus_interface.NexusEvents;
 import l2r.gameserver.nexus_interface.PlayerEventInfo;
 import l2r.gameserver.randoms.CharacterEmails;
-import l2r.gameserver.randoms.PlayerKillsLogManager;
-import l2r.gameserver.randoms.PlayerKillsLogManager.KillLog;
 import l2r.gameserver.randoms.Radar;
 import l2r.gameserver.scripts.Events;
 import l2r.gameserver.scripts.Functions;
@@ -773,25 +771,6 @@ public final class Player extends Playable implements PlayerGroup
 		return _connection.getIpAddr();
 	}
 
-	public String getHWID()
-	{
-		if(_connection == null)
-			return NOT_CONNECTED;
-		
-		return _connection.getHWID();
-	}
-
-	public boolean hasHWID()
-	{
-		if (Config.DISABLE_HWID_SUPPORT)
-			return false;
-		
-		if (getPlayer() == null || getHWID() == null || getHWID().equalsIgnoreCase(NOT_CONNECTED))
-			return false;
-		
-		return true;
-	}
-	
 	public int getInstanceCount()
 	{
 		if(_connection == null)
@@ -4500,21 +4479,6 @@ public final class Player extends Playable implements PlayerGroup
 		if (Config.ENABLE_PLAYER_COUNTERS)
 			getCounters().addPoint("_Times_Died");
 		
-		// playerkill - for the anti-feed system
-		if (Config.ENABLE_PVP_PK_LOG && getPlayer() != null && getPlayer().getHWID() != null && killer != null && killer.isPlayer() && killer.getPlayer().getHWID() != null)
-		{
-			Player pk = (Player) killer;
-			boolean isPvP = true;
-			
-			if (killer.getKarma() > 0)
-				isPvP = false;
-			
-			long lastKillTime = _killedHWIDs.get(getPlayer().getHWID()) == null ? 0 : _killedHWIDs.get(getPlayer().getHWID());
-			pk._killedHWIDs.put(getPlayer().getHWID(), System.currentTimeMillis());
-			KillLog kl = PlayerKillsLogManager.getInstance().new KillLog(pk, getPlayer(), System.currentTimeMillis(), lastKillTime, pk.checkIfKillIsFeed(this), NexusEvents.isInEvent(this), isPvP);
-			PlayerKillsLogManager.getInstance().addLog(getObjectId(), kl);
-		}
-				
 		if (!player.isPhantom())
 			getDeathPenalty().notifyDead(killer);
 
@@ -5272,7 +5236,7 @@ public final class Player extends Playable implements PlayerGroup
 	public void reduceArrowCount()
 	{
 		sendPacket(SystemMsg.YOU_CAREFULLY_NOCK_AN_ARROW);
-		if(_arrowItem != null && (!Config.ALLOW_ARROW_INFINITELY || !PremiumAccountsTable.getPlayerInfinityShotsArrows(this)))
+		if(_arrowItem != null && (!Config.ALLOW_ARROW_INFINITELY))
 		{
 			if(!getInventory().destroyItemByObjectId(getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND), 1L))
 			{
@@ -11050,7 +11014,6 @@ public final class Player extends Playable implements PlayerGroup
 		if(fame > _fame)
 		{
 			int added = fame - _fame;
-			added *= PremiumAccountsTable.getFameBonus(this);
 			fame = added + _fame;
 			sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_ACQUIRED_S1_REPUTATION_SCORE).addNumber(added));
 		}
@@ -12882,7 +12845,7 @@ public final class Player extends Playable implements PlayerGroup
 				statement = con.prepareStatement("UPDATE `character_security` SET `password`=?, `changeDate`=?, `changeHWID`=?, `remainingTries`=? WHERE `charId`=?");
 				statement.setString(1, null);
 				statement.setLong(2, System.currentTimeMillis());
-				statement.setString(3, getHWID());
+				statement.setString(3, "-");
 				statement.setInt(4, 3); // 3 tries left on successful change
 				statement.setInt(5, getObjectId());
 			}
@@ -12892,12 +12855,12 @@ public final class Player extends Playable implements PlayerGroup
 				statement.setInt(1, getObjectId());
 				statement.setString(2, getSecurityPassword());
 				statement.setLong(3, System.currentTimeMillis());
-				statement.setString(4, getHWID());
+				statement.setString(4, "-");
 				
 				// On duplicate key - the char already has security set
 				statement.setString(5, getSecurityPassword());
 				statement.setLong(6, System.currentTimeMillis());
-				statement.setString(7, getHWID());
+				statement.setString(7, "-");
 			}
 			statement.executeUpdate();
 		}
@@ -12974,13 +12937,7 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		return _profiles;
 	}
-	
-	public void delOlympiadIpHWID()
-	{
-		Olympiad.getOlyIPList().remove(getIP());
-		Olympiad.getOlyHwidList().remove(getHWID());
-	}
-	
+
 	public GameEvent getGameEvent()
 	{
 		return _event;
@@ -13207,19 +13164,6 @@ public final class Player extends Playable implements PlayerGroup
 			
 			if (i > 6)
 				return false;
-			
-			if (target.hasHWID() && target.hasTooManyRessurectionStacks())
-			{
-				// 20 min ban to this char for killing this target.
-				_killedHWIDs.put(target.getHWID(), System.currentTimeMillis() + 20 * 60000);
-				return true;
-			}
-			
-			if (Config.ANTIFEED_INTERVAL > 0 && target.hasHWID() && _killedHWIDs.containsKey(target.getHWID()))
-			{
-				if ((System.currentTimeMillis() - _killedHWIDs.get(target.getHWID())) < Config.ANTIFEED_INTERVAL) //multiplier
-					return true;
-			}
 		}
 		catch (NullPointerException npe)
 		{
@@ -13438,11 +13382,7 @@ public final class Player extends Playable implements PlayerGroup
 			{
 				maxBoxesAllowed--;
 			}
-			else if (player.hasHWID() && getClient().getAccountData() == null || getClient().getAccountData().accessLevel < 2 && getHWID().equalsIgnoreCase(player.getHWID())) // Account access 2 allows HWID dualbox bypass
-			{
-				maxBoxesAllowed--;
-			}
-			
+
 			if (maxBoxesAllowed < 0)
 				return true;
 		}

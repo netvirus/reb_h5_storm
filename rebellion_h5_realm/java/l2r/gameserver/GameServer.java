@@ -25,11 +25,8 @@ import l2r.gameserver.handler.usercommands.UserCommandHandler;
 import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2r.gameserver.idfactory.IdFactory;
 import l2r.gameserver.instancemanager.*;
-import l2r.gameserver.instancemanager.games.ActivityReward;
-//import l2r.gameserver.instancemanager.games.DonationBonusDay;
-import l2r.gameserver.instancemanager.games.FishingChampionShipManager;
-import l2r.gameserver.instancemanager.games.LotteryManager;
-import l2r.gameserver.instancemanager.games.MiniGameScoreManager;
+import l2r.gameserver.instancemanager.games.*;
+import l2r.gameserver.instancemanager.games.DonationBonusDay;
 import l2r.gameserver.instancemanager.itemauction.ItemAuctionManager;
 import l2r.gameserver.instancemanager.naia.NaiaCoreManager;
 import l2r.gameserver.instancemanager.naia.NaiaTowerManager;
@@ -38,7 +35,6 @@ import l2r.gameserver.listener.game.OnShutdownListener;
 import l2r.gameserver.listener.game.OnStartListener;
 import l2r.gameserver.model.AcademyList;
 import l2r.gameserver.model.AcademyRewards;
-import l2r.gameserver.model.PhantomPlayers;
 import l2r.gameserver.model.World;
 import l2r.gameserver.model.entity.Hero;
 import l2r.gameserver.model.entity.MonsterRace;
@@ -52,8 +48,8 @@ import l2r.gameserver.network.telnet.TelnetServer;
 import l2r.gameserver.nexus_interface.NexusEvents;
 import l2r.gameserver.randoms.CaptchaImage;
 import l2r.gameserver.randoms.PlayerKill;
-import l2r.gameserver.randoms.PlayerKillsLogManager;
 import l2r.gameserver.randoms.Visuals;
+import l2r.gameserver.randoms.votingengine.VotingRewardAPI;
 import l2r.gameserver.scripts.Scripts;
 import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.tables.AugmentationData;
@@ -146,28 +142,13 @@ public class GameServer
 		version = new Version(GameServer.class);
 		
 		_log.info("=================================================");
-		_log.info("Copyright: ............... " + "L2relax.fun Based on L2r");
-		_log.info("Chronicle: ............... " + "High Five");
+		_log.info("Copyright: ............... " + "L2relax.fun");
+		_log.info("Chronicle: ............... " + "High Five Part 5");
 		_log.info("Revision: ................ " + version.getRevisionNumber());
 		_log.info("Build date: .............. " + version.getBuildDate());
 		_log.info("=================================================");
 	}
-//
-//	private void showLogo()
-//	{
-//		System.out.println("                                                                ");
-//		System.out.println("================================================================");
-//		System.out.println(".......##........#######........###.....######...########.......");
-//		System.out.println(".......##.......##.....##......##.##...##....##..##.............");
-//		System.out.println(".......##..............##.....##...##..##........##.............");
-//		System.out.println(".......##........#######.....##.....##.##...####.######.........");
-//		System.out.println(".......##.......##...........#########.##....##..##.............");
-//		System.out.println(".......##.......##...........##.....##.##....##..##.............");
-//		System.out.println(".......########.#########....##.....##..######...########.......");
-//		System.out.println("================================================================");
-//		System.out.println("                                                                ");
-//	}
-	
+
 	@SuppressWarnings("unchecked")
 	public GameServer() throws Exception
 	{
@@ -360,13 +341,6 @@ public class GameServer
 		
 		if (Config.ENABLE_PLAYER_KILL_SYSTEM)
 			PlayerKill.getInstance().init();
-		
-		if (Config.ENABLE_PVP_PK_LOG)
-		{
-			PlayerKillsLogManager.getInstance();
-			_log.info("PlayerPvPpkLog Manger started...");
-		}
-		
 
 		if (Config.ENABLE_FAKEPC)
 			FakePcsTable.getInstance().init();
@@ -376,32 +350,27 @@ public class GameServer
 			new CaptchaImage();
 			_log.info("Captcha system loaded.");
 		}
-
-		PromotionCheckerDAO.getInstance().loadHwids();
-		_log.info("Promotion Hwid Check loaded.");
 		
 		// If there is no such var in server var create such with default false.
-//		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
-//			ServerVariables.set("DonationBonusActive", false);
-//
-//		if (ServerVariables.getBool("DonationBonusActive", true))
-//			DonationBonusDay.getInstance().continuePormotion();
-//		else
-//			DonationBonusDay.getInstance().stopPromotion();
+		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
+			ServerVariables.set("DonationBonusActive", false);
+
+		if (ServerVariables.getBool("DonationBonusActive", true))
+			DonationBonusDay.getInstance().continuePormotion();
+		else
+			DonationBonusDay.getInstance().stopPromotion();
 
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
 		
 		BetaServer.getInstance();
 		
-		//VotingRewardAPI.getInstance();
+		VotingRewardAPI.getInstance();
 
 		if (Config.ENABLE_DONATION_READER) {
 			DonationPaymentsDAO.getInstance();
 			_log.info("Donation auto check system is enabled.");
 		}
-		
-		//HwidBansChecker.getInstance();
-		
+
 		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
 		_log.info("GameServer Started");
 		_log.info("Maximum Numbers of Connected Players: " + Config.MAXIMUM_ONLINE_USERS);
@@ -426,10 +395,7 @@ public class GameServer
 		
 		if (!Config.DONTAUTOANNOUNCE)
 			ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoAnnounce(), 60000, 60000);
-		
-//		if (Config.PHANTOM_PLAYERS_ENABLED)
-//			PhantomPlayers.init();
-		
+
 		getListeners().onStart();
 		
 		if (Config.IS_TELNET_ENABLED)
@@ -439,9 +405,7 @@ public class GameServer
 		
 		if(Config.RRD_ENABLED)
 			RRDTools.init();
-		
-		QuestHWIDRestriction.getInstance().loadQuestData();
-		
+
 		printSection("Memory");
 		String memUsage = new StringBuilder().append(StatsUtils.getMemUsage()).toString();
 		for (String line : memUsage.split("\n"))

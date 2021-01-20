@@ -45,7 +45,6 @@ import l2r.gameserver.handler.admincommands.impl.AdminOlympiad;
 import l2r.gameserver.handler.admincommands.impl.AdminPSPoints;
 import l2r.gameserver.handler.admincommands.impl.AdminPcCondOverride;
 import l2r.gameserver.handler.admincommands.impl.AdminPetition;
-import l2r.gameserver.handler.admincommands.impl.AdminPhantoms;
 import l2r.gameserver.handler.admincommands.impl.AdminPledge;
 import l2r.gameserver.handler.admincommands.impl.AdminPolymorph;
 import l2r.gameserver.handler.admincommands.impl.AdminPremiumAccount;
@@ -152,7 +151,6 @@ public class AdminCommandHandler extends AbstractHolder
 		registerAdminCommandHandler(new AdminEventEngine());
 		registerAdminCommandHandler(new AdminAugment());
 		registerAdminCommandHandler(new AdminVitality());
-		registerAdminCommandHandler(new AdminPhantoms());
 	}
 
 	public void registerAdminCommandHandler(IAdminCommandHandler handler)

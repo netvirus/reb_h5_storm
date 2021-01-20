@@ -90,31 +90,21 @@ public class Config
 
 	/** CONFIG - SERVICES */
 	public static final String ACC_MOVE_FILE = "config/services/CharMove.properties";
-	//	public static final String PAYMENT_FILE = "config/services/payment.properties";
-	//  public static final String PREMIUM_FILE = "config/services/premium.properties";
 	public static final String SERVICES_FILE = "config/services/services.properties";
 	public static final String TOP_FILE = "config/services/tops.properties";
 	public static final String WEDDING_FILE = "config/services/Wedding.properties";
 
 	/** CONFIG - EVENTS */
-	//	public static final String EVENT_APRIL_FOOLS_CONFIG_FILE = "config/events/AprilFools.properties";
 	public static final String EVENT_CAPTURE_THE_FLAG_CONFIG_FILE = "config/events/CaptureTheFlag.properties";
-	//	public static final String EVENT_CHANGE_OF_HEART_CONFIG_FILE = "config/events/ChangeOfHeart.properties";
 	public static final String EVENT_COFFER_OF_SHADOWS_CONFIG_FILE = "config/events/CofferOfShadows.properties";
-	//	public static final String DEFENSE_TOWNS_CONFIG_FILE = "config/events/DefenseTowns.properties";
 	public static final String EVENTS_CONFIG_FILE = "config/events/events.properties";
 	public static final String EVENT_FIGHT_CLUB_FILE = "config/events/FightClub.properties";
 	public static final String EVENT_GLITTERING_MEDAL_CONFIG_FILE = "config/events/GlitteringMedal.properties";
-	//	public static final String EVENT_L2_DAY_CONFIG_FILE = "config/events/L2Day.properties";
 	public static final String EVENT_LAST_HERO_CONFIG_FILE = "config/events/LastHero.properties";
-	//	public static final String EVENT_MARCH_8_CONFIG_FILE = "config/events/March8.properties";
 	public static final String EVENT_MASTER_OF_ENCHANING_CONFIG_FILE = "config/events/MasterOfEnchaning.properties";
 	public static final String EVENT_OTHER_EVENTS_CONFIG_FILE = "config/events/OtherEvents.properties";
-	//	public static final String EVENT_SAVING_SNOWMAN_CONFIG_FILE = "config/events/SavingSnowman.properties";
 	public static final String EVENT_TEAM_VS_TEAM_CONFIG_FILE = "config/events/TeamVSTeam.properties";
 	public static final String EVENT_THE_FALL_HARVEST_CONFIG_FILE = "config/events/TheFallHarvest.properties";
-	//	public static final String EVENT_TRICK_OF_TRANSMUTATION_CONFIG_FILE = "config/events/TrickOfTransmutation.properties";
-	//	public static final String PC_CONFIG_FILE = "config/events/PcBangPoints.properties";
 	public static final String TRIVIA_CONFIG_FILE = "config/events/Trivia.properties";
 	
 	/** CONFIG - COMMUNITY */
@@ -125,11 +115,6 @@ public class Config
 	public static final String TELEPORT_MANAGER_CONFIG_FILE = "config/community/teleport_manager.properties";
 	public static final String ENCHANT_CB_CONFIG_FILE = "config/community/enchanter_manager.properties";
 
-	/** CONFIG - Phantom players */
-	public static final String PHANTOM_FILE = "config/phantom/Phantoms.properties";
-
-	public static boolean ENABLE_HWID_CHECKER;
-	
 	// Donation system
 	public static boolean ENABLE_DONATION_READER;
 	public static int DONATION_CHECK_DELAY;
@@ -141,90 +126,12 @@ public class Config
 	// Premium system
 	public static boolean ENABLE_PREMIUM_SYSTEM;
 
-	 /* --------------------------------------------------------- */
-	// Phantom players
-	public static boolean PHANTOM_PLAYERS_ENABLED;
-	public static String PHANTOM_PLAYERS_ACCOUNT;
-	public static int PHANTOM_MAX_PLAYERS;
-	public static int[] PHANTOM_BANNED_CLASSID;
-	public static int[] PHANTOM_BANNED_SETID;
-	public static int PHANTOM_MAX_WEAPON_GRADE;
-	public static int PHANTOM_MAX_ARMOR_GRADE;
-	public static int PHANTOM_MAX_JEWEL_GRADE;
-	public static int PHANTOM_SPAWN_MAX;
-	public static int PHANTOM_SPAWN_DELAY;
-	public static int PHANTOM_MAX_LIFETIME;
-	public static int CHANCE_TO_ENCHANT_WEAP;
-	public static int MAX_ENCH_PHANTOM_WEAP;
-	public static int PHANTOM_MAX_DRIFT_RANGE;
-	public static boolean ALLOW_PHANTOM_CUSTOM_TITLES;
-	public static int PHANTOM_CHANCE_SET_NOBLE_TITLE;
-	public static boolean DISABLE_PHANTOM_ACTIONS;
-	public static int[] PHANTOM_ALLOWED_NPC_TO_WALK;
-	public static int PHANTOM_ROAMING_MAX_WH_CHECKS;
-	public static int PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF;
-	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS;
-	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF;
-	public static int PHANTOM_ROAMING_MAX_NPC_CHECKS;
-	public static int PHANTOM_ROAMING_MIN_WH_DELAY;
-	public static int PHANTOM_ROAMING_MAX_WH_DELAY;
-	public static int PHANTOM_ROAMING_MIN_SHOP_DELAY;
-	public static int PHANTOM_ROAMING_MAX_SHOP_DELAY;
-	public static int PHANTOM_ROAMING_MIN_NPC_DELAY;
-	public static int PHANTOM_ROAMING_MAX_NPC_DELAY;
-	public static int PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY;
-	public static int PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY;
-	public static int PHANTOM_ROAMING_MIN_FREEROAM_DELAY;
-	public static int PHANTOM_ROAMING_MAX_FREEROAM_DELAY;
-	public static boolean DISABLE_PHANTOM_RESPAWN;
-	public static boolean DEBUG_PHANTOMS;
-	public static int[] PHANTOM_CLANS;
-	
 	// Automatic potions
 	public static boolean ENABLE_AUTO_POTIONS;
 	public static double AUTO_CP_POTION_DELAY;
 	public static double AUTO_HP_POTION_DELAY;
 	public static double AUTO_MP_POTION_DELAY;
-	public static int LASER_MP_POTION_RESTORE;
-	public static int GREATER_MP_POTION_RESTORE;
-	public static int LASER_CP_POTION_RESTORE;
-	public static int GREATER_CP_POTION_RESTORE;
-	public static int LASER_HP_POTION_RESTORE;
-	public static int GREATER_HP_POTION_RESTORE;
-	
-	public static boolean COMMUNITY_FORGE_ENABLED;
-	public static int BBS_ENCHANT_ITEM;
-	public static int[] BBS_ENCHANT_MAX;
-	public static int[] BBS_WEAPON_ENCHANT_LVL;
-	public static int[] BBS_ARMOR_ENCHANT_LVL;
-	public static int[] BBS_JEWELS_ENCHANT_LVL;
-	public static int[] BBS_ENCHANT_PRICE_WEAPON;
-	public static int[] BBS_ENCHANT_PRICE_ARMOR;
-	public static int[] BBS_ENCHANT_PRICE_JEWELS;
 
-	public static int BBS_ENCHANT_WEAPON_ATTRIBUTE_MAX;
-	public static int BBS_ENCHANT_ARMOR_ATTRIBUTE_MAX;
-	public static int[] BBS_ENCHANT_ATRIBUTE_LVL_WEAPON;
-	public static int[] BBS_ENCHANT_ATRIBUTE_LVL_ARMOR;
-	public static int[] BBS_ENCHANT_ATRIBUTE_PRICE_ARMOR;
-	public static int[] BBS_ENCHANT_ATRIBUTE_PRICE_WEAPON;
-	public static boolean BBS_ENCHANT_ATRIBUTE_PVP;
-
-	public static boolean BBS_ENCHANT_HEAD_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_CHEST_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_LEGS_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_GLOVES_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_FEET_ATTRIBUTE;
-	public static String[] BBS_ENCHANT_GRADE_ATTRIBUTE;
-
-	public static boolean BBS_ENCHANT_WEAPON_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_SHIELD_ATTRIBUTE;
-	
-	public static boolean BBS_RECRUITMENT_ALLOW;
-	public static int BBS_RECRUITMENT_CLAN_DESCRIPTION_MIN;
-	public static int[] BBS_RECRUITMENT_TIME;
-	public static int[] BBS_RECRUITMENT_ITEMS;
-	
 	// Lottery
 	public static boolean BBS_GAME_LOTTERY_ALLOW;
 	public static int[] BBS_GAME_LOTTERY_BET;
@@ -254,7 +161,6 @@ public class Config
 	public static int ACADEMY_INVITE_DELAY;
 	
 	// Randoms...
-	public static boolean DISABLE_HWID_SUPPORT;
 	public static Map<Integer, String> PVP_KILLS_COLOR;
 	public static boolean LOG_ACCOUNT_INFO;
 	public static int LEVEL_UP_CRY_EXTRA_CHANCE;
@@ -1655,49 +1561,12 @@ public class Config
 	
 	public static boolean DAMAGE_FROM_FALLING;
 	
-	/** Community Board */
-//	public static boolean USE_BBS_BUFER_IS_COMBAT;
-//	public static boolean USE_BBS_BUFER_IS_CURSE_WEAPON;
-//	public static boolean USE_BBS_BUFER_IS_EVENTS;
-//	public static boolean USE_BBS_TELEPORT_IS_COMBAT;
-//	public static boolean USE_BBS_TELEPORT_IS_EVENTS;
 	public static boolean USE_BBS_PROF_IS_COMBAT;
-//	public static boolean USE_BBS_PROF_IS_EVENTS;
-//	public static boolean SAVE_BBS_TELEPORT_IS_EPIC;
-//	public static boolean SAVE_BBS_TELEPORT_IS_BZ;
 	public static boolean COMMUNITYBOARD_ENABLED;
-//	public static boolean ALLOW_COMMUNITYBOARD_IN_COMBAT;
-//	public static boolean ALLOW_COMMUNITYBOARD_IS_IN_SIEGE;
-//	public static boolean COMMUNITYBOARD_BUFFER_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_MAX_LVL_ALLOW;
-//	public static boolean COMMUNITYBOARD_BUFFER_SIEGE_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_NO_IS_IN_PEACE_ENABLED;
-//	public static boolean COMMUNITYBOARD_SELL_ENABLED;
-//	public static boolean COMMUNITYBOARD_SHOP_ENABLED;
-//	public static boolean COMMUNITYBOARD_SHOP_NO_IS_IN_PEACE_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_PET_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_SAVE_ENABLED;
-//	public static boolean COMMUNITYBOARD_ABNORMAL_ENABLED;
-//	public static boolean COMMUNITYBOARD_INSTANCE_ENABLED;
-//	public static boolean COMMUNITYBOARD_EVENTS_ENABLED;
-//	public static int COMMUNITYBOARD_BUFF_TIME;
-//	public static int COMMUNITYBOARD_BUFFER_MAX_LVL;
-//	public static int COMMUNITYBOARD_BUFF_PETS_TIME;
-//	public static int COMMUNITYBOARD_BUFF_COMBO_TIME;
-//	public static int COMMUNITYBOARD_BUFF_SONGDANCE_TIME;
-//	public static int COMMUNITYBOARD_BUFF_PICE;
-//	public static int COMMUNITYBOARD_BUFF_SAVE_PICE;
-//	public static List<Integer> COMMUNITYBOARD_BUFF_ALLOW = new ArrayList<Integer>();
 	public static List<Integer> COMMUNITI_LIST_MAGE_SUPPORT = new ArrayList<Integer>();
-//	public static List<Integer> COMMUNITI_LIST_FIGHTER_SUPPORT = new ArrayList<Integer>();
-//	public static List<String> COMMUNITYBOARD_MULTISELL_ALLOW = new ArrayList<String>();
 	public static String BBS_DEFAULT;
 	public static String BBS_HOME_DIR;
-//	public static boolean COMMUNITYBOARD_TELEPORT_ENABLED;
-//	public static int COMMUNITYBOARD_TELE_PICE;
-//	public static int COMMUNITYBOARD_SAVE_TELE_PICE;
-//	public static boolean COMMUNITYBOARD_TELEPORT_SIEGE_ENABLED;
-	
+
 	/** Wedding Options */
 	public static boolean ALLOW_WEDDING;
 	public static int WEDDING_PRICE;
@@ -1976,14 +1845,7 @@ public class Config
 	public static String MMO_TOP_SERVER_ADDRESS;
 	public static int MMO_TOP_SAVE_DAYS;
 	public static int[] MMO_TOP_REWARD;
-	
-	public static boolean SMS_PAYMENT_MANAGER_ENABLED;
-	public static String SMS_PAYMENT_WEB_ADDRESS;
-	public static int SMS_PAYMENT_MANAGER_INTERVAL;
-	public static int SMS_PAYMENT_SAVE_DAYS;
-	public static String SMS_PAYMENT_SERVER_ADDRESS;
-	public static int[] SMS_PAYMENT_REWARD;
-	
+
 	public static boolean AUTH_SERVER_GM_ONLY;
 	public static boolean AUTH_SERVER_BRACKETS;
 	public static boolean AUTH_SERVER_IS_PVP;
@@ -2082,33 +1944,8 @@ public class Config
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
 	public static TIntIntHashMap SKILL_DURATION_LIST;
 	
-//	public static boolean COMMUNITYBOARD_BOARD_ALT_ENABLED;
-//	public static int COMMUNITYBOARD_BUFF_PICE_NG;
-//	public static int COMMUNITYBOARD_BUFF_PICE_D;
-//	public static int COMMUNITYBOARD_BUFF_PICE_C;
-//	public static int COMMUNITYBOARD_BUFF_PICE_B;
-//	public static int COMMUNITYBOARD_BUFF_PICE_A;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S80;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S84;
-//	public static int COMMUNITYBOARD_BUFF_PICE_NG_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_D_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_C_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_B_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_A_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S80_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S84_GR;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_NG;
 	public static int INSTANCES_MAX_BOXES;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_D;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_C;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_B;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_A;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S80;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S84;
-	
+
 	public static double ALT_VITALITY_NEVIT_UP_POINT;
 	public static double ALT_VITALITY_NEVIT_POINT;
 	
@@ -4649,114 +4486,7 @@ public class Config
         COMMUNITYBOARD_ENCHANT_ATRIBUTE_PRICE_ARMOR = EnchantCBSetting.getProperty("CBEnchantAtributePriceArmor", new int[0]);
         COMMUNITYBOARD_ENCHANT_ATRIBUTE_PVP = EnchantCBSetting.getProperty("CBEnchantAtributePvP", false);	
 	}
-	
-	public static void loadPhantomsConfig()
-	{
-		ExProperties settings = load(PHANTOM_FILE);
 
-		PHANTOM_PLAYERS_ENABLED = settings.getProperty("PhantomPlayersEnabled", false);
-		PHANTOM_PLAYERS_ACCOUNT = settings.getProperty("PhantomPlayersAccount", "PhantomPlayerAI");
-		PHANTOM_MAX_PLAYERS = settings.getProperty("PhantomMaxPlayers", 1);
-		PHANTOM_BANNED_CLASSID = settings.getProperty("PhantomBannedClassIds", new int[]{});
-		PHANTOM_BANNED_SETID = settings.getProperty("PhantomBannedSetIds", new int[]{});
-		PHANTOM_MAX_WEAPON_GRADE = settings.getProperty("PhantomMaxWeaponGrade", 5);
-		PHANTOM_MAX_ARMOR_GRADE = settings.getProperty("PhantomMaxArmorGrade", 5);
-		PHANTOM_MAX_JEWEL_GRADE = settings.getProperty("PhantomMaxJewelGrade", 5);
-		PHANTOM_SPAWN_MAX = settings.getProperty("PhantomSpawnMax", 1);
-		PHANTOM_SPAWN_DELAY = settings.getProperty("PhantomSpawnDelay", 60);
-		PHANTOM_MAX_LIFETIME = settings.getProperty("PhantomMaxLifetime", 120);
-
-		CHANCE_TO_ENCHANT_WEAP = settings.getProperty("PhantomChanceEnchantWeap", 0);
-		MAX_ENCH_PHANTOM_WEAP = settings.getProperty("PhantomMaxEnchantWeap", 4);
-
-		PHANTOM_MAX_DRIFT_RANGE  = settings.getProperty("MaxDriftRangeForNpc", 1000);
-
-		ALLOW_PHANTOM_CUSTOM_TITLES = settings.getProperty("AllowSetupCustomTitles", false);
-		PHANTOM_CHANCE_SET_NOBLE_TITLE = settings.getProperty("ChanceToSetTitle", 30);
-
-		DISABLE_PHANTOM_ACTIONS = settings.getProperty("DisablePhantomActions", false);
-
-		PHANTOM_ALLOWED_NPC_TO_WALK = settings.getProperty("PhantomRoamingNpcs", new int[]{});
-		PHANTOM_ROAMING_MAX_WH_CHECKS = settings.getProperty("PhantomRoamingMaxWhChecks", 2);
-		PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxWhChecksDwarf", 8);
-		PHANTOM_ROAMING_MAX_SHOP_CHECKS = settings.getProperty("PhantomRoamingMaxShopChecks", 2);
-		PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxShopChecksDwarf", 5);
-		PHANTOM_ROAMING_MAX_NPC_CHECKS = settings.getProperty("PhantomRoamingMaxNpcChecks", 6);
-		PHANTOM_ROAMING_MIN_WH_DELAY = settings.getProperty("PhantomRoamingMinWhDelay", 60);
-		PHANTOM_ROAMING_MAX_WH_DELAY = settings.getProperty("PhantomRoamingMaxWhDelay", 300);
-		PHANTOM_ROAMING_MIN_SHOP_DELAY = settings.getProperty("PhantomRoamingMinShopDelay", 30);
-		PHANTOM_ROAMING_MAX_SHOP_DELAY = settings.getProperty("PhantomRoamingMaxShopDelay", 120);
-		PHANTOM_ROAMING_MIN_NPC_DELAY = settings.getProperty("PhantomRoamingMinNpcDelay", 45);
-		PHANTOM_ROAMING_MAX_NPC_DELAY = settings.getProperty("PhantomRoamingMaxNpcDelay", 120);
-		PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMinPrivatestoreDelay", 2);
-		PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMaxPrivatestoreDelay", 7);
-		PHANTOM_ROAMING_MIN_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMinFreeroamDelay", 10);
-		PHANTOM_ROAMING_MAX_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMaxFreeroamDelay", 60);
-		DISABLE_PHANTOM_RESPAWN = settings.getProperty("DisablePhantomRespawn", false);
-		DEBUG_PHANTOMS = settings.getProperty("DebugPhantoms", false);
-		PHANTOM_CLANS = settings.getProperty("PhantomClans", new int[]{});
-	}
-	
-//	public static void loadPremiumConfig()
-//	{
-//		ExProperties premiumConf = load(PREMIUM_FILE);
-//
-//		SERVICES_RATE_TYPE = premiumConf.getProperty("RateBonusType", Bonus.NO_BONUS);
-//		SERVICES_RATE_CREATE_PA = premiumConf.getProperty("RateBonusCreateChar", 0);
-//		SERVICES_RATE_BONUS_PRICE = premiumConf.getProperty("RateBonusPrice", new int[]
-//		{
-//			1500
-//		});
-//		SERVICES_RATE_BONUS_ITEM = premiumConf.getProperty("RateBonusItem", new int[]
-//		{
-//			4037
-//		});
-//		SERVICES_RATE_BONUS_VALUE = premiumConf.getProperty("RateBonusValue", new double[]
-//		{
-//			2.
-//		});
-//		SERVICES_RATE_BONUS_DAYS = premiumConf.getProperty("RateBonusTime", new int[]
-//		{
-//			30
-//		});
-//		AUTO_LOOT_PA = premiumConf.getProperty("AutoLootPA", false);
-//		ENCHANT_CHANCE_WEAPON_PA = premiumConf.getProperty("EnchantChancePA", 66);
-//		ENCHANT_CHANCE_ARMOR_PA = premiumConf.getProperty("EnchantChanceArmorPA", 66);
-//		ENCHANT_CHANCE_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceAccessoryPA", 66);
-//		ENCHANT_CHANCE_WEAPON_BLESS_PA = premiumConf.getProperty("EnchantChanceBlessPA", 66);
-//		ENCHANT_CHANCE_ARMOR_BLESS_PA = premiumConf.getProperty("EnchantChanceArmorBlessPA", 66);
-//		ENCHANT_CHANCE_ACCESSORY_BLESS_PA = premiumConf.getProperty("EnchantChanceAccessoryBlessPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_WEAPON_PA = premiumConf.getProperty("EnchantChanceCrystalPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_ARMOR_PA = premiumConf.getProperty("EnchantChanceCrystalArmorPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceCrystalAccessory", 66);
-//
-//		SERVICES_BONUS_XP = premiumConf.getProperty("RateBonusXp", 1.);
-//		SERVICES_BONUS_SP = premiumConf.getProperty("RateBonusSp", 1.);
-//		SERVICES_BONUS_ADENA = premiumConf.getProperty("RateBonusAdena", 1.);
-//		SERVICES_BONUS_ITEMS = premiumConf.getProperty("RateBonusItems", 1.);
-//		SERVICES_BONUS_SPOIL = premiumConf.getProperty("RateBonusSpoil", 1.);
-//
-//		USE_ALT_ENCHANT_PA = Boolean.parseBoolean(premiumConf.getProperty("UseAltEnchantPA", "False"));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterCrystalPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_BLESSED_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterBlessedPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_BLESSED_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_BLESSED_PA.add(Integer.parseInt(prop));
-//	}
-	
 	public static void LoadCustom_Config()
 	{
 		ExProperties custom_Config = load(CUSTOM_CONFIG_FILE);
@@ -5388,7 +5118,6 @@ public class Config
 		LoadCustomSecurity_Config();
 		LoadSMTP_Config();
 		loadOfflineConfig();
-		loadPhantomsConfig();
 		loadDonateRewardSettings();
 		
 		_log.info("All Config files has been loaded!");
