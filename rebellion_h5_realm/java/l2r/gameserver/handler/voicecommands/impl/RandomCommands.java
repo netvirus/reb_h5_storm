@@ -18,7 +18,6 @@ import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.NpcHolder;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
@@ -515,12 +514,6 @@ public class RandomCommands extends Functions implements IVoicedCommandHandler
 	private boolean whereis(String command, Player activeChar, String args)
 	{
 		Player friend = World.getPlayer(args);
-		
-		if (!PremiumAccountsTable.getWhereisVoiced(activeChar))
-		{
-			activeChar.sendChatMessage(0, ChatType.PARTY.ordinal() , "[Compass]", (activeChar.isLangRus() ? "У вас нет разрешения на использование этой команды." : "You do not have permission to use this command."));
-			return false;
-		}
 		
 		if(friend == null)
 		{

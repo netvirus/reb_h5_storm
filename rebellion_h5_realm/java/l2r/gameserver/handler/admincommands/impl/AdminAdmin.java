@@ -516,7 +516,7 @@ public class AdminAdmin implements IAdminCommandHandler
 				{
 					for (Player player : GameObjectsStorage.getAllPlayersForIterate())
 					{
-						if (player != null && player.hasHWID() && VoteManager.getInstance().pollisActive() && VoteManager.getInstance().canVote(player.getHWID()))
+						if (player != null && VoteManager.getInstance().pollisActive())
 							if (!player.isInOlympiadMode() || !player.isInOfflineMode())
 								askForPoll(player);
 					}

@@ -2,7 +2,6 @@ package l2r.gameserver.network.clientpackets;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.xml.holder.SkillAcquireHolder;
 import l2r.gameserver.instancemanager.QuestManager;
 import l2r.gameserver.model.Player;
@@ -111,9 +110,6 @@ public class CharacterCreate extends L2GameClientPacket
 		else
 			newChar.setTitle("");
 
-		if (Config.PREMIUM_FOR_NEW_ACC && (PremiumAccountsTable.getPremiumAccount(client.getLogin()) != null && !PremiumAccountsTable.getPremiumAccount(client.getLogin()).isActive()))
-			PremiumAccountsTable.savePremium(client.getLogin(), Config.PREMIUM_TEMPLATE_NEW_ACC, (System.currentTimeMillis() + Config.PREMIUM_TIME_FOR_NEW_ACC));
-		
 		for(CreateItem i : template.getItems())
 		{
 			ItemInstance item = ItemFunctions.createItem(i.getItemId());

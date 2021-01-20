@@ -4,7 +4,6 @@ import l2r.gameserver.Announcements;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
 import l2r.gameserver.dao.MailDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.StringHolder;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
@@ -82,8 +81,6 @@ import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
 import l2r.gameserver.nexus_interface.NexusEvents;
-import l2r.gameserver.randoms.CharacterEmails;
-import l2r.gameserver.randoms.CharacterIntro;
 import l2r.gameserver.randoms.GeoLocation;
 import l2r.gameserver.skills.AbnormalEffect;
 import l2r.gameserver.tables.AdminTable;
@@ -602,7 +599,7 @@ public class EnterWorld extends L2GameClientPacket
 
 		if (Config.ENABLE_POLL_SYSTEM)
 		{
-			if (activeChar.hasHWID() && VoteManager.getInstance().pollisActive() && VoteManager.getInstance().canVote(activeChar.getHWID()))
+			if (VoteManager.getInstance().pollisActive())
 			{
 				ExShowScreenMessage sm = new ExShowScreenMessage("There is active poll, type .poll to participate", 7000, ScreenMessageAlign.TOP_LEFT, true);
 				activeChar.sendPacket(sm);
@@ -613,15 +610,6 @@ public class EnterWorld extends L2GameClientPacket
 				
 		}
 		
-		// If the player skip some part and relog, on login to start from the beggining...
-		// It will replace his old values...
-		// Email validtion will be last to avoid some exploit.
-		if (Config.ENABLE_CHARACTER_INTRO)
-			CharacterIntro.checkAndSendIntro(activeChar);
-		
-		if (Config.ENABLE_EMAIL_VALIDATION)
-			CharacterEmails.verifyEmail(activeChar);
-		
 		// Automatic potions start on character login...
 		if (Config.ENABLE_AUTO_POTIONS)
 			checkAutoPotions(activeChar);
@@ -631,8 +619,6 @@ public class EnterWorld extends L2GameClientPacket
 		
 		if (ServerVariables.getBool("DonationBonusActive", true))
 			activeChar.sendChatMessage(0, ChatType.TRADE.ordinal(), "BonusDay", "All donations made next: " + DonationBonusDay.getInstance().getTimeLeft() + " will recive " + ServerVariables.getInt("DonationBonusPercent") + "% extra coins!");
-		
-		PremiumAccountsTable.sendEnterWorldMessage(activeChar);
 		
 		checkNewMail(activeChar);
 		
@@ -651,22 +637,6 @@ public class EnterWorld extends L2GameClientPacket
 		{
 			// IP is null or empty, must populate the var for the next time.
 			activeChar.setVar("LastIP", activeChar.getIP());
-		}
-		
-		String hwid = activeChar.getVar("LastHWID");
-		if (activeChar.hasHWID() && hwid != null && !hwid.isEmpty())
-		{
-			if (!activeChar.getHWID().equalsIgnoreCase(hwid))
-			{
-				activeChar.sendChatMessage(activeChar.getObjectId(), ChatType.TELL.ordinal(), "System", (activeChar.isLangRus() ? "ПРЕДУПРЕЖДЕНИЕ: Этот символ был последнего входа с другого компьютера в " + lastAccessDate : "WARNING: This character was last logged from another computer on " + lastAccessDate));
-				activeChar.setVar("LastHWID", activeChar.getHWID());
-			}
-		}
-		else
-		{
-			// HWID is null or empty, must populate the var for the next time.
-			if (activeChar.hasHWID())
-				activeChar.setVar("LastHWID", activeChar.getHWID());
 		}
 	}
 

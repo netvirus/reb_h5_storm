@@ -81,8 +81,7 @@ public class Olympiad
 	public static ScheduledFuture<?> _scheduledComeptitionStartTask;
 	
 	private static List<String> _playersIp = new ArrayList<String>();
-	private static List<String> _playersHWID = new ArrayList<String>();
-	
+
 	public static final Stadium[] STADIUMS = new Stadium[Config.OLYMPIAD_STADIAS_COUNT];
 
 	public static OlympiadManager _manager;
@@ -287,7 +286,7 @@ public class Olympiad
 			return false;
 		}
 		
-		if(noble.hasHWID() && noble.getClient().getAccountData().accessLevel < 2 && _playersHWID != null && _playersHWID.contains(noble.getHWID()) && Config.OLYMPIAD_PLAYER_HWID)
+		if(noble.getClient().getAccountData().accessLevel < 2)
 		{
 			noble.sendMessage(new CustomMessage("l2r.gameserver.model.entity.Olympiad.BlockHWID", noble));
 			return false;
@@ -307,8 +306,6 @@ public class Olympiad
 			{
 				_classBasedRegisters.put(classId, noble.getObjectId());
 				_playersIp.add(noble.getIP());
-				if (noble.hasHWID())
-					_playersHWID.add(noble.getHWID());
 				noble.sendPacket(SystemMsg.YOU_HAVE_BEEN_REGISTERED_FOR_THE_GRAND_OLYMPIAD_WAITING_LIST_FOR_A_CLASS_SPECIFIC_MATCH);
 				break;
 			}
@@ -316,8 +313,6 @@ public class Olympiad
 			{
 				_nonClassBasedRegisters.add(noble.getObjectId());
 				_playersIp.add(noble.getIP());
-				if (noble.hasHWID())
-					_playersHWID.add(noble.getHWID());
 				noble.sendPacket(SystemMsg.YOU_ARE_CURRENTLY_REGISTERED_FOR_A_1V1_CLASS_IRRELEVANT_MATCH);
 				break;
 			}
@@ -345,8 +340,6 @@ public class Olympiad
 				}
 
 				_playersIp.add(noble.getIP());
-				if (noble.hasHWID())
-					_playersHWID.add(noble.getHWID());
 				_teamBasedRegisters.putAll(noble.getObjectId(), party.getMembersObjIds());
 				noble.sendPacket(SystemMsg.YOU_ARE_CURRENTLY_REGISTERED_FOR_A_3_VS_3_CLASS_IRRELEVANT_TEAM_MATCH);
 				break;
@@ -437,8 +430,7 @@ public class Olympiad
 		_nonClassBasedRegisters.remove(Integer.valueOf(player.getObjectId()));
 		_teamBasedRegisters.removeValue(player.getObjectId());
 		_playersIp.remove(player.getIP());
-		_playersHWID.remove(player.getHWID());
-		
+
 		OlympiadGame game = player.getOlympiadGame();
 		if(game != null)
 			try
@@ -495,8 +487,7 @@ public class Olympiad
 		_nonClassBasedRegisters.remove(Integer.valueOf(noble.getObjectId()));
 		_teamBasedRegisters.removeValue(noble.getObjectId());
 		_playersIp.remove(noble.getIP());
-		_playersHWID.remove(noble.getHWID());
-		
+
 		noble.sendPacket(SystemMsg.YOU_HAVE_BEEN_REMOVED_FROM_THE_GRAND_OLYMPIAD_WAITING_LIST);
 
 		return true;
@@ -923,11 +914,6 @@ public class Olympiad
         return _nonClassBasedRegisters.size() + _classBasedRegisters.size() + _teamBasedRegisters.size();
     }
     
-    public static List<String> getOlyHwidList()
-    {
-    	return _playersHWID;
-    }
-    
     public static List<String> getOlyIPList()
     {
     	return _playersIp;
@@ -949,7 +935,7 @@ public class Olympiad
 			Player plr = World.getPlayer(list);
 			if (plr != null)
 			{
-				if (_playersIp.contains(plr.getIP()) || _playersHWID.contains(plr.getHWID()))
+				if (_playersIp.contains(plr.getIP()))
 					return false;
 			}
 		}

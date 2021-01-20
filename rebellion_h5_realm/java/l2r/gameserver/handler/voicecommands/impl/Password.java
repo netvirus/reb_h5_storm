@@ -146,7 +146,7 @@ public class Password extends Functions implements IVoicedCommandHandler
 		
 		AuthServerCommunication.getInstance().sendPacket(new ChangePassword(activeChar.getAccountName(), parts[0], parts[1], "null"));
 		show(new CustomMessage("scripts.commands.user.password.ResultTrue", activeChar), activeChar);
-		Log.addGame("Player " + activeChar.getName() + " with account: " + activeChar.getAccountName() + " IP: " + activeChar.getClient().getIpAddr() + " HWID: " + (activeChar.hasHWID() ? activeChar.getHWID() : "hwid is null") + " has changed his password from ( " + parts[0] + " ) to ( " + parts[1] +  " )", "ChangePassword");
+		Log.addGame("Player " + activeChar.getName() + " with account: " + activeChar.getAccountName() + " IP: " + activeChar.getClient().getIpAddr() + " has changed his password from ( " + parts[0] + " ) to ( " + parts[1] +  " )", "ChangePassword");
 		
 		// Send email to the user about the password change.
 		if (Config.ENABLE_ON_PASSWORD_CHANGE)

@@ -221,10 +221,7 @@ public class Config
 	
 	// Allow player to change his lang via .cfg
 	public static boolean ALLOW_PLAYER_CHANGE_LANGUAGE;
-	
-	// Party distribute of items on premium account
-	public static boolean PREMIUM_ACCOUNT_FOR_PARTY;
-	
+
 	// Retail macro use bug
 	public static boolean ALLOW_MACROS_REUSE_BUG;
 	
@@ -237,9 +234,7 @@ public class Config
 	// Playerkill log manager
 	public static boolean ANTIFEED_ENABLE;
 	public static boolean ANTIFEED_DUALBOX;
-	public static int ANTIFEED_INTERVAL;
-	public static boolean ENABLE_PVP_PK_LOG;
-	
+
 	// Custom player kill system for pvp
 	public static boolean ENABLE_PLAYER_KILL_SYSTEM;
 	public static boolean PLAYER_KILL_SPAWN_UNIQUE_CHEST;
@@ -322,10 +317,7 @@ public class Config
 	public static String  FORUM_URL_TO_LEECH_ANNOUNCE;
 	
 	public static boolean ENABLE_POLL_SYSTEM;
-	
-	// Vote rewards
-	public static String[] VOTE_REWARDS;
-	
+
 	/* Player offline buff */
 	public static boolean RESTORE_OFFLINE_BUFFERS_ON_RESTART;
 	public static int OFFLINE_BUFFER_NAME_COLOR;
@@ -368,9 +360,6 @@ public class Config
 	public static int SMTP_SERVER_CONNECTION_TIMEOUT;
 	
 	/** CUSTOM CONFIGS */
-	// Character intro
-	public static boolean ENABLE_CHARACTER_INTRO;
-	
 	// Achievement system
 	public static boolean ENABLE_ACHIEVEMENTS;
 	public static boolean DISABLE_ACHIEVEMENTS_FAME_REWARD;
@@ -419,11 +408,7 @@ public class Config
 	
 	public static boolean SEVEN_SIGN_NON_STOP_ALL_SPAWN;
 	public static int SEVEN_SIGN_SET_PERIOD;
-	
-	public static boolean PREMIUM_FOR_NEW_ACC;
-	public static int PREMIUM_TEMPLATE_NEW_ACC;
-	public static long PREMIUM_TIME_FOR_NEW_ACC;
-	
+
 	// Online table configs
 	public static boolean ALLOW_ONLINE_PARSE;
 	public static int FIRST_UPDATE;
@@ -476,13 +461,9 @@ public class Config
 	public static boolean SECURITY_CLAN_ALLY_ALL;
 	
 	public static int HTM_CACHE_MODE;
-	
-	public static boolean ALLOW_QUETS_ADDONS_CONFIG;
-	
+
 	public static boolean ALLOW_IP_LOCK;
-	public static boolean ALLOW_HWID_LOCK;
-	public static int HWID_LOCK_MASK;
-	
+
 	/** GameServer ports */
 	public static int[] PORTS_GAME;
 	public static boolean ADVIPSYSTEM;
