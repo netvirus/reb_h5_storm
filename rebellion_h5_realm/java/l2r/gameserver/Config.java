@@ -132,6 +132,9 @@ public class Config
 	public static double AUTO_HP_POTION_DELAY;
 	public static double AUTO_MP_POTION_DELAY;
 
+	// Quests
+	public static boolean ALLOW_QUETS_ADDONS_CONFIG;
+
 	// Lottery
 	public static boolean BBS_GAME_LOTTERY_ALLOW;
 	public static int[] BBS_GAME_LOTTERY_BET;
@@ -1808,7 +1811,7 @@ public class Config
 	
 	public static int WEAR_DELAY;
 	
-	//public static boolean GOODS_INVENTORY_ENABLED = false;
+	public static boolean GOODS_INVENTORY_ENABLED = false;
 	public static boolean EX_NEW_PETITION_SYSTEM;
 	public static boolean EX_JAPAN_MINIGAME;
 	public static boolean EX_LECTURE_MARK;
