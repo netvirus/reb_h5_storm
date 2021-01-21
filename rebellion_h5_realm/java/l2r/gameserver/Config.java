@@ -1763,6 +1763,7 @@ public class Config
 	/** Geodata config */
 	public static int GEO_X_FIRST;
 	public static int GEO_Y_FIRST;
+	public static int GEO_X_LAST;
 	public static int GEO_Y_LAST;
 	public static String GEOFILES_PATTERN;
 	public static boolean ALLOW_GEODATA;
@@ -2062,7 +2063,7 @@ public class Config
 		
 		GAME_SERVER_LOGIN_HOST = serverSettings.getProperty("LoginHost", "127.0.0.1");
 		GAME_SERVER_LOGIN_PORT = serverSettings.getProperty("LoginPort", 9014);
-		GAME_SERVER_LOGIN_CRYPT = serverSettings.getProperty("LoginUseCrypt", true);
+//		GAME_SERVER_LOGIN_CRYPT = serverSettings.getProperty("LoginUseCrypt", true);
 		
 		AUTH_SERVER_AGE_LIMIT = serverSettings.getProperty("ServerAgeLimit", 0);
 		AUTH_SERVER_GM_ONLY = serverSettings.getProperty("ServerGMOnly", false);
@@ -2077,14 +2078,14 @@ public class Config
 			AUTH_SERVER_SERVER_TYPE |= t.getMask();
 		}
 		
-		DISABLE_HWID_SUPPORT = serverSettings.getProperty("DisableHWIDSupport", false);
+//		DISABLE_HWID_SUPPORT = serverSettings.getProperty("DisableHWIDSupport", false);
 		
 		SECOND_AUTH_ENABLED = serverSettings.getProperty("SAEnabled", false);
 		SECOND_AUTH_BAN_ACC = serverSettings.getProperty("SABanAccEnabled", false);
 		SECOND_AUTH_STRONG_PASS = serverSettings.getProperty("SAStrongPass", false);
 		SECOND_AUTH_MAX_ATTEMPTS = serverSettings.getProperty("SAMaxAttemps", 5);
 		SECOND_AUTH_BAN_TIME = serverSettings.getProperty("SABanTime", 480);
-		SECOND_AUTH_REC_LINK = serverSettings.getProperty("SARecoveryLink", "http://www.my-domain.com/charPassRec.php");
+//		SECOND_AUTH_REC_LINK = serverSettings.getProperty("SARecoveryLink", "http://www.my-domain.com/charPassRec.php");
 		
 		INTERNAL_HOSTNAME = serverSettings.getProperty("InternalHostname", "*");
 		EXTERNAL_HOSTNAME = serverSettings.getProperty("ExternalHostname", new String[]{"*"});
@@ -2092,7 +2093,7 @@ public class Config
 		
 		ADVIPSYSTEM = serverSettings.getProperty("AdvIPSystem", false);
 		REQUEST_IDS = serverSettings.getProperty("RequestServerID", new int[]{0});
-		REQUEST_ID = REQUEST_IDS[0];
+//		REQUEST_ID = REQUEST_IDS[0];
 		ACCEPT_ALTERNATE_ID = serverSettings.getProperty("AcceptAlternateID", true);
 		
 		PORTS_GAME = serverSettings.getProperty("GameserverPort", new int[]
@@ -2161,12 +2162,12 @@ public class Config
 		
 		ENABLE_RUNNABLE_STATS = serverSettings.getProperty("EnableRunnableStats", false);
 		
-		THREAD_P_MOVE = serverSettings.getProperty("ThreadPoolSizeMove", 25);
-		THREAD_P_PATHFIND = serverSettings.getProperty("ThreadPoolSizePathfind", 10);
-		NPC_AI_MAX_THREAD = serverSettings.getProperty("NpcAiMaxThread", 10);
-		PLAYER_AI_MAX_THREAD = serverSettings.getProperty("PlayerAiMaxThread", 20);
-		
-		NEW_THREAD_FOR_AI = serverSettings.getProperty("IgnoreUsageOfAiTaskManager", false);
+//		THREAD_P_MOVE = serverSettings.getProperty("ThreadPoolSizeMove", 25);
+//		THREAD_P_PATHFIND = serverSettings.getProperty("ThreadPoolSizePathfind", 10);
+//		NPC_AI_MAX_THREAD = serverSettings.getProperty("NpcAiMaxThread", 10);
+//		PLAYER_AI_MAX_THREAD = serverSettings.getProperty("PlayerAiMaxThread", 20);
+//
+//		NEW_THREAD_FOR_AI = serverSettings.getProperty("IgnoreUsageOfAiTaskManager", false);
 		
 		SELECTOR_CONFIG.SLEEP_TIME = serverSettings.getProperty("SelectorSleepTime", 10L);
 		SELECTOR_CONFIG.INTEREST_DELAY = serverSettings.getProperty("InterestDelay", 30L);
@@ -2194,11 +2195,11 @@ public class Config
 		
 		HTM_CACHE_MODE = serverSettings.getProperty("HtmCacheMode", HtmCache.LAZY);
 		
-		ALLOW_QUETS_ADDONS_CONFIG = serverSettings.getProperty("AllowQuestAddons", false);
+//		ALLOW_QUETS_ADDONS_CONFIG = serverSettings.getProperty("AllowQuestAddons", false);
 		
 		ALLOW_IP_LOCK = serverSettings.getProperty("AllowLockIP", false);
-		ALLOW_HWID_LOCK = serverSettings.getProperty("AllowLockHwid", false);
-		HWID_LOCK_MASK = serverSettings.getProperty("HwidLockMask", 10);
+//		ALLOW_HWID_LOCK = serverSettings.getProperty("AllowLockHwid", false);
+//		HWID_LOCK_MASK = serverSettings.getProperty("HwidLockMask", 10);
 		
 		RRD_ENABLED = serverSettings.getProperty("UseRRD", true);
 		RRD_EXTENDED = serverSettings.getProperty("UseExtendedRRD", false);
@@ -2219,7 +2220,7 @@ public class Config
 		NPC_ALLOW_HIT = serverSettings.getProperty("AllowHitOnNpcs", true);
 		LOG_ACCOUNT_INFO = serverSettings.getProperty("LogAccountInfo", true);
 
-		ENABLE_HWID_CHECKER = serverSettings.getProperty("EnableSecondaryHwidCheck", false);
+//		ENABLE_HWID_CHECKER = serverSettings.getProperty("EnableSecondaryHwidCheck", false);
 	}
 	
 	public static void loadDonateRewardSettings()
@@ -2341,34 +2342,34 @@ public class Config
 	{
 		ExProperties residenceSettings = load(RESIDENCE_CONFIG_FILE);
 		
-		CH_BID_GRADE1_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanLevel", 2);
-		CH_BID_GRADE1_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembers", 1);
-		CH_BID_GRADE1_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembersAvgLevel", 1);
-		CH_BID_GRADE2_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanLevel", 2);
-		CH_BID_GRADE2_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembers", 1);
-		CH_BID_GRADE2_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembersAvgLevel", 1);
-		CH_BID_GRADE3_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanLevel", 2);
-		CH_BID_GRADE3_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembers", 1);
-		CH_BID_GRADE3_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembersAvgLevel", 1);
+//		CH_BID_GRADE1_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanLevel", 2);
+//		CH_BID_GRADE1_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembers", 1);
+//		CH_BID_GRADE1_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembersAvgLevel", 1);
+//		CH_BID_GRADE2_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanLevel", 2);
+//		CH_BID_GRADE2_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembers", 1);
+//		CH_BID_GRADE2_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembersAvgLevel", 1);
+//		CH_BID_GRADE3_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanLevel", 2);
+//		CH_BID_GRADE3_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembers", 1);
+//		CH_BID_GRADE3_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembersAvgLevel", 1);
 		
 		CLAN_HALL_AUCTION_LENGTH = residenceSettings.getProperty("ClanHallAuctionLength", 7);
 		
 		CLANHALL_LEASE_MULTIPLIER = residenceSettings.getProperty("ClanHallLeaseMultiplier", 1.);
 		
 		RESIDENCE_LEASE_FUNC_MULTIPLIER = residenceSettings.getProperty("ResidenceLeaseFuncMultiplier", 1.);
-		RESIDENCE_LEASE_MULTIPLIER = residenceSettings.getProperty("ResidenceLeaseMultiplier", 1.);
-		
-		CASTLE_GENERATE_TIME_ALTERNATIVE = residenceSettings.getProperty("CastleGenerateAlternativeTime", false);
-		CASTLE_GENERATE_TIME_LOW = residenceSettings.getProperty("CastleGenerateTimeLow", 46800000);
-		CASTLE_GENERATE_TIME_HIGH = residenceSettings.getProperty("CastleGenerateTimeHigh", 61200000);
+//		RESIDENCE_LEASE_MULTIPLIER = residenceSettings.getProperty("ResidenceLeaseMultiplier", 1.);
+//
+//		CASTLE_GENERATE_TIME_ALTERNATIVE = residenceSettings.getProperty("CastleGenerateAlternativeTime", false);
+//		CASTLE_GENERATE_TIME_LOW = residenceSettings.getProperty("CastleGenerateTimeLow", 46800000);
+//		CASTLE_GENERATE_TIME_HIGH = residenceSettings.getProperty("CastleGenerateTimeHigh", 61200000);
 		
 		PERIOD_CASTLE_SIEGE = residenceSettings.getProperty("CastleSiegeIntervalWeeks", 2);
 		
-		CASTLE_SELECT_HOURS = residenceSettings.getProperty("CastleSelectHours", new int[]
-		{
-			16,
-			20
-		});
+//		CASTLE_SELECT_HOURS = residenceSettings.getProperty("CastleSelectHours", new int[]
+//		{
+//			16,
+//			20
+//		});
 		int[] tempCastleValidatonTime = residenceSettings.getProperty("CastleValidationDate", new int[]
 		{
 			2,
@@ -2545,7 +2546,7 @@ public class Config
 		RATE_DROP_ADENA = ratesSettings.getProperty("RateDropAdena", 1.);
 		RATE_DROP_AA_ADENA = ratesSettings.getProperty("RateDropAncientAdena", 1.);
 		RATE_CHAMPION_DROP_ADENA = ratesSettings.getProperty("RateChampionDropAdena", 1.);
-		RATE_DROP_SPOIL_CHAMPION = ratesSettings.getProperty("RateSpoilChampion", 1.);
+//		RATE_DROP_SPOIL_CHAMPION = ratesSettings.getProperty("RateSpoilChampion", 1.);
 		RATE_DROP_ITEMS = ratesSettings.getProperty("RateDropItems", 1.);
 		RATE_CHANCE_GROUP_DROP_ITEMS = ratesSettings.getProperty("RateChanceGroupDropItems", 1.);
 		RATE_CHANCE_DROP_ITEMS = ratesSettings.getProperty("RateChanceDropItems", 1.);
@@ -2556,21 +2557,21 @@ public class Config
 		RATE_CHANCE_DROP_EPOLET = ratesSettings.getProperty("RateChanceDropEpolets", 1.);
 		NO_RATE_ENCHANT_SCROLL = ratesSettings.getProperty("NoRateEnchantScroll", true);
 		CHAMPION_DROP_ONLY_ADENA = ratesSettings.getProperty("ChampionDropOnlyAdena", false);
-		RATE_ENCHANT_SCROLL = ratesSettings.getProperty("RateDropEnchantScroll", 1.);
+//		RATE_ENCHANT_SCROLL = ratesSettings.getProperty("RateDropEnchantScroll", 1.);
 		NO_RATE_HERBS = ratesSettings.getProperty("NoRateHerbs", true);
-		RATE_DROP_HERBS = ratesSettings.getProperty("RateDropHerbs", 1.);
+//		RATE_DROP_HERBS = ratesSettings.getProperty("RateDropHerbs", 1.);
 		NO_RATE_ATT = ratesSettings.getProperty("NoRateAtt", true);
-		RATE_DROP_ATT = ratesSettings.getProperty("RateDropAtt", 1.);
+//		RATE_DROP_ATT = ratesSettings.getProperty("RateDropAtt", 1.);
 		NO_RATE_LIFE_STONE = ratesSettings.getProperty("NoRateLifeStone", true);
 		NO_RATE_CODEX_BOOK = ratesSettings.getProperty("NoRateCodex", true);
 		NO_RATE_FORGOTTEN_SCROLL = ratesSettings.getProperty("NoRateForgottenScroll", true);
-		RATE_DROP_LIFE_STONE = ratesSettings.getProperty("RateDropLifeStone", 1.);
+//		RATE_DROP_LIFE_STONE = ratesSettings.getProperty("RateDropLifeStone", 1.);
 		NO_RATE_KEY_MATERIAL = ratesSettings.getProperty("NoRateKeyMaterial", true);
-		RATE_DROP_KEY_MATERIAL = ratesSettings.getProperty("RateDropKeyMaterial", 1.);
+//		RATE_DROP_KEY_MATERIAL = ratesSettings.getProperty("RateDropKeyMaterial", 1.);
 		NO_RATE_RECIPES = ratesSettings.getProperty("NoRateRecipes", true);
-		RATE_DROP_RECIPES = ratesSettings.getProperty("RateDropRecipes", 1.);
+//		RATE_DROP_RECIPES = ratesSettings.getProperty("RateDropRecipes", 1.);
 		RATE_DROP_COMMON_ITEMS = ratesSettings.getProperty("RateDropCommonItems", 1.);
-		NO_RATE_RAIDBOSS = ratesSettings.getProperty("NoRateRaidBoss", false);
+//		NO_RATE_RAIDBOSS = ratesSettings.getProperty("NoRateRaidBoss", false);
 		RATE_DROP_RAIDBOSS = ratesSettings.getProperty("RateRaidBoss", 1.);
 		RATE_DROP_SPOIL = ratesSettings.getProperty("RateDropSpoil", 1.);
 		NO_RATE_ITEMS = ratesSettings.getProperty("NoRateItemIds", new int[]
@@ -2589,7 +2590,7 @@ public class Config
 			16026
 		});
 		NO_RATE_EQUIPMENT = ratesSettings.getProperty("NoRateEquipment", true);
-		NO_RATE_SIEGE_GUARD = ratesSettings.getProperty("NoRateSiegeGuard", false);
+//		NO_RATE_SIEGE_GUARD = ratesSettings.getProperty("NoRateSiegeGuard", false);
 		RATE_DROP_SIEGE_GUARD = ratesSettings.getProperty("RateSiegeGuard", 1.);
 		RATE_MANOR = ratesSettings.getProperty("RateManor", 1.);
 		RATE_FISH_DROP_COUNT = ratesSettings.getProperty("RateFishDropCount", 1.);
@@ -2796,30 +2797,30 @@ public class Config
 		// By SmokiMo
 		HENNA_MAX_VALUE = otherSettings.getProperty("HennaMaxValue", 5);
 		
-		ENEBLE_TITLE_COLOR_MOD = otherSettings.getProperty("EnebleTitleColorMod", false);
-		TYPE_TITLE_COLOR_MOD = otherSettings.getProperty("TypeTitleColorMod", "PvP");
-		COUNT_TITLE_1 = otherSettings.getProperty("CountTitle_1", 50);
-		TITLE_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_1", "FFFFFF"));
-		COUNT_TITLE_2 = otherSettings.getProperty("CountTitle_2", 100);
-		TITLE_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_2", "FFFFFF"));
-		COUNT_TITLE_3 = otherSettings.getProperty("CountTitle_3", 250);
-		TITLE_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_3", "FFFFFF"));
-		COUNT_TITLE_4 = otherSettings.getProperty("CountTitle_4", 500);
-		TITLE_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_4", "FFFFFF"));
-		COUNT_TITLE_5 = otherSettings.getProperty("CountTitle_5", 1000);
-		TITLE_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_5", "FFFFFF"));
-		ENEBLE_NAME_COLOR_MOD = otherSettings.getProperty("EnebleNameColorMod", false);
-		TYPE_NAME_COLOR_MOD = otherSettings.getProperty("TypeNameColorMod", "Pk");
-		COUNT_NAME_1 = otherSettings.getProperty("CountName_1", 50);
-		NAME_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("NameColor_1", "FFFFFF"));
-		COUNT_NAME_2 = otherSettings.getProperty("CountName_2", 100);
-		NAME_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("NameColor_2", "FFFFFF"));
-		COUNT_NAME_3 = otherSettings.getProperty("CountName_3", 250);
-		NAME_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("NameColor_3", "FFFFFF"));
-		COUNT_NAME_4 = otherSettings.getProperty("CountName_4", 500);
-		NAME_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("NameColor_4", "FFFFFF"));
-		COUNT_NAME_5 = otherSettings.getProperty("CountName_5", 1000);
-		NAME_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("NameColor_5", "FFFFFF"));
+//		ENEBLE_TITLE_COLOR_MOD = otherSettings.getProperty("EnebleTitleColorMod", false);
+//		TYPE_TITLE_COLOR_MOD = otherSettings.getProperty("TypeTitleColorMod", "PvP");
+//		COUNT_TITLE_1 = otherSettings.getProperty("CountTitle_1", 50);
+//		TITLE_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_1", "FFFFFF"));
+//		COUNT_TITLE_2 = otherSettings.getProperty("CountTitle_2", 100);
+//		TITLE_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_2", "FFFFFF"));
+//		COUNT_TITLE_3 = otherSettings.getProperty("CountTitle_3", 250);
+//		TITLE_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_3", "FFFFFF"));
+//		COUNT_TITLE_4 = otherSettings.getProperty("CountTitle_4", 500);
+//		TITLE_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_4", "FFFFFF"));
+//		COUNT_TITLE_5 = otherSettings.getProperty("CountTitle_5", 1000);
+//		TITLE_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_5", "FFFFFF"));
+//		ENEBLE_NAME_COLOR_MOD = otherSettings.getProperty("EnebleNameColorMod", false);
+//		TYPE_NAME_COLOR_MOD = otherSettings.getProperty("TypeNameColorMod", "Pk");
+//		COUNT_NAME_1 = otherSettings.getProperty("CountName_1", 50);
+//		NAME_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("NameColor_1", "FFFFFF"));
+//		COUNT_NAME_2 = otherSettings.getProperty("CountName_2", 100);
+//		NAME_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("NameColor_2", "FFFFFF"));
+//		COUNT_NAME_3 = otherSettings.getProperty("CountName_3", 250);
+//		NAME_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("NameColor_3", "FFFFFF"));
+//		COUNT_NAME_4 = otherSettings.getProperty("CountName_4", 500);
+//		NAME_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("NameColor_4", "FFFFFF"));
+//		COUNT_NAME_5 = otherSettings.getProperty("CountName_5", 1000);
+//		NAME_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("NameColor_5", "FFFFFF"));
 		
 		NEW_CHAR_IS_NOBLE = otherSettings.getProperty("NewCharIsNoble", false);
 		NEW_CHAR_IS_HERO = otherSettings.getProperty("NewCharIsHero", false);
@@ -2915,17 +2916,17 @@ public class Config
 		PDAM_OLD_FORMULA = formulasSettings.getProperty("PDamOldFormula", false);
 		SKILLS_CHANCE_SHOW = formulasSettings.getProperty("SkillsShowChance", true);
 		SKILLS_CHANCE_MOD_MAGE = formulasSettings.getProperty("SkillsChanceModMage", 11.);
-		SKILLS_CHANCE_POW_MAGE = formulasSettings.getProperty("SkillsChancePowMage", 0.5);
+//		SKILLS_CHANCE_POW_MAGE = formulasSettings.getProperty("SkillsChancePowMage", 0.5);
 		SKILLS_CHANCE_MOD_FIGHTER = formulasSettings.getProperty("SkillsChanceModFighter", 11.);
-		SKILLS_CHANCE_POW_FIGHTER = formulasSettings.getProperty("SkillsChancePowFighter", 0.5);
+//		SKILLS_CHANCE_POW_FIGHTER = formulasSettings.getProperty("SkillsChancePowFighter", 0.5);
 		SKILLS_CHANCE_MIN = formulasSettings.getProperty("SkillsChanceMin", 10);
 		SKILLS_CHANCE_CAP = formulasSettings.getProperty("SkillsChanceCap", 90);
 		SKILLS_CHANCE_CAP_ONLY_PLAYERS = formulasSettings.getProperty("SkillsChanceCapOnlyPlayers", false);
 		SKILLS_MOB_CHANCE = formulasSettings.getProperty("SkillsMobChance", 0.5);
-		SKILLS_DEBUFF_MOB_CHANCE = formulasSettings.getProperty("SkillsDebuffMobChance", 0.5);
+//		SKILLS_DEBUFF_MOB_CHANCE = formulasSettings.getProperty("SkillsDebuffMobChance", 0.5);
 		SKILLS_CAST_TIME_MIN = formulasSettings.getProperty("SkillsCastTimeMin", 333);
 		PHYS_SKILLS_DAMAGE_POW = formulasSettings.getProperty("PhysSkillsDamagePow", 1.0);
-		SKILL_PROF_MULTIPLIER = formulasSettings.getProperty("SkillProfMultiplier", 0.85);
+//		SKILL_PROF_MULTIPLIER = formulasSettings.getProperty("SkillProfMultiplier", 0.85);
 		
 		BASE_MAGICAL_CRIT_RATE = formulasSettings.getProperty("BaseMcritRate", 10.);
 		
@@ -3280,9 +3281,9 @@ public class Config
 		DEV_UNDERGROUND_COLISEUM_MEMBER_COUNT = DevelopSettings.getProperty("UndergroundColiseumMemberCount", 7);
 		
 		ALT_DEBUG_ENABLED = DevelopSettings.getProperty("AltDebugEnabled", false);
-		ALT_DEBUG_PVP_ENABLED = DevelopSettings.getProperty("AltDebugPvPEnabled", false);
-		ALT_DEBUG_PVP_DUEL_ONLY = DevelopSettings.getProperty("AltDebugPvPDuelOnly", true);
-		ALT_DEBUG_PVE_ENABLED = DevelopSettings.getProperty("AltDebugPvEEnabled", false);
+//		ALT_DEBUG_PVP_ENABLED = DevelopSettings.getProperty("AltDebugPvPEnabled", false);
+//		ALT_DEBUG_PVP_DUEL_ONLY = DevelopSettings.getProperty("AltDebugPvPDuelOnly", true);
+//		ALT_DEBUG_PVE_ENABLED = DevelopSettings.getProperty("AltDebugPvEEnabled", false);
 		
 		DONTLOADSPAWN = DevelopSettings.getProperty("StartWithoutSpawn", false);
 		DONTLOADQUEST = DevelopSettings.getProperty("StartWithoutQuest", false);
@@ -3347,10 +3348,10 @@ public class Config
 		CAN_BE_TRADED_NO_STOREABLE = itemsProperties.getProperty("CanBeTradedNoStoreable", false);
 		CAN_BE_TRADED_SHADOW_ITEM = itemsProperties.getProperty("CanBeTradedShadowItem", false);
 		CAN_BE_TRADED_HERO_WEAPON = itemsProperties.getProperty("CanBeTradedHeroWeapon", false);
-		CAN_BE_WH_NO_TARADEABLE = itemsProperties.getProperty("CanBeWhNoTradeable", false);
-		CAN_BE_CWH_NO_TARADEABLE = itemsProperties.getProperty("CanBeCwhNoTradeable", false);
+//		CAN_BE_WH_NO_TARADEABLE = itemsProperties.getProperty("CanBeWhNoTradeable", false);
+//		CAN_BE_CWH_NO_TARADEABLE = itemsProperties.getProperty("CanBeCwhNoTradeable", false);
 		CAN_BE_CWH_IS_AUGMENTED = itemsProperties.getProperty("CanBeCwhIsAugmented", false);
-		CAN_BE_WH_IS_AUGMENTED = itemsProperties.getProperty("CanBeWhIsAugmented", false);
+//		CAN_BE_WH_IS_AUGMENTED = itemsProperties.getProperty("CanBeWhIsAugmented", false);
 		ALLOW_SOUL_SPIRIT_SHOT_INFINITELY = itemsProperties.getProperty("AllowSoulSpiritShotInfinitely", false);
 		ALLOW_ARROW_INFINITELY = itemsProperties.getProperty("AllowArrowInfinitely", false);
 		ALLOW_START_ITEMS = itemsProperties.getProperty("AllowStartItems", false);
@@ -3398,16 +3399,16 @@ public class Config
 		L2_TOP_MANAGER_ENABLED = topSetting.getProperty("L2TopManagerEnabled", false);
 		L2_TOP_MANAGER_INTERVAL = topSetting.getProperty("L2TopManagerInterval", 300000);
 		L2_TOP_WEB_ADDRESS = topSetting.getProperty("L2TopWebAddress", "");
-		L2_TOP_SMS_ADDRESS = topSetting.getProperty("L2TopSmsAddress", "");
+//		L2_TOP_SMS_ADDRESS = topSetting.getProperty("L2TopSmsAddress", "");
 		L2_TOP_SERVER_ADDRESS = topSetting.getProperty("L2TopServerAddress", "first-team.ru");
 		L2_TOP_SAVE_DAYS = topSetting.getProperty("L2TopSaveDays", 30);
-		L2_TOP_REWARD = topSetting.getProperty("L2TopReward", new int[0]);
+//		L2_TOP_REWARD = topSetting.getProperty("L2TopReward", new int[0]);
 		L2_TOP_NAME_PREFIX = topSetting.getProperty("L2TopServerPrefix", "");
 		
 		MMO_TOP_MANAGER_ENABLED = topSetting.getProperty("MMOTopEnable", false);
 		MMO_TOP_MANAGER_INTERVAL = topSetting.getProperty("MMOTopManagerInterval", 300000);
 		MMO_TOP_WEB_ADDRESS = topSetting.getProperty("MMOTopUrl", "");
-		MMO_TOP_SERVER_ADDRESS = topSetting.getProperty("MMOTopServerAddress", "first-team.ru");
+//		MMO_TOP_SERVER_ADDRESS = topSetting.getProperty("MMOTopServerAddress", "first-team.ru");
 		MMO_TOP_SAVE_DAYS = topSetting.getProperty("MMOTopSaveDays", 30);
 		MMO_TOP_REWARD = topSetting.getProperty("MMOTopReward", new int[0]);
 	}
@@ -3495,8 +3496,8 @@ public class Config
 		ALT_SIMPLE_SIGNS = altSettings.getProperty("PushkinSignsOptions", false);
 		ALT_TELE_TO_CATACOMBS = altSettings.getProperty("TeleToCatacombs", false);
 		ALT_BS_CRYSTALLIZE = altSettings.getProperty("BSCrystallize", false);
-		ALT_MAMMON_UPGRADE = altSettings.getProperty("MammonUpgrade", 6680500);
-		ALT_MAMMON_EXCHANGE = altSettings.getProperty("MammonExchange", 10091400);
+//		ALT_MAMMON_UPGRADE = altSettings.getProperty("MammonUpgrade", 6680500);
+//		ALT_MAMMON_EXCHANGE = altSettings.getProperty("MammonExchange", 10091400);
 		ALT_BUFF_LIMIT = altSettings.getProperty("BuffLimit", 20);
 		ALT_DEATH_PENALTY = altSettings.getProperty("EnableAltDeathPenalty", false);
 		ALLOW_DEATH_PENALTY_C5 = altSettings.getProperty("EnableDeathPenaltyC5", true);
@@ -3508,9 +3509,9 @@ public class Config
 		NONOWNER_ITEM_PICKUP_DELAY = altSettings.getProperty("NonOwnerItemPickupDelay", 15L) * 1000L;
 		
 		ALT_KAMALOKA_NIGHTMARES_PREMIUM_ONLY = altSettings.getProperty("KamalokaNightmaresPremiumOnly", false);
-		ALT_KAMALOKA_NIGHTMARE_REENTER = altSettings.getProperty("SellReenterNightmaresTicket", true);
-		ALT_KAMALOKA_ABYSS_REENTER = altSettings.getProperty("SellReenterAbyssTicket", true);
-		ALT_KAMALOKA_LAB_REENTER = altSettings.getProperty("SellReenterLabyrinthTicket", true);
+//		ALT_KAMALOKA_NIGHTMARE_REENTER = altSettings.getProperty("SellReenterNightmaresTicket", true);
+//		ALT_KAMALOKA_ABYSS_REENTER = altSettings.getProperty("SellReenterAbyssTicket", true);
+//		ALT_KAMALOKA_LAB_REENTER = altSettings.getProperty("SellReenterLabyrinthTicket", true);
 		ALT_PET_HEAL_BATTLE_ONLY = altSettings.getProperty("PetsHealOnlyInBattle", true);
 		SAVE_PET_EFFECT = altSettings.getProperty("SavePetEffect", true);
 		CHAR_TITLE = altSettings.getProperty("CharTitle", false);
@@ -3551,7 +3552,7 @@ public class Config
 		RIFT_ENTER_COST_CAPTAIN = altSettings.getProperty("CaptainFC", 27);
 		RIFT_ENTER_COST_COMMANDER = altSettings.getProperty("CommanderFC", 30);
 		RIFT_ENTER_COST_HERO = altSettings.getProperty("HeroFC", 33);
-		ALLOW_CLANSKILLS = altSettings.getProperty("AllowClanSkills", true);
+//		ALLOW_CLANSKILLS = altSettings.getProperty("AllowClanSkills", true);
 		ALLOW_LEARN_TRANS_SKILLS_WO_QUEST = altSettings.getProperty("AllowLearnTransSkillsWOQuest", false);
 		PARTY_LEADER_ONLY_CAN_INVITE = altSettings.getProperty("PartyLeaderOnlyCanInvite", true);
 		MAX_PARTY_SIZE = altSettings.getProperty("MaxPartySize", 9);
@@ -3616,10 +3617,10 @@ public class Config
 		ALT_ALL_PHYS_SKILLS_OVERHIT = altSettings.getProperty("AltAllPhysSkillsOverhit", true);
 		ALT_REMOVE_SKILLS_ON_DELEVEL = altSettings.getProperty("AltRemoveSkillsOnDelevel", true);
 		ALT_USE_BOW_REUSE_MODIFIER = altSettings.getProperty("AltUseBowReuseModifier", true);
-		ALLOW_CH_DOOR_OPEN_ON_CLICK = altSettings.getProperty("AllowChDoorOpenOnClick", true);
+//		ALLOW_CH_DOOR_OPEN_ON_CLICK = altSettings.getProperty("AllowChDoorOpenOnClick", true);
 		ALT_CH_ALL_BUFFS = altSettings.getProperty("AltChAllBuffs", false);
 		ALT_CH_ALLOW_1H_BUFFS = altSettings.getProperty("AltChAllowHourBuff", false);
-		ALT_CH_SIMPLE_DIALOG = altSettings.getProperty("AltChSimpleDialog", false);
+//		ALT_CH_SIMPLE_DIALOG = altSettings.getProperty("AltChSimpleDialog", false);
 		
 		AUGMENTATION_NG_SKILL_CHANCE = altSettings.getProperty("AugmentationNGSkillChance", 15);
 		AUGMENTATION_NG_GLOW_CHANCE = altSettings.getProperty("AugmentationNGGlowChance", 0);
@@ -3688,7 +3689,7 @@ public class Config
 		
 		SIEGE_PVP_COUNT = altSettings.getProperty("SiegePvpCount", false);
 		ZONE_PVP_COUNT = altSettings.getProperty("ZonePvpCount", false);
-		EPIC_EXPERTISE_PENALTY = altSettings.getProperty("EpicExpertisePenalty", true);
+//		EPIC_EXPERTISE_PENALTY = altSettings.getProperty("EpicExpertisePenalty", true);
 		EXPERTISE_PENALTY = altSettings.getProperty("ExpertisePenalty", true);
 		ALT_DISPEL_MUSIC = altSettings.getProperty("AltDispelDanceSong", false);
 		ALT_MUSIC_LIMIT = altSettings.getProperty("MusicLimit", 12);
@@ -3770,9 +3771,9 @@ public class Config
 		SERVICES_CHANGE_TITLE_COLOR_PRICE = servicesSettings.getProperty("TitleColorChangePrice", 100);
 		SERVICES_CHANGE_TITLE_COLOR_ITEM = servicesSettings.getProperty("TitleColorChangeItem", 4037);
 		
-		SERVICES_BASH_ENABLED = servicesSettings.getProperty("BashEnabled", false);
-		SERVICES_BASH_SKIP_DOWNLOAD = servicesSettings.getProperty("BashSkipDownload", false);
-		SERVICES_BASH_RELOAD_TIME = servicesSettings.getProperty("BashReloadTime", 24);
+//		SERVICES_BASH_ENABLED = servicesSettings.getProperty("BashEnabled", false);
+//		SERVICES_BASH_SKIP_DOWNLOAD = servicesSettings.getProperty("BashSkipDownload", false);
+//		SERVICES_BASH_RELOAD_TIME = servicesSettings.getProperty("BashReloadTime", 24);
 		
 		SERVICES_NOBLESS_SELL_ENABLED = servicesSettings.getProperty("NoblessSellEnabled", false);
 		SERVICES_NOBLESS_SELL_PRICE = servicesSettings.getProperty("NoblessSellPrice", 1000);
@@ -3947,10 +3948,10 @@ public class Config
 		MAX_TIME_IN_ACADEMY = CommunityboardSettings.getProperty("KickAcademyAfter", 259200000);
 		ACADEMY_INVITE_DELAY = CommunityboardSettings.getProperty("InviteDelay", 5);
 		
-		BBS_RECRUITMENT_ALLOW = CommunityboardSettings.getProperty("Allow", false);
-		BBS_RECRUITMENT_CLAN_DESCRIPTION_MIN = CommunityboardSettings.getProperty("Description", 10);
-		BBS_RECRUITMENT_TIME = CommunityboardSettings.getProperty("Time", new int[] { 2, 3, 5, 6 });
-		BBS_RECRUITMENT_ITEMS = CommunityboardSettings.getProperty("Items", new int[] { 57, 4036, 4356 });
+//		BBS_RECRUITMENT_ALLOW = CommunityboardSettings.getProperty("Allow", false);
+//		BBS_RECRUITMENT_CLAN_DESCRIPTION_MIN = CommunityboardSettings.getProperty("Description", 10);
+//		BBS_RECRUITMENT_TIME = CommunityboardSettings.getProperty("Time", new int[] { 2, 3, 5, 6 });
+//		BBS_RECRUITMENT_ITEMS = CommunityboardSettings.getProperty("Items", new int[] { 57, 4036, 4356 });
 		
 		BBS_GAME_LOTTERY_ALLOW = CommunityboardSettings.getProperty("AllowCommunityLottery", false);
 		BBS_GAME_LOTTERY_ITEM = CommunityboardSettings.getProperty("ItemId", 57);
@@ -3962,32 +3963,32 @@ public class Config
 		BBS_GAME_LOTTERY_REWARD_MULTIPLER = CommunityboardSettings.getProperty("RewardMultiplier", 4);
 		BBS_GAME_LOTTERY_STORE_DATA = CommunityboardSettings.getProperty("LotterySaveData", 1) * 60000;
 		
-		COMMUNITY_FORGE_ENABLED = CommunityboardSettings.getProperty("EnableCommunityForge", false);
-		BBS_ENCHANT_ITEM = CommunityboardSettings.getProperty("Item", 4356);
-		BBS_ENCHANT_MAX = CommunityboardSettings.getProperty("MaxEnchant", new int[] { 25 });
-		BBS_WEAPON_ENCHANT_LVL = CommunityboardSettings.getProperty("WValue", new int[] { 5 });
-		BBS_ARMOR_ENCHANT_LVL = CommunityboardSettings.getProperty("AValue", new int[] { 5 });
-		BBS_JEWELS_ENCHANT_LVL = CommunityboardSettings.getProperty("JValue", new int[] { 5 });
-		BBS_ENCHANT_PRICE_WEAPON = CommunityboardSettings.getProperty("WPrice", new int[] { 5 });
-		BBS_ENCHANT_PRICE_ARMOR = CommunityboardSettings.getProperty("APrice", new int[] { 5 });
-		BBS_ENCHANT_PRICE_JEWELS = CommunityboardSettings.getProperty("JPrice", new int[] { 5 });
-		BBS_ENCHANT_ATRIBUTE_LVL_WEAPON = CommunityboardSettings.getProperty("AtributeWeaponValue", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PRICE_WEAPON = CommunityboardSettings.getProperty("PriceForAtributeWeapon", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_LVL_ARMOR = CommunityboardSettings.getProperty("AtributeArmorValue", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PRICE_ARMOR = CommunityboardSettings.getProperty("PriceForAtributeArmor", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PVP = CommunityboardSettings.getProperty("AtributePvP", true);
-		BBS_ENCHANT_WEAPON_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxWAttribute", 25);
-		BBS_ENCHANT_ARMOR_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxAAttribute", 25);
-
-		BBS_ENCHANT_HEAD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeHead", true);
-		BBS_ENCHANT_CHEST_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeChest", true);
-		BBS_ENCHANT_LEGS_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeLegs", true);
-		BBS_ENCHANT_GLOVES_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGloves", true);
-		BBS_ENCHANT_FEET_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeFeet", true);
-
-		BBS_ENCHANT_WEAPON_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeWeapon", true);
-		BBS_ENCHANT_SHIELD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeShield", false);
-		BBS_ENCHANT_GRADE_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGrade", "NG:NO;D:NO;C:NO;B:NO;A:ON;S:ON;S80:ON;S84:ON").trim().replaceAll(" ", "").split(";");
+//		COMMUNITY_FORGE_ENABLED = CommunityboardSettings.getProperty("EnableCommunityForge", false);
+//		BBS_ENCHANT_ITEM = CommunityboardSettings.getProperty("Item", 4356);
+//		BBS_ENCHANT_MAX = CommunityboardSettings.getProperty("MaxEnchant", new int[] { 25 });
+//		BBS_WEAPON_ENCHANT_LVL = CommunityboardSettings.getProperty("WValue", new int[] { 5 });
+//		BBS_ARMOR_ENCHANT_LVL = CommunityboardSettings.getProperty("AValue", new int[] { 5 });
+//		BBS_JEWELS_ENCHANT_LVL = CommunityboardSettings.getProperty("JValue", new int[] { 5 });
+//		BBS_ENCHANT_PRICE_WEAPON = CommunityboardSettings.getProperty("WPrice", new int[] { 5 });
+//		BBS_ENCHANT_PRICE_ARMOR = CommunityboardSettings.getProperty("APrice", new int[] { 5 });
+//		BBS_ENCHANT_PRICE_JEWELS = CommunityboardSettings.getProperty("JPrice", new int[] { 5 });
+//		BBS_ENCHANT_ATRIBUTE_LVL_WEAPON = CommunityboardSettings.getProperty("AtributeWeaponValue", new int[] { 25 });
+//		BBS_ENCHANT_ATRIBUTE_PRICE_WEAPON = CommunityboardSettings.getProperty("PriceForAtributeWeapon", new int[] { 25 });
+//		BBS_ENCHANT_ATRIBUTE_LVL_ARMOR = CommunityboardSettings.getProperty("AtributeArmorValue", new int[] { 25 });
+//		BBS_ENCHANT_ATRIBUTE_PRICE_ARMOR = CommunityboardSettings.getProperty("PriceForAtributeArmor", new int[] { 25 });
+//		BBS_ENCHANT_ATRIBUTE_PVP = CommunityboardSettings.getProperty("AtributePvP", true);
+//		BBS_ENCHANT_WEAPON_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxWAttribute", 25);
+//		BBS_ENCHANT_ARMOR_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxAAttribute", 25);
+//
+//		BBS_ENCHANT_HEAD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeHead", true);
+//		BBS_ENCHANT_CHEST_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeChest", true);
+//		BBS_ENCHANT_LEGS_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeLegs", true);
+//		BBS_ENCHANT_GLOVES_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGloves", true);
+//		BBS_ENCHANT_FEET_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeFeet", true);
+//
+//		BBS_ENCHANT_WEAPON_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeWeapon", true);
+//		BBS_ENCHANT_SHIELD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeShield", false);
+//		BBS_ENCHANT_GRADE_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGrade", "NG:NO;D:NO;C:NO;B:NO;A:ON;S:ON;S80:ON;S84:ON").trim().replaceAll(" ", "").split(";");
 	}
 	
 	public static void loadCommunityboardComission()
@@ -4047,7 +4048,7 @@ public class Config
 		BBS_BUFF_NOBLE = CommunitybufferSettings.getProperty("AllowOnlyToNoble", false);
 		BBS_BUFF_TERITORY = CommunitybufferSettings.getProperty("AllowUseInTWPlayer", false);
 		BBS_BUFF_PEACEZONE_ONLY = CommunitybufferSettings.getProperty("AllowUseOnlyInPeace", false);
-		BBS_BUFF_IDs = CommunitybufferSettings.getProperty("BuffIDs", ArrayUtils.EMPTY_INT_ARRAY);
+//		BBS_BUFF_IDs = CommunitybufferSettings.getProperty("BuffIDs", ArrayUtils.EMPTY_INT_ARRAY);
 		BBS_BUFF_ALLOW_CANCEL = CommunitybufferSettings.getProperty("BuffAllowCancel", false);
 		BBS_BUFF_ALLOW_HEAL = CommunitybufferSettings.getProperty("BuffAllowHeal", false);
 		BUFF_MANUAL_EDIT_SETS = CommunitybufferSettings.getProperty("BuffManualEditSets", false);
@@ -4060,9 +4061,9 @@ public class Config
 		BBS_BUFF_TIME_MUSIC = CommunitybufferSettings.getProperty("BuffTimeMusic", 8);
 		BBS_BUFF_TIME_SPECIAL = CommunitybufferSettings.getProperty("BuffTimeSpecial", 8);
 		BBS_BUFF_TIME = CommunitybufferSettings.getProperty("BuffTime", 8);
-		BBS_BUFF_TIME_MOD = CommunitybufferSettings.getProperty("BuffTimeMod", 8);
-		BBS_BUFF_TIME_MOD_MUSIC = CommunitybufferSettings.getProperty("BuffTimeModMusic", 8);
-		BBS_BUFF_TIME_MOD_SPECIAL = CommunitybufferSettings.getProperty("BuffTimeModSpecial", 8);
+//		BBS_BUFF_TIME_MOD = CommunitybufferSettings.getProperty("BuffTimeMod", 8);
+//		BBS_BUFF_TIME_MOD_MUSIC = CommunitybufferSettings.getProperty("BuffTimeModMusic", 8);
+//		BBS_BUFF_TIME_MOD_SPECIAL = CommunitybufferSettings.getProperty("BuffTimeModSpecial", 8);
 		
 	}
 	
@@ -4100,8 +4101,8 @@ public class Config
 			}
 		}
 		
-		CLASS_MASTERS_SUB_ITEM = CommunityClassSettings.getProperty("ClassMasterSubItem", 57);
-		CLASS_MASTERS_SUB_PRICE = CommunityClassSettings.getProperty("ClassMasterSubPrice", 1000);
+//		CLASS_MASTERS_SUB_ITEM = CommunityClassSettings.getProperty("ClassMasterSubItem", 57);
+//		CLASS_MASTERS_SUB_PRICE = CommunityClassSettings.getProperty("ClassMasterSubPrice", 1000);
 		
 		BBS_PVP_SUB_MANAGER_ALLOW = CommunityClassSettings.getProperty("AllowBBSSubManager", false);
 		BBS_PVP_SUB_MANAGER_PEACE_ZONE = CommunityClassSettings.getProperty("AllowBBSSubManagerPiace", false);
@@ -4124,9 +4125,9 @@ public class Config
 		
 		ANTIFEED_ENABLE = pvpSettings.getProperty("AntiFeedEnable", true);
 		ANTIFEED_DUALBOX = pvpSettings.getProperty("AntiFeedDualbox", true);
-		ANTIFEED_INTERVAL = pvpSettings.getProperty("AntiFeedInterval", 120);
+//		ANTIFEED_INTERVAL = pvpSettings.getProperty("AntiFeedInterval", 120);
 		
-		ENABLE_PVP_PK_LOG = pvpSettings.getProperty("EnablePvPpkLog", false);
+//		ENABLE_PVP_PK_LOG = pvpSettings.getProperty("EnablePvPpkLog", false);
 		
 		/* KARMA SYSTEM */
 		KARMA_MIN_KARMA = pvpSettings.getProperty("MinKarma", 240);
@@ -4259,7 +4260,7 @@ public class Config
 		GM_LOGIN_SILENCE = gmSettings.getProperty("GMLoginSilence", false);
 		GM_LOGIN_TRADEOFF = gmSettings.getProperty("GMLoginTradeOff", false);
 		HIDE_GM_STATUS = gmSettings.getProperty("HideGMStatus", false);
-		ANNOUNCE_GM_LOGIN = gmSettings.getProperty("AnnounceGMLogin", false);
+//		ANNOUNCE_GM_LOGIN = gmSettings.getProperty("AnnounceGMLogin", false);
 		SAVE_GM_EFFECTS = gmSettings.getProperty("SaveGMEffects", false);
 		GM_PM_COMMANDS = gmSettings.getProperty("GmPmCommands", true);
 	}
@@ -4275,19 +4276,19 @@ public class Config
 		EVENT_CofferOfShadowsRewardRate = eventSettings.getProperty("CofferOfShadowsRewardRate", 1.);
 		
 		EVENT_ENABLE_LAST_HERO = eventSettings.getProperty("Enable_last_hero", false);
-		EVENT_LastHeroItemID = eventSettings.getProperty("LastHero_bonus_id", 57);
-		EVENT_LastHeroItemCOUNT = eventSettings.getProperty("LastHero_bonus_count", 5000.);
-		EVENT_LastHeroTime = eventSettings.getProperty("LastHero_time", 3);
-		EVENT_LastHeroRate = eventSettings.getProperty("LastHero_rate", true);
-		EVENT_LastHeroChanceToStart = eventSettings.getProperty("LastHero_ChanceToStart", 5);
-		EVENT_LastHeroItemCOUNTFinal = eventSettings.getProperty("LastHero_bonus_count_final", 10000.);
-		EVENT_LastHeroRateFinal = eventSettings.getProperty("LastHero_rate_final", true);
-		
-		EVENT_TvTItemID = eventSettings.getProperty("TvT_bonus_id", 57);
-		EVENT_TvTItemCOUNT = eventSettings.getProperty("TvT_bonus_count", 5000.);
+//		EVENT_LastHeroItemID = eventSettings.getProperty("LastHero_bonus_id", 57);
+//		EVENT_LastHeroItemCOUNT = eventSettings.getProperty("LastHero_bonus_count", 5000.);
+//		EVENT_LastHeroTime = eventSettings.getProperty("LastHero_time", 3);
+//		EVENT_LastHeroRate = eventSettings.getProperty("LastHero_rate", true);
+//		EVENT_LastHeroChanceToStart = eventSettings.getProperty("LastHero_ChanceToStart", 5);
+//		EVENT_LastHeroItemCOUNTFinal = eventSettings.getProperty("LastHero_bonus_count_final", 10000.);
+//		EVENT_LastHeroRateFinal = eventSettings.getProperty("LastHero_rate_final", true);
+//
+//		EVENT_TvTItemID = eventSettings.getProperty("TvT_bonus_id", 57);
+//		EVENT_TvTItemCOUNT = eventSettings.getProperty("TvT_bonus_count", 5000.);
 		EVENT_TvTTime = eventSettings.getProperty("TvT_time", 3);
 		EVENT_TvT_rate = eventSettings.getProperty("TvT_rate", true);
-		EVENT_TvTChanceToStart = eventSettings.getProperty("TvT_ChanceToStart", 5);
+//		EVENT_TvTChanceToStart = eventSettings.getProperty("TvT_ChanceToStart", 5);
 		
 		ENABLE_GVG_EVENT = eventSettings.getProperty("EnableGVGEvent", false);
 		EVENT_GvGDisableEffect = eventSettings.getProperty("GvGDisableEffect", false);
@@ -4369,9 +4370,9 @@ public class Config
 		EVENT_MARCH8_DROP_CHANCE = eventSettings.getProperty("March8DropChance", 10.);
 		EVENT_MARCH8_PRICE_RATE = eventSettings.getProperty("March8PriceRate", 1.);
 		
-		ENCHANT_CHANCE_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantChance", 66);
-		ENCHANT_MAX_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantMaxWeapon", 28);
-		SAFE_ENCHANT_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiSafeEnchant", 3);
+//		ENCHANT_CHANCE_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantChance", 66);
+//		ENCHANT_MAX_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantMaxWeapon", 28);
+//		SAFE_ENCHANT_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiSafeEnchant", 3);
 		
 		AllowCustomDropItems = eventSettings.getProperty("AllowCustomDropItems", true);
 		CDItemsAllowMinMaxPlayerLvl = eventSettings.getProperty("CDItemsAllowMinMaxPlayerLvl", false);
@@ -4420,7 +4421,7 @@ public class Config
 		GAME_NOCLASSES_COUNT_LIMIT = olympSettings.getProperty("GameNoClassesCountLimit", 60);
 		GAME_TEAM_COUNT_LIMIT = olympSettings.getProperty("GameTeamCountLimit", 10);
 		
-		ALT_OLY_REG_DISPLAY = olympSettings.getProperty("AltOlyRegistrationDisplayNumber", 100);
+//		ALT_OLY_REG_DISPLAY = olympSettings.getProperty("AltOlyRegistrationDisplayNumber", 100);
 		ALT_OLY_BATTLE_REWARD_ITEM = olympSettings.getProperty("AltOlyBattleRewItem", 13722);
 		ALT_OLY_CLASSED_RITEM_C = olympSettings.getProperty("AltOlyClassedRewItemCount", 50);
 		ALT_OLY_NONCLASSED_RITEM_C = olympSettings.getProperty("AltOlyNonClassedRewItemCount", 40);
@@ -4440,8 +4441,8 @@ public class Config
 		OLYMPIAD_POINTS_WEEKLY = olympSettings.getProperty("OlympiadPointsWeekly", 3);
 		OLYMPIAD_OLDSTYLE_STAT = olympSettings.getProperty("OlympiadOldStyleStat", false);
 		OLYMPIAD_PLAYER_IP = olympSettings.getProperty("OlympiadPlayerIp", false);
-		OLYMPIAD_PLAYER_HWID = olympSettings.getProperty("OlympiadPlayerHWID", false);
-		OLYMPIAD_BAD_ENCHANT_ITEMS_ALLOW = olympSettings.getProperty("OlympiadUnEquipBadEnchantItem", false);
+//		OLYMPIAD_PLAYER_HWID = olympSettings.getProperty("OlympiadPlayerHWID", false);
+//		OLYMPIAD_BAD_ENCHANT_ITEMS_ALLOW = olympSettings.getProperty("OlympiadUnEquipBadEnchantItem", false);
 		
 		OLY_ENCH_LIMIT_ENABLE = olympSettings.getProperty("OlyEnchantLimit", false);
 		OLY_ENCHANT_LIMIT_WEAPON = olympSettings.getProperty("OlyEnchantLimitWeapon", 0);
@@ -4514,7 +4515,7 @@ public class Config
 		RANK_NPC_COLOR_B = custom_Config.getProperty("RankNpcColorB", "FFFFFF");
 		RANK_NPC_RELOAD = custom_Config.getProperty("RankNpcReload", 15);
 		
-		ENABLE_CHARACTER_INTRO = custom_Config.getProperty("EnableCharacterIntro", false);
+//		ENABLE_CHARACTER_INTRO = custom_Config.getProperty("EnableCharacterIntro", false);
 		FORBIDDEN_CHAR_NAMES = custom_Config.getProperty("ForbiddenCharNames", "").split(",");
 		
 		ENABLE_ACHIEVEMENTS = custom_Config.getProperty("EnableAchievements", false);
@@ -4564,11 +4565,11 @@ public class Config
 		SEVEN_SIGN_SET_PERIOD = custom_Config.getProperty("CustomModeForSevenSign", 0);
 		ANNOUNCE_MAMMON_SPAWN = custom_Config.getProperty("AnnounceMammonSpawn", true);
 		MAX_PLAYER_CONTRIBUTION = custom_Config.getProperty("MaxPlayerContribution", 1000000);
-		PREMIUM_FOR_NEW_ACC = custom_Config.getProperty("PremiumForNewAcc", false);
-		PREMIUM_TEMPLATE_NEW_ACC = custom_Config.getProperty("TemplateForPremium", 10);
-		PREMIUM_TIME_FOR_NEW_ACC = custom_Config.getProperty("TimeForPremium", 172800000L);
-		
-		VOTE_REWARDS = custom_Config.getProperty("VoteRewards", "6673,5,100;6673,10,50;17168,1,100;17168,2,75;17168,3,50;13693,25,50;13279,1,15;13015,1,5;17061,1,10;17057,1,25;959,1,40;960,1,100;").replaceAll(" ", "").split(";");
+//		PREMIUM_FOR_NEW_ACC = custom_Config.getProperty("PremiumForNewAcc", false);
+//		PREMIUM_TEMPLATE_NEW_ACC = custom_Config.getProperty("TemplateForPremium", 10);
+//		PREMIUM_TIME_FOR_NEW_ACC = custom_Config.getProperty("TimeForPremium", 172800000L);
+//
+//		VOTE_REWARDS = custom_Config.getProperty("VoteRewards", "6673,5,100;6673,10,50;17168,1,100;17168,2,75;17168,3,50;13693,25,50;13279,1,15;13015,1,5;17061,1,10;17057,1,25;959,1,40;960,1,100;").replaceAll(" ", "").split(";");
 		
 		ALLOW_BOARD_NEWS_LEECH = custom_Config.getProperty("ForumBoardLeech", false);
 		FORUM_URL_TO_LEECH_CHANGELOG = custom_Config.getProperty("ChangeLogURL", "http://l2age.com/forum/index.php?/5-changelog/");
@@ -4624,7 +4625,7 @@ public class Config
 		ENABLE_REFERRAL_SYSTEM = custom_Config.getProperty("EnableReferralSystem", false);
 		
 		ALLOW_MACROS_REUSE_BUG = custom_Config.getProperty("AllowMacrosReuseBug", true);
-		PREMIUM_ACCOUNT_FOR_PARTY = custom_Config.getProperty("PremiumDistributeDropToAllParty", false);
+//		PREMIUM_ACCOUNT_FOR_PARTY = custom_Config.getProperty("PremiumDistributeDropToAllParty", false);
 		
 		ALLOW_PLAYER_CHANGE_LANGUAGE = custom_Config.getProperty("AllowPlayerToChangeLang", false);
 		
@@ -4805,14 +4806,14 @@ public class Config
 		AUTO_HP_POTION_DELAY= custom_Config.getProperty("HPPotionDelay", 2.);
 		AUTO_MP_POTION_DELAY= custom_Config.getProperty("MPPotionDelay", 1.);
 		
-		LASER_CP_POTION_RESTORE = custom_Config.getProperty("LowCPrestore", 200);
-		GREATER_CP_POTION_RESTORE = custom_Config.getProperty("GreaterCPrestore", 400);
-		
-		LASER_MP_POTION_RESTORE = custom_Config.getProperty("LowMPrestore", 200);
-		GREATER_MP_POTION_RESTORE = custom_Config.getProperty("GreaterMPrestore", 400);
-		
-		LASER_HP_POTION_RESTORE = custom_Config.getProperty("LowHPrestore", 200);
-		GREATER_HP_POTION_RESTORE = custom_Config.getProperty("GreaterHPrestore", 400);
+//		LASER_CP_POTION_RESTORE = custom_Config.getProperty("LowCPrestore", 200);
+//		GREATER_CP_POTION_RESTORE = custom_Config.getProperty("GreaterCPrestore", 400);
+//
+//		LASER_MP_POTION_RESTORE = custom_Config.getProperty("LowMPrestore", 200);
+//		GREATER_MP_POTION_RESTORE = custom_Config.getProperty("GreaterMPrestore", 400);
+//
+//		LASER_HP_POTION_RESTORE = custom_Config.getProperty("LowHPrestore", 200);
+//		GREATER_HP_POTION_RESTORE = custom_Config.getProperty("GreaterHPrestore", 400);
 	}
 
 	public static void LoadCustomSecurity_Config()
@@ -4972,7 +4973,7 @@ public class Config
 		SHOW_OFFLINE_MODE_IN_ONLINE = offlineConfig.getProperty("ShowOfflineTradeInOnline", false);
 		
 		SERVICES_NO_TRADE_ONLY_OFFLINE = offlineConfig.getProperty("NoTradeOnlyOffline", false);
-		SERVICES_NO_TRADE_BLOCK_ZONE = offlineConfig.getProperty("NoTradeBlockZone", false);
+//		SERVICES_NO_TRADE_BLOCK_ZONE = offlineConfig.getProperty("NoTradeBlockZone", false);
 		SERVICES_TRADE_TAX = offlineConfig.getProperty("TradeTax", 0.0);
 		SERVICES_OFFSHORE_TRADE_TAX = offlineConfig.getProperty("OffshoreTradeTax", 0.0);
 		SERVICES_TRADE_TAX_ONLY_OFFLINE = offlineConfig.getProperty("TradeTaxOnlyOffline", false);
@@ -5084,8 +5085,8 @@ public class Config
 		loadTriviaSettings();
 		if (ADVIPSYSTEM)
 			ipsLoad();
-		if (ALLOW_QUETS_ADDONS_CONFIG)
-			loadQuestAddon();
+//		if (ALLOW_QUETS_ADDONS_CONFIG)
+//			loadQuestAddon();
 		// комюнити
 		loadCommunityboardsettings();
 		loadCommunitybuffersettings();
