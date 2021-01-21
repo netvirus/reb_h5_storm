@@ -1,5 +1,20 @@
-!Trader Shali: Looking for anything in particular today? Just let me
-know if I can help you find something. [npc_%objectId%_Buy 88|Trade
-Fighter Equipment.] [npc_%objectId%_Buy 89|Trade Mystic Equipment.]
-
-[npc_%objectId%_Multisell 6001|Exchange equipment.]
+<font color="FFFF00">Trader Shali:</font><br>
+Looking for anything in particular today?<br>
+Just let me know if I can help you find something.<br>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Trade Fighter Equipment" action="bypass -h npc_%objectId%_Buy 88" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Trade Mystic Equipment" action="bypass -h npc_%objectId%_Buy 89" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+    <tr>
+        <td FIXWIDTH=90 align=center>
+            <button value="Exchange equipment" action="bypass -h npc_%objectId%_Multisell 6001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25" />
+        </td>
+    </tr>
+</table>
