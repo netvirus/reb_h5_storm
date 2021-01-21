@@ -332,10 +332,7 @@ public class LastHero extends Functions implements ScriptFile, OnDeathListener, 
 			show(new CustomMessage("scripts.events.LastHero.Cancelled", player), player);
 			return;
 		}
-		
-		if (player.hasHWID())
-			_registeredHWIDs.add(player.getHWID());
-		
+
 		show(new CustomMessage("scripts.events.LastHero.Registered", player), player);
 	}
 	
@@ -349,7 +346,6 @@ public class LastHero extends Functions implements ScriptFile, OnDeathListener, 
 			players_list.remove(player.getStoredId());
 			player.setTeam(TeamType.NONE);
 			player.unsetVar("isPvPevents");
-			_registeredHWIDs.remove(player.getHWID());
 			show(new CustomMessage("scripts.events.LastHero.Cancelled", player), player);
 		}
 	}
@@ -413,12 +409,6 @@ public class LastHero extends Functions implements ScriptFile, OnDeathListener, 
 		if (!player.getReflection().isDefault())
 		{
 			player.sendMessage(new CustomMessage("scripts.events.LastHero.cannot_participate", player));
-			return false;
-		}
-		
-		if (player.hasHWID() && first && _registeredHWIDs.contains(player.getHWID()))
-		{
-			player.sendMessage(new CustomMessage("scripts.events.LastHero.already_registered", player));
 			return false;
 		}
 		
@@ -775,7 +765,6 @@ public class LastHero extends Functions implements ScriptFile, OnDeathListener, 
 		if (player != null)
 		{
 			live_list.remove(player.getStoredId());
-			_registeredHWIDs.remove(player.getHWID());
 			player.setTeam(TeamType.NONE);
 			show(new CustomMessage("scripts.events.LastHero.YouLose", player), player);
 		}
@@ -787,7 +776,6 @@ public class LastHero extends Functions implements ScriptFile, OnDeathListener, 
 		{
 			live_list.remove(player.getStoredId());
 			players_list.remove(player.getStoredId());
-			_registeredHWIDs.remove(player.getHWID());	
 			player.setTeam(TeamType.NONE);
 			player.unsetVar("isPvPevents");
 		}
