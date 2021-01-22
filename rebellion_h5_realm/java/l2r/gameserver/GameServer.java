@@ -49,7 +49,6 @@ import l2r.gameserver.nexus_interface.NexusEvents;
 import l2r.gameserver.randoms.CaptchaImage;
 import l2r.gameserver.randoms.PlayerKill;
 import l2r.gameserver.randoms.Visuals;
-import l2r.gameserver.randoms.votingengine.VotingRewardAPI;
 import l2r.gameserver.scripts.Scripts;
 import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.tables.AugmentationData;
@@ -361,8 +360,6 @@ public class GameServer
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
 		
 		BetaServer.getInstance();
-		
-		VotingRewardAPI.getInstance();
 
 		if (Config.ENABLE_DONATION_READER) {
 			DonationPaymentsDAO.getInstance();
