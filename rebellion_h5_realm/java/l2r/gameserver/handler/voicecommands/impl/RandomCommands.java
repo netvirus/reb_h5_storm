@@ -46,7 +46,6 @@ import l2r.gameserver.network.serverpackets.SystemMessage;
 import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.nexus_interface.NexusEvents;
-import l2r.gameserver.randoms.CharacterEmails;
 import l2r.gameserver.randoms.TradesHandler;
 import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.tables.SpawnTable;
@@ -297,10 +296,6 @@ public class RandomCommands extends Functions implements IVoicedCommandHandler
 			}
 			
 			botReportcommand(activeChar, paramSplit[0], sb.toString());
-		}
-		else if (command.equalsIgnoreCase("referral") && Config.ENABLE_REFERRAL_SYSTEM)
-		{
-			CharacterEmails.showReferralHtml(activeChar);
 		}
 		else if (command.equalsIgnoreCase("help") && Config.ENABLE_HELP_COMMAND)
 		{

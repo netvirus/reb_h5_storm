@@ -86,10 +86,10 @@ public class BuffManager implements ScriptFile, ICommunityBoardHandler
 		if (!Config.ENABLE_SCHEME_BUFFER || activeChar == null)
 			return;
 		
-		if (activeChar == null || (!activeChar.isConnected() || activeChar.isInOfflineMode()) && !activeChar.isPhantom())
+		if (activeChar == null || (!activeChar.isConnected() || activeChar.isInOfflineMode()))
 			return;
 		
-		if (!activeChar.isGM() && !activeChar.isPhantom())
+		if (!activeChar.isGM())
 		{
 			if (activeChar.isCursedWeaponEquipped() || NexusEvents.isInEvent(activeChar) || activeChar.isInJail() || activeChar.isDead() || activeChar.isAlikeDead() || activeChar.isCastingNow() || activeChar.isInCombat() || activeChar.isAttackingNow() || activeChar.isInOlympiadMode() || activeChar.isFlying() || activeChar.isTerritoryFlagEquipped())
 			{

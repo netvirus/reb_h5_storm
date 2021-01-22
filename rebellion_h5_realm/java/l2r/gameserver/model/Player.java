@@ -20,7 +20,6 @@ import l2r.gameserver.achievements.PlayerCounters;
 import l2r.gameserver.achievements.iAchievement;
 import l2r.gameserver.ai.CtrlEvent;
 import l2r.gameserver.ai.CtrlIntention;
-import l2r.gameserver.ai.PhantomPlayerAI;
 import l2r.gameserver.ai.PlayableAI.nextAction;
 import l2r.gameserver.ai.PlayerAI;
 import l2r.gameserver.cache.Msg;
@@ -232,7 +231,6 @@ import l2r.gameserver.network.serverpackets.components.SceneMovie;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
 import l2r.gameserver.nexus_interface.NexusEvents;
 import l2r.gameserver.nexus_interface.PlayerEventInfo;
-import l2r.gameserver.randoms.CharacterEmails;
 import l2r.gameserver.randoms.Radar;
 import l2r.gameserver.scripts.Events;
 import l2r.gameserver.scripts.Functions;
@@ -2757,19 +2755,6 @@ public final class Player extends Playable implements PlayerGroup
 			else if (oldLvl < 85 && _activeClass.getLevel() >= 85)
 				levelPassed = 85;
 			
-			switch (levelPassed)
-			{
-				case 20:
-				case 40:
-				case 60:
-				case 80:
-					CharacterEmails.newcomersReward(this, 250, levelPassed);
-			}
-			
-			// Referral System
-			if (_activeClass.getLevel() == 85)
-				CharacterEmails.referralReward(this);
-			
 			// Revita-Pop reward
 			if (_activeClass.getLevel() >= 40 && Rnd.get(3) == 0) // 33% for lv40 or above.
 			{
@@ -3531,7 +3516,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(IStaticPacket p)
 	{	
-		if(p == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(p == null || !isConnected() && (getAI() == null))
 			return;
 
 		if(isPacketIgnored(p.packet(this)))
@@ -3544,7 +3529,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(IStaticPacket... packets)
 	{
-		if(packets == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(packets == null || !isConnected() && (getAI() == null))
 			return;
 
 		for(IStaticPacket p : packets)
@@ -3577,7 +3562,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(List<? extends IStaticPacket> packets)
 	{
-		if(packets == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(packets == null || !isConnected() && (getAI() == null))
 			return;
 
 		for(IStaticPacket p : packets)
@@ -4430,7 +4415,7 @@ public final class Player extends Playable implements PlayerGroup
 		Player player = getPlayer();
 		
 		// Check for active charm of luck for death penalty
-		if (player != null && !player.isPhantom())
+		if (player != null)
 			getDeathPenalty().checkCharmOfLuck();
 
 		if(isInStoreMode())
@@ -4479,9 +4464,6 @@ public final class Player extends Playable implements PlayerGroup
 		if (Config.ENABLE_PLAYER_COUNTERS)
 			getCounters().addPoint("_Times_Died");
 		
-		if (!player.isPhantom())
-			getDeathPenalty().notifyDead(killer);
-
 		if (_event != null)
 			_event.doDie(killer, this);
 
@@ -4538,10 +4520,7 @@ public final class Player extends Playable implements PlayerGroup
 		
 		if(killer == null)
 			return;
-		
-		if (isPhantom())
-			return;
-		
+
 		final boolean atwar = killer.getPlayer() != null && atWarWith(killer.getPlayer());
 
 		double deathPenaltyBonus = getDeathPenalty().getLevel() * Config.ALT_DEATH_PENALTY_C5_EXPERIENCE_PENALTY;
@@ -5398,7 +5377,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendChanges()
 	{
-		if(!isPhantom() && entering || isLogoutStarted())
+		if(entering || isLogoutStarted())
 			return;
 		
 		super.sendChanges();
@@ -5574,8 +5553,6 @@ public final class Player extends Playable implements PlayerGroup
 
 				player = new Player(objectId, template);
 
-				player.setIsPhantom(false, false);
-				
 				player.loadVariables();
 				player.loadInstanceReuses();
 				player.loadPremiumItemList();
@@ -6080,31 +6057,27 @@ public final class Player extends Playable implements PlayerGroup
 				statement.setInt(34, getObjectId());
 
 				statement.executeUpdate();
-				
-				if (!isPhantom())
-				{
-					if (Config.RATE_DROP_ADENA < 20)
-						GameStats.increaseUpdatePlayerBase();
-					
-					if (!fast)
-					{
-						CharacterGroupReuseDAO.getInstance().insert(this);
-						storeDisableSkills();
-						storeBlockList();
-					}
-					
-					if (Config.ENABLE_ACHIEVEMENTS)
-					{
-						getCounters().save();
-						saveAchivementsLevels();
-					}
-					
-					for (PlayerBuffProfile pbp : _profiles.values())
-						pbp.save(this);
-					
-					storeCharSubClasses();
-					_teleportBookmarks.store();
+
+				if (Config.RATE_DROP_ADENA < 20)
+					GameStats.increaseUpdatePlayerBase();
+
+				if (!fast) {
+					CharacterGroupReuseDAO.getInstance().insert(this);
+					storeDisableSkills();
+					storeBlockList();
 				}
+
+				if (Config.ENABLE_ACHIEVEMENTS) {
+					getCounters().save();
+					saveAchivementsLevels();
+				}
+
+				for (PlayerBuffProfile pbp : _profiles.values())
+					pbp.save(this);
+
+				storeCharSubClasses();
+				_teleportBookmarks.store();
+
 			}
 			catch(Exception e)
 			{
@@ -8320,9 +8293,6 @@ public final class Player extends Playable implements PlayerGroup
 		if(name == null)
 			return;
 
-		if (isPhantom())
-			return;
-		
 		PlayerVar pv = user_variables.remove(name);
 
 		if(pv != null)
@@ -8503,7 +8473,7 @@ public final class Player extends Playable implements PlayerGroup
 		if (player == null)
 			return Language.ENGLISH;
 		
-		if (player != null && player.isPhantom())
+		if (player != null)
 			return Language.ENGLISH;
 		
 		String lang = getVar("lang@");
@@ -13746,22 +13716,6 @@ public final class Player extends Playable implements PlayerGroup
 		setCurrentMp(getMaxMp());
 	}
 	
-	private boolean _IsPhantom = false;
-	
-	public void setIsPhantom(boolean isPhantom, boolean hasAi)
-	{
-		_IsPhantom = isPhantom;
-		if (hasAi)
-			setAI(new PhantomPlayerAI(this));
-		else
-			setAI(new PlayerAI(this));
-	}
-	
-	public boolean isPhantom()
-	{
-		return _IsPhantom;
-	}
-
 	/**
 	 * To get an active premium player subscription
 	 * @return premium bonus object link

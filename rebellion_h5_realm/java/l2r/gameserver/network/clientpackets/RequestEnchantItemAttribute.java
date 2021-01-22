@@ -4,7 +4,6 @@ import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.base.Element;
 import l2r.gameserver.model.items.ItemInstance;
@@ -13,7 +12,6 @@ import l2r.gameserver.network.serverpackets.ActionFail;
 import l2r.gameserver.network.serverpackets.ExAttributeEnchantResult;
 import l2r.gameserver.network.serverpackets.InventoryUpdate;
 import l2r.gameserver.network.serverpackets.SystemMessage;
-import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.templates.item.ItemTemplate;
 import l2r.gameserver.utils.ItemFunctions;
 import l2r.gameserver.utils.Log;
@@ -158,12 +156,8 @@ public class RequestEnchantItemAttribute extends L2GameClientPacket
 			
 			Log.enchant(activeChar.getName() + "|Trying to attribute enchant|" + itemToEnchant.getItemId() + "|attribute:" + element + "|" + itemToEnchant.getObjectId());
 			
-			double premiumBonus = PremiumAccountsTable.getAttrEnchBonus(activeChar);
-			double chance = (stone.getTemplate().isAttributeCrystal() ? Config.ENCHANT_ATTRIBUTE_CRYSTAL_CHANCE : Config.ENCHANT_ATTRIBUTE_STONE_CHANCE) * premiumBonus;
+			double chance = (stone.getTemplate().isAttributeCrystal() ? Config.ENCHANT_ATTRIBUTE_CRYSTAL_CHANCE : Config.ENCHANT_ATTRIBUTE_STONE_CHANCE);
 			
-			Functions.sendDebugMessage(activeChar, "Enchant chance is (" + chance + ") Premium Bonus is: " + premiumBonus);
-			
-			// Premium system added
 			if (Rnd.chance(chance))
 			{
 				if (itemToEnchant.getEnchantLevel() == 0)

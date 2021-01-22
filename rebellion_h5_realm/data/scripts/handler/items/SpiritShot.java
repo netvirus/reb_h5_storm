@@ -2,7 +2,6 @@ package handler.items;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.handler.items.ItemHandler;
 import l2r.gameserver.model.Playable;
 import l2r.gameserver.model.Player;
@@ -120,13 +119,7 @@ public class SpiritShot extends ScriptItemHandler implements ScriptFile
 			player.sendPacket(Msg.POWER_OF_MANA_ENABLED);
 			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0));
 		}
-		else if(PremiumAccountsTable.getPlayerInfinityShotsArrows(player))
-		{
-			weaponInst.setChargedSpiritshot(ItemInstance.CHARGED_SPIRITSHOT);
-			player.sendPacket(Msg.POWER_OF_MANA_ENABLED);
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0));
-		}
-		else if(!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY && !PremiumAccountsTable.getPlayerInfinityShotsArrows(player))
+		else if(!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY)
 		{
 			if(player.getInventory().destroyItem(item, soulSpiritConsumption))
 			{

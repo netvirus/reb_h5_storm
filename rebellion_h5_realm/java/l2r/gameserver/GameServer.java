@@ -322,9 +322,7 @@ public class GameServer
 			AuctionManager.init();
 		
 		SchemeBufferManager.getInstance();
-		
-		VoteManager.getInstance();
-		
+
 		ChampionTemplateTable.getInstance();
 		
 		if (Config.ACTIVITY_REWARD_ENABLED)

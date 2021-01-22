@@ -193,18 +193,6 @@ public class AdminBan implements IAdminCommandHandler
 					}
 					_log.info(AdminFunctions.accountBan(activeChar.getTarget().getName(), activeChar.getTarget().getPlayer().getAccountName(), 0, activeChar.getName()));
 					break;
-				case admin_hwidban:
-					try
-					{
-						st.nextToken();
-						String playername = st.nextToken();
-						_log.info(AdminFunctions.hwidBan(playername, activeChar.getName(), "Banned from ingame by " + activeChar.getName()));
-					}
-					catch (Exception e)
-					{
-						activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminban.message16", activeChar));
-					}
-					break;
 			}
 		}
 		catch (Exception e)

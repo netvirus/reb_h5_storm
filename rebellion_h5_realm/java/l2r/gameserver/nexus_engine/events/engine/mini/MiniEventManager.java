@@ -804,46 +804,24 @@ public abstract class MiniEventManager extends Event implements Runnable, Config
 				}
 			}
 		}
-	    else
-	    {
-	    	for (PlayerEventInfo player : p1.getPlayers())
-			{
-				
-				if ((player != null) && (player.isOnline()) && (!player.isGM()))
-				{
-					if (player.getHWIDDualboxAllowed())
-						return true;
-					
-					String hwid1 = player.getHWID();
-					if (hwid1 != null)
-					{
-						for (PlayerEventInfo player2 : p2.getPlayers())
-						{
-							if ((player2 != null) && (player2.isOnline()) && (!player2.isGM()))
-							{
-								String hwid2 = player2.getHWID();
-								
-								if ((hwid2 != null) && (hwid1.equalsIgnoreCase(hwid2)))
-								{
-									if (p1.getPlayers().size() > 1)
-									{
-										p1.message(new StringBuilder().append("Player ").append(player.getPlayersName()).append(" has the same IP as someone in ").append(p2.getKeyPlayer().getPlayersName()).append("'s team.").toString(), false);
-										p2.message(new StringBuilder().append("Player ").append(player2.getPlayersName()).append(" has the same IP as someone in ").append(p1.getKeyPlayer().getPlayersName()).append("'s team.").toString(), false);
-									}
-									else
-									{
-										p1.message(new StringBuilder().append("Your IP appears to be same as ").append(p2.getKeyPlayer().getPlayersName()).append("'s IP. You can't go against him.").toString(), false);
-										p2.message(new StringBuilder().append("Your IP appears to be same as ").append(p1.getKeyPlayer().getPlayersName()).append("'s IP. You can't go against him.").toString(), false);
-									}
-									
-									return false;
-								}
+	    else {
+			for (PlayerEventInfo player : p1.getPlayers()) {
+
+				if ((player != null) && (player.isOnline()) && (!player.isGM())) {
+					for (PlayerEventInfo player2 : p2.getPlayers()) {
+						if ((player2 != null) && (player2.isOnline()) && (!player2.isGM())) {
+							if (p1.getPlayers().size() > 1) {
+								p1.message(new StringBuilder().append("Player ").append(player.getPlayersName()).append(" has the same IP as someone in ").append(p2.getKeyPlayer().getPlayersName()).append("'s team.").toString(), false);
+								p2.message(new StringBuilder().append("Player ").append(player2.getPlayersName()).append(" has the same IP as someone in ").append(p1.getKeyPlayer().getPlayersName()).append("'s team.").toString(), false);
+							} else {
+								p1.message(new StringBuilder().append("Your IP appears to be same as ").append(p2.getKeyPlayer().getPlayersName()).append("'s IP. You can't go against him.").toString(), false);
+								p2.message(new StringBuilder().append("Your IP appears to be same as ").append(p1.getKeyPlayer().getPlayersName()).append("'s IP. You can't go against him.").toString(), false);
 							}
 						}
 					}
 				}
 			}
-	    }
+		}
 
 	    return true;
 	}

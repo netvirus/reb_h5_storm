@@ -4,7 +4,6 @@ package l2r.gameserver.network.clientpackets;
 import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.xml.holder.EnchantItemHolder;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.items.ItemInstance;
@@ -180,10 +179,7 @@ public class RequestEnchantItem extends L2GameClientPacket
 			int chance = enchantScroll.getChance(item.getTemplate().isMagicWeapon());
 			if (catalyst != null)
 		        chance += ItemFunctions.getCatalystPower(catalyst.getItemId());
-			
-			// Premium System
-			chance *= PremiumAccountsTable.getEnchantBonus(player);
-						
+
 			if(item.getEnchantLevel() < safeEnchantLevel)
 				chance = 100;
 			

@@ -37,20 +37,6 @@ public enum UserScope
 		{
 			return player.getIP();
 		}
-	},
-	HWID
-	{
-		@Override
-		public String getData(Player player)
-		{
-			return player.getHWID();
-		}
-		
-		@Override
-		public boolean isSupported(Player player)
-		{
-			return player.getHWID() != null;
-		}
 	};
 	
 	public abstract String getData(Player player);

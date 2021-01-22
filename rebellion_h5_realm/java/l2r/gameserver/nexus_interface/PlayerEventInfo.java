@@ -1458,30 +1458,12 @@ public class PlayerEventInfo implements IPlayerEventInfo
 	}
 	
 	@Override
-	public String getHWID()
-	{
-		if (_owner.hasHWID())
-			return null;
-		
-		return _owner.getHWID();
-	}
-	
-	@Override
 	public boolean getIpDualboxAllowed()
 	{
 		if (_owner.getClient() == null)
 			return false;
 		
 		return _owner.getClient().getAccountData().accessLevel >= 1;
-	}
-	
-	@Override
-	public boolean getHWIDDualboxAllowed()
-	{
-		if (_owner.getClient() == null)
-			return false;
-		
-		return _owner.getClient().getAccountData().accessLevel >= 2;
 	}
 	
 	@Override

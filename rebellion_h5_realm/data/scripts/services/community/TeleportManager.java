@@ -3,7 +3,6 @@ package services.community;
 import l2r.commons.dbutils.DbUtils;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
 import l2r.gameserver.database.DatabaseFactory;
@@ -143,22 +142,15 @@ public class TeleportManager implements ScriptFile, ICommunityBoardHandler
 				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Teleporter", "You cannot use this function while pvp flagged or karma.");
 				return;
 			}
-			
-			if (PremiumAccountsTable.getGatekeeperOutsidePeace(player))
-			{
-				if (player.getPvpFlag() > 0 || player.getKarma() > 0)
-				{
-					player.sendChatMessage(0, ChatType.TELL.ordinal(), "Teleporter", "You cannot use this function while pvp flagged or karma.");
-					return;
-				}
+
+			if (player.getPvpFlag() > 0 || player.getKarma() > 0) {
+				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Teleporter", "You cannot use this function while pvp flagged or karma.");
+				return;
 			}
-			else
-			{	
-				if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
-				{
-					player.sendChatMessage(0, ChatType.TELL.ordinal(), "Teleporter", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
-					return;
-				}
+
+			if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE)) {
+				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Teleporter", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
+				return;
 			}
 			
 			if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_GK && player.getKarma() > 0)

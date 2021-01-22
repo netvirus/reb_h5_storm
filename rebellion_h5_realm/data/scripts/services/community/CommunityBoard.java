@@ -5,7 +5,6 @@ import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.achievements.PlayerTops;
 import l2r.gameserver.auction.AuctionManager;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
 import l2r.gameserver.data.xml.holder.BuyListHolder.NpcTradeList;
@@ -273,7 +272,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
     		}
          		
 			// Custom
-			if (!PremiumAccountsTable.getGmShopOutsidePeace(player) && !player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
+			if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
 			{
 				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Shop", (player.isLangRus() ? "Вы должны быть внутри города или ClanHall воспользоваться услугами магазина." : "You must be inside Town or ClanHall to use the shop."));
 				return;

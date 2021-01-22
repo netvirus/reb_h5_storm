@@ -246,8 +246,7 @@ public class TeamMember
 		try
 		{
 			Olympiad.getOlyIPList().remove(player.getIP());
-			Olympiad.getOlyHwidList().remove(player.getHWID());
-			
+
 			player.setIsInOlympiadMode(false);
 			player.setOlympiadSide(-1);
 			player.setOlympiadGame(null);

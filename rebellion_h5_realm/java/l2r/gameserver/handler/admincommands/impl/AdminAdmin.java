@@ -23,7 +23,6 @@ import l2r.gameserver.instancemanager.ReflectionManager;
 import l2r.gameserver.instancemanager.ServerVariables;
 import l2r.gameserver.instancemanager.SoDManager;
 import l2r.gameserver.instancemanager.SoIManager;
-import l2r.gameserver.instancemanager.VoteManager;
 import l2r.gameserver.instancemanager.games.DonationBonusDay;
 import l2r.gameserver.listener.actor.player.OnAnswerListener;
 import l2r.gameserver.model.Creature;
@@ -43,7 +42,6 @@ import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
 import l2r.gameserver.network.telnet.commands.TelnetStatus;
-import l2r.gameserver.randoms.CharacterIntro;
 import l2r.gameserver.randoms.LogFileReader;
 import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.stats.Stats;
@@ -516,7 +514,7 @@ public class AdminAdmin implements IAdminCommandHandler
 				{
 					for (Player player : GameObjectsStorage.getAllPlayersForIterate())
 					{
-						if (player != null && VoteManager.getInstance().pollisActive())
+						if (player != null)
 							if (!player.isInOlympiadMode() || !player.isInOfflineMode())
 								askForPoll(player);
 					}
@@ -591,7 +589,7 @@ public class AdminAdmin implements IAdminCommandHandler
 					activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminadmin.message9", activeChar));
 					return false;
 				}
-				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminadmin.message10", activeChar, accountName, String.valueOf(CharacterIntro.getEmail(accountName))));
+				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminadmin.message10", activeChar, accountName));
 				break;
 			case admin_ready:
 				try
@@ -1024,7 +1022,6 @@ public class AdminAdmin implements IAdminCommandHandler
 				@Override
 				public void sayYes()
 				{
-					VoteManager.getInstance().sendPoll(activeChar);
 				}
 
 				@Override

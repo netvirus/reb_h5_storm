@@ -115,7 +115,7 @@ public final class AdminFunctions
 	
 	/**
 	 * 
-	 * @param playerNane
+	 * @param playerName
 	 * @param hours : -1 is infinite.
 	 * @param bannerName
 	 * @return
@@ -350,55 +350,6 @@ public final class AdminFunctions
 		return "Unable to unjail " + playerName + " he is offline.";
 	}
 	
-	public static String hwidBan(String playerName, String bannerName, String reason)
-	{
-		Player gm = World.getPlayer(bannerName);
-		try
-		{
-			Player plr = World.getPlayer(playerName);
-			
-			if (plr != null)
-			{
-				if (!plr.hasHWID())
-				{
-					Functions.sendDebugMessage(gm, "Player " + plr.getName() + " does not have HWID, cannot be banned.");
-					return "HWID for player " + playerName + " not found.";
-				}
-				
-				String rawhwid = plr.getHWID();
-				HWID hwid = HWID.fromString(rawhwid);
-				if (hwid == null)
-				{
-					plr.sendMessage(String.format("Hwid '%s' has bad format.", new Object[] { rawhwid }));
-					return "HWID for player " + playerName + " not found.";
-				}
-				
-				Ban ban = new Ban(hwid, reason);
-				BanManager.addBan(ban);
-				
-				Functions.sendDebugMessage(gm, "Player " + plr.getName() + " is banned by hwid.");
-				return "Player " + playerName + " has been successfully HWID banned on " + hwid + " by " + bannerName + ". Reason: " + reason;
-			}
-			
-			/*String accountName = CharacterDAO.getInstance().getAccountName(playerName);
-			if (accountName != null && !accountName.isEmpty())
-			{
-				// Get offline hwid somehow
-			}*/
-			if (gm != null)
-				gm.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminban.message15", gm));
-		}
-		catch (Exception e)
-		{
-			if (gm != null)
-				gm.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminban.message16", gm));
-			
-			return "Unable to HWID ban " + playerName + " by " + bannerName + " due to an Exception: " +e.getMessage();
-		}
-		
-		return "Player " + playerName + " not found.";
-	}
-
 	public static boolean kick(String player, String reason)
 	{
 		Player plyr = World.getPlayer(player);

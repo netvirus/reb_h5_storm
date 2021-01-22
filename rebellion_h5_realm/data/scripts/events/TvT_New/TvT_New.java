@@ -174,8 +174,6 @@ public class TvT_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 
 		player.setPvPTeam(TeamWithMinPlayers());
 		_participants.put(player, Integer.valueOf(0));
-		if (player.hasHWID())
-			_registeredHWIDs.add(player.getHWID());
 		player.sendMessage(new CustomMessage("scripts.events.TvT_New.TvT_New.YouRegistred", player, new Object[0]));
 		player._event = this;
 		return true;
@@ -220,8 +218,7 @@ public class TvT_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 			return;
 		}
 		_participants.remove(player);
-		_registeredHWIDs.remove(player.getHWID());
-		
+
 		player.setPvPTeam(0);
 		player.allowPvPTeam();
 		player._event = null;
@@ -240,8 +237,6 @@ public class TvT_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 				_participants.remove(player);
 			if (live_list.containsKey(player))
 				live_list.remove(player);
-			if (player.hasHWID() && _registeredHWIDs.contains(player.getHWID()))
-				_registeredHWIDs.remove(player.getHWID());
 			player.setPvPTeam(0);
 			player.allowPvPTeam();
 			player._event = null;
@@ -331,11 +326,6 @@ public class TvT_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 		if (player.getKarma() > 0)
 		{
 			player.sendMessage(new CustomMessage("scripts.events.TvT_New.TvT_New.conditions.no_pk", player));
-			return false;
-		}
-		if (player.hasHWID() && first && _registeredHWIDs.contains(player.getHWID()))
-		{
-			player.sendMessage(new CustomMessage("scripts.events.TvT_New.TvT_New.conditions.already_registered", player));
 			return false;
 		}
 		return true;

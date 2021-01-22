@@ -597,19 +597,6 @@ public class EnterWorld extends L2GameClientPacket
 		activeChar.sendPacket(new ExReceiveShowPostFriend(activeChar));
 		activeChar.getNevitSystem().onEnterWorld();
 
-		if (Config.ENABLE_POLL_SYSTEM)
-		{
-			if (VoteManager.getInstance().pollisActive())
-			{
-				ExShowScreenMessage sm = new ExShowScreenMessage("There is active poll, type .poll to participate", 7000, ScreenMessageAlign.TOP_LEFT, true);
-				activeChar.sendPacket(sm);
-				
-				activeChar.sendChatMessage(0, ChatType.CRITICAL_ANNOUNCE.ordinal(), "PollSystem", "There is active poll started by the server Administrator.");
-				activeChar.sendChatMessage(0, ChatType.CRITICAL_ANNOUNCE.ordinal(), "PollSystem", "To participate please type .poll");
-			}
-				
-		}
-		
 		// Automatic potions start on character login...
 		if (Config.ENABLE_AUTO_POTIONS)
 			checkAutoPotions(activeChar);
