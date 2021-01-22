@@ -3,7 +3,6 @@ package l2r.gameserver.network.clientpackets;
 import l2r.commons.dao.JdbcEntityState;
 import l2r.gameserver.Config;
 import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.database.mysql;
 import l2r.gameserver.model.GameObjectsStorage;
 import l2r.gameserver.model.Player;
@@ -163,7 +162,7 @@ public class RequestExSendPost extends L2GameClientPacket
 			return;
 		}
 
-		if(_count > 0 && !activeChar.isGM() && !activeChar.isInPeaceZone() && !PremiumAccountsTable.getMailOutsidePeace(activeChar))
+		if(_count > 0 && !activeChar.isGM() && !activeChar.isInPeaceZone())
 		{
 			activeChar.sendPacket(SystemMsg.YOU_CANNOT_FORWARD_IN_A_NONPEACE_ZONE_LOCATION);
 			return;

@@ -1,7 +1,6 @@
 package l2r.gameserver.network.clientpackets;
 
 import l2r.gameserver.dao.MailDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.World;
 import l2r.gameserver.model.mail.Mail;
@@ -57,7 +56,7 @@ public class RequestExRejectPost extends L2GameClientPacket
 			return;
 		}
 
-		if(!activeChar.isGM() && !activeChar.isInPeaceZone() && !PremiumAccountsTable.getMailOutsidePeace(activeChar))
+		if(!activeChar.isGM() && !activeChar.isInPeaceZone())
 		{
 			activeChar.sendPacket(SystemMsg.YOU_CANNOT_CANCEL_IN_A_NONPEACE_ZONE_LOCATION);
 			return;

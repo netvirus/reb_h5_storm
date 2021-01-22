@@ -3,7 +3,6 @@ package l2r.gameserver.network.loginservercon.gspackets;
 import l2r.gameserver.network.GameClient;
 import l2r.gameserver.network.loginservercon.SendablePacket;
 import l2r.gameserver.network.serverpackets.LoginFail;
-import l2r.gameserver.utils.HwidBansChecker;
 
 import ru.akumu.smartguard.GuardConfig;
 import ru.akumu.smartguard.manager.session.ClientSessionManager;
@@ -29,15 +28,6 @@ public class PlayerAuthRequest extends SendablePacket
 			if (cd != null)
 			{
 				client.setHWID(cd.hwid());
-			}
-		}
-		
-		if (client != null)
-		{
-			if (HwidBansChecker.getInstance().isClientBanned(client))
-			{
-				client.close(new LoginFail(LoginFail.INCORRECT_ACCOUNT_INFO_CONTACT_CUSTOMER_SUPPORT));
-				return;
 			}
 		}
 	}

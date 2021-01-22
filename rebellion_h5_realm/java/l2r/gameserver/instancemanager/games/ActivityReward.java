@@ -76,9 +76,7 @@ public class ActivityReward implements OnDeathListener
 						continue;
 					
 					Player player = World.getPlayer(n3.getKey());
-					if (player.hasHWID() && rewardedHWIDs.contains(player.getHWID()))
-						continue;
-					
+
 					for (Integer[] reward : _rewards)
 					{
 						if (!Rnd.chance(reward[3])) // 3 = chance
@@ -86,9 +84,6 @@ public class ActivityReward implements OnDeathListener
 						
 						ItemFunctions.addItem(player, reward[0], Rnd.get(reward[1],reward[2]), true); // 0 = ItemId, 1 = minCount, 2 = maxCount
 						player.sendChatMessage(0, ChatType.TELL.ordinal(), "Event", "You have been rewarded for being active on the server.");
-						
-						if (player.hasHWID())
-							rewardedHWIDs.add(player.getHWID());
 					}
 				}
 				_activePlayers.clear();

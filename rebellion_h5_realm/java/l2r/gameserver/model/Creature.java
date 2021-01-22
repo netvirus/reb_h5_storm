@@ -16,7 +16,6 @@ import l2r.gameserver.ai.CtrlIntention;
 import l2r.gameserver.ai.PlayableAI.nextAction;
 import l2r.gameserver.dao.ChampionTemplateTable;
 import l2r.gameserver.dao.ChampionTemplateTable.ChampionTemplate;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.xml.holder.EventHolder;
 import l2r.gameserver.geodata.GeoEngine;
 import l2r.gameserver.geodata.GeoMove;
@@ -713,7 +712,7 @@ public abstract class Creature extends GameObject
 		{
 			getListeners().onMagicUse(skill, target, true);
 			
-			int itemConsume[] = isPlayer() ? PremiumAccountsTable.getSkillItemConsume(getPlayer(), skill) : skill.getItemConsume();
+			int itemConsume[] = skill.getItemConsume();
 			
 			if (!getAI().isPhantomPlayerAI() && itemConsume[0] > 0)
 			{
@@ -1216,7 +1215,7 @@ public abstract class Creature extends GameObject
 	
 	/**
 	 * Disable this skill id for the duration of the delay in milliseconds.
-	 * @param int Skill id * @param int Skill level
+	 * @param skill Skill id * @param int Skill level
 	 * @param delay (seconds * 1000)
 	 */
 	public void disableSkill(int skill, int skillLvL, long delay)
@@ -1480,7 +1479,7 @@ public abstract class Creature extends GameObject
 				}
 			}
 			
-			int itemConsume[] = isPlayer() ? PremiumAccountsTable.getSkillItemConsume(getPlayer(), skill) : skill.getItemConsume();
+			int itemConsume[] = skill.getItemConsume();
 			
 			if (!getAI().isPhantomPlayerAI() && itemConsume[0] > 0)
 			{

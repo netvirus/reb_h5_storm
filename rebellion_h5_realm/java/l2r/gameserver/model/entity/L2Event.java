@@ -234,15 +234,7 @@ public class L2Event
 			return;
 		}
 		
-		if (player.hasHWID() && _registeredHWIDs.contains(player.getHWID()))
-		{
-			player.sendMessage(new CustomMessage("l2r.gameserver.model.entity.l2event.message3", player));
-			return;
-		}
-		
 		_registeredPlayers.add(player);
-		if (player.hasHWID())
-			_registeredHWIDs.add(player.getHWID());
 		player.sendMessage(new CustomMessage("l2r.gameserver.model.entity.l2event.message2", player));
 		
 	}
@@ -277,7 +269,6 @@ public class L2Event
 			player.setEventStatus(null);
 			
 			_registeredPlayers.remove(player);
-			_registeredHWIDs.remove(player.getHWID());
 			int teamId = getPlayerTeamId(player);
 			if (_teams.containsKey(teamId))
 			{

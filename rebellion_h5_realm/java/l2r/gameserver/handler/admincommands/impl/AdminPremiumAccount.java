@@ -1,7 +1,6 @@
 package l2r.gameserver.handler.admincommands.impl;
 
 import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.handler.admincommands.IAdminCommandHandler;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -123,7 +122,7 @@ public class AdminPremiumAccount implements IAdminCommandHandler
 					}
 					
 					long endtime = System.currentTimeMillis() + premiumDuration;
-					PremiumAccountsTable.savePremium(account, premiumTemplateId, endtime);
+					//PremiumAccountsTable.savePremium(account, premiumTemplateId, endtime);
 					activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminpremiumaccount.message4", activeChar, account, templateName, (Util.formatTime((int) (endtime - System.currentTimeMillis()) / 1000))));
 					_log.info("Gm : " + activeChar.getName() + " have added premium to account:  " + account + " . Template  " + templateName + " , premium will expire after : " + Util.formatTime((int) (endtime - System.currentTimeMillis()) / 1000));
 				}
@@ -154,7 +153,7 @@ public class AdminPremiumAccount implements IAdminCommandHandler
 						activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminpremiumaccount.message7", activeChar));
 						return false;
 					}
-					PremiumAccountsTable.removePremium(account);
+					//PremiumAccountsTable.removePremium(account);
 					activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminpremiumaccount.message8", activeChar, account));
 					_log.info("Gm : " + activeChar.getName() + " has removed premium for account : " + account);
 				}

@@ -1,13 +1,11 @@
 package quests;
 
 import l2r.commons.util.Rnd;
-import l2r.gameserver.dao.QuestHWIDRestriction;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.model.quest.Quest;
 import l2r.gameserver.model.quest.QuestState;
 import l2r.gameserver.scripts.ScriptFile;
-import l2r.gameserver.utils.TimeUtils;
 
 import java.util.Calendar;
 import java.util.StringTokenizer;
@@ -87,9 +85,6 @@ public class _455_WingsofSand extends Quest implements ScriptFile
 				cal.add(Calendar.DATE, 1);
 			cal.set(Calendar.HOUR_OF_DAY, 6);
 			cal.set(Calendar.MINUTE, 30);
-			
-			// Add the quest punishment to databse.
-			QuestHWIDRestriction.getInstance().insertQuestData(st.getPlayer(), getName(), cal.getTimeInMillis());
 		}
 		else if(event.startsWith("sepsoul_q455_11.htm"))
 		{
@@ -127,9 +122,6 @@ public class _455_WingsofSand extends Quest implements ScriptFile
 				cal.add(Calendar.DATE, 1);
 			cal.set(Calendar.HOUR_OF_DAY, 6);
 			cal.set(Calendar.MINUTE, 30);
-			
-			// Add the quest punishment to databse.
-			QuestHWIDRestriction.getInstance().insertQuestData(st.getPlayer(), getName(), cal.getTimeInMillis());
 		}
 
 		return htmltext;
@@ -147,11 +139,6 @@ public class _455_WingsofSand extends Quest implements ScriptFile
 		
 		if(ArrayUtils.contains(SeparatedSoul, npc.getNpcId()))
 		{
-			// Check if player can repeat the quest.
-			long time = QuestHWIDRestriction.getInstance().canRepeatQuest(player, getName());
-			if (time > 0)
-				return "You cannot start this quest again! <br1>Come back at " + TimeUtils.convertDateToString(time, false, true);
-
 			switch(st.getState())
 			{
 				case CREATED:

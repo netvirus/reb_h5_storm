@@ -7,7 +7,6 @@ import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.cache.ImagesChache;
 import l2r.gameserver.dao.EmotionsTable;
 import l2r.gameserver.dao.OlympiadNobleDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.StringHolder;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
@@ -21,7 +20,6 @@ import l2r.gameserver.handler.admincommands.IAdminCommandHandler;
 import l2r.gameserver.instancemanager.AutoAnnounce;
 import l2r.gameserver.instancemanager.BetaServer;
 import l2r.gameserver.instancemanager.SpawnManager;
-import l2r.gameserver.instancemanager.VoteManager;
 import l2r.gameserver.model.AcademyRewards;
 import l2r.gameserver.model.GameObject;
 import l2r.gameserver.model.GameObjectsStorage;
@@ -240,7 +238,7 @@ public class AdminReload implements IAdminCommandHandler
 			}
 			case admin_reload_premiumsystem:
 			{
-				PremiumAccountsTable.init();
+				//PremiumAccountsTable.init();
 				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminreload.message11", activeChar));
 				break;
 			}
@@ -254,12 +252,6 @@ public class AdminReload implements IAdminCommandHandler
 			{
 				ImagesChache.getInstance().reload();
 				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminreload.message13", activeChar));
-				break;
-			}
-			case admin_reload_pollmanager:
-			{
-				VoteManager.getInstance();
-				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminreload.message14", activeChar));
 				break;
 			}
 			case admin_reload_autoannounce:

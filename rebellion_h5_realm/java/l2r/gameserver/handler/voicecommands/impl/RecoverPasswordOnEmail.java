@@ -13,7 +13,6 @@ import l2r.gameserver.network.loginservercon.AuthServerCommunication;
 import l2r.gameserver.network.loginservercon.gspackets.ChangePassword;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
-import l2r.gameserver.randoms.CharacterIntro;
 import l2r.gameserver.scripts.Functions;
 
 import gov.nasa.worldwind.util.StringUtil;
@@ -154,11 +153,8 @@ public class RecoverPasswordOnEmail extends Functions implements IVoicedCommandH
 					return false;
 				}
 				
-				String email = CharacterIntro.getEmail(value);
+				String email = "";
 
-				if (email == null)
-					email = "";
-				
 				if (!email.equals(StringUtil.EMPTY))
 				{
 					String generatedCode = RandomStringUtils.random(5, true, true);
@@ -233,11 +229,8 @@ public class RecoverPasswordOnEmail extends Functions implements IVoicedCommandH
 				
 				if (!accName.equals(StringUtil.EMPTY))
 				{	
-					String email = CharacterIntro.getEmail(accName);
-					
-					if (email == null)
-						email = "";
-					
+					String email = "";
+
 					if (email.length() < 5 || email.length() > 40)
 						email = "";
 					
@@ -330,10 +323,7 @@ public class RecoverPasswordOnEmail extends Functions implements IVoicedCommandH
 						return false;
 					}
 					
-					String email = CharacterIntro.getEmail(accountName);
-					if (email.equals(StringUtil.EMPTY) || email == null)
-						return false;
-					
+					String email = "";
 					try
 					{
 						StringBuilder sb = new StringBuilder();
@@ -404,10 +394,8 @@ public class RecoverPasswordOnEmail extends Functions implements IVoicedCommandH
 						return false;
 					}
 					
-					String email = CharacterIntro.getEmail(accName);
-					if (email.equals(StringUtil.EMPTY) || email == null)
-						return false;
-					
+					String email = "";
+
 					try
 					{
 						StringBuilder sb = new StringBuilder();

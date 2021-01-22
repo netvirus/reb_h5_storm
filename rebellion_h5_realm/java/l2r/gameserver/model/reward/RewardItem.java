@@ -3,7 +3,6 @@ package l2r.gameserver.model.reward;
 import l2r.commons.math.SafeMath;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.xml.holder.ItemHolder;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.actor.instances.player.PremiumBonus;

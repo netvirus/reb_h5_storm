@@ -16,7 +16,6 @@ package l2r.gameserver.randoms;
 
 import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.achievements.iAchievement;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.model.Effect;
 import l2r.gameserver.model.Player;
@@ -38,12 +37,6 @@ public class PlayerShift
 		if(target == null || requester == null)
 			return;
 
-		if(!PremiumAccountsTable.getPlayerShiftClick(requester))
-		{
-			warn(requester, "You cannot access this command.");
-			return;
-		}
-		
 		String achPage = HtmCache.getInstance().getNotNull("scripts/actions/statsAch.htm", target);
 		String full = "";
 
@@ -71,12 +64,6 @@ public class PlayerShift
 		if(requester == null || target == null)
 			return;
 
-		if(!PremiumAccountsTable.getPlayerShiftClick(requester))
-		{
-			warn(requester, "You cannot access this command.");
-			return;
-		}
-		
 		if(what.equals("patak"))
 			warn(requester, target.getName() + " P.Attack is '" + target.getPAtk(null) + "' your is '" + requester.getPAtk(null) + "'.");
 		else if(what.equals("matak"))
@@ -104,12 +91,6 @@ public class PlayerShift
 		if(player == null || target == null)
 			return;
 
-		if(!PremiumAccountsTable.getPlayerShiftClick(player))
-		{
-			warn(player, "You cannot access this command.");
-			return;
-		}
-		
 		StringBuilder dialog = new StringBuilder("<html><body><center><font color=\"LEVEL\">");
 		dialog.append(target.getName()).append("<br></font></center><br>");
 

@@ -90,31 +90,21 @@ public class Config
 
 	/** CONFIG - SERVICES */
 	public static final String ACC_MOVE_FILE = "config/services/CharMove.properties";
-	//	public static final String PAYMENT_FILE = "config/services/payment.properties";
-	//  public static final String PREMIUM_FILE = "config/services/premium.properties";
 	public static final String SERVICES_FILE = "config/services/services.properties";
 	public static final String TOP_FILE = "config/services/tops.properties";
 	public static final String WEDDING_FILE = "config/services/Wedding.properties";
 
 	/** CONFIG - EVENTS */
-	//	public static final String EVENT_APRIL_FOOLS_CONFIG_FILE = "config/events/AprilFools.properties";
 	public static final String EVENT_CAPTURE_THE_FLAG_CONFIG_FILE = "config/events/CaptureTheFlag.properties";
-	//	public static final String EVENT_CHANGE_OF_HEART_CONFIG_FILE = "config/events/ChangeOfHeart.properties";
 	public static final String EVENT_COFFER_OF_SHADOWS_CONFIG_FILE = "config/events/CofferOfShadows.properties";
-	//	public static final String DEFENSE_TOWNS_CONFIG_FILE = "config/events/DefenseTowns.properties";
 	public static final String EVENTS_CONFIG_FILE = "config/events/events.properties";
 	public static final String EVENT_FIGHT_CLUB_FILE = "config/events/FightClub.properties";
 	public static final String EVENT_GLITTERING_MEDAL_CONFIG_FILE = "config/events/GlitteringMedal.properties";
-	//	public static final String EVENT_L2_DAY_CONFIG_FILE = "config/events/L2Day.properties";
 	public static final String EVENT_LAST_HERO_CONFIG_FILE = "config/events/LastHero.properties";
-	//	public static final String EVENT_MARCH_8_CONFIG_FILE = "config/events/March8.properties";
 	public static final String EVENT_MASTER_OF_ENCHANING_CONFIG_FILE = "config/events/MasterOfEnchaning.properties";
 	public static final String EVENT_OTHER_EVENTS_CONFIG_FILE = "config/events/OtherEvents.properties";
-	//	public static final String EVENT_SAVING_SNOWMAN_CONFIG_FILE = "config/events/SavingSnowman.properties";
 	public static final String EVENT_TEAM_VS_TEAM_CONFIG_FILE = "config/events/TeamVSTeam.properties";
 	public static final String EVENT_THE_FALL_HARVEST_CONFIG_FILE = "config/events/TheFallHarvest.properties";
-	//	public static final String EVENT_TRICK_OF_TRANSMUTATION_CONFIG_FILE = "config/events/TrickOfTransmutation.properties";
-	//	public static final String PC_CONFIG_FILE = "config/events/PcBangPoints.properties";
 	public static final String TRIVIA_CONFIG_FILE = "config/events/Trivia.properties";
 	
 	/** CONFIG - COMMUNITY */
@@ -125,11 +115,6 @@ public class Config
 	public static final String TELEPORT_MANAGER_CONFIG_FILE = "config/community/teleport_manager.properties";
 	public static final String ENCHANT_CB_CONFIG_FILE = "config/community/enchanter_manager.properties";
 
-	/** CONFIG - Phantom players */
-	public static final String PHANTOM_FILE = "config/phantom/Phantoms.properties";
-
-	public static boolean ENABLE_HWID_CHECKER;
-	
 	// Donation system
 	public static boolean ENABLE_DONATION_READER;
 	public static int DONATION_CHECK_DELAY;
@@ -141,90 +126,15 @@ public class Config
 	// Premium system
 	public static boolean ENABLE_PREMIUM_SYSTEM;
 
-	 /* --------------------------------------------------------- */
-	// Phantom players
-	public static boolean PHANTOM_PLAYERS_ENABLED;
-	public static String PHANTOM_PLAYERS_ACCOUNT;
-	public static int PHANTOM_MAX_PLAYERS;
-	public static int[] PHANTOM_BANNED_CLASSID;
-	public static int[] PHANTOM_BANNED_SETID;
-	public static int PHANTOM_MAX_WEAPON_GRADE;
-	public static int PHANTOM_MAX_ARMOR_GRADE;
-	public static int PHANTOM_MAX_JEWEL_GRADE;
-	public static int PHANTOM_SPAWN_MAX;
-	public static int PHANTOM_SPAWN_DELAY;
-	public static int PHANTOM_MAX_LIFETIME;
-	public static int CHANCE_TO_ENCHANT_WEAP;
-	public static int MAX_ENCH_PHANTOM_WEAP;
-	public static int PHANTOM_MAX_DRIFT_RANGE;
-	public static boolean ALLOW_PHANTOM_CUSTOM_TITLES;
-	public static int PHANTOM_CHANCE_SET_NOBLE_TITLE;
-	public static boolean DISABLE_PHANTOM_ACTIONS;
-	public static int[] PHANTOM_ALLOWED_NPC_TO_WALK;
-	public static int PHANTOM_ROAMING_MAX_WH_CHECKS;
-	public static int PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF;
-	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS;
-	public static int PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF;
-	public static int PHANTOM_ROAMING_MAX_NPC_CHECKS;
-	public static int PHANTOM_ROAMING_MIN_WH_DELAY;
-	public static int PHANTOM_ROAMING_MAX_WH_DELAY;
-	public static int PHANTOM_ROAMING_MIN_SHOP_DELAY;
-	public static int PHANTOM_ROAMING_MAX_SHOP_DELAY;
-	public static int PHANTOM_ROAMING_MIN_NPC_DELAY;
-	public static int PHANTOM_ROAMING_MAX_NPC_DELAY;
-	public static int PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY;
-	public static int PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY;
-	public static int PHANTOM_ROAMING_MIN_FREEROAM_DELAY;
-	public static int PHANTOM_ROAMING_MAX_FREEROAM_DELAY;
-	public static boolean DISABLE_PHANTOM_RESPAWN;
-	public static boolean DEBUG_PHANTOMS;
-	public static int[] PHANTOM_CLANS;
-	
 	// Automatic potions
 	public static boolean ENABLE_AUTO_POTIONS;
 	public static double AUTO_CP_POTION_DELAY;
 	public static double AUTO_HP_POTION_DELAY;
 	public static double AUTO_MP_POTION_DELAY;
-	public static int LASER_MP_POTION_RESTORE;
-	public static int GREATER_MP_POTION_RESTORE;
-	public static int LASER_CP_POTION_RESTORE;
-	public static int GREATER_CP_POTION_RESTORE;
-	public static int LASER_HP_POTION_RESTORE;
-	public static int GREATER_HP_POTION_RESTORE;
-	
-	public static boolean COMMUNITY_FORGE_ENABLED;
-	public static int BBS_ENCHANT_ITEM;
-	public static int[] BBS_ENCHANT_MAX;
-	public static int[] BBS_WEAPON_ENCHANT_LVL;
-	public static int[] BBS_ARMOR_ENCHANT_LVL;
-	public static int[] BBS_JEWELS_ENCHANT_LVL;
-	public static int[] BBS_ENCHANT_PRICE_WEAPON;
-	public static int[] BBS_ENCHANT_PRICE_ARMOR;
-	public static int[] BBS_ENCHANT_PRICE_JEWELS;
 
-	public static int BBS_ENCHANT_WEAPON_ATTRIBUTE_MAX;
-	public static int BBS_ENCHANT_ARMOR_ATTRIBUTE_MAX;
-	public static int[] BBS_ENCHANT_ATRIBUTE_LVL_WEAPON;
-	public static int[] BBS_ENCHANT_ATRIBUTE_LVL_ARMOR;
-	public static int[] BBS_ENCHANT_ATRIBUTE_PRICE_ARMOR;
-	public static int[] BBS_ENCHANT_ATRIBUTE_PRICE_WEAPON;
-	public static boolean BBS_ENCHANT_ATRIBUTE_PVP;
+	// Quests
+	public static boolean ALLOW_QUETS_ADDONS_CONFIG;
 
-	public static boolean BBS_ENCHANT_HEAD_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_CHEST_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_LEGS_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_GLOVES_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_FEET_ATTRIBUTE;
-	public static String[] BBS_ENCHANT_GRADE_ATTRIBUTE;
-
-	public static boolean BBS_ENCHANT_WEAPON_ATTRIBUTE;
-	public static boolean BBS_ENCHANT_SHIELD_ATTRIBUTE;
-	
-	public static boolean BBS_RECRUITMENT_ALLOW;
-	public static int BBS_RECRUITMENT_CLAN_DESCRIPTION_MIN;
-	public static int[] BBS_RECRUITMENT_TIME;
-	public static int[] BBS_RECRUITMENT_ITEMS;
-	
 	// Lottery
 	public static boolean BBS_GAME_LOTTERY_ALLOW;
 	public static int[] BBS_GAME_LOTTERY_BET;
@@ -254,7 +164,6 @@ public class Config
 	public static int ACADEMY_INVITE_DELAY;
 	
 	// Randoms...
-	public static boolean DISABLE_HWID_SUPPORT;
 	public static Map<Integer, String> PVP_KILLS_COLOR;
 	public static boolean LOG_ACCOUNT_INFO;
 	public static int LEVEL_UP_CRY_EXTRA_CHANCE;
@@ -315,10 +224,7 @@ public class Config
 	
 	// Allow player to change his lang via .cfg
 	public static boolean ALLOW_PLAYER_CHANGE_LANGUAGE;
-	
-	// Party distribute of items on premium account
-	public static boolean PREMIUM_ACCOUNT_FOR_PARTY;
-	
+
 	// Retail macro use bug
 	public static boolean ALLOW_MACROS_REUSE_BUG;
 	
@@ -331,9 +237,7 @@ public class Config
 	// Playerkill log manager
 	public static boolean ANTIFEED_ENABLE;
 	public static boolean ANTIFEED_DUALBOX;
-	public static int ANTIFEED_INTERVAL;
-	public static boolean ENABLE_PVP_PK_LOG;
-	
+
 	// Custom player kill system for pvp
 	public static boolean ENABLE_PLAYER_KILL_SYSTEM;
 	public static boolean PLAYER_KILL_SPAWN_UNIQUE_CHEST;
@@ -416,10 +320,7 @@ public class Config
 	public static String  FORUM_URL_TO_LEECH_ANNOUNCE;
 	
 	public static boolean ENABLE_POLL_SYSTEM;
-	
-	// Vote rewards
-	public static String[] VOTE_REWARDS;
-	
+
 	/* Player offline buff */
 	public static boolean RESTORE_OFFLINE_BUFFERS_ON_RESTART;
 	public static int OFFLINE_BUFFER_NAME_COLOR;
@@ -462,9 +363,6 @@ public class Config
 	public static int SMTP_SERVER_CONNECTION_TIMEOUT;
 	
 	/** CUSTOM CONFIGS */
-	// Character intro
-	public static boolean ENABLE_CHARACTER_INTRO;
-	
 	// Achievement system
 	public static boolean ENABLE_ACHIEVEMENTS;
 	public static boolean DISABLE_ACHIEVEMENTS_FAME_REWARD;
@@ -513,11 +411,7 @@ public class Config
 	
 	public static boolean SEVEN_SIGN_NON_STOP_ALL_SPAWN;
 	public static int SEVEN_SIGN_SET_PERIOD;
-	
-	public static boolean PREMIUM_FOR_NEW_ACC;
-	public static int PREMIUM_TEMPLATE_NEW_ACC;
-	public static long PREMIUM_TIME_FOR_NEW_ACC;
-	
+
 	// Online table configs
 	public static boolean ALLOW_ONLINE_PARSE;
 	public static int FIRST_UPDATE;
@@ -570,13 +464,9 @@ public class Config
 	public static boolean SECURITY_CLAN_ALLY_ALL;
 	
 	public static int HTM_CACHE_MODE;
-	
-	public static boolean ALLOW_QUETS_ADDONS_CONFIG;
-	
+
 	public static boolean ALLOW_IP_LOCK;
-	public static boolean ALLOW_HWID_LOCK;
-	public static int HWID_LOCK_MASK;
-	
+
 	/** GameServer ports */
 	public static int[] PORTS_GAME;
 	public static boolean ADVIPSYSTEM;
@@ -703,7 +593,6 @@ public class Config
 	
 	public static int EVENT_TvTTime;
 	public static String[] EVENT_TvTRewards;
-	public static boolean EVENT_TvT_rate;
 	public static String[] EVENT_TvTStartTime;
 	public static boolean EVENT_TvTCategories;
 	public static int EVENT_TvTMaxPlayerInTeam;
@@ -736,26 +625,9 @@ public class Config
 	public static String[] EVENT_CtFRewards;
 	public static int[] EVENT_CtFOpenCloseDoors;
 	public static String[] EVENT_CtF_DISALLOWED_SKILLS;
-	
-	public static final boolean BBS_COMMISSION_ALLOW = false;
-	public static final int[] BBS_COMMISSION_ARMOR_PRICE = null;
-	public static final int[] BBS_COMMISSION_WEAPON_PRICE = null;
-	public static final int[] BBS_COMMISSION_JEWERLY_PRICE = null;
-	public static final int[] BBS_COMMISSION_OTHER_PRICE = null;
-	public static final Object[] BBS_COMMISSION_ALLOW_ITEMS = null;
-	public static final int BBS_COMMISSION_MAX_ENCHANT = 0;
-	public static final Object[] BBS_COMMISSION_NOT_ALLOW_ITEMS = null;
-	public static final boolean BBS_COMMISSION_ALLOW_UNDERWEAR = false;
-	public static final boolean BBS_COMMISSION_ALLOW_CLOAK = false;
-	public static final boolean BBS_COMMISSION_ALLOW_BRACELET = false;
-	public static final boolean BBS_COMMISSION_ALLOW_AUGMENTED = false;
-	public static final int BBS_COMMISSION_COUNT_TO_PAGE = 0;
-	public static final int[] BBS_COMMISSION_MONETS = null;
-	
+
 	public static final boolean ENABLE_AUTO_HUNTING_REPORT = true;
 
-	public static boolean AllowBBSSubManager;
-	
 	public static int TalkGuardChance;
 	public static int TalkNormalChance;
 	public static int TalkNormalPeriod;
@@ -768,9 +640,6 @@ public class Config
 	public static int SERVICES_DELEVEL_COUNT;
 	public static int SERVICES_DELEVEL_MIN_LEVEL;
 	
-	public static double BBS_BUFF_TIME_MOD_SPECIAL;
-	public static double BBS_BUFF_TIME_MOD_MUSIC;
-	public static double BBS_BUFF_TIME_MOD;
 	public static int BBS_BUFF_TIME;
 	public static int BBS_BUFF_TIME_SPECIAL;
 	public static int BBS_BUFF_TIME_MUSIC;
@@ -783,7 +652,6 @@ public class Config
 	public static boolean BUFF_MANUAL_EDIT_SETS;
 	public static boolean BBS_BUFF_ALLOW_HEAL;
 	public static boolean BBS_BUFF_ALLOW_CANCEL;
-	public static int[] BBS_BUFF_IDs;
 	public static boolean BBS_BUFF_CURSED;
 	public static boolean BBS_BUFF_PK;
 	public static boolean BBS_BUFF_LEADER;
@@ -806,13 +674,7 @@ public class Config
 	public static boolean SERVICES_CHANGE_TITLE_COLOR_ENABLED;
 	public static int SERVICES_CHANGE_TITLE_COLOR_PRICE;
 	public static int SERVICES_CHANGE_TITLE_COLOR_ITEM;
-	public static String[] SERVICES_CHANGE_TITLE_COLOR_LIST;
-	
-	public static boolean CASTLE_GENERATE_TIME_ALTERNATIVE;
-	public static int CASTLE_GENERATE_TIME_LOW;
-	public static int CASTLE_GENERATE_TIME_HIGH;
 	public static Calendar CASTLE_VALIDATION_DATE;
-	public static int[] CASTLE_SELECT_HOURS;
 	public static int PERIOD_CASTLE_SIEGE;
 	
 	public static Calendar TW_VALIDATION_DATE;
@@ -835,10 +697,7 @@ public class Config
 	public static int DEV_UNDERGROUND_COLISEUM_MEMBER_COUNT;
 	
 	public static boolean ALT_DEBUG_ENABLED;
-	public static boolean ALT_DEBUG_PVP_ENABLED;
-	public static boolean ALT_DEBUG_PVP_DUEL_ONLY;
-	public static boolean ALT_DEBUG_PVE_ENABLED;
-	
+
 	public static int CLAN_HALL_AUCTION_LENGTH;
 	
 	public static double CRAFT_MASTERWORK_CHANCE;
@@ -852,14 +711,7 @@ public class Config
 	/** Thread pools size */
 	public static int SCHEDULED_THREAD_POOL_SIZE;
 	public static int EXECUTOR_THREAD_POOL_SIZE;
-	
-	public static int THREAD_P_MOVE;
-	public static int NPC_AI_MAX_THREAD;
-	public static int PLAYER_AI_MAX_THREAD;
-	public static int THREAD_P_PATHFIND;
-	
-	public static boolean NEW_THREAD_FOR_AI;
-	
+
 	public static boolean ENABLE_RUNNABLE_STATS;
 	
 	/** Network settings */
@@ -954,13 +806,10 @@ public class Config
 	public static boolean SKILLS_CHANCE_SHOW;
 	public static int SKILLS_CHANCE_MIN;
 	public static double SKILLS_CHANCE_MOD_MAGE;
-	public static double SKILLS_CHANCE_POW_MAGE;
 	public static double SKILLS_CHANCE_MOD_FIGHTER;
-	public static double SKILLS_CHANCE_POW_FIGHTER;
 	public static int SKILLS_CHANCE_CAP;
 	public static boolean SKILLS_CHANCE_CAP_ONLY_PLAYERS;
 	public static double SKILLS_MOB_CHANCE;
-	public static double SKILLS_DEBUFF_MOB_CHANCE;
 	public static boolean SHIELD_SLAM_BLOCK_IS_MUSIC;
 	public static boolean ALT_SAVE_UNSAVEABLE;
 	public static int ALT_SAVE_EFFECTS_REMAINING_TIME;
@@ -968,7 +817,6 @@ public class Config
 	public static boolean ALT_DELETE_SA_BUFFS;
 	public static int SKILLS_CAST_TIME_MIN;
 	public static double PHYS_SKILLS_DAMAGE_POW;
-	public static double SKILL_PROF_MULTIPLIER;
 	public static double BASE_MAGICAL_CRIT_RATE;
 	
 	/** Конфигурация использования итемов по умолчанию поушены */
@@ -1025,17 +873,12 @@ public class Config
 	public static boolean ALT_GAME_SUB_BOOK;
 	public static boolean ALT_NO_LASTHIT;
 	public static boolean ALT_KAMALOKA_NIGHTMARES_PREMIUM_ONLY;
-	public static boolean ALT_KAMALOKA_NIGHTMARE_REENTER;
-	public static boolean ALT_KAMALOKA_ABYSS_REENTER;
-	public static boolean ALT_KAMALOKA_LAB_REENTER;
 	public static boolean ALT_PET_HEAL_BATTLE_ONLY;
 	
 	public static boolean ALT_SIMPLE_SIGNS;
 	public static boolean ALT_TELE_TO_CATACOMBS;
 	public static boolean ALT_BS_CRYSTALLIZE;
-	public static int ALT_MAMMON_EXCHANGE;
-	public static int ALT_MAMMON_UPGRADE;
-	
+
 	public static int ALT_BUFF_LIMIT;
 	
 	public static int MULTISELL_SIZE;
@@ -1073,11 +916,7 @@ public class Config
 	public static int SERVICES_CHANGE_NICK_COLOR_PRICE;
 	public static int SERVICES_CHANGE_NICK_COLOR_ITEM;
 	public static String[] SERVICES_CHANGE_NICK_COLOR_LIST;
-	
-	public static boolean SERVICES_BASH_ENABLED;
-	public static boolean SERVICES_BASH_SKIP_DOWNLOAD;
-	public static int SERVICES_BASH_RELOAD_TIME;
-	
+
 	public static boolean SERVICES_NOBLESS_SELL_ENABLED;
 	public static int SERVICES_NOBLESS_SELL_PRICE;
 	public static int SERVICES_NOBLESS_SELL_ITEM;
@@ -1169,30 +1008,6 @@ public class Config
 	public static boolean ADEPT_ENABLE;
 	// By SmokiMo
 	public static int HENNA_MAX_VALUE;
-	public static boolean ENEBLE_TITLE_COLOR_MOD;
-	public static String TYPE_TITLE_COLOR_MOD;
-	public static int COUNT_TITLE_1;
-	public static int TITLE_COLOR_1;
-	public static int COUNT_TITLE_2;
-	public static int TITLE_COLOR_2;
-	public static int COUNT_TITLE_3;
-	public static int TITLE_COLOR_3;
-	public static int COUNT_TITLE_4;
-	public static int TITLE_COLOR_4;
-	public static int COUNT_TITLE_5;
-	public static int TITLE_COLOR_5;
-	public static boolean ENEBLE_NAME_COLOR_MOD;
-	public static String TYPE_NAME_COLOR_MOD;
-	public static int COUNT_NAME_1;
-	public static int NAME_COLOR_1;
-	public static int COUNT_NAME_2;
-	public static int NAME_COLOR_2;
-	public static int COUNT_NAME_3;
-	public static int NAME_COLOR_3;
-	public static int COUNT_NAME_4;
-	public static int NAME_COLOR_4;
-	public static int COUNT_NAME_5;
-	public static int NAME_COLOR_5;
 	// add by 4ipolino
 	public static boolean NEW_CHAR_IS_NOBLE;
 	public static boolean NEW_CHAR_IS_HERO;
@@ -1220,7 +1035,7 @@ public class Config
 	public static boolean ENABLE_WHEREIS_COMMAND;
 	public static boolean ENABLE_COMBINE_TALISMAN_COMMAND;
 	public static boolean ENABLE_OPENATOD_COMMAND;
-	public static boolean ENABLE_TRADELIST_VOICED;
+	//public static boolean ENABLE_TRADELIST_VOICED;
 	public static boolean ENABLE_EXP_COMMAND;
 	public static boolean ENABLE_REPAIR_COMMAND;
 	public static boolean ALLOW_LOCK_COMMAND;
@@ -1256,7 +1071,6 @@ public class Config
 	public static int GAME_NOCLASSES_COUNT_LIMIT;
 	public static int GAME_TEAM_COUNT_LIMIT;
 	
-	public static int ALT_OLY_REG_DISPLAY;
 	public static int ALT_OLY_BATTLE_REWARD_ITEM;
 	public static int ALT_OLY_CLASSED_RITEM_C;
 	public static int ALT_OLY_NONCLASSED_RITEM_C;
@@ -1275,10 +1089,8 @@ public class Config
 	public static int OLYMPIAD_POINTS_WEEKLY;
 	public static boolean OLYMPIAD_OLDSTYLE_STAT;
 	public static boolean OLYMPIAD_PLAYER_IP;
-	public static boolean OLYMPIAD_PLAYER_HWID;
 	public static int OLYMPIAD_BEGIN_TIME;
-	public static boolean OLYMPIAD_BAD_ENCHANT_ITEMS_ALLOW;
-	
+
 	public static boolean OLY_ENCH_LIMIT_ENABLE;
 	public static int OLY_ENCHANT_LIMIT_WEAPON;
 	public static int OLY_ENCHANT_LIMIT_ARMOR;
@@ -1307,7 +1119,6 @@ public class Config
 	public static double RATE_DROP_AA_ADENA;
 	public static double RATE_DROP_CHAMPION;
 	public static double RATE_CHAMPION_DROP_ADENA;
-	public static double RATE_DROP_SPOIL_CHAMPION;
 	public static double RATE_DROP_ITEMS;
 	public static double RATE_CHANCE_GROUP_DROP_ITEMS;
 	public static double RATE_CHANCE_DROP_ITEMS;
@@ -1317,26 +1128,18 @@ public class Config
 	public static double RATE_CHANCE_DROP_WEAPON_ARMOR_ACCESSORY;
 	public static double RATE_CHANCE_DROP_EPOLET;
 	public static boolean NO_RATE_ENCHANT_SCROLL;
-	public static double RATE_ENCHANT_SCROLL;
 	public static boolean CHAMPION_DROP_ONLY_ADENA;
 	public static boolean NO_RATE_HERBS;
-	public static double RATE_DROP_HERBS;
 	public static boolean NO_RATE_ATT;
-	public static double RATE_DROP_ATT;
 	public static boolean NO_RATE_LIFE_STONE;
 	public static boolean NO_RATE_CODEX_BOOK;
 	public static boolean NO_RATE_FORGOTTEN_SCROLL;
-	public static double RATE_DROP_LIFE_STONE;
 	public static boolean NO_RATE_KEY_MATERIAL;
-	public static double RATE_DROP_KEY_MATERIAL;
 	public static boolean NO_RATE_RECIPES;
-	public static double RATE_DROP_RECIPES;
 	public static double RATE_DROP_COMMON_ITEMS;
-	public static boolean NO_RATE_RAIDBOSS;
 	public static double RATE_DROP_RAIDBOSS;
 	public static double RATE_DROP_SPOIL;
 	public static int[] NO_RATE_ITEMS;
-	public static boolean NO_RATE_SIEGE_GUARD;
 	public static double RATE_DROP_SIEGE_GUARD;
 	public static double RATE_MANOR;
 	public static double RATE_FISH_DROP_COUNT;
@@ -1421,7 +1224,6 @@ public class Config
 	public static String RESTART_AT_TIME;
 	
 	public static int GAME_SERVER_LOGIN_PORT;
-	public static boolean GAME_SERVER_LOGIN_CRYPT;
 	public static String GAME_SERVER_LOGIN_HOST;
 	public static String INTERNAL_HOSTNAME;
 	public static String[] EXTERNAL_HOSTNAME;
@@ -1432,8 +1234,7 @@ public class Config
 	public static boolean SECOND_AUTH_STRONG_PASS;
 	public static int SECOND_AUTH_MAX_ATTEMPTS;
 	public static long SECOND_AUTH_BAN_TIME;
-	public static String SECOND_AUTH_REC_LINK;
-	
+
 	public static boolean SERVER_SIDE_NPC_NAME;
 	public static boolean SERVER_SIDE_NPC_TITLE;
 	public static boolean SERVER_SIDE_NPC_TITLE_ETC;
@@ -1444,9 +1245,7 @@ public class Config
 	public static List<Integer> ALLOW_CLASS_MASTERS_LIST = new ArrayList<Integer>();
 	public static int[] CLASS_MASTERS_PRICE_LIST = new int[4];
 	public static int[] CLASS_MASTERS_PRICE_ITEM_LIST = new int[4];
-	public static int CLASS_MASTERS_SUB_ITEM;
-	public static int CLASS_MASTERS_SUB_PRICE;
-	
+
 	public static boolean ALLOW_EVENT_GATEKEEPER;
 	
 	public static boolean ITEM_BROKER_ITEM_SEARCH;
@@ -1561,27 +1360,13 @@ public class Config
 	public static double SENDSTATUS_TRADE_MOD;
 	public static boolean SHOW_OFFLINE_MODE_IN_ONLINE;
 	
-	public static boolean ALLOW_CH_DOOR_OPEN_ON_CLICK;
 	public static boolean ALT_CH_ALL_BUFFS;
 	public static boolean ALT_CH_ALLOW_1H_BUFFS;
-	public static boolean ALT_CH_SIMPLE_DIALOG;
 	public static double CLANHALL_LEASE_MULTIPLIER;
 	
-	public static int CH_BID_GRADE1_MINCLANLEVEL;
-	public static int CH_BID_GRADE1_MINCLANMEMBERS;
-	public static int CH_BID_GRADE1_MINCLANMEMBERSLEVEL;
-	public static int CH_BID_GRADE2_MINCLANLEVEL;
-	public static int CH_BID_GRADE2_MINCLANMEMBERS;
-	public static int CH_BID_GRADE2_MINCLANMEMBERSLEVEL;
-	public static int CH_BID_GRADE3_MINCLANLEVEL;
-	public static int CH_BID_GRADE3_MINCLANMEMBERS;
-	public static int CH_BID_GRADE3_MINCLANMEMBERSLEVEL;
-	
 	public static double RESIDENCE_LEASE_FUNC_MULTIPLIER;
-	public static double RESIDENCE_LEASE_MULTIPLIER;
-	
+
 	public static boolean ACCEPT_ALTERNATE_ID;
-	public static int REQUEST_ID;
 	public static int[] REQUEST_IDS;
 	
 	public static boolean ANNOUNCE_MAMMON_SPAWN;
@@ -1655,49 +1440,10 @@ public class Config
 	
 	public static boolean DAMAGE_FROM_FALLING;
 	
-	/** Community Board */
-//	public static boolean USE_BBS_BUFER_IS_COMBAT;
-//	public static boolean USE_BBS_BUFER_IS_CURSE_WEAPON;
-//	public static boolean USE_BBS_BUFER_IS_EVENTS;
-//	public static boolean USE_BBS_TELEPORT_IS_COMBAT;
-//	public static boolean USE_BBS_TELEPORT_IS_EVENTS;
-	public static boolean USE_BBS_PROF_IS_COMBAT;
-//	public static boolean USE_BBS_PROF_IS_EVENTS;
-//	public static boolean SAVE_BBS_TELEPORT_IS_EPIC;
-//	public static boolean SAVE_BBS_TELEPORT_IS_BZ;
 	public static boolean COMMUNITYBOARD_ENABLED;
-//	public static boolean ALLOW_COMMUNITYBOARD_IN_COMBAT;
-//	public static boolean ALLOW_COMMUNITYBOARD_IS_IN_SIEGE;
-//	public static boolean COMMUNITYBOARD_BUFFER_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_MAX_LVL_ALLOW;
-//	public static boolean COMMUNITYBOARD_BUFFER_SIEGE_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_NO_IS_IN_PEACE_ENABLED;
-//	public static boolean COMMUNITYBOARD_SELL_ENABLED;
-//	public static boolean COMMUNITYBOARD_SHOP_ENABLED;
-//	public static boolean COMMUNITYBOARD_SHOP_NO_IS_IN_PEACE_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_PET_ENABLED;
-//	public static boolean COMMUNITYBOARD_BUFFER_SAVE_ENABLED;
-//	public static boolean COMMUNITYBOARD_ABNORMAL_ENABLED;
-//	public static boolean COMMUNITYBOARD_INSTANCE_ENABLED;
-//	public static boolean COMMUNITYBOARD_EVENTS_ENABLED;
-//	public static int COMMUNITYBOARD_BUFF_TIME;
-//	public static int COMMUNITYBOARD_BUFFER_MAX_LVL;
-//	public static int COMMUNITYBOARD_BUFF_PETS_TIME;
-//	public static int COMMUNITYBOARD_BUFF_COMBO_TIME;
-//	public static int COMMUNITYBOARD_BUFF_SONGDANCE_TIME;
-//	public static int COMMUNITYBOARD_BUFF_PICE;
-//	public static int COMMUNITYBOARD_BUFF_SAVE_PICE;
-//	public static List<Integer> COMMUNITYBOARD_BUFF_ALLOW = new ArrayList<Integer>();
-	public static List<Integer> COMMUNITI_LIST_MAGE_SUPPORT = new ArrayList<Integer>();
-//	public static List<Integer> COMMUNITI_LIST_FIGHTER_SUPPORT = new ArrayList<Integer>();
-//	public static List<String> COMMUNITYBOARD_MULTISELL_ALLOW = new ArrayList<String>();
 	public static String BBS_DEFAULT;
 	public static String BBS_HOME_DIR;
-//	public static boolean COMMUNITYBOARD_TELEPORT_ENABLED;
-//	public static int COMMUNITYBOARD_TELE_PICE;
-//	public static int COMMUNITYBOARD_SAVE_TELE_PICE;
-//	public static boolean COMMUNITYBOARD_TELEPORT_SIEGE_ENABLED;
-	
+
 	/** Wedding Options */
 	public static boolean ALLOW_WEDDING;
 	public static int WEDDING_PRICE;
@@ -1794,10 +1540,7 @@ public class Config
 	public static boolean ALLOW_TALK_WHILE_SITTING;
 	
 	public static boolean PARTY_LEADER_ONLY_CAN_INVITE;
-	
-	/** Разрешены ли клановые скилы? **/
-	public static boolean ALLOW_CLANSKILLS;
-	
+
 	/** Разрешено ли изучение скилов трансформации и саб классов без наличия выполненного квеста */
 	public static boolean ALLOW_LEARN_TRANS_SKILLS_WO_QUEST;
 	
@@ -1829,11 +1572,6 @@ public class Config
 	public static double EVENT_CofferOfShadowsRewardRate;
 	
 	public static double EVENT_APIL_FOOLS_DROP_CHANCE;
-	
-	/** Master Yogi event enchant config */
-	public static int ENCHANT_CHANCE_MASTER_YOGI_STAFF;
-	public static int ENCHANT_MAX_MASTER_YOGI_STAFF;
-	public static int SAFE_ENCHANT_MASTER_YOGI_STAFF;
 	
 	public static boolean AllowCustomDropItems;
 	public static String[] CUSTOM_DROP_ITEMS;
@@ -1887,7 +1625,6 @@ public class Config
 	public static int EVENT_SAVING_SNOWMAN_REWARDER_CHANCE;
 	
 	public static boolean SERVICES_NO_TRADE_ONLY_OFFLINE;
-	public static boolean SERVICES_NO_TRADE_BLOCK_ZONE;
 	public static double SERVICES_TRADE_TAX;
 	public static double SERVICES_OFFSHORE_TRADE_TAX;
 	public static boolean SERVICES_OFFSHORE_NO_CASTLE_TAX;
@@ -1911,7 +1648,10 @@ public class Config
 	public static boolean ALT_SHOW_SERVER_TIME;
 	
 	/** Geodata config */
-	public static int GEO_X_FIRST, GEO_Y_FIRST, GEO_X_LAST, GEO_Y_LAST;
+	public static int GEO_X_FIRST;
+	public static int GEO_Y_FIRST;
+	public static int GEO_X_LAST;
+	public static int GEO_Y_LAST;
 	public static String GEOFILES_PATTERN;
 	public static boolean ALLOW_GEODATA;
 	public static boolean ALLOW_FALL_FROM_WALLS;
@@ -1946,7 +1686,6 @@ public class Config
 	public static boolean GM_LOGIN_SILENCE;
 	public static boolean GM_LOGIN_TRADEOFF;
 	public static boolean HIDE_GM_STATUS;
-	public static boolean ANNOUNCE_GM_LOGIN;
 	public static boolean SAVE_GM_EFFECTS; // Silence, gmspeed, etc...
 	public static boolean GM_PM_COMMANDS;
 	
@@ -1964,58 +1703,21 @@ public class Config
 	public static boolean L2_TOP_MANAGER_ENABLED;
 	public static int L2_TOP_MANAGER_INTERVAL;
 	public static String L2_TOP_WEB_ADDRESS;
-	public static String L2_TOP_SMS_ADDRESS;
 	public static String L2_TOP_SERVER_ADDRESS;
 	public static int L2_TOP_SAVE_DAYS;
-	public static int[] L2_TOP_REWARD;
 	public static String L2_TOP_NAME_PREFIX;
 	
 	public static boolean MMO_TOP_MANAGER_ENABLED;
 	public static int MMO_TOP_MANAGER_INTERVAL;
 	public static String MMO_TOP_WEB_ADDRESS;
-	public static String MMO_TOP_SERVER_ADDRESS;
 	public static int MMO_TOP_SAVE_DAYS;
 	public static int[] MMO_TOP_REWARD;
-	
-	public static boolean SMS_PAYMENT_MANAGER_ENABLED;
-	public static String SMS_PAYMENT_WEB_ADDRESS;
-	public static int SMS_PAYMENT_MANAGER_INTERVAL;
-	public static int SMS_PAYMENT_SAVE_DAYS;
-	public static String SMS_PAYMENT_SERVER_ADDRESS;
-	public static int[] SMS_PAYMENT_REWARD;
-	
+
 	public static boolean AUTH_SERVER_GM_ONLY;
 	public static boolean AUTH_SERVER_BRACKETS;
 	public static boolean AUTH_SERVER_IS_PVP;
 	public static int AUTH_SERVER_AGE_LIMIT;
 	public static int AUTH_SERVER_SERVER_TYPE;
-	
-	/* Version Configs */
-	public static String SERVER_VERSION;
-	public static String SERVER_BUILD_DATE;
-	
-	/* Конфиг для ПА */
-	public static int SERVICES_RATE_TYPE;
-	public static int SERVICES_RATE_CREATE_PA;
-	public static int[] SERVICES_RATE_BONUS_PRICE;
-	public static int[] SERVICES_RATE_BONUS_ITEM;
-	public static double[] SERVICES_RATE_BONUS_VALUE;
-	public static int[] SERVICES_RATE_BONUS_DAYS;
-	public static int ENCHANT_CHANCE_WEAPON_PA;
-	public static int ENCHANT_CHANCE_ARMOR_PA;
-	public static int ENCHANT_CHANCE_ACCESSORY_PA;
-	public static int ENCHANT_CHANCE_WEAPON_BLESS_PA;
-	public static int ENCHANT_CHANCE_ARMOR_BLESS_PA;
-	public static int ENCHANT_CHANCE_ACCESSORY_BLESS_PA;
-	public static int ENCHANT_CHANCE_CRYSTAL_WEAPON_PA;
-	public static int ENCHANT_CHANCE_CRYSTAL_ARMOR_PA;
-	public static int ENCHANT_CHANCE_CRYSTAL_ACCESSORY_PA;
-	
-	public static double SERVICES_BONUS_XP;
-	public static double SERVICES_BONUS_SP;
-	public static double SERVICES_BONUS_ADENA;
-	public static double SERVICES_BONUS_ITEMS;
-	public static double SERVICES_BONUS_SPOIL;
 	
 	public static long MAX_PLAYER_CONTRIBUTION;
 	public static boolean AUTO_LOOT_PA;
@@ -2072,7 +1774,6 @@ public class Config
 	
 	public static boolean ZONE_PVP_COUNT;
 	public static boolean SIEGE_PVP_COUNT;
-	public static boolean EPIC_EXPERTISE_PENALTY;
 	public static boolean EXPERTISE_PENALTY;
 	public static boolean ALT_DISPEL_MUSIC;
 	
@@ -2082,33 +1783,8 @@ public class Config
 	public static boolean ENABLE_MODIFY_SKILL_DURATION;
 	public static TIntIntHashMap SKILL_DURATION_LIST;
 	
-//	public static boolean COMMUNITYBOARD_BOARD_ALT_ENABLED;
-//	public static int COMMUNITYBOARD_BUFF_PICE_NG;
-//	public static int COMMUNITYBOARD_BUFF_PICE_D;
-//	public static int COMMUNITYBOARD_BUFF_PICE_C;
-//	public static int COMMUNITYBOARD_BUFF_PICE_B;
-//	public static int COMMUNITYBOARD_BUFF_PICE_A;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S80;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S84;
-//	public static int COMMUNITYBOARD_BUFF_PICE_NG_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_D_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_C_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_B_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_A_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S80_GR;
-//	public static int COMMUNITYBOARD_BUFF_PICE_S84_GR;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_NG;
 	public static int INSTANCES_MAX_BOXES;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_D;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_C;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_B;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_A;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S80;
-//	public static int COMMUNITYBOARD_TELEPORT_PICE_S84;
-	
+
 	public static double ALT_VITALITY_NEVIT_UP_POINT;
 	public static double ALT_VITALITY_NEVIT_POINT;
 	
@@ -2132,10 +1808,7 @@ public class Config
 	public static boolean CAN_BE_TRADED_NO_STOREABLE;
 	public static boolean CAN_BE_TRADED_SHADOW_ITEM;
 	public static boolean CAN_BE_TRADED_HERO_WEAPON;
-	public static boolean CAN_BE_WH_NO_TARADEABLE;
-	public static boolean CAN_BE_CWH_NO_TARADEABLE;
 	public static boolean CAN_BE_CWH_IS_AUGMENTED;
-	public static boolean CAN_BE_WH_IS_AUGMENTED;
 	public static boolean ALLOW_SOUL_SPIRIT_SHOT_INFINITELY;
 	public static boolean ALLOW_ARROW_INFINITELY;
 	
@@ -2177,31 +1850,9 @@ public class Config
 	public static int[] COMMUNITYBOARD_ENCHANT_ATRIBUTE_LVL_ARMOR;
 	public static int[] COMMUNITYBOARD_ENCHANT_ATRIBUTE_PRICE_ARMOR;
 	public static boolean COMMUNITYBOARD_ENCHANT_ATRIBUTE_PVP;
-	
-	public static boolean USE_ALT_ENCHANT_PA;
-	public static ArrayList<Integer> ENCHANT_WEAPON_FIGHT_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_WEAPON_FIGHT_BLESSED_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_WEAPON_FIGHT_CRYSTAL_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_CRYSTAL_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_BLESSED_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_JEWELRY_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_JEWELRY_CRYSTAL_PA = new ArrayList<Integer>();
-	public static ArrayList<Integer> ENCHANT_ARMOR_JEWELRY_BLESSED_PA = new ArrayList<Integer>();
-	
+
 	public static boolean EVENT_ENABLE_LAST_HERO;
-	public static int EVENT_LastHeroItemID;
-	public static double EVENT_LastHeroItemCOUNT;
-	public static int EVENT_LastHeroTime;
-	public static boolean EVENT_LastHeroRate;
-	public static double EVENT_LastHeroItemCOUNTFinal;
-	public static boolean EVENT_LastHeroRateFinal;
-	public static int EVENT_LastHeroChanceToStart;
-	
-	public static int EVENT_TvTItemID;
-	public static double EVENT_TvTItemCOUNT;
-	public static int EVENT_TvTChanceToStart;
-	
+
 	public static boolean LOAD_CUSTOM_SPAWN;
 	public static boolean SAVE_GM_SPAWN;
 	
@@ -2242,8 +1893,7 @@ public class Config
 		
 		GAME_SERVER_LOGIN_HOST = serverSettings.getProperty("LoginHost", "127.0.0.1");
 		GAME_SERVER_LOGIN_PORT = serverSettings.getProperty("LoginPort", 9014);
-		GAME_SERVER_LOGIN_CRYPT = serverSettings.getProperty("LoginUseCrypt", true);
-		
+
 		AUTH_SERVER_AGE_LIMIT = serverSettings.getProperty("ServerAgeLimit", 0);
 		AUTH_SERVER_GM_ONLY = serverSettings.getProperty("ServerGMOnly", false);
 		AUTH_SERVER_BRACKETS = serverSettings.getProperty("ServerBrackets", false);
@@ -2256,23 +1906,19 @@ public class Config
 			ServerType t = ServerType.valueOf(a.toUpperCase());
 			AUTH_SERVER_SERVER_TYPE |= t.getMask();
 		}
-		
-		DISABLE_HWID_SUPPORT = serverSettings.getProperty("DisableHWIDSupport", false);
-		
+
 		SECOND_AUTH_ENABLED = serverSettings.getProperty("SAEnabled", false);
 		SECOND_AUTH_BAN_ACC = serverSettings.getProperty("SABanAccEnabled", false);
 		SECOND_AUTH_STRONG_PASS = serverSettings.getProperty("SAStrongPass", false);
 		SECOND_AUTH_MAX_ATTEMPTS = serverSettings.getProperty("SAMaxAttemps", 5);
 		SECOND_AUTH_BAN_TIME = serverSettings.getProperty("SABanTime", 480);
-		SECOND_AUTH_REC_LINK = serverSettings.getProperty("SARecoveryLink", "http://www.my-domain.com/charPassRec.php");
-		
+
 		INTERNAL_HOSTNAME = serverSettings.getProperty("InternalHostname", "*");
 		EXTERNAL_HOSTNAME = serverSettings.getProperty("ExternalHostname", new String[]{"*"});
 		EXTERNAL_LOGIN_HOSTNAME = serverSettings.getProperty("ExternalLoginHostname", new String[]{"*"});
 		
 		ADVIPSYSTEM = serverSettings.getProperty("AdvIPSystem", false);
 		REQUEST_IDS = serverSettings.getProperty("RequestServerID", new int[]{0});
-		REQUEST_ID = REQUEST_IDS[0];
 		ACCEPT_ALTERNATE_ID = serverSettings.getProperty("AcceptAlternateID", true);
 		
 		PORTS_GAME = serverSettings.getProperty("GameserverPort", new int[]
@@ -2340,14 +1986,7 @@ public class Config
 		EXECUTOR_THREAD_POOL_SIZE = serverSettings.getProperty("ExecutorThreadPoolSize", NCPUS * 2);
 		
 		ENABLE_RUNNABLE_STATS = serverSettings.getProperty("EnableRunnableStats", false);
-		
-		THREAD_P_MOVE = serverSettings.getProperty("ThreadPoolSizeMove", 25);
-		THREAD_P_PATHFIND = serverSettings.getProperty("ThreadPoolSizePathfind", 10);
-		NPC_AI_MAX_THREAD = serverSettings.getProperty("NpcAiMaxThread", 10);
-		PLAYER_AI_MAX_THREAD = serverSettings.getProperty("PlayerAiMaxThread", 20);
-		
-		NEW_THREAD_FOR_AI = serverSettings.getProperty("IgnoreUsageOfAiTaskManager", false);
-		
+
 		SELECTOR_CONFIG.SLEEP_TIME = serverSettings.getProperty("SelectorSleepTime", 10L);
 		SELECTOR_CONFIG.INTEREST_DELAY = serverSettings.getProperty("InterestDelay", 30L);
 		SELECTOR_CONFIG.MAX_SEND_PER_PASS = serverSettings.getProperty("MaxSendPerPass", 32);
@@ -2377,9 +2016,7 @@ public class Config
 		ALLOW_QUETS_ADDONS_CONFIG = serverSettings.getProperty("AllowQuestAddons", false);
 		
 		ALLOW_IP_LOCK = serverSettings.getProperty("AllowLockIP", false);
-		ALLOW_HWID_LOCK = serverSettings.getProperty("AllowLockHwid", false);
-		HWID_LOCK_MASK = serverSettings.getProperty("HwidLockMask", 10);
-		
+
 		RRD_ENABLED = serverSettings.getProperty("UseRRD", true);
 		RRD_EXTENDED = serverSettings.getProperty("UseExtendedRRD", false);
 		RRD_PATH = serverSettings.getProperty("RRDPath", "./serverstats/");
@@ -2398,8 +2035,6 @@ public class Config
 		SERVER_SIDE_NPC_TITLE_ETC = serverSettings.getProperty("ServerSideNpcTitleEtc", false);
 		NPC_ALLOW_HIT = serverSettings.getProperty("AllowHitOnNpcs", true);
 		LOG_ACCOUNT_INFO = serverSettings.getProperty("LogAccountInfo", true);
-
-		ENABLE_HWID_CHECKER = serverSettings.getProperty("EnableSecondaryHwidCheck", false);
 	}
 	
 	public static void loadDonateRewardSettings()
@@ -2521,34 +2156,14 @@ public class Config
 	{
 		ExProperties residenceSettings = load(RESIDENCE_CONFIG_FILE);
 		
-		CH_BID_GRADE1_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanLevel", 2);
-		CH_BID_GRADE1_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembers", 1);
-		CH_BID_GRADE1_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade1_MinClanMembersAvgLevel", 1);
-		CH_BID_GRADE2_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanLevel", 2);
-		CH_BID_GRADE2_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembers", 1);
-		CH_BID_GRADE2_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade2_MinClanMembersAvgLevel", 1);
-		CH_BID_GRADE3_MINCLANLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanLevel", 2);
-		CH_BID_GRADE3_MINCLANMEMBERS = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembers", 1);
-		CH_BID_GRADE3_MINCLANMEMBERSLEVEL = residenceSettings.getProperty("ClanHallBid_Grade3_MinClanMembersAvgLevel", 1);
-		
 		CLAN_HALL_AUCTION_LENGTH = residenceSettings.getProperty("ClanHallAuctionLength", 7);
 		
 		CLANHALL_LEASE_MULTIPLIER = residenceSettings.getProperty("ClanHallLeaseMultiplier", 1.);
 		
 		RESIDENCE_LEASE_FUNC_MULTIPLIER = residenceSettings.getProperty("ResidenceLeaseFuncMultiplier", 1.);
-		RESIDENCE_LEASE_MULTIPLIER = residenceSettings.getProperty("ResidenceLeaseMultiplier", 1.);
-		
-		CASTLE_GENERATE_TIME_ALTERNATIVE = residenceSettings.getProperty("CastleGenerateAlternativeTime", false);
-		CASTLE_GENERATE_TIME_LOW = residenceSettings.getProperty("CastleGenerateTimeLow", 46800000);
-		CASTLE_GENERATE_TIME_HIGH = residenceSettings.getProperty("CastleGenerateTimeHigh", 61200000);
-		
+
 		PERIOD_CASTLE_SIEGE = residenceSettings.getProperty("CastleSiegeIntervalWeeks", 2);
-		
-		CASTLE_SELECT_HOURS = residenceSettings.getProperty("CastleSelectHours", new int[]
-		{
-			16,
-			20
-		});
+
 		int[] tempCastleValidatonTime = residenceSettings.getProperty("CastleValidationDate", new int[]
 		{
 			2,
@@ -2725,7 +2340,6 @@ public class Config
 		RATE_DROP_ADENA = ratesSettings.getProperty("RateDropAdena", 1.);
 		RATE_DROP_AA_ADENA = ratesSettings.getProperty("RateDropAncientAdena", 1.);
 		RATE_CHAMPION_DROP_ADENA = ratesSettings.getProperty("RateChampionDropAdena", 1.);
-		RATE_DROP_SPOIL_CHAMPION = ratesSettings.getProperty("RateSpoilChampion", 1.);
 		RATE_DROP_ITEMS = ratesSettings.getProperty("RateDropItems", 1.);
 		RATE_CHANCE_GROUP_DROP_ITEMS = ratesSettings.getProperty("RateChanceGroupDropItems", 1.);
 		RATE_CHANCE_DROP_ITEMS = ratesSettings.getProperty("RateChanceDropItems", 1.);
@@ -2736,21 +2350,14 @@ public class Config
 		RATE_CHANCE_DROP_EPOLET = ratesSettings.getProperty("RateChanceDropEpolets", 1.);
 		NO_RATE_ENCHANT_SCROLL = ratesSettings.getProperty("NoRateEnchantScroll", true);
 		CHAMPION_DROP_ONLY_ADENA = ratesSettings.getProperty("ChampionDropOnlyAdena", false);
-		RATE_ENCHANT_SCROLL = ratesSettings.getProperty("RateDropEnchantScroll", 1.);
 		NO_RATE_HERBS = ratesSettings.getProperty("NoRateHerbs", true);
-		RATE_DROP_HERBS = ratesSettings.getProperty("RateDropHerbs", 1.);
 		NO_RATE_ATT = ratesSettings.getProperty("NoRateAtt", true);
-		RATE_DROP_ATT = ratesSettings.getProperty("RateDropAtt", 1.);
 		NO_RATE_LIFE_STONE = ratesSettings.getProperty("NoRateLifeStone", true);
 		NO_RATE_CODEX_BOOK = ratesSettings.getProperty("NoRateCodex", true);
 		NO_RATE_FORGOTTEN_SCROLL = ratesSettings.getProperty("NoRateForgottenScroll", true);
-		RATE_DROP_LIFE_STONE = ratesSettings.getProperty("RateDropLifeStone", 1.);
 		NO_RATE_KEY_MATERIAL = ratesSettings.getProperty("NoRateKeyMaterial", true);
-		RATE_DROP_KEY_MATERIAL = ratesSettings.getProperty("RateDropKeyMaterial", 1.);
 		NO_RATE_RECIPES = ratesSettings.getProperty("NoRateRecipes", true);
-		RATE_DROP_RECIPES = ratesSettings.getProperty("RateDropRecipes", 1.);
 		RATE_DROP_COMMON_ITEMS = ratesSettings.getProperty("RateDropCommonItems", 1.);
-		NO_RATE_RAIDBOSS = ratesSettings.getProperty("NoRateRaidBoss", false);
 		RATE_DROP_RAIDBOSS = ratesSettings.getProperty("RateRaidBoss", 1.);
 		RATE_DROP_SPOIL = ratesSettings.getProperty("RateDropSpoil", 1.);
 		NO_RATE_ITEMS = ratesSettings.getProperty("NoRateItemIds", new int[]
@@ -2769,7 +2376,6 @@ public class Config
 			16026
 		});
 		NO_RATE_EQUIPMENT = ratesSettings.getProperty("NoRateEquipment", true);
-		NO_RATE_SIEGE_GUARD = ratesSettings.getProperty("NoRateSiegeGuard", false);
 		RATE_DROP_SIEGE_GUARD = ratesSettings.getProperty("RateSiegeGuard", 1.);
 		RATE_MANOR = ratesSettings.getProperty("RateManor", 1.);
 		RATE_FISH_DROP_COUNT = ratesSettings.getProperty("RateFishDropCount", 1.);
@@ -2975,32 +2581,7 @@ public class Config
 		
 		// By SmokiMo
 		HENNA_MAX_VALUE = otherSettings.getProperty("HennaMaxValue", 5);
-		
-		ENEBLE_TITLE_COLOR_MOD = otherSettings.getProperty("EnebleTitleColorMod", false);
-		TYPE_TITLE_COLOR_MOD = otherSettings.getProperty("TypeTitleColorMod", "PvP");
-		COUNT_TITLE_1 = otherSettings.getProperty("CountTitle_1", 50);
-		TITLE_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_1", "FFFFFF"));
-		COUNT_TITLE_2 = otherSettings.getProperty("CountTitle_2", 100);
-		TITLE_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_2", "FFFFFF"));
-		COUNT_TITLE_3 = otherSettings.getProperty("CountTitle_3", 250);
-		TITLE_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_3", "FFFFFF"));
-		COUNT_TITLE_4 = otherSettings.getProperty("CountTitle_4", 500);
-		TITLE_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_4", "FFFFFF"));
-		COUNT_TITLE_5 = otherSettings.getProperty("CountTitle_5", 1000);
-		TITLE_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("TitleColor_5", "FFFFFF"));
-		ENEBLE_NAME_COLOR_MOD = otherSettings.getProperty("EnebleNameColorMod", false);
-		TYPE_NAME_COLOR_MOD = otherSettings.getProperty("TypeNameColorMod", "Pk");
-		COUNT_NAME_1 = otherSettings.getProperty("CountName_1", 50);
-		NAME_COLOR_1 = Integer.decode("0x" + otherSettings.getProperty("NameColor_1", "FFFFFF"));
-		COUNT_NAME_2 = otherSettings.getProperty("CountName_2", 100);
-		NAME_COLOR_2 = Integer.decode("0x" + otherSettings.getProperty("NameColor_2", "FFFFFF"));
-		COUNT_NAME_3 = otherSettings.getProperty("CountName_3", 250);
-		NAME_COLOR_3 = Integer.decode("0x" + otherSettings.getProperty("NameColor_3", "FFFFFF"));
-		COUNT_NAME_4 = otherSettings.getProperty("CountName_4", 500);
-		NAME_COLOR_4 = Integer.decode("0x" + otherSettings.getProperty("NameColor_4", "FFFFFF"));
-		COUNT_NAME_5 = otherSettings.getProperty("CountName_5", 1000);
-		NAME_COLOR_5 = Integer.decode("0x" + otherSettings.getProperty("NameColor_5", "FFFFFF"));
-		
+
 		NEW_CHAR_IS_NOBLE = otherSettings.getProperty("NewCharIsNoble", false);
 		NEW_CHAR_IS_HERO = otherSettings.getProperty("NewCharIsHero", false);
 		
@@ -3095,18 +2676,14 @@ public class Config
 		PDAM_OLD_FORMULA = formulasSettings.getProperty("PDamOldFormula", false);
 		SKILLS_CHANCE_SHOW = formulasSettings.getProperty("SkillsShowChance", true);
 		SKILLS_CHANCE_MOD_MAGE = formulasSettings.getProperty("SkillsChanceModMage", 11.);
-		SKILLS_CHANCE_POW_MAGE = formulasSettings.getProperty("SkillsChancePowMage", 0.5);
 		SKILLS_CHANCE_MOD_FIGHTER = formulasSettings.getProperty("SkillsChanceModFighter", 11.);
-		SKILLS_CHANCE_POW_FIGHTER = formulasSettings.getProperty("SkillsChancePowFighter", 0.5);
 		SKILLS_CHANCE_MIN = formulasSettings.getProperty("SkillsChanceMin", 10);
 		SKILLS_CHANCE_CAP = formulasSettings.getProperty("SkillsChanceCap", 90);
 		SKILLS_CHANCE_CAP_ONLY_PLAYERS = formulasSettings.getProperty("SkillsChanceCapOnlyPlayers", false);
 		SKILLS_MOB_CHANCE = formulasSettings.getProperty("SkillsMobChance", 0.5);
-		SKILLS_DEBUFF_MOB_CHANCE = formulasSettings.getProperty("SkillsDebuffMobChance", 0.5);
 		SKILLS_CAST_TIME_MIN = formulasSettings.getProperty("SkillsCastTimeMin", 333);
 		PHYS_SKILLS_DAMAGE_POW = formulasSettings.getProperty("PhysSkillsDamagePow", 1.0);
-		SKILL_PROF_MULTIPLIER = formulasSettings.getProperty("SkillProfMultiplier", 0.85);
-		
+
 		BASE_MAGICAL_CRIT_RATE = formulasSettings.getProperty("BaseMcritRate", 10.);
 		
 		ALT_ABSORB_DAMAGE_MODIFIER = formulasSettings.getProperty("AbsorbDamageModifier", 1.0);
@@ -3458,12 +3035,7 @@ public class Config
 		
 		DEV_UNDERGROUND_COLISEUM = DevelopSettings.getProperty("UndergroundColiseum", false);
 		DEV_UNDERGROUND_COLISEUM_MEMBER_COUNT = DevelopSettings.getProperty("UndergroundColiseumMemberCount", 7);
-		
 		ALT_DEBUG_ENABLED = DevelopSettings.getProperty("AltDebugEnabled", false);
-		ALT_DEBUG_PVP_ENABLED = DevelopSettings.getProperty("AltDebugPvPEnabled", false);
-		ALT_DEBUG_PVP_DUEL_ONLY = DevelopSettings.getProperty("AltDebugPvPDuelOnly", true);
-		ALT_DEBUG_PVE_ENABLED = DevelopSettings.getProperty("AltDebugPvEEnabled", false);
-		
 		DONTLOADSPAWN = DevelopSettings.getProperty("StartWithoutSpawn", false);
 		DONTLOADQUEST = DevelopSettings.getProperty("StartWithoutQuest", false);
 		DONTLOADEVENTS = DevelopSettings.getProperty("StartWithoutEvents", false);
@@ -3472,7 +3044,6 @@ public class Config
 		DONTLOADNEXUS = DevelopSettings.getProperty("DontLoadNexus", false);
 		DONTLOADMULTISELLS = DevelopSettings.getProperty("DontLoadMultisells", false);
 		DONTAUTOANNOUNCE = DevelopSettings.getProperty("DontAutoAnnounce", false);
-		
 		LOAD_CUSTOM_SPAWN = DevelopSettings.getProperty("LoadAddGmSpawn", false);
 		SAVE_GM_SPAWN = DevelopSettings.getProperty("SaveGmSpawn", false);
 	}
@@ -3527,10 +3098,7 @@ public class Config
 		CAN_BE_TRADED_NO_STOREABLE = itemsProperties.getProperty("CanBeTradedNoStoreable", false);
 		CAN_BE_TRADED_SHADOW_ITEM = itemsProperties.getProperty("CanBeTradedShadowItem", false);
 		CAN_BE_TRADED_HERO_WEAPON = itemsProperties.getProperty("CanBeTradedHeroWeapon", false);
-		CAN_BE_WH_NO_TARADEABLE = itemsProperties.getProperty("CanBeWhNoTradeable", false);
-		CAN_BE_CWH_NO_TARADEABLE = itemsProperties.getProperty("CanBeCwhNoTradeable", false);
 		CAN_BE_CWH_IS_AUGMENTED = itemsProperties.getProperty("CanBeCwhIsAugmented", false);
-		CAN_BE_WH_IS_AUGMENTED = itemsProperties.getProperty("CanBeWhIsAugmented", false);
 		ALLOW_SOUL_SPIRIT_SHOT_INFINITELY = itemsProperties.getProperty("AllowSoulSpiritShotInfinitely", false);
 		ALLOW_ARROW_INFINITELY = itemsProperties.getProperty("AllowArrowInfinitely", false);
 		ALLOW_START_ITEMS = itemsProperties.getProperty("AllowStartItems", false);
@@ -3578,16 +3146,13 @@ public class Config
 		L2_TOP_MANAGER_ENABLED = topSetting.getProperty("L2TopManagerEnabled", false);
 		L2_TOP_MANAGER_INTERVAL = topSetting.getProperty("L2TopManagerInterval", 300000);
 		L2_TOP_WEB_ADDRESS = topSetting.getProperty("L2TopWebAddress", "");
-		L2_TOP_SMS_ADDRESS = topSetting.getProperty("L2TopSmsAddress", "");
 		L2_TOP_SERVER_ADDRESS = topSetting.getProperty("L2TopServerAddress", "first-team.ru");
 		L2_TOP_SAVE_DAYS = topSetting.getProperty("L2TopSaveDays", 30);
-		L2_TOP_REWARD = topSetting.getProperty("L2TopReward", new int[0]);
 		L2_TOP_NAME_PREFIX = topSetting.getProperty("L2TopServerPrefix", "");
 		
 		MMO_TOP_MANAGER_ENABLED = topSetting.getProperty("MMOTopEnable", false);
 		MMO_TOP_MANAGER_INTERVAL = topSetting.getProperty("MMOTopManagerInterval", 300000);
 		MMO_TOP_WEB_ADDRESS = topSetting.getProperty("MMOTopUrl", "");
-		MMO_TOP_SERVER_ADDRESS = topSetting.getProperty("MMOTopServerAddress", "first-team.ru");
 		MMO_TOP_SAVE_DAYS = topSetting.getProperty("MMOTopSaveDays", 30);
 		MMO_TOP_REWARD = topSetting.getProperty("MMOTopReward", new int[0]);
 	}
@@ -3675,8 +3240,6 @@ public class Config
 		ALT_SIMPLE_SIGNS = altSettings.getProperty("PushkinSignsOptions", false);
 		ALT_TELE_TO_CATACOMBS = altSettings.getProperty("TeleToCatacombs", false);
 		ALT_BS_CRYSTALLIZE = altSettings.getProperty("BSCrystallize", false);
-		ALT_MAMMON_UPGRADE = altSettings.getProperty("MammonUpgrade", 6680500);
-		ALT_MAMMON_EXCHANGE = altSettings.getProperty("MammonExchange", 10091400);
 		ALT_BUFF_LIMIT = altSettings.getProperty("BuffLimit", 20);
 		ALT_DEATH_PENALTY = altSettings.getProperty("EnableAltDeathPenalty", false);
 		ALLOW_DEATH_PENALTY_C5 = altSettings.getProperty("EnableDeathPenaltyC5", true);
@@ -3688,9 +3251,6 @@ public class Config
 		NONOWNER_ITEM_PICKUP_DELAY = altSettings.getProperty("NonOwnerItemPickupDelay", 15L) * 1000L;
 		
 		ALT_KAMALOKA_NIGHTMARES_PREMIUM_ONLY = altSettings.getProperty("KamalokaNightmaresPremiumOnly", false);
-		ALT_KAMALOKA_NIGHTMARE_REENTER = altSettings.getProperty("SellReenterNightmaresTicket", true);
-		ALT_KAMALOKA_ABYSS_REENTER = altSettings.getProperty("SellReenterAbyssTicket", true);
-		ALT_KAMALOKA_LAB_REENTER = altSettings.getProperty("SellReenterLabyrinthTicket", true);
 		ALT_PET_HEAL_BATTLE_ONLY = altSettings.getProperty("PetsHealOnlyInBattle", true);
 		SAVE_PET_EFFECT = altSettings.getProperty("SavePetEffect", true);
 		CHAR_TITLE = altSettings.getProperty("CharTitle", false);
@@ -3731,7 +3291,6 @@ public class Config
 		RIFT_ENTER_COST_CAPTAIN = altSettings.getProperty("CaptainFC", 27);
 		RIFT_ENTER_COST_COMMANDER = altSettings.getProperty("CommanderFC", 30);
 		RIFT_ENTER_COST_HERO = altSettings.getProperty("HeroFC", 33);
-		ALLOW_CLANSKILLS = altSettings.getProperty("AllowClanSkills", true);
 		ALLOW_LEARN_TRANS_SKILLS_WO_QUEST = altSettings.getProperty("AllowLearnTransSkillsWOQuest", false);
 		PARTY_LEADER_ONLY_CAN_INVITE = altSettings.getProperty("PartyLeaderOnlyCanInvite", true);
 		MAX_PARTY_SIZE = altSettings.getProperty("MaxPartySize", 9);
@@ -3796,11 +3355,9 @@ public class Config
 		ALT_ALL_PHYS_SKILLS_OVERHIT = altSettings.getProperty("AltAllPhysSkillsOverhit", true);
 		ALT_REMOVE_SKILLS_ON_DELEVEL = altSettings.getProperty("AltRemoveSkillsOnDelevel", true);
 		ALT_USE_BOW_REUSE_MODIFIER = altSettings.getProperty("AltUseBowReuseModifier", true);
-		ALLOW_CH_DOOR_OPEN_ON_CLICK = altSettings.getProperty("AllowChDoorOpenOnClick", true);
 		ALT_CH_ALL_BUFFS = altSettings.getProperty("AltChAllBuffs", false);
 		ALT_CH_ALLOW_1H_BUFFS = altSettings.getProperty("AltChAllowHourBuff", false);
-		ALT_CH_SIMPLE_DIALOG = altSettings.getProperty("AltChSimpleDialog", false);
-		
+
 		AUGMENTATION_NG_SKILL_CHANCE = altSettings.getProperty("AugmentationNGSkillChance", 15);
 		AUGMENTATION_NG_GLOW_CHANCE = altSettings.getProperty("AugmentationNGGlowChance", 0);
 		AUGMENTATION_MID_SKILL_CHANCE = altSettings.getProperty("AugmentationMidSkillChance", 30);
@@ -3868,7 +3425,6 @@ public class Config
 		
 		SIEGE_PVP_COUNT = altSettings.getProperty("SiegePvpCount", false);
 		ZONE_PVP_COUNT = altSettings.getProperty("ZonePvpCount", false);
-		EPIC_EXPERTISE_PENALTY = altSettings.getProperty("EpicExpertisePenalty", true);
 		EXPERTISE_PENALTY = altSettings.getProperty("ExpertisePenalty", true);
 		ALT_DISPEL_MUSIC = altSettings.getProperty("AltDispelDanceSong", false);
 		ALT_MUSIC_LIMIT = altSettings.getProperty("MusicLimit", 12);
@@ -3949,10 +3505,6 @@ public class Config
 		SERVICES_CHANGE_TITLE_COLOR_ENABLED = servicesSettings.getProperty("TitleColorChangeEnabled", false);
 		SERVICES_CHANGE_TITLE_COLOR_PRICE = servicesSettings.getProperty("TitleColorChangePrice", 100);
 		SERVICES_CHANGE_TITLE_COLOR_ITEM = servicesSettings.getProperty("TitleColorChangeItem", 4037);
-		
-		SERVICES_BASH_ENABLED = servicesSettings.getProperty("BashEnabled", false);
-		SERVICES_BASH_SKIP_DOWNLOAD = servicesSettings.getProperty("BashSkipDownload", false);
-		SERVICES_BASH_RELOAD_TIME = servicesSettings.getProperty("BashReloadTime", 24);
 		
 		SERVICES_NOBLESS_SELL_ENABLED = servicesSettings.getProperty("NoblessSellEnabled", false);
 		SERVICES_NOBLESS_SELL_PRICE = servicesSettings.getProperty("NoblessSellPrice", 1000);
@@ -4127,11 +3679,6 @@ public class Config
 		MAX_TIME_IN_ACADEMY = CommunityboardSettings.getProperty("KickAcademyAfter", 259200000);
 		ACADEMY_INVITE_DELAY = CommunityboardSettings.getProperty("InviteDelay", 5);
 		
-		BBS_RECRUITMENT_ALLOW = CommunityboardSettings.getProperty("Allow", false);
-		BBS_RECRUITMENT_CLAN_DESCRIPTION_MIN = CommunityboardSettings.getProperty("Description", 10);
-		BBS_RECRUITMENT_TIME = CommunityboardSettings.getProperty("Time", new int[] { 2, 3, 5, 6 });
-		BBS_RECRUITMENT_ITEMS = CommunityboardSettings.getProperty("Items", new int[] { 57, 4036, 4356 });
-		
 		BBS_GAME_LOTTERY_ALLOW = CommunityboardSettings.getProperty("AllowCommunityLottery", false);
 		BBS_GAME_LOTTERY_ITEM = CommunityboardSettings.getProperty("ItemId", 57);
 		BBS_GAME_LOTTERY_BET = CommunityboardSettings.getProperty("Bets", new int[] { 1000, 4000, 50000, 250000, 1000000, 5000000 });
@@ -4141,33 +3688,6 @@ public class Config
 		BBS_GAME_LOTTERY_AMOUNT_PERCENT_TO_JACKPOT = CommunityboardSettings.getProperty("PercentToJackpot", 10);
 		BBS_GAME_LOTTERY_REWARD_MULTIPLER = CommunityboardSettings.getProperty("RewardMultiplier", 4);
 		BBS_GAME_LOTTERY_STORE_DATA = CommunityboardSettings.getProperty("LotterySaveData", 1) * 60000;
-		
-		COMMUNITY_FORGE_ENABLED = CommunityboardSettings.getProperty("EnableCommunityForge", false);
-		BBS_ENCHANT_ITEM = CommunityboardSettings.getProperty("Item", 4356);
-		BBS_ENCHANT_MAX = CommunityboardSettings.getProperty("MaxEnchant", new int[] { 25 });
-		BBS_WEAPON_ENCHANT_LVL = CommunityboardSettings.getProperty("WValue", new int[] { 5 });
-		BBS_ARMOR_ENCHANT_LVL = CommunityboardSettings.getProperty("AValue", new int[] { 5 });
-		BBS_JEWELS_ENCHANT_LVL = CommunityboardSettings.getProperty("JValue", new int[] { 5 });
-		BBS_ENCHANT_PRICE_WEAPON = CommunityboardSettings.getProperty("WPrice", new int[] { 5 });
-		BBS_ENCHANT_PRICE_ARMOR = CommunityboardSettings.getProperty("APrice", new int[] { 5 });
-		BBS_ENCHANT_PRICE_JEWELS = CommunityboardSettings.getProperty("JPrice", new int[] { 5 });
-		BBS_ENCHANT_ATRIBUTE_LVL_WEAPON = CommunityboardSettings.getProperty("AtributeWeaponValue", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PRICE_WEAPON = CommunityboardSettings.getProperty("PriceForAtributeWeapon", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_LVL_ARMOR = CommunityboardSettings.getProperty("AtributeArmorValue", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PRICE_ARMOR = CommunityboardSettings.getProperty("PriceForAtributeArmor", new int[] { 25 });
-		BBS_ENCHANT_ATRIBUTE_PVP = CommunityboardSettings.getProperty("AtributePvP", true);
-		BBS_ENCHANT_WEAPON_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxWAttribute", 25);
-		BBS_ENCHANT_ARMOR_ATTRIBUTE_MAX = CommunityboardSettings.getProperty("MaxAAttribute", 25);
-
-		BBS_ENCHANT_HEAD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeHead", true);
-		BBS_ENCHANT_CHEST_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeChest", true);
-		BBS_ENCHANT_LEGS_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeLegs", true);
-		BBS_ENCHANT_GLOVES_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGloves", true);
-		BBS_ENCHANT_FEET_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeFeet", true);
-
-		BBS_ENCHANT_WEAPON_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeWeapon", true);
-		BBS_ENCHANT_SHIELD_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeShield", false);
-		BBS_ENCHANT_GRADE_ATTRIBUTE = CommunityboardSettings.getProperty("AtributeGrade", "NG:NO;D:NO;C:NO;B:NO;A:ON;S:ON;S80:ON;S84:ON").trim().replaceAll(" ", "").split(";");
 	}
 	
 	public static void loadCommunityboardComission()
@@ -4227,7 +3747,7 @@ public class Config
 		BBS_BUFF_NOBLE = CommunitybufferSettings.getProperty("AllowOnlyToNoble", false);
 		BBS_BUFF_TERITORY = CommunitybufferSettings.getProperty("AllowUseInTWPlayer", false);
 		BBS_BUFF_PEACEZONE_ONLY = CommunitybufferSettings.getProperty("AllowUseOnlyInPeace", false);
-		BBS_BUFF_IDs = CommunitybufferSettings.getProperty("BuffIDs", ArrayUtils.EMPTY_INT_ARRAY);
+//		BBS_BUFF_IDs = CommunitybufferSettings.getProperty("BuffIDs", ArrayUtils.EMPTY_INT_ARRAY);
 		BBS_BUFF_ALLOW_CANCEL = CommunitybufferSettings.getProperty("BuffAllowCancel", false);
 		BBS_BUFF_ALLOW_HEAL = CommunitybufferSettings.getProperty("BuffAllowHeal", false);
 		BUFF_MANUAL_EDIT_SETS = CommunitybufferSettings.getProperty("BuffManualEditSets", false);
@@ -4240,10 +3760,6 @@ public class Config
 		BBS_BUFF_TIME_MUSIC = CommunitybufferSettings.getProperty("BuffTimeMusic", 8);
 		BBS_BUFF_TIME_SPECIAL = CommunitybufferSettings.getProperty("BuffTimeSpecial", 8);
 		BBS_BUFF_TIME = CommunitybufferSettings.getProperty("BuffTime", 8);
-		BBS_BUFF_TIME_MOD = CommunitybufferSettings.getProperty("BuffTimeMod", 8);
-		BBS_BUFF_TIME_MOD_MUSIC = CommunitybufferSettings.getProperty("BuffTimeModMusic", 8);
-		BBS_BUFF_TIME_MOD_SPECIAL = CommunitybufferSettings.getProperty("BuffTimeModSpecial", 8);
-		
 	}
 	
 	public static void loadCommunityclasssettings()
@@ -4279,10 +3795,7 @@ public class Config
 				level++;
 			}
 		}
-		
-		CLASS_MASTERS_SUB_ITEM = CommunityClassSettings.getProperty("ClassMasterSubItem", 57);
-		CLASS_MASTERS_SUB_PRICE = CommunityClassSettings.getProperty("ClassMasterSubPrice", 1000);
-		
+
 		BBS_PVP_SUB_MANAGER_ALLOW = CommunityClassSettings.getProperty("AllowBBSSubManager", false);
 		BBS_PVP_SUB_MANAGER_PEACE_ZONE = CommunityClassSettings.getProperty("AllowBBSSubManagerPiace", false);
 	}
@@ -4304,10 +3817,7 @@ public class Config
 		
 		ANTIFEED_ENABLE = pvpSettings.getProperty("AntiFeedEnable", true);
 		ANTIFEED_DUALBOX = pvpSettings.getProperty("AntiFeedDualbox", true);
-		ANTIFEED_INTERVAL = pvpSettings.getProperty("AntiFeedInterval", 120);
-		
-		ENABLE_PVP_PK_LOG = pvpSettings.getProperty("EnablePvPpkLog", false);
-		
+
 		/* KARMA SYSTEM */
 		KARMA_MIN_KARMA = pvpSettings.getProperty("MinKarma", 240);
 		KARMA_SP_DIVIDER = pvpSettings.getProperty("SPDivider", 7);
@@ -4439,7 +3949,6 @@ public class Config
 		GM_LOGIN_SILENCE = gmSettings.getProperty("GMLoginSilence", false);
 		GM_LOGIN_TRADEOFF = gmSettings.getProperty("GMLoginTradeOff", false);
 		HIDE_GM_STATUS = gmSettings.getProperty("HideGMStatus", false);
-		ANNOUNCE_GM_LOGIN = gmSettings.getProperty("AnnounceGMLogin", false);
 		SAVE_GM_EFFECTS = gmSettings.getProperty("SaveGMEffects", false);
 		GM_PM_COMMANDS = gmSettings.getProperty("GmPmCommands", true);
 	}
@@ -4455,20 +3964,9 @@ public class Config
 		EVENT_CofferOfShadowsRewardRate = eventSettings.getProperty("CofferOfShadowsRewardRate", 1.);
 		
 		EVENT_ENABLE_LAST_HERO = eventSettings.getProperty("Enable_last_hero", false);
-		EVENT_LastHeroItemID = eventSettings.getProperty("LastHero_bonus_id", 57);
-		EVENT_LastHeroItemCOUNT = eventSettings.getProperty("LastHero_bonus_count", 5000.);
-		EVENT_LastHeroTime = eventSettings.getProperty("LastHero_time", 3);
-		EVENT_LastHeroRate = eventSettings.getProperty("LastHero_rate", true);
-		EVENT_LastHeroChanceToStart = eventSettings.getProperty("LastHero_ChanceToStart", 5);
-		EVENT_LastHeroItemCOUNTFinal = eventSettings.getProperty("LastHero_bonus_count_final", 10000.);
-		EVENT_LastHeroRateFinal = eventSettings.getProperty("LastHero_rate_final", true);
-		
-		EVENT_TvTItemID = eventSettings.getProperty("TvT_bonus_id", 57);
-		EVENT_TvTItemCOUNT = eventSettings.getProperty("TvT_bonus_count", 5000.);
+
 		EVENT_TvTTime = eventSettings.getProperty("TvT_time", 3);
-		EVENT_TvT_rate = eventSettings.getProperty("TvT_rate", true);
-		EVENT_TvTChanceToStart = eventSettings.getProperty("TvT_ChanceToStart", 5);
-		
+
 		ENABLE_GVG_EVENT = eventSettings.getProperty("EnableGVGEvent", false);
 		EVENT_GvGDisableEffect = eventSettings.getProperty("GvGDisableEffect", false);
 		GvG_POINTS_FOR_BOX = eventSettings.getProperty("GvGPointsKillBox", 20);
@@ -4548,11 +4046,7 @@ public class Config
 		
 		EVENT_MARCH8_DROP_CHANCE = eventSettings.getProperty("March8DropChance", 10.);
 		EVENT_MARCH8_PRICE_RATE = eventSettings.getProperty("March8PriceRate", 1.);
-		
-		ENCHANT_CHANCE_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantChance", 66);
-		ENCHANT_MAX_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiEnchantMaxWeapon", 28);
-		SAFE_ENCHANT_MASTER_YOGI_STAFF = eventSettings.getProperty("MasterYogiSafeEnchant", 3);
-		
+
 		AllowCustomDropItems = eventSettings.getProperty("AllowCustomDropItems", true);
 		CDItemsAllowMinMaxPlayerLvl = eventSettings.getProperty("CDItemsAllowMinMaxPlayerLvl", false);
 		CDItemsAllowMinMaxMobLvl = eventSettings.getProperty("CDItemsAllowMinMaxMobLvl", false);
@@ -4600,7 +4094,6 @@ public class Config
 		GAME_NOCLASSES_COUNT_LIMIT = olympSettings.getProperty("GameNoClassesCountLimit", 60);
 		GAME_TEAM_COUNT_LIMIT = olympSettings.getProperty("GameTeamCountLimit", 10);
 		
-		ALT_OLY_REG_DISPLAY = olympSettings.getProperty("AltOlyRegistrationDisplayNumber", 100);
 		ALT_OLY_BATTLE_REWARD_ITEM = olympSettings.getProperty("AltOlyBattleRewItem", 13722);
 		ALT_OLY_CLASSED_RITEM_C = olympSettings.getProperty("AltOlyClassedRewItemCount", 50);
 		ALT_OLY_NONCLASSED_RITEM_C = olympSettings.getProperty("AltOlyNonClassedRewItemCount", 40);
@@ -4620,9 +4113,6 @@ public class Config
 		OLYMPIAD_POINTS_WEEKLY = olympSettings.getProperty("OlympiadPointsWeekly", 3);
 		OLYMPIAD_OLDSTYLE_STAT = olympSettings.getProperty("OlympiadOldStyleStat", false);
 		OLYMPIAD_PLAYER_IP = olympSettings.getProperty("OlympiadPlayerIp", false);
-		OLYMPIAD_PLAYER_HWID = olympSettings.getProperty("OlympiadPlayerHWID", false);
-		OLYMPIAD_BAD_ENCHANT_ITEMS_ALLOW = olympSettings.getProperty("OlympiadUnEquipBadEnchantItem", false);
-		
 		OLY_ENCH_LIMIT_ENABLE = olympSettings.getProperty("OlyEnchantLimit", false);
 		OLY_ENCHANT_LIMIT_WEAPON = olympSettings.getProperty("OlyEnchantLimitWeapon", 0);
 		OLY_ENCHANT_LIMIT_ARMOR = olympSettings.getProperty("OlyEnchantLimitArmor", 0);
@@ -4649,114 +4139,7 @@ public class Config
         COMMUNITYBOARD_ENCHANT_ATRIBUTE_PRICE_ARMOR = EnchantCBSetting.getProperty("CBEnchantAtributePriceArmor", new int[0]);
         COMMUNITYBOARD_ENCHANT_ATRIBUTE_PVP = EnchantCBSetting.getProperty("CBEnchantAtributePvP", false);	
 	}
-	
-	public static void loadPhantomsConfig()
-	{
-		ExProperties settings = load(PHANTOM_FILE);
 
-		PHANTOM_PLAYERS_ENABLED = settings.getProperty("PhantomPlayersEnabled", false);
-		PHANTOM_PLAYERS_ACCOUNT = settings.getProperty("PhantomPlayersAccount", "PhantomPlayerAI");
-		PHANTOM_MAX_PLAYERS = settings.getProperty("PhantomMaxPlayers", 1);
-		PHANTOM_BANNED_CLASSID = settings.getProperty("PhantomBannedClassIds", new int[]{});
-		PHANTOM_BANNED_SETID = settings.getProperty("PhantomBannedSetIds", new int[]{});
-		PHANTOM_MAX_WEAPON_GRADE = settings.getProperty("PhantomMaxWeaponGrade", 5);
-		PHANTOM_MAX_ARMOR_GRADE = settings.getProperty("PhantomMaxArmorGrade", 5);
-		PHANTOM_MAX_JEWEL_GRADE = settings.getProperty("PhantomMaxJewelGrade", 5);
-		PHANTOM_SPAWN_MAX = settings.getProperty("PhantomSpawnMax", 1);
-		PHANTOM_SPAWN_DELAY = settings.getProperty("PhantomSpawnDelay", 60);
-		PHANTOM_MAX_LIFETIME = settings.getProperty("PhantomMaxLifetime", 120);
-
-		CHANCE_TO_ENCHANT_WEAP = settings.getProperty("PhantomChanceEnchantWeap", 0);
-		MAX_ENCH_PHANTOM_WEAP = settings.getProperty("PhantomMaxEnchantWeap", 4);
-
-		PHANTOM_MAX_DRIFT_RANGE  = settings.getProperty("MaxDriftRangeForNpc", 1000);
-
-		ALLOW_PHANTOM_CUSTOM_TITLES = settings.getProperty("AllowSetupCustomTitles", false);
-		PHANTOM_CHANCE_SET_NOBLE_TITLE = settings.getProperty("ChanceToSetTitle", 30);
-
-		DISABLE_PHANTOM_ACTIONS = settings.getProperty("DisablePhantomActions", false);
-
-		PHANTOM_ALLOWED_NPC_TO_WALK = settings.getProperty("PhantomRoamingNpcs", new int[]{});
-		PHANTOM_ROAMING_MAX_WH_CHECKS = settings.getProperty("PhantomRoamingMaxWhChecks", 2);
-		PHANTOM_ROAMING_MAX_WH_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxWhChecksDwarf", 8);
-		PHANTOM_ROAMING_MAX_SHOP_CHECKS = settings.getProperty("PhantomRoamingMaxShopChecks", 2);
-		PHANTOM_ROAMING_MAX_SHOP_CHECKS_DWARF = settings.getProperty("PhantomRoamingMaxShopChecksDwarf", 5);
-		PHANTOM_ROAMING_MAX_NPC_CHECKS = settings.getProperty("PhantomRoamingMaxNpcChecks", 6);
-		PHANTOM_ROAMING_MIN_WH_DELAY = settings.getProperty("PhantomRoamingMinWhDelay", 60);
-		PHANTOM_ROAMING_MAX_WH_DELAY = settings.getProperty("PhantomRoamingMaxWhDelay", 300);
-		PHANTOM_ROAMING_MIN_SHOP_DELAY = settings.getProperty("PhantomRoamingMinShopDelay", 30);
-		PHANTOM_ROAMING_MAX_SHOP_DELAY = settings.getProperty("PhantomRoamingMaxShopDelay", 120);
-		PHANTOM_ROAMING_MIN_NPC_DELAY = settings.getProperty("PhantomRoamingMinNpcDelay", 45);
-		PHANTOM_ROAMING_MAX_NPC_DELAY = settings.getProperty("PhantomRoamingMaxNpcDelay", 120);
-		PHANTOM_ROAMING_MIN_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMinPrivatestoreDelay", 2);
-		PHANTOM_ROAMING_MAX_PRIVATESTORE_DELAY = settings.getProperty("PhantomRoamingMaxPrivatestoreDelay", 7);
-		PHANTOM_ROAMING_MIN_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMinFreeroamDelay", 10);
-		PHANTOM_ROAMING_MAX_FREEROAM_DELAY = settings.getProperty("PhantomRoamingMaxFreeroamDelay", 60);
-		DISABLE_PHANTOM_RESPAWN = settings.getProperty("DisablePhantomRespawn", false);
-		DEBUG_PHANTOMS = settings.getProperty("DebugPhantoms", false);
-		PHANTOM_CLANS = settings.getProperty("PhantomClans", new int[]{});
-	}
-	
-//	public static void loadPremiumConfig()
-//	{
-//		ExProperties premiumConf = load(PREMIUM_FILE);
-//
-//		SERVICES_RATE_TYPE = premiumConf.getProperty("RateBonusType", Bonus.NO_BONUS);
-//		SERVICES_RATE_CREATE_PA = premiumConf.getProperty("RateBonusCreateChar", 0);
-//		SERVICES_RATE_BONUS_PRICE = premiumConf.getProperty("RateBonusPrice", new int[]
-//		{
-//			1500
-//		});
-//		SERVICES_RATE_BONUS_ITEM = premiumConf.getProperty("RateBonusItem", new int[]
-//		{
-//			4037
-//		});
-//		SERVICES_RATE_BONUS_VALUE = premiumConf.getProperty("RateBonusValue", new double[]
-//		{
-//			2.
-//		});
-//		SERVICES_RATE_BONUS_DAYS = premiumConf.getProperty("RateBonusTime", new int[]
-//		{
-//			30
-//		});
-//		AUTO_LOOT_PA = premiumConf.getProperty("AutoLootPA", false);
-//		ENCHANT_CHANCE_WEAPON_PA = premiumConf.getProperty("EnchantChancePA", 66);
-//		ENCHANT_CHANCE_ARMOR_PA = premiumConf.getProperty("EnchantChanceArmorPA", 66);
-//		ENCHANT_CHANCE_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceAccessoryPA", 66);
-//		ENCHANT_CHANCE_WEAPON_BLESS_PA = premiumConf.getProperty("EnchantChanceBlessPA", 66);
-//		ENCHANT_CHANCE_ARMOR_BLESS_PA = premiumConf.getProperty("EnchantChanceArmorBlessPA", 66);
-//		ENCHANT_CHANCE_ACCESSORY_BLESS_PA = premiumConf.getProperty("EnchantChanceAccessoryBlessPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_WEAPON_PA = premiumConf.getProperty("EnchantChanceCrystalPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_ARMOR_PA = premiumConf.getProperty("EnchantChanceCrystalArmorPA", 66);
-//		ENCHANT_CHANCE_CRYSTAL_ACCESSORY_PA = premiumConf.getProperty("EnchantChanceCrystalAccessory", 66);
-//
-//		SERVICES_BONUS_XP = premiumConf.getProperty("RateBonusXp", 1.);
-//		SERVICES_BONUS_SP = premiumConf.getProperty("RateBonusSp", 1.);
-//		SERVICES_BONUS_ADENA = premiumConf.getProperty("RateBonusAdena", 1.);
-//		SERVICES_BONUS_ITEMS = premiumConf.getProperty("RateBonusItems", 1.);
-//		SERVICES_BONUS_SPOIL = premiumConf.getProperty("RateBonusSpoil", 1.);
-//
-//		USE_ALT_ENCHANT_PA = Boolean.parseBoolean(premiumConf.getProperty("UseAltEnchantPA", "False"));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterCrystalPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_BLESSED_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantWeaponFighterBlessedPA", "100,100,100,70,70,70,70,70,70,70,70,70,70,70,70,35,35,35,35,35").split(","))
-//			ENCHANT_WEAPON_FIGHT_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantArmorBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_BLESSED_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryCrystalPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_CRYSTAL_PA.add(Integer.parseInt(prop));
-//		for (String prop : premiumConf.getProperty("EnchantJewelryBlessedPA", "100,100,100,66,33,25,20,16,14,12,11,10,9,8,8,7,7,6,6,6").split(","))
-//			ENCHANT_ARMOR_JEWELRY_BLESSED_PA.add(Integer.parseInt(prop));
-//	}
-	
 	public static void LoadCustom_Config()
 	{
 		ExProperties custom_Config = load(CUSTOM_CONFIG_FILE);
@@ -4800,8 +4183,7 @@ public class Config
 		RANK_NPC_COLOR_A = custom_Config.getProperty("RankNpcColorA", "D9CC46");
 		RANK_NPC_COLOR_B = custom_Config.getProperty("RankNpcColorB", "FFFFFF");
 		RANK_NPC_RELOAD = custom_Config.getProperty("RankNpcReload", 15);
-		
-		ENABLE_CHARACTER_INTRO = custom_Config.getProperty("EnableCharacterIntro", false);
+
 		FORBIDDEN_CHAR_NAMES = custom_Config.getProperty("ForbiddenCharNames", "").split(",");
 		
 		ENABLE_ACHIEVEMENTS = custom_Config.getProperty("EnableAchievements", false);
@@ -4851,12 +4233,6 @@ public class Config
 		SEVEN_SIGN_SET_PERIOD = custom_Config.getProperty("CustomModeForSevenSign", 0);
 		ANNOUNCE_MAMMON_SPAWN = custom_Config.getProperty("AnnounceMammonSpawn", true);
 		MAX_PLAYER_CONTRIBUTION = custom_Config.getProperty("MaxPlayerContribution", 1000000);
-		PREMIUM_FOR_NEW_ACC = custom_Config.getProperty("PremiumForNewAcc", false);
-		PREMIUM_TEMPLATE_NEW_ACC = custom_Config.getProperty("TemplateForPremium", 10);
-		PREMIUM_TIME_FOR_NEW_ACC = custom_Config.getProperty("TimeForPremium", 172800000L);
-		
-		VOTE_REWARDS = custom_Config.getProperty("VoteRewards", "6673,5,100;6673,10,50;17168,1,100;17168,2,75;17168,3,50;13693,25,50;13279,1,15;13015,1,5;17061,1,10;17057,1,25;959,1,40;960,1,100;").replaceAll(" ", "").split(";");
-		
 		ALLOW_BOARD_NEWS_LEECH = custom_Config.getProperty("ForumBoardLeech", false);
 		FORUM_URL_TO_LEECH_CHANGELOG = custom_Config.getProperty("ChangeLogURL", "http://l2age.com/forum/index.php?/5-changelog/");
 		FORUM_URL_TO_LEECH_ANNOUNCE = custom_Config.getProperty("AnnounceURL", "http://l2age.com/forum/index.php?/4-news/");
@@ -4911,8 +4287,6 @@ public class Config
 		ENABLE_REFERRAL_SYSTEM = custom_Config.getProperty("EnableReferralSystem", false);
 		
 		ALLOW_MACROS_REUSE_BUG = custom_Config.getProperty("AllowMacrosReuseBug", true);
-		PREMIUM_ACCOUNT_FOR_PARTY = custom_Config.getProperty("PremiumDistributeDropToAllParty", false);
-		
 		ALLOW_PLAYER_CHANGE_LANGUAGE = custom_Config.getProperty("AllowPlayerToChangeLang", false);
 		
 		ENABLE_VOTE_REWARDS = custom_Config.getProperty("EnableVoteReward", false);
@@ -5091,15 +4465,6 @@ public class Config
 		AUTO_CP_POTION_DELAY = custom_Config.getProperty("CPPotionDelay", 1.);
 		AUTO_HP_POTION_DELAY= custom_Config.getProperty("HPPotionDelay", 2.);
 		AUTO_MP_POTION_DELAY= custom_Config.getProperty("MPPotionDelay", 1.);
-		
-		LASER_CP_POTION_RESTORE = custom_Config.getProperty("LowCPrestore", 200);
-		GREATER_CP_POTION_RESTORE = custom_Config.getProperty("GreaterCPrestore", 400);
-		
-		LASER_MP_POTION_RESTORE = custom_Config.getProperty("LowMPrestore", 200);
-		GREATER_MP_POTION_RESTORE = custom_Config.getProperty("GreaterMPrestore", 400);
-		
-		LASER_HP_POTION_RESTORE = custom_Config.getProperty("LowHPrestore", 200);
-		GREATER_HP_POTION_RESTORE = custom_Config.getProperty("GreaterHPrestore", 400);
 	}
 
 	public static void LoadCustomSecurity_Config()
@@ -5259,7 +4624,6 @@ public class Config
 		SHOW_OFFLINE_MODE_IN_ONLINE = offlineConfig.getProperty("ShowOfflineTradeInOnline", false);
 		
 		SERVICES_NO_TRADE_ONLY_OFFLINE = offlineConfig.getProperty("NoTradeOnlyOffline", false);
-		SERVICES_NO_TRADE_BLOCK_ZONE = offlineConfig.getProperty("NoTradeBlockZone", false);
 		SERVICES_TRADE_TAX = offlineConfig.getProperty("TradeTax", 0.0);
 		SERVICES_OFFSHORE_TRADE_TAX = offlineConfig.getProperty("OffshoreTradeTax", 0.0);
 		SERVICES_TRADE_TAX_ONLY_OFFLINE = offlineConfig.getProperty("TradeTaxOnlyOffline", false);
@@ -5388,7 +4752,6 @@ public class Config
 		LoadCustomSecurity_Config();
 		LoadSMTP_Config();
 		loadOfflineConfig();
-		loadPhantomsConfig();
 		loadDonateRewardSettings();
 		
 		_log.info("All Config files has been loaded!");

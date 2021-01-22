@@ -1,7 +1,6 @@
 package services.community;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.handler.bbs.CommunityBoardManager;
 import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
@@ -55,20 +54,12 @@ public class CommunityWarehouse implements ScriptFile, ICommunityBoardHandler
 				player.sendChatMessage(player.getObjectId(), ChatType.TELL.ordinal(), "Warehouse", (player.isLangRus() ? "Для того, чтобы это сделать, идентифицировать себя с помощью .security" : "In order to do this, identify yourself via .security"));
 				return;
 			}
-			
-			if (PremiumAccountsTable.getCareerOutsidePeace(player))
-			{
-				// I cant think of any... what should block you from using warehouse outside becase besides others?
+
+			if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE)) {
+				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Warehouse", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
+				return;
 			}
-			else
-			{				
-				if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
-				{
-					player.sendChatMessage(0, ChatType.TELL.ordinal(), "Warehouse", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
-					return;
-				}
-			}
-			
+
 			if (player.isCursedWeaponEquipped() || player.isInJail() || player.getReflectionId() != ReflectionManager.DEFAULT_ID /* || player.getPvpFlag() != 0*/ || player.isDead() || player.isAlikeDead() || player.isCastingNow() || player.isInCombat() || player.isAttackingNow() || player.isInOlympiadMode() || player.isFlying() || player.isTerritoryFlagEquipped() || player.isInZone(ZoneType.no_escape) || player.isInZone(ZoneType.SIEGE) || player.isInZone(ZoneType.epic))
 			{
 				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Warehouse", "You cannot use Warehouse due restrictions. Please try again later.");
@@ -155,5 +146,4 @@ public class CommunityWarehouse implements ScriptFile, ICommunityBoardHandler
 	public void onShutdown()
 	{
 	}
-	
 }
