@@ -24,7 +24,7 @@ public class DonationPaymentsDAO {
     // SQL
     public static final String SELECT_SQL_QUERY = "SELECT * FROM unitpay_payments WHERE delivered = 0 AND status = 1";
     public static final String UPDATE_SQL_QUERY = "UPDATE unitpay_payments SET delivered = 1 WHERE char_name=? AND id=?";
-    public static final String INSERT_SQL_QUERY = "INSERT INTO unitpay_payments (char_name, amount) VALUES (?,?)";
+    public static final String INSERT_SQL_QUERY = "INSERT INTO unitpay_payments (char_name, sum) VALUES (?,?)";
 
     public ArrayList<Payment> getPayments()
     {
@@ -42,7 +42,7 @@ public class DonationPaymentsDAO {
             {
                 while (rset.next())
                 {
-                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("amount"), rset.getString("dateComplete"), rset.getBoolean("delivered")));
+                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("sum"), rset.getString("dateComplete"), rset.getBoolean("delivered")));
                 }
             }
         }
