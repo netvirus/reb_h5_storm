@@ -1388,16 +1388,21 @@ public class NpcInstance extends Creature
 	{
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("<html><body><title>Talk about:</title><br>");
+		sb.append("<html><body><title>Поговорить о квестах:</title><br><br><br>");
+		sb.append("<table border=0 cellspacing=0 cellpadding=0 width=290 align=\"center\">");
 
 		for(Quest q : quests)
 		{
 			if(!q.isVisible())
 				continue;
-
-			sb.append("<a action=\"bypass -h npc_").append(getObjectId()).append("_Quest ").append(q.getName()).append("\">[").append(q.getDescr(player)).append("]</a><br>");
+			sb.append("<tr>");
+				sb.append("<td FIXWIDTH=90 align=center>");
+					sb.append("<button value=\"").append(q.getDescr(player)).append("\" action=\"bypass -h npc_").append(getObjectId()).append("_Quest ").append(q.getName()).append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"280\" height=\"25\">");
+				sb.append("</td>");
+			sb.append("</tr>");
 		}
 
+		sb.append("</table>");
 		sb.append("</body></html>");
 
 		NpcHtmlMessage html = new NpcHtmlMessage(player, this);
