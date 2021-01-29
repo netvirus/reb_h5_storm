@@ -6,7 +6,7 @@ import l2r.gameserver.model.quest.Quest;
 import l2r.gameserver.model.quest.QuestState;
 import l2r.gameserver.scripts.ScriptFile;
 
-public class _408_PathToElvenwizard extends Quest implements ScriptFile
+public class _408_PathToElvenWizard extends Quest implements ScriptFile
 {
 	//npc
 	public final int GREENIS = 30157;
@@ -48,7 +48,7 @@ public class _408_PathToElvenwizard extends Quest implements ScriptFile
 	{
 	}
 
-	public _408_PathToElvenwizard()
+	public _408_PathToElvenWizard()
 	{
 		super(false);
 
