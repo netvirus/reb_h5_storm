@@ -1,6 +1,24 @@
-!Fishermen's Guild Member: You have some sweet aromatic fluid! What
-grade Fishing Shot would you like? [npc_%objectId%_Multisell 8500|"Make
-one with the fluid I have."] [Quest _426_QuestforFishingShot
-31579-2.htm|"Show me the list of monsters."] [Quest
-_426_QuestforFishingShot 31579-02.htm|"I want to continue."] [Quest
-_426_QuestforFishingShot 3.htm|"I'm ready to quit."]
+<font color="36DC25">!Fishermen's Guild Member:</font><br>
+You have some sweet aromatic fluid! Whatgrade Fishing Shot would you like?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Makeone with the fluid I have" action="bypass -h npc_%objectId%_Multisell 8500" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Show me the list of monsters" action="bypass -h Quest _426_QuestforFishingShot31579-2.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I want to continue" action="bypass -h Quest_426_QuestforFishingShot 31579-02.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I'm ready to quit" action="bypass -h Quest_426_QuestforFishingShot 3.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,5 +1,17 @@
-!Pet Manager Rood: Hmm, certainly not until I successfully raise it!
-This is no docile duck we're talking about here... Let me work on it.
-Just keep bringing me more eggs. I suspect it will take many tries to
-get it right. [npc_%objectId%_Chat|"I will bring you more eggs."] [Quest
-_352_HelpRoodRaiseANewPet 31067-09.htm|"I quit."]
+<font color="36DC25">!Pet Manager Rood:</font><br>
+Hmm, certainly not until I successfully raise it!This is no docile duck we're talking about here.<br1>
+Let me work on it.<br1>
+Just keep bringing me more eggs.<br1>
+I suspect it will take many tries toget it right.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I will bring you more eggs" action="bypass -h npc_%objectId%_Chat" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I quit" action="bypass -h Quest_352_HelpRoodRaiseANewPet 31067-09.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
