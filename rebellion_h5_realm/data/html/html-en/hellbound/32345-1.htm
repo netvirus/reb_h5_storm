@@ -1,12 +1,25 @@
-!Buron: Finally, we have regained our home! Please give my regards to
-Jirrone, who left the island some time ago. There is obviously a great
-deal of work for me to do now that we have regained our village, but I
-will gladly create native clothes for you whenever you wish it.
-
-[npc_%objectId%_getc 1|Craft Native Helmet for 10 Darion Badges]
-
-[npc_%objectId%_getc 2|Craft Native Tunic for 10 Darion Badges]
-
-[npc_%objectId%_getc 3|Craft Native Pants for 10 Darion Badges]
-
-[npc_%objectId%_Chat 2|Ask about the rumor]
+<font color="0040FF">Buron:</font><br>
+Finally, we have regained our home! Please give my regards toJirrone, who left the island some time ago.<br1>
+There is obviously a greatdeal of work for me to do now that we have regained our village, but Iwill gladly create native clothes for you whenever you wish it.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Pants for 10 Darion Badges" action="bypass -h npc_%objectId%_getc 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Tunic for 10 Darion Badges" action="bypass -h npc_%objectId%_getc 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Helmet for 10 Darion Badges" action="bypass -h npc_%objectId%_getc 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the rumor" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

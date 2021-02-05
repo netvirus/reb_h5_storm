@@ -1,9 +1,25 @@
-Warehouse Keeper Erviante: Welcome! Thank you for visiting our
-warehouse. I give you my solemn word that we will keep your precious
-items safe, no matter the circumstances. Would you like to make a
-deposit?
-
-<center>[npc_%objectId%_Chat 1|Private Warehouse.]
-
-	[npc_%objectId%_Chat 2|Clan Warehouse.] [npc_%objectId%_Multisell
-	631|Buy an item using Cube Fragments.] [npc_%objectId%_Quest|Quest]</center>
+<font color="0040FF">Warehouse Keeper Erviante:</font><br>
+Welcome! Thank you for visiting ourwarehouse.<br1>
+I give you my solemn word that we will keep your preciousitems safe, no matter the circumstances.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy an item using Cube Fragments" action="bypass -h npc_%objectId%_Multisell	631" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

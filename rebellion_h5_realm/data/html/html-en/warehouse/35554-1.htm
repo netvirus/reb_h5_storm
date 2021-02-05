@@ -1,5 +1,25 @@
-Warehouse Keeper Schuttgart: *[Private Warehouse]*
-
-[npc_%objectId%_DepositP|Store an item] [npc_%objectId%_WithdrawP
-0|Retrieve an item (List all)] [npc_%objectId%_WithdrawP 99|Retrieve an
-item (Select)] [npc_%objectId%_Chat 0|Return]
+<font color="0040FF">Warehouse Keeper Schuttgart:</font><br>
+**<br1>
+[Private Warehouse]<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Return" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Store an item" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Retrieve an item (List all)" action="bypass -h npc_%objectId%_WithdrawP0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Retrieve anitem (Select)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

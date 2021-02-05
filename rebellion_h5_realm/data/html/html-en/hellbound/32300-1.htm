@@ -1,9 +1,18 @@
-!Bernarde: I want to ask you for a favor. Do you know that my ancestors
-in the Old Temple Ruins have been disturbed? This is tragedy... But you
-can give them peace by sprinkling the *Holy Water*. Here, take this
-bottle, it should be enough to calm their souls. Pay me 5 Darion's
-Badges for the bottle to know that you're one of us.
-
-[npc_%objectId%_Chat 4|Ask about current rumors]
-
-[npc_%objectId%_buy_holy_water|Buy Holy Water]
+<font color="0040FF">Bernarde:</font><br>
+I want to ask you for a favor.<br1>
+Do you know that my ancestorsin the Old Temple Ruins have been disturbed? This is tragedy.<br1>
+But youcan give them peace by sprinkling the *Holy Water*.<br1>
+Here, take thisbottle, it should be enough to calm their souls.<br1>
+Pay me 5 Darion'sBadges for the bottle to know that you're one of us.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy Holy Water" action="bypass -h npc_%objectId%_buy_holy_water" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about current rumors" action="bypass -h npc_%objectId%_Chat 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
