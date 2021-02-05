@@ -1,11 +1,31 @@
-!Trader Arodin: Please come in! We've been in business for over 100
-years, so you can rest assured that we know what we're doing. In fact,
-we carry weapons to meet any adventurer's needs, so please take your
-time and have a look around. Oh, I should tell you that they say undead
-monsters often appear in the ruins left over from the war with Gracia,
-so you might consider choosing weapons that would be effective against
-the undead. [npc_%objectId%_Chat 1|Buy/Sell/Refund.]
-
-[npc_%objectId%_Wear 59|Try on Fighter equipment.] [npc_%objectId%_Wear
-60|Try on Mystic equipment.] [npc_%objectId%_TerritoryStatus|Ask about
-the local lord and tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Arodin:</font><br>
+Please come in! We've been in business for over 100years, so you can rest assured that we know what we're doing.<br1>
+In fact,we carry weapons to meet any adventurer's needs, so please take yourtime and have a look around.<br1>
+Oh, I should tell you that they say undeadmonsters often appear in the ruins left over from the war with Gracia,so you might consider choosing weapons that would be effective againstthe undead.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Fighter equipment" action="bypass -h npc_%objectId%_Wear 59" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask aboutthe local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear60" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,11 +1,30 @@
-!Trader Payne: Welcome, welcome! We carry a wide selection of essential
-items for an adventurer like yourself. Our shop is filled with excellent
-weapons, just waiting for a brave, dashing warrior! Look around and let
-me know if you see something you like. [npc_%objectId%_Chat
-1|Buy/Sell/Refund.] [npc_%objectId%_Wear 33|Try on Fighter equipment.]
-
-[npc_%objectId%_Wear 34|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Trader Payne:</font><br>
+Welcome, welcome! We carry a wide selection of essentialitems for an adventurer like yourself.<br1>
+Our shop is filled with excellentweapons, just waiting for a brave, dashing warrior! Look around and letme know if you see something you like.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Fighter equipment" action="bypass -h npc_%objectId%_Wear 33" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 34" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

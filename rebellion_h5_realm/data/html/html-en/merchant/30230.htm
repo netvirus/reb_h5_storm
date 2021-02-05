@@ -1,14 +1,32 @@
-!Trader Edroc: Ah, is this your first visit to Hunters Village? Then let
-me give you a bit of information about this town. Where should I
-start... This town was originally founded by hunters who came here
-seeking the rare game that inhabit this region. By rare game, of course,
-I mean creatures that are difficult and dangerous to hunt. Don't think
-that the founders were catching rabbits! Even now, the hunters of this
-town are every bit as "noble" as members of the royal family itself!
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear 64|Try on
-Fighter equipment.] [npc_%objectId%_Wear 65|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Edroc:</font><br>
+Ah, is this your first visit to Hunters Village? Then letme give you a bit of information about this town.<br1>
+Where should Istart.<br1>
+This town was originally founded by hunters who came hereseeking the rare game that inhabit this region.<br1>
+By rare game, of course,I mean creatures that are difficult and dangerous to hunt.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try onFighter equipment" action="bypass -h npc_%objectId%_Wear 64" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 65" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

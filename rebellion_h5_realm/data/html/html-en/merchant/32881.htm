@@ -1,9 +1,21 @@
-!Recipe Merchant Denver: I traveled all over before setting here. There
-are so many wondrous things in this world! Everyone tells me to stay
-where it's safe, but that's too boring. You know, I'd like to know how
-to make anything and everything in this world. That would be something,
-wouldn't it? [npc_%objectId%_Buy 777773|Trade]
-
-[npc_%objectId%_TerritoryStatus|View the lord and tax rate information]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Recipe Merchant Denver:</font><br>
+I traveled all over before setting here.<br1>
+Thereare so many wondrous things in this world! Everyone tells me to staywhere it's safe, but that's too boring.<br1>
+You know, I'd like to know howto make anything and everything in this world.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trad" action="bypass -h npc_%objectId%_Buy 777773" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View the lord and tax rate informatio" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

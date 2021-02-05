@@ -1,15 +1,32 @@
-Gatekeeper Angelina: All freight entering Giran must pass through this
-port. It is impossible to move large scale shipments using Gatekeeper
-magic. If that ever becomes possible, then... No, no! That will never
-happen! Now, where should I send you? Not to that hideous Island of
-Beleth, I hope...
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds]
-
-[scripts_Util:NoblessTeleport|Noblesse Exclusive Teleport]
-
-[scripts_services.Birthday:summonAlegria|Receive Creation Day gift.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Gatekeeper Angelina:</font><br>
+All freight entering Giran must pass through thisport.<br1>
+It is impossible to move large scale shipments using Gatekeepermagic.<br1>
+If that ever becomes possible, then.<br1>
+No, no! That will neverhappen! Now, where should I send you? Not to that hideous Island ofBeleth, I hope.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamond" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Noblesse Exclusive Telepor" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Receive Creation Day gift" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Telepor" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,3 +1,19 @@
-!Trader Erinu: What can I do for you this fine day? [npc_%objectId%_Buy
-321641|Trade Fighter equipment.] [npc_%objectId%_Buy 321642|Trade Mystic
-equipment.] [npc_%objectId%_Multisell 6001|Exchange equipment.]
+<font color="36DC25">Trader Erinu:</font><br>
+What can I do for you this fine day?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Mysticequipment" action="bypass -h npc_%objectId%_Buy 321642" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Fighter equipment" action="bypass -h npc_%objectId%_Buy321641" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange equipment" action="bypass -h npc_%objectId%_Multisell 6001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,9 +1,23 @@
-!Jinia: We must be prepared before confronting Freya. As the winter cold
-swells around the castle, she becomes even stronger. We can use blitz
-tactics and strike her before her power matures fully. Then again, if we
-wait until she is at full strength, I'm sure the reward will be greater.
-I leave the choice to you. [npc_%objectId%_Chat 1|Challenge Freya.]
-
-[npc_%objectId%_Chat 2|Challenge Freya in the extreme cold.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Jinia:</font><br>
+We must be prepared before confronting Freya.<br1>
+As the winter coldswells around the castle, she becomes even stronger.<br1>
+We can use blitztactics and strike her before her power matures fully.<br1>
+Then again, if wewait until she is at full strength, I'm sure the reward will be greater.<br1>
+I leave the choice to you.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Challenge Freya" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Challenge Freya in the extreme cold" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

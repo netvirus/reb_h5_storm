@@ -1,9 +1,16 @@
-Gatekeeper Largo: This is the port of the Kamael. Long ago, many goods
-flowed through here, brought here by ship. But now since people have
-become more significant than materials, I stand here ready to assist
-travel. Would you like to be teleported to the mainland of Aden, where
-many tribes live together?
-
-[npc_%objectId%_Teleport 1|Teleport.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Gatekeeper Largo:</font><br>
+This is the port of the Kamael.<br1>
+Long ago, many goodsflowed through here, brought here by ship.<br1>
+But now since people havebecome more significant than materials, I stand here ready to assisttravel.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

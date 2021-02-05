@@ -1,15 +1,47 @@
-!Newbie Guide: May Shilen cloak your footsteps! I am the greatest
-Assassin ever to ply my trade for the golry of our mother Shilen. Now I
-am retired, and I teach my art to novice Dark Elves here in the town
-where I was born. If you are in need of advice, please ask. I will give
-you what guidence I can. [npc_%objectId%_Chat 1|Ask for advice.]
-
-[npc_%objectId%_Link default/NPCloc/30600.htm|NPC location guide.]
-
-[scripts_services.SupportMagic:getSupportMagic|Give me some support
-magic.] [player_help default/newbie_travel.htm|Teleport to starting
-village of another race.] [npc_%objectId%_Chat 12|Tell me about novice
-characters.] [npc_%objectId%_Chat 20|Recive blessing of protection.]
-
-[npc_%objectId%_Link default/newbie_items.htm|Ask for help with a newbie
-item.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Newbie Guide:</font><br>
+May Shilen cloak your footsteps! I am the greatestAssassin ever to ply my trade for the golry of our mother Shilen.<br1>
+Now Iam retired, and I teach my art to novice Dark Elves here in the townwhere I was born.<br1>
+If you are in need of advice, please ask.<br1>
+I will giveyou what guidence I can.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Recive blessing of protection" action="bypass -h npc_%objectId%_Chat 20" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="NPC location guide" action="bypass -h npc_%objectId%_Link default/NPCloc/30600.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell me about novicecharacters" action="bypass -h npc_%objectId%_Chat 12" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport to startingvillage of another race" action="bypass -h player_help default/newbie_travel.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask for advice" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Give me some supportmagic" action="bypass -h scripts_services.SupportMagic:getSupportMagic" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask for help with a newbieitem" action="bypass -h npc_%objectId%_Link default/newbie_items.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

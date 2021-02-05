@@ -1,7 +1,15 @@
-!Krun: Newbie adventurers have been restricted from entering because the
-evil energy emanating from the Mithril Mines is too powerful. You're
-experienced enough to enter if you want, but I wouldn't advise it...
-
-[scripts_Util:Gatekeeper 173462 -174011 3480 0|"I will enter the mine."]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Krun:</font><br>
+Newbie adventurers have been restricted from entering because theevil energy emanating from the Mithril Mines is too powerful.<br1>
+You'reexperienced enough to enter if you want, but I wouldn't advise it.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I will enter the mine" action="bypass -h scripts_Util:Gatekeeper 173462 -174011 3480 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,11 +1,23 @@
-!Wharf Manager Clency: Welcome. Do you want to get aboard? Now we have
-quite a number of routes here at Gludin. We even had a test operation on
-the route to the Elmore kingdom, with whom we once were at odds. Now we
-have regular liners and shuttles as there has been a growing number of
-users to the pleasure of me. Would you try a regular liner ship to the
-Rune Township of Elmore? It is on a regular schedule.
-
-[npc_%objectId%_Buy 82|Buy the ticket of the ferry]
-
-[npc_%objectId%_TerritoryStatus|View the information on lords and tax
-rates] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Wharf Manager Clency:</font><br>
+Welcome.<br1>
+Do you want to get aboard? Now we havequite a number of routes here at Gludin.<br1>
+We even had a test operation onthe route to the Elmore kingdom, with whom we once were at odds.<br1>
+Now wehave regular liners and shuttles as there has been a growing number ofusers to the pleasure of me.<br1>
+Would you try a regular liner ship to theRune Township of Elmore? It is on a regular schedule.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy the ticket of the ferr" action="bypass -h npc_%objectId%_Buy 82" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View the information on lords and taxrate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

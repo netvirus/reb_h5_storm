@@ -1,4 +1,14 @@
-!Magic Trader Gentler: What would you like to purchase today?
-
-[npc_%objectId%_Buy 30|Trade equipment for Wizards.] [npc_%objectId%_Buy
-300945|Trade Common equipment for Wizards.]
+<font color="36DC25">Magic Trader Gentler:</font><br>
+What would you like to purchase today?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade equipment for Wizards" action="bypass -h npc_%objectId%_Buy 30" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common equipment for Wizards" action="bypass -h npc_%objectId%_Buy300945" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

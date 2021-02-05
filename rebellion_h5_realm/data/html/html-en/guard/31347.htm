@@ -1,10 +1,24 @@
-!Guard Burke: You picked a bad time to visit Rune, my friend. People
-like you may help ease my workload, but... Oh, well... Come closer...
-Shhhh... ...Have you heard any strange rumors? You must keep this to
-yourself! There's a vast conspiracy afoot against the kingdom! If you
-hear anything about this plot, come and tell me at once!
-
-[npc_%objectId%_Chat 1|"A plot? What are you talking about?"]
-
-[npc_%objectId%_TerritoryStatus|"Who is the lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Burke:</font><br>
+You picked a bad time to visit Rune, my friend.<br1>
+Peoplelike you may help ease my workload, but.<br1>
+Oh, well.<br1>
+Come closer.<br1>
+Shhhh.<br1>
+.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="A plot? What are you talking about?" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

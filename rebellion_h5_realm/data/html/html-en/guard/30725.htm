@@ -1,8 +1,23 @@
-!Guard Yening: Hello there, you seem like a fine sort. I'm Yening. Guard
-Yening. I was an adventurer not too long ago. I was recruited by some
-Mystics I met in the *Sea of Spores* which is why I'm currently working
-as a guard. [npc_%objectId%_Chat 1|Ask about the Sea of Spores]
-
-[npc_%objectId%_Chat 2|Ask if he has any good information]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Yening:</font><br>
+Hello there, you seem like a fine sort.<br1>
+I'm Yening.<br1>
+GuardYening.<br1>
+I was an adventurer not too long ago.<br1>
+I was recruited by someMystics I met in the *Sea of Spores* which is why I'm currently workingas a guard.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Sea of Spore" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask if he has any good informatio" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

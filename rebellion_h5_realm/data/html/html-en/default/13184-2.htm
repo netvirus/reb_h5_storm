@@ -1,7 +1,14 @@
-!Santa Claus: I have plenty different New Year gifts. I will reward you
-no matter you win or loose! So, are you ready to flip the coin of
-non-failure lottery?
-
-[scripts_events.SavingSnowman.SavingSnowman:lotery|Yes, count me in!]
-
-[npc_%objectId%_Chat 0|Back.]
+<font color="36DC25">Santa Claus:</font><br>
+I have plenty different New Year gifts.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Yes, count me in" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:lotery" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

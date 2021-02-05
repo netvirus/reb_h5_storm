@@ -1,15 +1,19 @@
-!Researcher Keplon: It permits teleportation between the floors of the
-tower. I'm not sure exactly how it works, but through much trial and
-error I have determined how to go to the first, fifth and tenth floor.
-
-To go to the
-<font color="LEVEL">fifth floor</font>
-, you need a
-<font color="LEVEL">Blue Dimension Stone</font>
-. These are quite rare... At great personal cost I was able to secure a
-small box of them, but Hallate and his minions stole them away... Now
-they can only be obtained by killing those demons...
-
-[npc_%objectId%_Chat 2|"Tell me more about Death Lord Hallate."]
-
-[npc_%objectId%_Chat 0|Return]
+<font color="36DC25">Researcher Keplon:</font><br>
+It permits teleportation between the floors of thetower.<br1>
+I'm not sure exactly how it works, but through much trial anderror I have determined how to go to the first, fifth and tenth floor.<br1>
+To go to the<font color="LEVEL">fifth floor</font>, you need a<font color="LEVEL">Blue Dimension Stone</font>.<br1>
+These are quite rare.<br1>
+At great personal cost I was able to secure asmall box of them, but Hallate and his minions stole them away.<br1>
+Nowthey can only be obtained by killing those demons.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Retur" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell me more about Death Lord Hallate" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,5 +1,16 @@
-!Santa Claus: I'm sad, my helper Snowman is lost. Help me to get him
-from the grab of evil *Thomas D. Turkey*, I will reward you.
-
-[scripts_events.SavingSnowman.SavingSnowman:locateSnowman|Where did you
-see him last?] [npc_%objectId%_Chat 0|Back.]
+<font color="36DC25">Santa Claus:</font><br>
+I'm sad, my helper Snowman is lost.<br1>
+Help me to get himfrom the grab of evil *Thomas D.<br1>
+Turkey*, I will reward you.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Where did yousee him last" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:locateSnowman" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,9 +1,19 @@
-!Mineral Trader Fundin: Come on in! I'm Fundin of the Iron Gate Guild!
-
-Yes? Of course, blacksmithing is the domain of the Black Anvil Guild,
-but what can we do? They got swamped with work and asked for our help. I
-don't know how they do things in the south, but in this village, the
-Dwarves stick together! [npc_%objectId%_Buy 147|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|"Who is the lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Mineral Trader Fundin:</font><br>
+Come on in! I'm Fundin of the Iron Gate Guild!Yes? Of course, blacksmithing is the domain of the Black Anvil Guild,but what can we do? They got swamped with work and asked for our help.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 147" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

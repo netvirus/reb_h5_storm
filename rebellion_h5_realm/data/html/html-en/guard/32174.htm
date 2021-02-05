@@ -1,7 +1,21 @@
-!Marksman Maddy: Do you have some business with me? I am Maddy, the
-Marksman who protects this place. Past here, all the way to the
-outskirts of the village, you'll find the area swarming with monsters.
-Unless you're prepared to protect yourself, I wouldn't advise venturing
-out there recklessly. [npc_%objectId%_Chat 1|Ask about outside the
-village.] [npc_%objectId%_TerritoryStatus|View information on the local
-lord and tax rate.] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Marksman Maddy:</font><br>
+Do you have some business with me? I am Maddy, theMarksman who protects this place.<br1>
+Past here, all the way to theoutskirts of the village, you'll find the area swarming with monsters.<br1>
+Unless you're prepared to protect yourself, I wouldn't advise venturingout there recklessly.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about outside thevillage" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View information on the locallord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

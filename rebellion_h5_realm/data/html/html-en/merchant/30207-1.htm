@@ -1,7 +1,29 @@
-!Trader Arodin: What would you like to purchase? [npc_%objectId%_Buy
-59|Trade Fighter Equipment.] [npc_%objectId%_Buy 60|Trade Mystic
-Equipment.] [npc_%objectId%_Buy 302071|Trade Common Items for Fighters.]
-
-[npc_%objectId%_Buy 302072|Trade Common Items for Mystics.]
-
-[npc_%objectId%_Multisell 6001|Exchange equipment.]
+<font color="36DC25">Trader Arodin:</font><br>
+What would you like to purchase?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade MysticEquipment" action="bypass -h npc_%objectId%_Buy 60" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common Items for Fighters" action="bypass -h npc_%objectId%_Buy 302071" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common Items for Mystics" action="bypass -h npc_%objectId%_Buy 302072" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Fighter Equipment" action="bypass -h npc_%objectId%_Buy59" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange equipment" action="bypass -h npc_%objectId%_Multisell 6001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

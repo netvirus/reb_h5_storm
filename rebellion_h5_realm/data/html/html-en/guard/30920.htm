@@ -1,5 +1,14 @@
-!Guard Kraisen: Hello! I am Guard Kraisen. Isn't this wonderful weather?
-
-By the way, do you have any idea what that building over there contains?
-
-[npc_%objectId%_Chat 1|I don't know] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Kraisen:</font><br>
+Hello! I am Guard Kraisen.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I don't kno" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

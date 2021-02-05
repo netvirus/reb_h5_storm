@@ -1,11 +1,21 @@
-!Guard Ian: Have you visited the dark forest east of the village? It's
-known as the *Forest of the Dead*. Once, it was a beautiful place, where
-deer grazed and stately oaks and wildflowers flourished! I remember
-picking wild strawberries with my older sister there when I was young.
-Then, one day, it was all gone... It still seems like a horrible dream!
-
-[npc_%objectId%_Chat 1|"Tell me more about the Forest of the Dead."]
-
-[npc_%objectId%_TerritoryStatus|See the lord & tax rate info.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Ian:</font><br>
+Have you visited the dark forest east of the village? It'sknown as the *Forest of the Dead*.<br1>
+Once, it was a beautiful place, wheredeer grazed and stately oaks and wildflowers flourished! I rememberpicking wild strawberries with my older sister there when I was young.<br1>
+Then, one day, it was all gone.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="See the lord & tax rate info" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell me more about the Forest of the Dead" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

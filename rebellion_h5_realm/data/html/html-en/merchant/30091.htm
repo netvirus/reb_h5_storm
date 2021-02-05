@@ -1,10 +1,30 @@
-!Accessory Merchant Ellie: Hello! Our shop specializes in various kinds
-of jewelry. We have everything from a mysterious ring that can protect
-you from evil magic to a healing necklace capable of raising the dead!
-Just tell me what you're looking for. [npc_%objectId%_Buy 27|Trade
-accessories.] [npc_%objectId%_Multisell 7000|Buy bracelet or talisman.]
-
-[npc_%objectId%_Buy 300914|Trade a basic type accessory.]
-
-[npc_%objectId%_TerritoryStatus|View information about the local lord
-and tax rate.] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Accessory Merchant Ellie:</font><br>
+Hello! Our shop specializes in various kindsof jewelry.<br1>
+We have everything from a mysterious ring that can protectyou from evil magic to a healing necklace capable of raising the dead!Just tell me what you're looking for.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade a basic type accessory" action="bypass -h npc_%objectId%_Buy 300914" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tradeaccessories" action="bypass -h npc_%objectId%_Buy 27" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy bracelet or talisman" action="bypass -h npc_%objectId%_Multisell 7000" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View information about the local lordand tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

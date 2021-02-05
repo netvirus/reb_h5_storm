@@ -1,8 +1,22 @@
-Master Beryl: There is something...wrong in this village. I can't put my
-finger on it, but the feeling gnaws at me more with each passing day.
-
-Perhaps a training session will clear my head. En garde! Defend
-yourself! [npc_%objectId%_SkillList|Learn skills.] [npc_%objectId%_Link
-common/skillenchant_help.htm|Ask about Skill Enchanting.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Master Beryl:</font><br>
+There is something.<br1>
+wrong in this village.<br1>
+I can't put myfinger on it, but the feeling gnaws at me more with each passing day.<br1>
+Perhaps a training session will clear my head.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about Skill Enchanting" action="bypass -h npc_%objectId%_Linkcommon/skillenchant_help.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

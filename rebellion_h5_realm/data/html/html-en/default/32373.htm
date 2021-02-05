@@ -1,8 +1,17 @@
-Dorian: Welcome! I waited for you for a long time ... I must tell you
-about a strong magical barrier that surrounds the Steel Citadel. If
-anyone who doesn't belong to the evil gets inside, the barrier will be
-activated, breaking apart all that will appear in this field.
-Fortunately, I know how to get around this magic. Do you want me to help
-you? [scripts_services.Caravan:enterToTullyFloor1|Use Help]
-
-[npc_%objectId%_Quest|Continue]
+<font color="36DC25">Dorian:</font><br>
+Welcome! I waited for you for a long time .<br1>
+I must tell youabout a strong magical barrier that surrounds the Steel Citadel.<br1>
+Ifanyone who doesn't belong to the evil gets inside, the barrier will beactivated, breaking apart all that will appear in this field.<br1>
+Fortunately, I know how to get around this magic.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Continu" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Use Hel" action="bypass -h scripts_services.Caravan:enterToTullyFloor1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

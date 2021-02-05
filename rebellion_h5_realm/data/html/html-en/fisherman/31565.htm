@@ -1,10 +1,39 @@
-!Fishing Guild Member Ogord: Welcome! I teach people to fish. As you
-learn the techniques, you'll develop a passion for the sport! Would you
-like to learn to fish? [npc_%objectId%_Link help/7561.htm|Ask how to
-fish.] [npc_%objectId%_FishingChampionship|Fishing Contest]
-
-[npc_%objectId%_FishingSkillList|Learn fishing skill.]
-
-[npc_%objectId%_Buy 208|Buy/Sell/Refund.] [npc_%objectId%_Multisell
-009|Sell fish.] [npc_%objectId%_TerritoryStatus|"Who is the Lord of the
-manor and what is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Fishing Guild Member Ogord:</font><br>
+Welcome! I teach people to fish.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Fishing Contes" action="bypass -h npc_%objectId%_FishingChampionship" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sell fish" action="bypass -h npc_%objectId%_Multisell009" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 208" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the Lord of themanor and what is the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask how tofish" action="bypass -h npc_%objectId%_Link help/7561.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn fishing skill" action="bypass -h npc_%objectId%_FishingSkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

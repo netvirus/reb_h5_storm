@@ -1,9 +1,17 @@
-!Guard Pinaps: Oh! Nice to meet you, adventurer. What brings you here to
-the town of Oren? This town is surrounded by many dangerous areas, which
-place would you like to know about? The Sea of Spores is located to the
-northwest, the Ivory Tower to the north, the Tower of Oren to the
-northeast, and *Enchanted Valley* to the east. There are other places,
-besides the ones I've mentioned, that are dangerous too; if you want to
-know more, ask other guards. I know a little about the *Enchanted
-Valley...* Are you interested? [npc_%objectId%_Chat 1|Ask about the
-Enchanted Valley] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Pinaps:</font><br>
+Oh! Nice to meet you, adventurer.<br1>
+What brings you here tothe town of Oren? This town is surrounded by many dangerous areas, whichplace would you like to know about? The Sea of Spores is located to thenorthwest, the Ivory Tower to the north, the Tower of Oren to thenortheast, and *Enchanted Valley* to the east.<br1>
+There are other places,besides the ones I've mentioned, that are dangerous too; if you want toknow more, ask other guards.<br1>
+I know a little about the *EnchantedValley.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about theEnchanted Valle" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

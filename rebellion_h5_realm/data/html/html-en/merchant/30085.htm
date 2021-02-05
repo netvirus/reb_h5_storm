@@ -1,9 +1,28 @@
-!Weapons Trader Stanford: Welcome, young adventurer. Our shop
-specializes in weapons. In fact, most of Aden's most famous Knights
-carry weapons we sold them. Now then, why don't you choose one for
-yourself? I'm sure there are many here you will admire. Take your time
-and choose one whose very presence will make you feel more secure.
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear 23|Try on
-Mystic equipment.] [npc_%objectId%_TerritoryStatus|Ask about the local
-lord and tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Weapons Trader Stanford:</font><br>
+Welcome, young adventurer.<br1>
+Our shopspecializes in weapons.<br1>
+In fact, most of Aden's most famous Knightscarry weapons we sold them.<br1>
+Now then, why don't you choose one foryourself? I'm sure there are many here you will admire.<br1>
+Take your timeand choose one whose very presence will make you feel more secure.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the locallord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try onMystic equipment" action="bypass -h npc_%objectId%_Wear 23" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

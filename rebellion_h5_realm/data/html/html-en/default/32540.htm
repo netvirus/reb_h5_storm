@@ -1,8 +1,16 @@
-!Gatekeeper of the Abyss: You sense an icy cold gaze fixed on you from a
-gigantic structure that seems somehow not quite alive nor dead. You must
-pass its judgment to enter the *heart of the Seed of Infinity*; if you
-wish to avoid it, you will be expelled *outside the Seed of Infinity*.
-However, the gaze isn't as painful as you feared. Has something happened
-to Ekimus? [npc_%objectId%_request_permission|Withstand the gaze.]
-
-[scripts_Util:Gatekeeper -212836 209824 4288 0|Say yes.]
+<font color="36DC25">Gatekeeper of the Abyss:</font><br>
+You sense an icy cold gaze fixed on you from agigantic structure that seems somehow not quite alive nor dead.<br1>
+You mustpass its judgment to enter the *heart of the Seed of Infinity*; if youwish to avoid it, you will be expelled *outside the Seed of Infinity*.<br1>
+However, the gaze isn't as painful as you feared.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Say yes" action="bypass -h scripts_Util:Gatekeeper -212836 209824 4288 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Withstand the gaze" action="bypass -h npc_%objectId%_request_permission" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

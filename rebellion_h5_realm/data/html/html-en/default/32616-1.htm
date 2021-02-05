@@ -1,7 +1,16 @@
-!Fortune-Teller Mine: Your soul shines with a bright light. I see a dim
-image of a person walking, illuminated by that light... To see more, you
-must pay me an additional
-<font color="LEVEL">1000 Adena</font>
-. What do you say? [npc_%objectId%_Chat 0|Pay the money.]
-
-[npc_%objectId%_Chat 2|Stop now.]
+<font color="36DC25">Fortune-Teller Mine:</font><br>
+Your soul shines with a bright light.<br1>
+I see a dimimage of a person walking, illuminated by that light.<br1>
+To see more, youmust pay me an additional<font color="LEVEL">1000 Adena</font>.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pay the money" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Stop now" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

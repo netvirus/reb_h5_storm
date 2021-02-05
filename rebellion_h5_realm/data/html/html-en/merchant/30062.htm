@@ -1,6 +1,25 @@
-!Trader Sonia: What are you looking for? I can show you a wide range of
-excellent goods. If you're in the market to sell an item, you won't find
-a fairer price anywhere in the city. [npc_%objectId%_Buy
-13|Buy/Sell/Refund.] [npc_%objectId%_Buy 300621|Buy/Sell/Refund Common
-Items.] [npc_%objectId%_TerritoryStatus|View information about the local
-lord and tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Sonia:</font><br>
+What are you looking for? I can show you a wide range ofexcellent goods.<br1>
+If you're in the market to sell an item, you won't finda fairer price anywhere in the city.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund CommonItems" action="bypass -h npc_%objectId%_Buy 300621" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy13" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View information about the locallord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

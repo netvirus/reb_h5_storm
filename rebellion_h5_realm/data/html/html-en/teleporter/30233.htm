@@ -1,20 +1,41 @@
-Gatekeeper Esmeralda: I have heard that there are many monsters
-wandering near this Hunter's Village. For weary adventurers pressed for
-time, my ability to send you through the door of time and space may be
-invaluable. Do you miss the hometown you left years ago? Are you in a
-hurry to save a friend? Or do you suddenly long to see the great ocean?
-I can send you anywhere on this wide continent in an instant.
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|(Nobless only) Teleport]
-
-[scripts_services.TeleToMDT:toMDT @811;Monster Racetrack|Move to Arena & Monster Race Track (free)]
-
-[scripts_services.TeleToFantasyIsle:toFantasyIsle @811;Fantasy Isle|Teleport to Fantasy Isle (free)]
-
-[scripts_services.Birthday:summonAlegria|Call Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Gatekeeper Esmeralda:</font><br>
+I have heard that there are many monsterswandering near this Hunter's Village.<br1>
+For weary adventurers pressed fortime, my ability to send you through the door of time and space may beinvaluable.<br1>
+Do you miss the hometown you left years ago? Are you in ahurry to save a friend? Or do you suddenly long to see the great ocean?I can send you anywhere on this wide continent in an instant.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Move to Arena & Monster Race Track (free" action="bypass -h scripts_services.TeleToMDT:toMDT @811;Monster Racetrack" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="(Nobless only) Telepor" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport to Fantasy Isle (free" action="bypass -h scripts_services.TeleToFantasyIsle:toFantasyIsle @811;Fantasy Isle" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Call Alegri" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Telepor" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

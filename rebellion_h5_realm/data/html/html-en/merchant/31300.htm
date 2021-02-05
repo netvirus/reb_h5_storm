@@ -1,14 +1,31 @@
-!Trader Drumond: Please come in! We are the best weapons shop in Elmore,
-certified even by the Silver Scale Guild. We sell only the highest
-quality equipment, guaranteed to make an adventurer virtually
-invincible! That is Trader Drumond's pledge to you! Why are you looking
-at me like that? Do I have something on my face? Oh...perhaps you've
-spoken to Vladimir, eh? Let me assure you that that rumor he's been
-spreading is a complete lie. You cannot listen to falsehoods like that!
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear 150|Try on
-Fighter equipment.] [npc_%objectId%_Wear 151|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Drumond:</font><br>
+Please come in! We are the best weapons shop in Elmore,certified even by the Silver Scale Guild.<br1>
+We sell only the highestquality equipment, guaranteed to make an adventurer virtuallyinvincible! That is Trader Drumond's pledge to you! Why are you lookingat me like that? Do I have something on my face? Oh.<br1>
+perhaps you'vespoken to Vladimir, eh? Let me assure you that that rumor he's beenspreading is a complete lie.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try onFighter equipment" action="bypass -h npc_%objectId%_Wear 150" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 151" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

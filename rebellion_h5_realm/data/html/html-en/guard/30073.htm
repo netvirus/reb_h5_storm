@@ -1,11 +1,21 @@
-!Guard Jacob: How do you do, honored traveler? Have you come to our
-village to see the great shell of *cruma*? If you have, then you'd be
-well advised to give up your search. Many have come to this village to
-view the shell of cruma, but I have rarely seen anyone return from that
-place intact. The *Marshlands* where the shell of cruma lies have for
-ages been a place teeming with monsters -- even our guards don't like to
-go near there. [npc_%objectId%_Chat 1|Ask about cruma]
-
-[npc_%objectId%_Chat 2|Ask about the Marshlands]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Jacob:</font><br>
+How do you do, honored traveler? Have you come to ourvillage to see the great shell of *cruma*? If you have, then you'd bewell advised to give up your search.<br1>
+Many have come to this village toview the shell of cruma, but I have rarely seen anyone return from thatplace intact.<br1>
+The *Marshlands* where the shell of cruma lies have forages been a place teeming with monsters -- even our guards don't like togo near there.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about crum" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Marshland" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

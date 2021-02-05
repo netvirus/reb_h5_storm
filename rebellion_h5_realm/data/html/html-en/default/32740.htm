@@ -1,9 +1,23 @@
-Gatekeeper Batracos: Welcome. These are the tribal lands of the Seer
-Uguros of Tanta. I, the Gatekeeper Batracos, decide who is able to see
-the seer and who does not. Judging by the looks of you, I have some
-advice - turn back and keep your life. That shiny armor won't protect
-you here. [npc_%objectId%_Chat 1|Continue to listen]
-
-[npc_%objectId%_request_seer|Ask him to send you to Tanta Seer Ugoros]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Gatekeeper Batracos:</font><br>
+Welcome.<br1>
+These are the tribal lands of the SeerUguros of Tanta.<br1>
+I, the Gatekeeper Batracos, decide who is able to seethe seer and who does not.<br1>
+Judging by the looks of you, I have someadvice - turn back and keep your life.<br1>
+That shiny armor won't protectyou here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask him to send you to Tanta Seer Ugoro" action="bypass -h npc_%objectId%_request_seer" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Continue to liste" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

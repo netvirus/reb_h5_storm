@@ -1,7 +1,16 @@
-!Yiyen: Ah, wait! There is a force field within the building. You may
-only enter under certain conditions. Did i already tell you about this?
-Did you find out from someone else? ... I'm so absent-minded these days
-
-[npc_%objectId%_Chat 4|Ask about how to enter the Mansion.]
-
-[npc_%objectId%_Chat 6|Ignore her and enter the Dark Cloud Mansion.]
+<font color="36DC25">Yiyen:</font><br>
+Ah, wait! There is a force field within the building.<br1>
+You mayonly enter under certain conditions.<br1>
+Did i already tell you about this?Did you find out from someone else? .<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ignore her and enter the Dark Cloud Mansion" action="bypass -h npc_%objectId%_Chat 6" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about how to enter the Mansion" action="bypass -h npc_%objectId%_Chat 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

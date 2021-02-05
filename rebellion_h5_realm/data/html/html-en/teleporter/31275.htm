@@ -1,19 +1,42 @@
-Gatekeeper Tatiana: Greetings. I am Tatiana, Gatekeeper of Goddard
-Castle Town. If you wish, I can open the door of space and time and
-enable you to move vast distances in a flash. To fully understand the
-process, you would need years of training at the Ivory Tower, just as I
-have done. Well! Have you decided on a destination?
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|(Nobless only) Teleport]
-
-[scripts_services.TeleToMDT:toMDT @811;Monster Racetrack|Move to Arena & Monster Race Track (free)]
-
-[scripts_services.TeleToFantasyIsle:toFantasyIsle @811;Fantasy Isle|Teleport to Fantasy Isle (free)]
-
-[scripts_services.Birthday:summonAlegria|Call Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Gatekeeper Tatiana:</font><br>
+Greetings.<br1>
+I am Tatiana, Gatekeeper of GoddardCastle Town.<br1>
+If you wish, I can open the door of space and time andenable you to move vast distances in a flash.<br1>
+To fully understand theprocess, you would need years of training at the Ivory Tower, just as Ihave done.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Move to Arena & Monster Race Track (free" action="bypass -h scripts_services.TeleToMDT:toMDT @811;Monster Racetrack" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="(Nobless only) Telepor" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport to Fantasy Isle (free" action="bypass -h scripts_services.TeleToFantasyIsle:toFantasyIsle @811;Fantasy Isle" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Call Alegri" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Telepor" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

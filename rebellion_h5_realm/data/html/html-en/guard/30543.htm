@@ -1,5 +1,23 @@
-!Defender Eaton: I am Defender Eaton. I'm busy guarding the village...
-Nothing new. Actually, there isn't much going on these days, it gives me
-time to work on my hobby... writing poems. Would you like me to read one
-for you? [npc_%objectId%_Chat 1|Sure, go ahead] [npc_%objectId%_Chat
-2|Not right now] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Defender Eaton:</font><br>
+I am Defender Eaton.<br1>
+I'm busy guarding the village.<br1>
+Nothing new.<br1>
+Actually, there isn't much going on these days, it gives metime to work on my hobby.<br1>
+writing poems.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sure, go ahea" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Not right no" action="bypass -h npc_%objectId%_Chat2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

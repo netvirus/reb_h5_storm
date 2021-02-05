@@ -1,11 +1,31 @@
-!Trader Woodley: Welcome! My name is Woodley -- the man there who's
-selling a weapon to another customer is my twin, Woodrow. Be warned,
-though, our temperaments are not exactly alike... Ha ha! Anyway, please
-have a look around and see if there's anything you need.
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear 111|Try on
-Fighter Equipment.] [npc_%objectId%_Wear 112|Try on Mystic Equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Woodley:</font><br>
+Welcome! My name is Woodley -- the man there who'sselling a weapon to another customer is my twin, Woodrow.<br1>
+Be warned,though, our temperaments are not exactly alike.<br1>
+Ha ha! Anyway, pleasehave a look around and see if there's anything you need.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try onFighter Equipment" action="bypass -h npc_%objectId%_Wear 111" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Mystic Equipment" action="bypass -h npc_%objectId%_Wear 112" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

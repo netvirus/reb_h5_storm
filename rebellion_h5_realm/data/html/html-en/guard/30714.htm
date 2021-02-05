@@ -1,12 +1,22 @@
-!Guard Paros: Where are you off to? If you're going to Castle Aden just
-follow this path to the north. There really isn't anyone living to the
-east of the town. Are you going to the *Forest of Mirrors?* After you
-pass the forest, you'll see one of the most beautiful places on the
-continent, *Anghel Waterfall*. Despite its beauty it is a dangerous
-place, so don't go there if you aren't prepared for a good fight.
-
-[npc_%objectId%_Chat 1|Ask about the Forest of Mirrors]
-
-[npc_%objectId%_Chat 2|Ask about the Anghel Waterfall]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Paros:</font><br>
+Where are you off to? If you're going to Castle Aden justfollow this path to the north.<br1>
+There really isn't anyone living to theeast of the town.<br1>
+Are you going to the *Forest of Mirrors?* After youpass the forest, you'll see one of the most beautiful places on thecontinent, *Anghel Waterfall*.<br1>
+Despite its beauty it is a dangerousplace, so don't go there if you aren't prepared for a good fight.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Forest of Mirror" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Anghel Waterfal" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

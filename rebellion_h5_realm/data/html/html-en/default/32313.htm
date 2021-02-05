@@ -1,8 +1,18 @@
-﻿Deltuva: Welcome, traveler! I assume that you know the place so must
-heard about me from someone. I'm here to help adventurers secretly enter
-into the Steel Citadel. Even if you are know everything about Steel
-Citadel, I still can't let you go inside. It's just too dangerous for
-the inexperienced. So ... What would you like to do?
-
-[scripts_services.Caravan:enterToTullyEntrance|"Enter into Steel
-Citadel."] [npc_%objectId%_Quest|Continue]
+<font color="36DC25">﻿Deltuva:</font><br>
+Welcome, traveler! I assume that you know the place so mustheard about me from someone.<br1>
+I'm here to help adventurers secretly enterinto the Steel Citadel.<br1>
+Even if you are know everything about SteelCitadel, I still can't let you go inside.<br1>
+It's just too dangerous forthe inexperienced.<br1>
+So .<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Continu" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Enter into SteelCitadel" action="bypass -h scripts_services.Caravan:enterToTullyEntrance" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

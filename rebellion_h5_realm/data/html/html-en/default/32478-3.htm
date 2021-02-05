@@ -1,6 +1,14 @@
-Dimensional Merchant: Need White Weasel?%% This pet is able to impose
-*positive effects* on its owner. Are you sure you choose it is it?
-
-[scripts_services.VitaminManager:giveWeasel|Get White Weasel Necklace]
-
-[npc_%objectId%_Chat 1|Back]
+<font color="36DC25">Dimensional Merchant:</font><br>
+Need White Weasel? This pet is able to impose*positive effects* on its owner.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Get White Weasel Necklac" action="bypass -h scripts_services.VitaminManager:giveWeasel" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Bac" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

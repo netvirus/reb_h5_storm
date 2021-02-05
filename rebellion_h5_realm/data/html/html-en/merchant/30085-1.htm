@@ -1,5 +1,19 @@
-!Weapons Trader Stanford: What are you going to Trade?
-
-[npc_%objectId%_Buy 23|Trade Mystic Weapons.] [npc_%objectId%_Buy
-300855|Trade Common Items for Mystics.] [npc_%objectId%_Multisell
-200|Trade a Shadow Item.]
+<font color="36DC25">Weapons Trader Stanford:</font><br>
+What are you going to Trade?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common Items for Mystics" action="bypass -h npc_%objectId%_Buy300855" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Mystic Weapons" action="bypass -h npc_%objectId%_Buy 23" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade a Shadow Item" action="bypass -h npc_%objectId%_Multisell200" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,6 +1,16 @@
-!Guard Gardner: Hello, do you wish to journey to the east? Then you
-might pass through the Forest of Mirrors...If you hear a voice behind
-you while traveling through the Forest of Mirrors, never look back. Have
-a nice trip... [npc_%objectId%_Chat 1|Ask about the strange greeting]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Guard Gardner:</font><br>
+Hello, do you wish to journey to the east? Then youmight pass through the Forest of Mirrors.<br1>
+If you hear a voice behindyou while traveling through the Forest of Mirrors, never look back.<br1>
+Havea nice trip.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the strange greetin" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

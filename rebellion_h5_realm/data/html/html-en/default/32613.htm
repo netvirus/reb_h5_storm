@@ -1,7 +1,19 @@
-!Game Manager Handy: *Play Handy's block checker!* Play Handy's block
-checker! [npc_%objectId%_Chat 1|Learn about the game.]
-
-[npc_%objectId%_Chat 2|Find out how to participate.]
-
-[scripts_Util:Gatekeeper -59716 -55920 -2048 0 @811;Fantasy Isle|Return
-to Fantasy Isle Paddies.]
+<font color="36DC25">Game Manager Handy:</font><br>
+*Play Handy's block checker!* Play Handy's blockchecker!<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Returnto Fantasy Isle Paddies" action="bypass -h scripts_Util:Gatekeeper -59716 -55920 -2048 0 @811;Fantasy Isle" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Find out how to participate" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn about the game" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

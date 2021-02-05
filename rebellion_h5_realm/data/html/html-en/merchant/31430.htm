@@ -1,8 +1,21 @@
-!Amulet Seller Donai: My name's Donai. I'm from the Duda-Mara tribe.
-Duda-Mara Chief Takuna and I came to this land in order to prepare
-ourselves for the harsh winter. Dear brother, can you fearlessly face
-Paagrio? [npc_%objectId%_Buy 189|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|Manor tax rate and information]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Amulet Seller Donai:</font><br>
+My name's Donai.<br1>
+I'm from the Duda-Mara tribe.<br1>
+Duda-Mara Chief Takuna and I came to this land in order to prepareourselves for the harsh winter.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 189" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Manor tax rate and informatio" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

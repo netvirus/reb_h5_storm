@@ -1,8 +1,21 @@
-!Trader Minaless: You are blessed by the goddess of darkness! Here is
-everything you need. We prepared these for you, disciple of Shilen. I
-swear to the goddess that we carry only the best wares here. Oh ho ho
-ho! [npc_%objectId%_Chat 1|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Trader Minaless:</font><br>
+You are blessed by the goddess of darkness! Here iseverything you need.<br1>
+We prepared these for you, disciple of Shilen.<br1>
+Iswear to the goddess that we carry only the best wares here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

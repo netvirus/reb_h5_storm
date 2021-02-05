@@ -1,7 +1,32 @@
-!Trader Hombre: Welcome! You have excellent taste, my young friend. As
-you can plainly see, not only Dwarves sell good weapons. Have a look
-around with that in mind. Trust me -- I'll give you the best price in
-town. [npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear
-319461|Try on Fighter equipment.] [npc_%objectId%_Wear 319462|Try on
-Mystic equipment.] [npc_%objectId%_TerritoryStatus|Ask about the local
-lord and tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Hombre:</font><br>
+Welcome! You have excellent taste, my young friend.<br1>
+Asyou can plainly see, not only Dwarves sell good weapons.<br1>
+Have a lookaround with that in mind.<br1>
+Trust me -- I'll give you the best price intown.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the locallord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try onMystic equipment" action="bypass -h npc_%objectId%_Wear 319462" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Try on Fighter equipment" action="bypass -h npc_%objectId%_Wear319461" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,17 +1,34 @@
-Gatekeeper Minevia: Hardin's Academy is not a place for sightseeing. Do
-you know what kind of people Necromancers are? For them, even Human
-blood, flesh, bones and skin are simply ingredients for their dark
-spells. They are as emotionless about death as the cruelest Dark
-Elves... They are not to be trifled with. Are you having second
-thoughts? If you wish to leave here, I will open the door of space and
-time. I can send you wherever you wish.
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|Noblesse Exclusive Teleport]
-
-[scripts_services.Birthday:summonAlegria|Summon Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Gatekeeper Minevia:</font><br>
+Hardin's Academy is not a place for sightseeing.<br1>
+Doyou know what kind of people Necromancers are? For them, even Humanblood, flesh, bones and skin are simply ingredients for their darkspells.<br1>
+They are as emotionless about death as the cruelest DarkElves.<br1>
+They are not to be trifled with.<br1>
+Are you having secondthoughts? If you wish to leave here, I will open the door of space andtime.<br1>
+I can send you wherever you wish.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Summon Alegri" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Noblesse Exclusive Telepor" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Telepor" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

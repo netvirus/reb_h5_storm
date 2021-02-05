@@ -1,6 +1,29 @@
-!Trader Nils: Well then, what can I get for you? [npc_%objectId%_Buy
-152|Trade Fighter Equipment.] [npc_%objectId%_Buy 153|Trade Mystic
-Equipment.] [npc_%objectId%_Buy 31301001|Trade Common Items for
-Fighters.] [npc_%objectId%_Buy 31301002|Trade Common Items for Mystics.]
-
-[npc_%objectId%_Multisell 200|Trade a Shadow Item.]
+<font color="36DC25">Trader Nils:</font><br>
+Well then, what can I get for you?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade MysticEquipment" action="bypass -h npc_%objectId%_Buy 153" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common Items for Mystics" action="bypass -h npc_%objectId%_Buy 31301002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade a Shadow Item" action="bypass -h npc_%objectId%_Multisell 200" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Fighter Equipment" action="bypass -h npc_%objectId%_Buy152" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Common Items forFighters" action="bypass -h npc_%objectId%_Buy 31301001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

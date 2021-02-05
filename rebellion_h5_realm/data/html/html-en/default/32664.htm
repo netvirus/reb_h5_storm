@@ -1,5 +1,14 @@
-!Delusion Manager: Do you want to change room?
-
-[npc_%objectId%_ChangeRiftRoom|"I want to change room."]
-
-[npc_%objectId%_ExitRift|"I want go back to waiting room."]
+<font color="36DC25">Delusion Manager:</font><br>
+Do you want to change room?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I want go back to waiting room" action="bypass -h npc_%objectId%_ExitRift" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I want to change room" action="bypass -h npc_%objectId%_ChangeRiftRoom" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

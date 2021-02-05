@@ -1,8 +1,21 @@
-!Mineral Trader Rogen: Flames and bellows... anvils and hammers... all
-essential parts of a Dwarf's life. Are you be interested in working in a
-blacksmith shop? If so, you must learn to love flames and minerals! Ha!
-
-[npc_%objectId%_Buy 198|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|"Who is the Lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="36DC25">Mineral Trader Rogen:</font><br>
+Flames and bellows.<br1>
+anvils and hammers.<br1>
+allessential parts of a Dwarf's life.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 198" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the Lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

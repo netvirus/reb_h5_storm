@@ -1,7 +1,19 @@
-!Old Dwarven Ghost: Here you are! I've been waiting for you here...
-
-You're probably know everything about this Tower, but can I ask you what
-do you know about the Tower of Naia? [npc_%objectId%_Chat 1|"Naia? What
-is this?"] [npc_%objectId%_requestteleport|"No time to talk! I request
-teleportation!"] [npc_%objectId%_tryanomicentry|"I want to visit Anomic
-Foundry"]
+<font color="36DC25">Old Dwarven Ghost:</font><br>
+Here you are! I've been waiting for you here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I want to visit AnomicFoundry" action="bypass -h npc_%objectId%_tryanomicentry" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Naia? Whatis this?" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="No time to talk! I requestteleportation!" action="bypass -h npc_%objectId%_requestteleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

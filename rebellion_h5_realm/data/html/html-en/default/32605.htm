@@ -1,9 +1,26 @@
-!Airship Controller: You see a floating piece of stone filled with a
-mysterious power. The green light is flashing, so there doesn't appear
-to be anything wrong with its function. By manipulating this, you should
-be able to control the Airship. [npc_%objectId%_board|Board the
-Airship.] [npc_%objectId%_summon|Summon the Airship.]
-
-[npc_%objectId%_register|Register summoning license.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Airship Controller:</font><br>
+You see a floating piece of stone filled with amysterious power.<br1>
+The green light is flashing, so there doesn't appearto be anything wrong with its function.<br1>
+By manipulating this, you shouldbe able to control the Airship.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Summon the Airship" action="bypass -h npc_%objectId%_summon" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Board theAirship" action="bypass -h npc_%objectId%_board" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Register summoning license" action="bypass -h npc_%objectId%_register" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,5 +1,24 @@
-!Trader Judith: Would you like to see some of our featured items?
-Necklaces, earrings, rings...what would you like? [npc_%objectId%_Buy
-140|Buy/Sell/Refund.] [npc_%objectId%_Buy 31260001|Buy/Sell/Refund
-Common Items.] [npc_%objectId%_TerritoryStatus|Ask about the local lord
-and the tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="36DC25">Trader Judith:</font><br>
+Would you like to see some of our featured items?Necklaces, earrings, rings.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lordand the tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy140" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/RefundCommon Items" action="bypass -h npc_%objectId%_Buy 31260001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

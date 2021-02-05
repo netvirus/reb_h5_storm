@@ -1,10 +1,26 @@
-!Trader Lara: Welcome, friend! You won't recognize my store since we
-recently finished remodeling. We sell a variety of potions --
-necessities for any serious adventurer. You look like someone who has an
-eye for quality, so just let me know what I can get for you...
-
-[npc_%objectId%_Buy 15|Buy/Sell/Refund General.] [npc_%objectId%_Buy
-16|Buy/Sell/Refund Dyes.] [npc_%objectId%_TerritoryStatus|View
-information about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="36DC25">Trader Lara:</font><br>
+Welcome, friend! You won't recognize my store since werecently finished remodeling.<br1>
+We sell a variety of potions --necessities for any serious adventurer.<br1>
+You look like someone who has aneye for quality, so just let me know what I can get for you.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ques" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Viewinformation about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund General" action="bypass -h npc_%objectId%_Buy 15" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy/Sell/Refund Dyes" action="bypass -h npc_%objectId%_Buy16" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
