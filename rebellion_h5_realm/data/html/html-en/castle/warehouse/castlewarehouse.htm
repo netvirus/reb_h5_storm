@@ -1,8 +1,19 @@
-!Warehouse Keeper: Welcome! If you wish to store items in our warehouse,
-it will cost you 30 adena per item.
-
-<center>[npc_%objectId%_Chat 1|Private Warehouse.]
-
-	[npc_%objectId%_Chat 2|Clan Warehouse.]
-
-	[npc_%objectId%_CheckHonoraryItems|Check honorary items.]</center>
+<font color="FF8000">Warehouse Keeper:</font><br>
+Welcome! If you wish to store items in our warehouse,it will cost you 30 adena per item.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Check honorary items" action="bypass -h npc_%objectId%_CheckHonoraryItems" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

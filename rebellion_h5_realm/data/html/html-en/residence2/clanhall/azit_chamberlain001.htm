@@ -1,15 +1,28 @@
-You again? I've seen you around here a lot lately! What do you want this
-time?
-
-
-<center>[npc_%objectId%_door|Open/Close a door.]
-
-	[npc_%objectId%_banish|Expel an outsider.]
-
-	[npc_%objectId%_functions|Clan hall functions.]
-
-	[npc_%objectId%_manage_vault|Clan warehouse.]
-
-	[npc_%objectId%_manage|Clan hall management.]</CENTER>
-
-
+You again? I've seen you around here a lot lately What do you want thistime?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Open/Close a door" action="bypass -h npc_%objectId%_door" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan hall functions" action="bypass -h npc_%objectId%_functions" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan warehouse" action="bypass -h npc_%objectId%_manage_vault" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Expel an outsider" action="bypass -h npc_%objectId%_banish" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan hall management" action="bypass -h npc_%objectId%_manage" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

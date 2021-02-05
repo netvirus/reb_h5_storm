@@ -1,6 +1,22 @@
-!Grocer Diyabu: Oh! Are you the soldier I've been hearing so much
-about?! My name is Diyabu. As you can see, I'm a businessman. If you
-ever need anything, just let me know. I'll try my best to accommodate
-you. A hero like you deserves the best! [npc_%objectId%_Buy 170|Buy]
-
-[npc_%objectId%_Sell|Sell] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Grocer Diyabu:</font><br>
+Oh! Are you the soldier I've been hearing so muchabout?! My name is Diyabu.<br1>
+As you can see, I'm a businessman.<br1>
+If youever need anything, just let me know.<br1>
+I'll try my best to accommodateyou.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sell" action="bypass -h npc_%objectId%_Sell" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy" action="bypass -h npc_%objectId%_Buy 170" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

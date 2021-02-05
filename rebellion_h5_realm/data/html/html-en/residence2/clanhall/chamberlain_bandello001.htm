@@ -1,9 +1,28 @@
-Settle our clan's old scores, and I'll assist you in any way possible!
-
-<center>[npc_%objectId%_door|Open/Close Door]
-
-	[npc_%objectId%_banish|Expel Outsiders] [npc_%objectId%_functions|Clan
-	Hall Function] [npc_%objectId%_manage_vault|Clan Warehouse]
-
-	[npc_%objectId%_manage|Clan Hall Administration]</center>
-
+Settle our clan's old scores, and I'll assist you in any way possible<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Expel Outsiders" action="bypass -h npc_%objectId%_banish" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Hall Function" action="bypass -h npc_%objectId%_functions" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Hall Administration" action="bypass -h npc_%objectId%_manage" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Open/Close Door" action="bypass -h npc_%objectId%_door" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_manage_vault" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
