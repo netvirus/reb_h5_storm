@@ -1,12 +1,36 @@
-!Grand Master Andromeda: This town... the stink of blood and death
-lingers about it like a fog... Those like me who have experienced so
-much death become very sensitive to its presence. Ah, but you know that
-already, don't you?
-
-[scripts_services.villagemasters.Occupation:onTalk30474|Listen to
-information about second class transfer.] [npc_%objectId%_Link
-villagemaster/subclass_01.htm|Sub Class.] [npc_%objectId%_Link
-villagemaster/clan-01.htm|Clan.] [npc_%objectId%_Link
-villagemaster/ally-01.htm|Alliance.] [npc_%objectId%_Link
-villagemaster/reflect_weapon_master.htm|Use Shadow Weapon Exchange
-Coupon.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Grand Master Andromeda:</font><br>
+This town.<br1>
+the stink of blood and deathlingers about it like a fog.<br1>
+Those like me who have experienced somuch death become very sensitive to its presence.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sub Class" action="bypass -h npc_%objectId%_Linkvillagemaster/subclass_01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Listen toinformation about second class transfer" action="bypass -h scripts_services.villagemasters.Occupation:onTalk30474" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan" action="bypass -h npc_%objectId%_Linkvillagemaster/clan-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Alliance" action="bypass -h npc_%objectId%_Linkvillagemaster/ally-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Use Shadow Weapon ExchangeCoupon" action="bypass -h npc_%objectId%_Linkvillagemaster/reflect_weapon_master.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
