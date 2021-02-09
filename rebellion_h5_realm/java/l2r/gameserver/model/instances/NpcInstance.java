@@ -1315,7 +1315,7 @@ public class NpcInstance extends Creature
 		StringBuilder sb = new StringBuilder();
 		AtomicInteger count = new AtomicInteger();
 
-		sb.append("<center><font color=\"FFFF00\">&$556;</font></center>").append("<br><br>");
+		sb.append("<center><font color=\"FFFF00\">[   &$556;  ]</font></center>");
 		sb.append("<table border=0 cellspacing=0 cellpadding=0 width=290 align=\"center\">");
 
 		if(list != null)
@@ -1335,25 +1335,26 @@ public class NpcInstance extends Creature
 					}
 					count.getAndIncrement();
 					sb.append("<tr>");
-					sb.append("<td>").append(count.get()).append("</td>");
-					sb.append("<tr><td FIXWIDTH=90 align=center>");
+					sb.append("<td><center><font color=\"FFFF00\">").append(count.get()).append("</font></center></td>");
+					sb.append("<td FIXWIDTH=80 align=center>");
 					sb.append("<button value=\"").append(e.getStringName());
 					if (e.getPrice() * pricemod > 0) {
-						sb.append(" - ").append((long) (e.getPrice() * pricemod)).append(" ").append(HtmlUtils.htmlItemName(ItemTemplate.ITEM_ID_ADENA));
+						sb.append(" - ").append((long) (e.getPrice() * pricemod)).append(" ").append(" аден");
 					}
 					sb.append("\" action=\"bypass -h scripts_Util:Gatekeeper ").append(e.getX()).append(" ").append(e.getY()).append(" ").append(e.getZ());
 					if (e.getCastleId() != 0) {
 						sb.append(" ").append(e.getCastleId());
 					}
 					sb.append(" ").append((long) (e.getPrice() * pricemod)).append(" @811;F;").append(e.getName());
-					sb.append("back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"260\" height=\"25\" />");
+					sb.append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"240\" height=\"25\" />");
 					sb.append("</td>").append("</tr>");
 				} else {
 					sb.append("<tr>");
 					sb.append("<td>").append(count.get()).append("</td>");
-					sb.append("<tr><td FIXWIDTH=90 align=center>");
+					sb.append("<td FIXWIDTH=80 align=center>");
 					sb.append("<button value=\"").append(e.getStringName()).append(" - ").append(e.getPrice()).append(" ").append(HtmlUtils.htmlItemName(e.getItem().getItemId()));
 					sb.append("\" action=\"bypass -h scripts_Util:QuestGatekeeper ").append(e.getX()).append(" ").append(e.getY()).append(" ").append(e.getZ()).append(" ").append(e.getPrice()).append(" ").append(e.getItem().getItemId()).append(" @811;F;");
+					sb.append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"240\" height=\"25\" />");
 					sb.append("</td>").append("</tr>");
 				}
 			});
