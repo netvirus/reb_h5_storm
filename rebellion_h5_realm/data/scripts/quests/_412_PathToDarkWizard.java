@@ -6,7 +6,7 @@ import l2r.gameserver.model.quest.Quest;
 import l2r.gameserver.model.quest.QuestState;
 import l2r.gameserver.scripts.ScriptFile;
 
-public class _412_PathToDarkwizard extends Quest implements ScriptFile
+public class _412_PathToDarkWizard extends Quest implements ScriptFile
 {
 	//npc
 	public final int CHARKEREN = 30415;
@@ -35,37 +35,37 @@ public class _412_PathToDarkwizard extends Quest implements ScriptFile
 	//DROPLIST [MOB_ID, REQUIRED, ITEM, NEED_COUNT]
 	public final int[][] DROPLIST = {
 			{
-					20015,
+					MARSH_ZOMBIE,
 					LUCKY_KEY_ID,
 					FAMILYS_ASHES_ID,
 					3
 			},
 			{
-					20020,
+					MARSH_ZOMBIE_LORD,
 					LUCKY_KEY_ID,
 					FAMILYS_ASHES_ID,
 					3
 			},
 			{
-					20517,
+					SKELETON_HUNTER,
 					CANDLE_ID,
 					KNEE_BONE_ID,
 					2
 			},
 			{
-					20518,
+					SKELETON_HUNTER_ARCHER,
 					CANDLE_ID,
 					KNEE_BONE_ID,
 					2
 			},
 			{
-					20022,
+					MISERY_SKELETON,
 					CANDLE_ID,
 					KNEE_BONE_ID,
 					2
 			},
 			{
-					20045,
+					SKELETON_SCOUT,
 					HUB_SCENT_ID,
 					HEART_OF_LUNACY_ID,
 					3
@@ -87,7 +87,7 @@ public class _412_PathToDarkwizard extends Quest implements ScriptFile
 	{
 	}
 
-	public _412_PathToDarkwizard()
+	public _412_PathToDarkWizard()
 	{
 		super(false);
 
