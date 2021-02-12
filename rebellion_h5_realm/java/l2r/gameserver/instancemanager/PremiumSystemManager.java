@@ -105,11 +105,14 @@ public class PremiumSystemManager {
         if (premiumBonus.isBonusMain())
         {
             activeChar.setPremiumMainTypeState(true);
+            if (activeChar.getPremiumSecondTypeState() && !activeChar.getDoublePremiumState())
+                activeChar.setDoublePremiumState(true);
         }
         else
         {
-            activeChar.setPremiumMainTypeState(true);
             activeChar.setPremiumSecondTypeState(true);
+            if (activeChar.getPremiumMainTypeState() && !activeChar.getDoublePremiumState())
+                activeChar.setDoublePremiumState(true);
         }
     }
 
