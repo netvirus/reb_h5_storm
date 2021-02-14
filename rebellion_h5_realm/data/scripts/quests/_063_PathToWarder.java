@@ -213,16 +213,17 @@ public class _063_PathToWarder extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(cond == 2)
 		{
 			if(npcId == Patrol)
 			{
-				st.giveItems(OlMahumOrganizationChart, 1);
+				st.giveItems(OlMahumOrganizationChart, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_ITEMGET);
 			}
 			else if(npcId == Novice)
 			{
-				st.giveItems(OlMahumOrders, 1);
+				st.giveItems(OlMahumOrders, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_ITEMGET);
 			}
 			if(st.getQuestItemsCount(OlMahumOrders) > 9 && st.getQuestItemsCount(OlMahumOrganizationChart) > 4)

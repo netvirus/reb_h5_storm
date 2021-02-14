@@ -18,6 +18,8 @@ import l2r.gameserver.model.Skill;
 import l2r.gameserver.model.base.PcCondOverride;
 import l2r.gameserver.model.entity.olympiad.OlympiadGame;
 import l2r.gameserver.model.instances.NpcInstance;
+import l2r.gameserver.model.quest.startcondition.ConditionList;
+import l2r.gameserver.model.quest.startcondition.ICheckStartCondition;
 import l2r.gameserver.network.serverpackets.ExNpcQuestHtmlMessage;
 import l2r.gameserver.network.serverpackets.ExQuestNpcLogList;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -88,6 +90,8 @@ public class Quest
 	public final static int STARTED = 2;
 	public final static int COMPLETED = 3;
 	public final static int DELAYED = 4;
+
+	private List<ICheckStartCondition> startConditionList;
 	
 	/**
 	 * Этот метод для регистрации квестовых вещей, которые будут удалены
@@ -1018,5 +1022,12 @@ public class Quest
 	public static int getRandom(int min, int max)
 	{
 		return Rnd.get(min, max);
+	}
+
+	public final ConditionList isAvailableFor(final Player player) {
+		for (final ICheckStartCondition startCondition : startConditionList)
+			if (startCondition.checkCondition(player) != ConditionList.NONE)
+				return startCondition.checkCondition(player);
+		return ConditionList.NONE;
 	}
 }

@@ -13863,4 +13863,5 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		return _premiumBonus.getBonusDropRate();
 	}
+
 }
