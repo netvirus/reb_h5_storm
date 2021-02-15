@@ -281,6 +281,17 @@ public final class QuestState
         return this;
     }
 
+    /**
+     * Используется для однодневных квестов
+     */
+    public void exitQuest(final Quest quest) {
+        final Player player = getPlayer();
+        exitCurrentQuest(true);
+        quest.newQuestState(player, Quest.DELAYED);
+        final QuestState qs = player.getQuestState(quest.getName());
+        qs.setRestartTime();
+    }
+
     public void abortQuest()
     {
         _quest.onAbort(this);
@@ -419,6 +430,16 @@ public final class QuestState
         if(getQuestItemsCount(itemId) >= count)
             return true;
         return false;
+    }
+
+    /**
+     * Checks if the quest state progress ({@code cond}) is at the specified step.
+     * @param condition the condition to check against
+     * @return {@code true} if the quest condition is equal to {@code condition}, {@code false} otherwise
+     */
+    public boolean isCond(int condition)
+    {
+        return getCond() == condition;
     }
 
     public boolean haveQuestItem(int itemId)
@@ -747,12 +768,12 @@ public final class QuestState
 
     public String set(String var, String val)
     {
-        return set(var, val, true);
+        return setMemoState(var, val, true);
     }
 
     public String set(String var, int intval)
     {
-        return set(var, String.valueOf(intval), true);
+        return setMemoState(var, String.valueOf(intval), true);
     }
 
     /**
@@ -765,6 +786,19 @@ public final class QuestState
      * @param store : Сохраняет в базу и если var это cond обновляет список квестов игрока.
      * @return String (equal to parameter "val")
      */
+    public String setMemoState(String var, String val, boolean store)
+    {
+        if(val == null)
+            val = StringUtils.EMPTY;
+
+        _vars.put(var, val);
+
+        if(store)
+            Quest.updateQuestVarInDb(this, var, val);
+
+        return val;
+    }
+
     public String set(String var, String val, boolean store)
     {
         if(val == null)
@@ -776,6 +810,25 @@ public final class QuestState
             Quest.updateQuestVarInDb(this, var, val);
 
         return val;
+    }
+
+    /**
+     * Remove the variable of quest from the list of variables for the quest.<BR><BR>
+     * <U><I>Concept : </I></U>
+     * Remove the variable of quest represented by "var" from the class variable FastMap "vars" and from the database.
+     *
+     * @param var : String designating the variable for the quest to be deleted
+     * @return String pointing out the previous value associated with the variable "var"
+     */
+    public String removeMemo(final String var) {
+        if (var == null) {
+            return null;
+        }
+        final String old = _vars.remove(var);
+        if (old != null) {
+            Quest.deleteQuestVarInDb(this, var);
+        }
+        return old;
     }
 
     /**
@@ -831,6 +884,13 @@ public final class QuestState
         Player player = getPlayer();
         if(player != null)
             player.sendPacket(new PlaySound(sound));
+    }
+
+    public void soundEffect(final String sound) {
+        final Player player = getPlayer();
+        if (player != null) {
+            player.sendPacket(new PlaySound(sound));
+        }
     }
 
     public void playTutorialVoice(String voice)
@@ -1157,7 +1217,7 @@ public final class QuestState
         }
 
         final String sVal = String.valueOf(newCond);
-        final String result = set(VAR_COND, sVal, false);
+        final String result = setMemoState(VAR_COND, sVal, false);
         if(store)
             Quest.updateQuestVarInDb(this, VAR_COND, sVal);
 
@@ -1198,5 +1258,24 @@ public final class QuestState
 
         long restartTime = Long.parseLong(val);
         return restartTime <= System.currentTimeMillis();
+    }
+
+    /**
+     * Return the quantity of one sort of item hold by the player
+     *
+     * @param itemId : ID of the item wanted to be count
+     * @return int
+     */
+    public long ownItemCount(final int itemId) {
+        final Player player = getPlayer();
+        return player == null ? 0 : player.getInventory().getCountOf(itemId);
+    }
+
+    public long ownItemCount(final int... itemsIds) {
+        long result = 0;
+        for (final int id : itemsIds) {
+            result += ownItemCount(id);
+        }
+        return result;
     }
 }

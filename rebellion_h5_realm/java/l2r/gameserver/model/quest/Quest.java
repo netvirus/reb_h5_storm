@@ -322,7 +322,7 @@ public class Quest
 				if(var.equals("cond") && Integer.parseInt(value) < 0)
 					value = String.valueOf(Integer.parseInt(value) | 1);
 				// Add parameter to the quest
-				qs.set(var, value, false);
+				qs.setMemoState(var, value, false);
 			}
 		}
 		catch(Exception e)
@@ -1036,7 +1036,7 @@ public class Quest
 	
 	/**
 	 * Gets a random integer number from 0 (inclusive) to {@code max} (exclusive).<br>
-	 * Use this method instead importing {@link com.l2jserver.util.Rnd} utility.
+	 * Use this method instead importing utility.
 	 * @param max this parameter represents the maximum value for randomization.
 	 * @return a random integer number from 0 to {@code max} - 1.
 	 */
@@ -1047,7 +1047,7 @@ public class Quest
 	
 	/**
 	 * Gets a random integer number from {@code min} (inclusive) to {@code max} (inclusive).<br>
-	 * Use this method instead importing {@link com.l2jserver.util.Rnd} utility.
+	 * Use this method instead importing utility.
 	 * @param min this parameter represents the minimum value for randomization.
 	 * @param max this parameter represents the maximum value for randomization.
 	 * @return a random integer number from {@code min} to {@code max} .

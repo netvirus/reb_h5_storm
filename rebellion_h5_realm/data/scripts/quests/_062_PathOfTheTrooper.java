@@ -78,7 +78,7 @@ public class _062_PathOfTheTrooper extends Quest implements ScriptFile
 		String htmltext = NO_QUEST_DIALOG;
 		int GetMemoState = st.getCond();
 		int talker_level = st.getPlayer().getLevel();
-		boolean GetOneTimeQuestFlag = st.getPlayer().getVarB("profession_145");
+		int GetOneTimeQuestFlag = st.getPlayer().getVarInt("profession_145");
 		int npcId = npc.getNpcId();
 		int id = st.getState();
 		switch (id) {
@@ -117,8 +117,8 @@ public class _062_PathOfTheTrooper extends Quest implements ScriptFile
 						st.takeItems(TUMRAN_BUGBEAR_HEART, -1);
 						if (st.getPlayer().getClassId().getLevel() == 1) {
 							st.giveItems(GWAINS_RECOMMENDATION, 1);
-							if (!GetOneTimeQuestFlag) {
-								st.getPlayer().setVar("prof1profession_145", "1", -1);
+							if (GetOneTimeQuestFlag == 0) {
+								st.getPlayer().setVar("profession_145", String.valueOf(1), -1);
 								if (talker_level >= 20)
 									st.addExpAndSp(320534, 20848);
 								else if (talker_level == 19)
