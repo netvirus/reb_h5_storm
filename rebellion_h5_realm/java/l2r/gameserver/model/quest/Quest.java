@@ -9,21 +9,26 @@ import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
 import l2r.gameserver.data.xml.holder.ItemHolder;
 import l2r.gameserver.data.xml.holder.NpcHolder;
+import l2r.gameserver.data.xml.holder.QuestCustomParamsHolder;
 import l2r.gameserver.database.DatabaseFactory;
 import l2r.gameserver.instancemanager.QuestManager;
 import l2r.gameserver.model.Creature;
 import l2r.gameserver.model.GameObject;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.Skill;
+import l2r.gameserver.model.base.ClassId;
 import l2r.gameserver.model.base.PcCondOverride;
+import l2r.gameserver.model.base.Race;
 import l2r.gameserver.model.entity.olympiad.OlympiadGame;
 import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.model.quest.startcondition.ConditionList;
 import l2r.gameserver.model.quest.startcondition.ICheckStartCondition;
+import l2r.gameserver.model.quest.startcondition.impl.*;
 import l2r.gameserver.network.serverpackets.ExNpcQuestHtmlMessage;
 import l2r.gameserver.network.serverpackets.ExQuestNpcLogList;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
 import l2r.gameserver.scripts.Functions;
+import l2r.gameserver.templates.QuestCustomParams;
 import l2r.gameserver.templates.item.ItemTemplate;
 import l2r.gameserver.templates.npc.NpcTemplate;
 import l2r.gameserver.utils.HtmlUtils;
@@ -35,10 +40,7 @@ import gnu.trove.set.hash.TIntHashSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -56,18 +58,47 @@ public class Quest
 	public static final String SOUND_GIVEUP = "ItemSound.quest_giveup";
 	public static final String SOUND_TUTORIAL = "ItemSound.quest_tutorial";
 	public static final String SOUND_JACKPOT = "ItemSound.quest_jackpot";
+	public static final String SOUND_SYS_SIREN = "ItemSound3.sys_siren";
+	public static final String SOUND_ANTARAS_FEAR = "SkillSound3.antaras_fear";
+	public static final String SOUND_HORROR1 = "SkillSound5.horror_01";
 	public static final String SOUND_HORROR2 = "SkillSound5.horror_02";
+	public static final String SOUND_LIQUID_MIX_01 = "SkillSound5.liquid_mix_01";
+	public static final String SOUND_LIQUID_SUCCESS_01 = "SkillSound5.liquid_success_01";
+	public static final String SOUND_LIQUID_FAIL_01 = "SkillSound5.liquid_fail_01";
 	public static final String SOUND_BEFORE_BATTLE = "Itemsound.quest_before_battle";
 	public static final String SOUND_FANFARE_MIDDLE = "ItemSound.quest_fanfare_middle";
+	public static final String SOUND_FANFARE1 = "ItemSound.quest_fanfare_1";
 	public static final String SOUND_FANFARE2 = "ItemSound.quest_fanfare_2";
 	public static final String SOUND_BROKEN_KEY = "ItemSound2.broken_key";
 	public static final String SOUND_ENCHANT_SUCESS = "ItemSound3.sys_enchant_sucess";
 	public static final String SOUND_ENCHANT_FAILED = "ItemSound3.sys_enchant_failed";
+	public static final String SOUND_SYS_SOW_SUCCESS = "ItemSound3.sys_sow_success";
 	public static final String SOUND_ED_CHIMES05 = "AmdSound.ed_chimes_05";
+	public static final String SOUND_DD_HORROR_01 = "AmbSound.dd_horror_01";
+	public static final String SOUND_DD_HORROR_02 = "AmdSound.dd_horror_02";
+	public static final String SOUND_D_HORROR_03 = "AmbSound.d_horror_03";
+	public static final String SOUND_D_HORROR_15 = "AmbSound.d_horror_15";
 	public static final String SOUND_ARMOR_WOOD_3 = "ItemSound.armor_wood_3";
 	public static final String SOUND_ITEM_DROP_EQUIP_ARMOR_CLOTH = "ItemSound.item_drop_equip_armor_cloth";
-
-	public static final String NO_QUEST_DIALOG = "no-quest";
+	public static final String SOUND_FDELF_CRY = "ChrSound.FDElf_Cry";
+	public static final String SOUND_CHARSTAT_OPEN_01 = "InterfaceSound.charstat_open_01";
+	public static final String SOUND_D_WIND_LOOT_02 = "AmdSound.d_wind_loot_02";
+	public static final String SOUND_ELCROKI_SONG_FULL = "EtcSound.elcroki_song_full";
+	public static final String SOUND_ELCROKI_SONG_1ST = "EtcSound.elcroki_song_1st";
+	public static final String SOUND_ELCROKI_SONG_2ND = "EtcSound.elcroki_song_2nd";
+	public static final String SOUND_ELCROKI_SONG_3RD = "EtcSound.elcroki_song_3rd";
+	public static final String SOUND_CD_CRYSTAL_LOOP = "AmbSound.cd_crystal_loop";
+	public static final String SOUND_DT_PERCUSSION_01 = "AmbSound.dt_percussion_01";
+	public static final String SOUND_AC_PERCUSSION_02 = "AmbSound.ac_percussion_02";
+	public static final String SOUND_ED_DRONE_02 = "AmbSound.ed_drone_02";
+	public static final String SOUND_EG_DRON_02 = "AmbSound.eg_dron_02";
+	public static final String SOUND_MT_CREAK01 = "AmbSound.mt_creak01";
+	public static final String SOUND_ITEMDROP_ARMOR_LEATHER = "ItemSound.itemdrop_armor_leather";
+	public static final String SOUND_MHFIGHTER_CRY = "ChrSound.MHFighter_cry";
+	public static final String SOUND_ITEMDROP_WEAPON_SPEAR = "ItemSound.itemdrop_weapon_spear";
+	public static final String SOUND_T_WINGFLAP_04 = "AmbSound.t_wingflap_04";
+	public static final String THUNDER_02 = "AmbSound.thunder_02";
+	public static final String NO_QUEST_DIALOG = "noquest";
 
 	public static final int ADENA_ID = 57;
 
@@ -92,6 +123,8 @@ public class Quest
 	public final static int DELAYED = 4;
 
 	private List<ICheckStartCondition> startConditionList;
+	private int minLevel = 0;
+	private int maxLevel = 99;
 	
 	/**
 	 * Этот метод для регистрации квестовых вещей, которые будут удалены
@@ -1022,6 +1055,104 @@ public class Quest
 	public static int getRandom(int min, int max)
 	{
 		return Rnd.get(min, max);
+	}
+
+	/**
+	 * Добавляем проверку с логическим ИЛИ, состоящую из нескольких кондишнов.
+	 * Проверка выполняется если одно из условий верно.
+	 *
+	 * @param conds - метод реализуется при двух и более проверок
+	 */
+	public void addOrCond(ICheckStartCondition... conds) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+		startConditionList.add(new OrCondition(conds));
+	}
+
+	/**
+	 * Добавлем проверку на содержание итема в инвентаре
+	 *
+	 * @param itemIds - id предмета
+	 */
+	public void addHasItemsCheck(int... itemIds) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+		startConditionList.add(new HasItemCondition(itemIds));
+	}
+
+	/**
+	 * Добавляет проверку уровня при старте квеста
+	 *
+	 * @param min - минимальный уровень
+	 * @param max - максимальный уровень
+	 */
+	public void addLevelCheck(int min, int max) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+		final Optional<QuestCustomParams> param = QuestCustomParamsHolder.getInstance().get(getId());
+		if (param.isPresent()) {
+			minLevel = param.get().getLevelMin();
+			maxLevel = param.get().getLevelMax();
+		} else {
+			minLevel = min;
+			maxLevel = max;
+		}
+		startConditionList.add(new PlayerLevelCondition(min, max));
+	}
+
+	/**
+	 * Добавляет проверку уровня при старте квеста
+	 *
+	 * @param min - минимальный уровень
+	 */
+	public void addLevelCheck(int min) {
+		addLevelCheck(min, 99);
+		minLevel = min;
+	}
+
+	/**
+	 * Добавляет проверку выполненного квеста
+	 *
+	 * @param questSimpleName - Название квеста
+	 */
+	public void addQuestCompletedCheck(String questSimpleName) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+
+		startConditionList.add(new QuestCompletedCondition(questSimpleName));
+	}
+
+	/**
+	 * Добавляет проверку на расу активного персонажа
+	 *
+	 * @param race - Race.ID расы
+	 */
+	public void addRaceCheck(Race... race) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+
+		startConditionList.add(new RaceCondition(race));
+	}
+
+	/**
+	 * Добавляет проверку модели профессии
+	 *
+	 * @param classId - список уровней классов, для которых доступен квест
+	 */
+	public void addClassIdCheck(ClassId... classId) {
+		if (startConditionList == null)
+			startConditionList = new ArrayList<ICheckStartCondition>();
+
+		startConditionList.add(new ClassIdCondition(classId));
+	}
+
+	/**
+	 * Return ID of the quest
+	 *
+	 * @return int
+	 */
+	public int getId() {
+		return _questId;
 	}
 
 	public final ConditionList isAvailableFor(final Player player) {

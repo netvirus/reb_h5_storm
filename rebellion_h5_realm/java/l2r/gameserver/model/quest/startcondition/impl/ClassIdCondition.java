@@ -15,7 +15,7 @@ public final class ClassIdCondition implements ICheckStartCondition {
 
     @Override
     public final ConditionList checkCondition(final Player player) {
-        if (ArrayUtils.contains(classId, player.getBaseClassId()))
+        if (ArrayUtils.contains(classId, player.getClassById()))
             return ConditionList.NONE;
         return ConditionList.CLASS_ID;
     }

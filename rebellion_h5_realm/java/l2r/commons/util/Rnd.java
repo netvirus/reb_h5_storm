@@ -3,6 +3,7 @@ package l2r.commons.util;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.math3.random.MersenneTwister;
@@ -44,9 +45,8 @@ public class Rnd
 	 * @param n The superior limit (exclusive)
 	 * @return A number from 0 to n-1
 	 */
-	public static int get(int n)
-	{
-		return rnd().nextInt(n);
+	public static int get(final int n) {
+		return ThreadLocalRandom.current().nextInt(n);
 	}
 
 	public static long get(long n)

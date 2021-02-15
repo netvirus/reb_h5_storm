@@ -8702,6 +8702,10 @@ public final class Player extends Playable implements PlayerGroup
 		return _baseClass;
 	}
 
+	public ClassId getClassById() {
+		return ClassId.VALUES[getActiveClassId()];
+	}
+
 	public void setActiveClass(SubClass activeClass)
 	{
 		_activeClass = activeClass;
@@ -13863,5 +13867,4 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		return _premiumBonus.getBonusDropRate();
 	}
-
 }
