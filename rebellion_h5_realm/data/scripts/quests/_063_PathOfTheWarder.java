@@ -215,6 +215,7 @@ public class _063_PathOfTheWarder extends Quest implements ScriptFile {
                         st.setMemoState("way_of_wader", String.valueOf(3), true);
                         st.takeItems(q_almaum_order_doc, -1);
                         st.takeItems(q_almaum_army_chart, -1);
+                        st.giveItems(q_order_doc_of_gobie, 1);
                         st.soundEffect(SOUND_MIDDLE);
                         htmltext = "master_sione_q0063_10.htm";
                     } else if (GetMemoState == 3)
@@ -327,9 +328,10 @@ public class _063_PathOfTheWarder extends Quest implements ScriptFile {
         if (npcId == ol_mahum_patrol) {
             if (st.isCond(2))
             {
-				st.soundEffect(SOUND_ITEMGET);
-				st.giveItems(q_almaum_army_chart, questItemCountWithPremiumBonus);
-
+                if (st.ownItemCount(q_almaum_army_chart) < 5) {
+                    st.soundEffect(SOUND_ITEMGET);
+                    st.giveItems(q_almaum_army_chart, questItemCountWithPremiumBonus);
+                }
 				if (st.ownItemCount(q_almaum_order_doc) >= 10 && st.ownItemCount(q_almaum_army_chart) >= 5)
                 {
                     st.setCond(3);
@@ -339,9 +341,10 @@ public class _063_PathOfTheWarder extends Quest implements ScriptFile {
         } else if (npcId == ol_mahum_rookie) {
             if (st.isCond(2))
             {
-				st.soundEffect(SOUND_ITEMGET);
-				st.giveItems(q_almaum_order_doc, questItemCountWithPremiumBonus);
-
+                if (st.ownItemCount(q_almaum_order_doc) < 10) {
+                    st.soundEffect(SOUND_ITEMGET);
+                    st.giveItems(q_almaum_order_doc, questItemCountWithPremiumBonus);
+                }
 				if (st.ownItemCount(q_almaum_army_chart) >= 5 && st.ownItemCount(q_almaum_order_doc) >= 10)
                 {
                     st.setCond(3);
