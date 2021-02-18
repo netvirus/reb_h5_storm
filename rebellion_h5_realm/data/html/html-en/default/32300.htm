@@ -1,5 +1,15 @@
-Bernarde: I don't disclose the secrets for the strangers. But if we are
-talking about the island of Hellbound, I can tell you all I know about
-him. [npc_%objectId%_Chat 1|Ask about gossip]
-
-[scripts_services.Caravan:buyHolyWater|Buy holy water]
+<font color="FF8000">Bernarde:</font><br>
+I don't disclose the secrets for the strangers.<br1>
+But if we aretalking about the island of Hellbound, I can tell you all I know abouthim.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy holy water" action="bypass -h scripts_services.Caravan:buyHolyWater" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about gossip" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,9 +1,26 @@
-!Buron: There's an important event happening near the Steel Citadel
-gates. An *Outpost Captain* has appeared there and it is time to visit
-him. I believe he can help us to get inside the Enceinte of Beleth
-fortress. [npc_%objectId%_getc 1|Craft Native Helmet for 10 Darion
-Badges] [npc_%objectId%_getc 2|Craft Native Tunic for 10 Darion Badges]
-
-[npc_%objectId%_getc 3|Craft Native Pants for 10 Darion Badges]
-
-[npc_%objectId%_Chat 2|Ask about the rumor]
+<font color="FF8000">Buron:</font><br>
+There's an important event happening near the Steel Citadelgates.<br1>
+An *Outpost Captain* has appeared there and it is time to visithim.<br1>
+I believe he can help us to get inside the Enceinte of Belethfortress.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Pants for 10 Darion Badges" action="bypass -h npc_%objectId%_getc 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Tunic for 10 Darion Badges" action="bypass -h npc_%objectId%_getc 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Native Helmet for 10 DarionBadges" action="bypass -h npc_%objectId%_getc 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the rumor" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

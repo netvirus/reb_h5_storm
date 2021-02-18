@@ -1,11 +1,29 @@
-!Trader Hally: Welcome! Are you tired? You can rest here. What brings
-you here? Ah, you don't need to say. Yes, of course I know why people
-come to Hunters Village! People want to hunt... Am I right? This village
-is a home to various types of hunters. Don't just stand there, come on
-over and check out the items. You may have mistaken me for one of those
-shopkeepers who stands around all day, talking and talking, going on and
-on, about nothing at all...! [npc_%objectId%_Buy 74|Buy/Sell/Refund
-General.] [npc_%objectId%_Buy 75|Buy/Sell/Refund Dyes.]
-
-[npc_%objectId%_TerritoryStatus|See the lord and get the tax rate
-information] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Trader Hally:</font><br>
+Welcome! Are you tired? You can rest here.<br1>
+What bringsyou here? Ah, you don't need to say.<br1>
+Yes, of course I know why peoplecome to Hunters Village! People want to hunt.<br1>
+Am I right? This villageis a home to various types of hunters.<br1>
+Don't just stand there, come onover and check out the items.<br1>
+You may have mistaken me for one of thoseshopkeepers who stands around all day, talking and talking, going on andon, about nothing at all.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/RefundGeneral" action="bypass -h npc_%objectId%_Buy 74" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund Dyes" action="bypass -h npc_%objectId%_Buy 75" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="See the lord and get the tax rateinformation" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

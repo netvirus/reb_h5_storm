@@ -108,7 +108,7 @@ public class CaptchaImage implements OnDeathListener
 	@Override
 	public void onDeath(Creature actor, Creature killer)
 	{
-		if(Config.ENABLE_CAPTCHA && actor.isMonster() && killer != null && killer != actor && killer.isPlayer() && !killer.getPlayer().isPhantom())
+		if(Config.ENABLE_CAPTCHA && actor.isMonster() && killer != null && killer != actor && killer.isPlayer())
 		{
 			Player player = killer.getPlayer();
 			String customHtm = HtmCache.getInstance().getNotNull("mods/Captcha/ShowCaptchaWindow.htm", player);

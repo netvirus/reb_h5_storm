@@ -49,7 +49,7 @@ public class Spoil extends Skill
 							{
 								int monsterLevel = monster.getLevel();
 								int modifier = Math.abs(monsterLevel - activeChar.getLevel());
-								double rateOfSpoil = Config.BASE_SPOIL_RATE;
+								double rateOfSpoil = Config.BASE_SPOIL_RATE + activeChar.getPlayer().getPremiumBonus().getBonusSpoilChance();
 								if(modifier > 8)
 								rateOfSpoil = rateOfSpoil - rateOfSpoil * (modifier - 8) * 9 / 100;
 

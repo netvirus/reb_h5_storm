@@ -1,3 +1,19 @@
-!Trader Jackson: What would you like to trade? [npc_%objectId%_Buy
-3|Trade Fighter equipment.] [npc_%objectId%_Buy 4|Trade Wizard
-equipment.] [npc_%objectId%_Multisell 6001|Exchange Equipment.]
+<font color="FF8000">Trader Jackson:</font><br>
+What would you like to trade?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade Wizardequipment" action="bypass -h npc_%objectId%_Buy 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Exchange Equipment" action="bypass -h npc_%objectId%_Multisell 6001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade Fighter equipment" action="bypass -h npc_%objectId%_Buy 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

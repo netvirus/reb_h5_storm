@@ -1,8 +1,26 @@
-Magister Martika: Good to see you, friend. All praise the dark name of
-Shilen! I am Dark Elf Magister Martika. In the arcane arts, an alert
-mind and constant practice matter more than age and gender. What would
-you like to learn? [npc_%objectId%_SkillList|Learn Skills]
-
-[npc_%objectId%_Link common/skillenchant_help.htm|Ask about Skill
-Enchanting.] [npc_%objectId%_Link common/skill_share_healer.htm|Ask
-about Skill Transfer.] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Magister Martika:</font><br>
+Good to see you, friend.<br1>
+All praise the dark name ofShilen! I am Dark Elf Magister Martika.<br1>
+In the arcane arts, an alertmind and constant practice matter more than age and gender.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Askabout Skill Transfer" action="bypass -h npc_%objectId%_Link common/skill_share_healer.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn Skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about SkillEnchanting" action="bypass -h npc_%objectId%_Link common/skillenchant_help.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

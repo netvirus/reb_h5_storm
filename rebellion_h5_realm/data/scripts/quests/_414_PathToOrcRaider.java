@@ -202,6 +202,7 @@ public class _414_PathToOrcRaider extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == GOBLIN_TOMB_RAIDER_LEADER && cond == 1)
 		{
 			if(st.getQuestItemsCount(GOBLIN_DWELLING_MAP) == 1 && st.getQuestItemsCount(KURUKA_RATMAN_TOOTH) < 10 && st.getQuestItemsCount(GREEN_BLOOD) < 40)
@@ -212,7 +213,7 @@ public class _414_PathToOrcRaider extends Quest implements ScriptFile
 				}
 				else
 				{
-					st.giveItems(GREEN_BLOOD, 1);
+					st.giveItems(GREEN_BLOOD, questItemCountWithPremiumBonus);
 					st.playSound(SOUND_ITEMGET);
 				}
 		}
@@ -220,7 +221,7 @@ public class _414_PathToOrcRaider extends Quest implements ScriptFile
 		{
 			if(st.getQuestItemsCount(GOBLIN_DWELLING_MAP) > 0 && st.getQuestItemsCount(KURUKA_RATMAN_TOOTH) < 10)
 			{
-				st.giveItems(KURUKA_RATMAN_TOOTH, 1);
+				st.giveItems(KURUKA_RATMAN_TOOTH, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(KURUKA_RATMAN_TOOTH) > 9)
 				{
 					st.setCond(2);
@@ -234,7 +235,7 @@ public class _414_PathToOrcRaider extends Quest implements ScriptFile
 		{
 			if(st.getQuestItemsCount(BETRAYER_UMBAR_REPORT) > 0 && st.getQuestItemsCount(HEAD_OF_BETRAYER) < 2)
 			{
-				st.giveItems(HEAD_OF_BETRAYER, 1);
+				st.giveItems(HEAD_OF_BETRAYER, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(HEAD_OF_BETRAYER) > 1)
 				{
 					st.setCond(4);
@@ -248,7 +249,7 @@ public class _414_PathToOrcRaider extends Quest implements ScriptFile
 		else if(npcId == TIMORA_ORC && cond == 6)
 			if(st.getQuestItemsCount(TIMORA_ORCS_HEAD) < 1 && Rnd.chance(50))
 			{
-				st.giveItems(TIMORA_ORCS_HEAD, 1);
+				st.giveItems(TIMORA_ORCS_HEAD, questItemCountWithPremiumBonus);
 				st.addRadar(90000, -143286, -1520);
 				st.setCond(7);
 				st.playSound(SOUND_MIDDLE);

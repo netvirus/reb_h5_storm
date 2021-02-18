@@ -1,9 +1,22 @@
-Sorcerer Marius: Greetings, kin of the forest. May Eva s blessing
-lighten the path in your worldly travels. Do you feel the dank force of
-evil that soaks the land? Our city may look peaceful on the outside but
-there is a dark shadow that hangs over the city. It is because *Shilen s
-malignant spirits* lie sleeping not too far from here.
-
-[npc_%objectId%_Chat 1|Ask about Shilen s malignant spirits]
-
-[npc_%objectId%_SkillList|Learn Skills] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Sorcerer Marius:</font><br>
+Greetings, kin of the forest.<br1>
+May Eva s blessinglighten the path in your worldly travels.<br1>
+Do you feel the dank force ofevil that soaks the land? Our city may look peaceful on the outside butthere is a dark shadow that hangs over the city.<br1>
+It is because *Shilen smalignant spirits* lie sleeping not too far from here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn Skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about Shilen s malignant spirits" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

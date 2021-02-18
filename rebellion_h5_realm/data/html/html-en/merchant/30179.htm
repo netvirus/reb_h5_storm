@@ -1,12 +1,30 @@
-!Trader Raudia: Oh my goodness -- are you by any chance a Knight? I
-think that Knights are the best of the best, don't you? As long as the
-Knights from the castle protect us, I know that we're safe even from an
-Elmorean attack or a crazy Wizard from the Ivory Tower. You Knights are
-without peer! Don't you agree? Oh, you are such a modest customer...
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear 53|Try on
-Fighter equipment.] [npc_%objectId%_Wear 54|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Trader Raudia:</font><br>
+Oh my goodness -- are you by any chance a Knight? Ithink that Knights are the best of the best, don't you? As long as theKnights from the castle protect us, I know that we're safe even from anElmorean attack or a crazy Wizard from the Ivory Tower.<br1>
+You Knights arewithout peer! Don't you agree? Oh, you are such a modest customer.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try onFighter equipment" action="bypass -h npc_%objectId%_Wear 53" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 54" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

@@ -1,18 +1,42 @@
-!Count Magician: Cast your eyes upon the results of this magicial
-research conducted by Mystics Guild. You can make use of a magical field
-capable of teleporting a clan member though a crown, as well as magic
-that provides special abilities to your low-ranking soldiers. We even
-have a Talisman, a magical crystal filled with power. We have also
-purchased certain items directly from the Elves' mystical merchant. How
-may I serve you?
-<center>[npc_%objectId%_Quest 35648|Move though the magic
-	field.] [npc_%objectId%_Multisell 35654|Purchase Elven items.]
-
-	[npc_%objectId%_Multisell 356482|Purchase Bracelet.]
-
-	[npc_%objectId%_Multisell 356483|Purchase Shirt.]
-
-	[npc_%objectId%_Multisell 356484|Trade Shirt for Enchanted Shirt.]
-
-	[npc_%objectId%_Quest 35648|Obtain Talisman.] [npc_%objectId%_Quest
-	35648|Learn special skills for low-ranked soldiers.]</center>
+<font color="FF8000">Count Magician:</font><br>
+Cast your eyes upon the results of this magicialresearch conducted by Mystics Guild.<br1>
+You can make use of a magical fieldcapable of teleporting a clan member though a crown, as well as magicthat provides special abilities to your low-ranking soldiers.<br1>
+We evenhave a Talisman, a magical crystal filled with power.<br1>
+We have alsopurchased certain items directly from the Elves' mystical merchant.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Obtain Talisman" action="bypass -h npc_%objectId%_Quest 35648" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase Bracelet" action="bypass -h npc_%objectId%_Multisell 356482" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Move though the magic	field" action="bypass -h npc_%objectId%_Quest 35648" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase Elven items" action="bypass -h npc_%objectId%_Multisell 35654" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Trade Shirt for Enchanted Shirt" action="bypass -h npc_%objectId%_Multisell 356484" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase Shirt" action="bypass -h npc_%objectId%_Multisell 356483" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn special skills for low-ranked soldiers" action="bypass -h npc_%objectId%_Quest	35648" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

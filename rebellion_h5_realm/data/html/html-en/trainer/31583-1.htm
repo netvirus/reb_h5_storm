@@ -1,7 +1,34 @@
-Blacksmith Feynn: Here you can seal the gloves, boots and accessories,
-or remove their prints. [npc_%objectId%_multisell 1002|Break the seal on
-the gloves and boots, B-Grade] [npc_%objectId%_multisell 1003|Again,
-seal the gloves and boots, B-Grade] [npc_%objectId%_multisell 1005|Break
-the seal on the armor A-Grade] [npc_%objectId%_multisell 1006|Break the
-seal on accessories A-Grade] [npc_%objectId%_multisell 1007|Again,
-Sealed Armor A-Grade] [npc_%objectId%_Chat 0|Back]
+<font color="FF8000">Blacksmith Feynn:</font><br>
+Here you can seal the gloves, boots and accessories,or remove their prints.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Breakthe seal on the armor A-Grade" action="bypass -h npc_%objectId%_multisell 1005" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Break the seal onthe gloves and boots, B-Grade" action="bypass -h npc_%objectId%_multisell 1002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Again,seal the gloves and boots, B-Grade" action="bypass -h npc_%objectId%_multisell 1003" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Break theseal on accessories A-Grade" action="bypass -h npc_%objectId%_multisell 1006" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Again,Sealed Armor A-Grade" action="bypass -h npc_%objectId%_multisell 1007" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

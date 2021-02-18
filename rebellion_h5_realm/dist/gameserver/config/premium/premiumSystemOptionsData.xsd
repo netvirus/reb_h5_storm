@@ -21,15 +21,12 @@
                                             <xs:attribute type="xs:float" name="weightLimitRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="craftChance" use="optional"/>
                                             <xs:attribute type="xs:float" name="mCraftChance" use="optional"/>
+                                            <xs:attribute type="xs:float" name="doubleCraftChance" use="optional"/>
                                             <xs:attribute type="xs:float" name="extractableRate" use="optional"/>
-                                            <xs:attribute type="xs:float" name="manorDropRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="questDropRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="questRewardRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="petExpRate" use="optional"/>
                                             <xs:attribute type="xs:float" name="raidDropChance" use="optional"/>
-                                            <xs:attribute type="xs:float" name="raidDropAmount" use="optional"/>
-                                            <xs:attribute type="xs:float" name="herbDropChance" use="optional"/>
-                                            <xs:attribute type="xs:float" name="herbDropAmount" use="optional"/>
                                         </xs:extension>
                                     </xs:simpleContent>
                                 </xs:complexType>

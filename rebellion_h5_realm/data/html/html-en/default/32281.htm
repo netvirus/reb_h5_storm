@@ -1,12 +1,21 @@
-!Oracle Guide: A mysterious five-colored whirlwind swirls within an
-aquamarine sphere, and you hear a clear, cultured voice. Welcome. I am
-the first child of the Oracle. My mistress ia *Parme*, the Shamaness of
-the Water Dragon. She is currently under the enemy's control, but an
-Oracle led me to this place just before she was captured.
-<br1> My mission is to safely escort you to her current location.
-
-Unfortunately, that place is unreachable without proper preparation. If
-you are ready, please give me your hand, and I shall open the way.
-
-[npc_%objectId%_Chat 1|Ask what you need to prepare.]%%
-[npc_%objectId%_Chat 3|Touch the sphere.]
+<font color="FF8000">Oracle Guide:</font><br>
+A mysterious five-colored whirlwind swirls within anaquamarine sphere, and you hear a clear, cultured voice.<br1>
+Welcome.<br1>
+I amthe first child of the Oracle.<br1>
+My mistress ia *Parme*, the Shamaness ofthe Water Dragon.<br1>
+She is currently under the enemy's control, but anOracle led me to this place just before she was captured.<br1>
+<br1> My mission is to safely escort you to her current location.<br1>
+Unfortunately, that place is unreachable without proper preparation.<br1>
+Ifyou are ready, please give me your hand, and I shall open the way.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Touch the sphere" action="bypass -h npc_%objectId%_Chat 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask what you need to prepare" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

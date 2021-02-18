@@ -1,7 +1,19 @@
-!Mina: Hmm, how may I help you? Have you brought proof of killing 200
-Black Mages? No? Any nasty undead livers? You'll be paid for those, but
-not much! [npc_%objectId%_multisell 313880001|Settle up accounts for
-Undead Livers.] [Quest _633_InTheForgottenVillage 633_1|Keep hunting.]
-
-[Quest _633_InTheForgottenVillage 633_4|Stop hunting (all proofs will be
-removed from inventory without reward).]
+<font color="36DC25">!Mina:</font><br>
+Hmm, how may I help you? Have you brought proof of killing 200Black Mages? No? Any nasty undead livers? You'll be paid for those, butnot much!<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Settle up accounts forUndead Livers" action="bypass -h npc_%objectId%_multisell 313880001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Stop hunting (all proofs will beremoved from inventory without reward)" action="bypass -h Quest _633_InTheForgottenVillage 633_4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Keep hunting" action="bypass -h Quest _633_InTheForgottenVillage 633_1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

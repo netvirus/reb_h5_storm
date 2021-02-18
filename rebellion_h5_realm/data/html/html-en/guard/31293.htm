@@ -1,8 +1,20 @@
-!Guard Gunter: Halt! Who goes there? Oh, are you an adventurer? What are
-you doing here? Are you lost? Obviously, this village has an *upper
-level and a lower level*. It's unlike any of the other villages of Aden
-kingdom! Strangers tend to get lost here. [npc_%objectId%_Chat 1|"Tell
-me more about the upper and lower levels."]
-
-[npc_%objectId%_TerritoryStatus|"Who is the lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Gunter:</font><br>
+Halt! Who goes there? Oh, are you an adventurer? What areyou doing here? Are you lost? Obviously, this village has an *upperlevel and a lower level*.<br1>
+It's unlike any of the other villages of Adenkingdom! Strangers tend to get lost here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tellme more about the upper and lower levels" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

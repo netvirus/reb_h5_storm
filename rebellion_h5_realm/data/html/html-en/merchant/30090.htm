@@ -1,13 +1,30 @@
-!Trader Sandra: There are so many amazing things in this world! I've
-never seen them, but I've heard about blazing swords and magic shoes
-that can make you fly! Do you believe that these things really exist?
-Have you seen them? We have many amazing accessories here, but those
-items seem almost unreal... Oh, I'm sorry! I've talked too much. What
-can I do for you? [npc_%objectId%_Buy 26|Buy/Sell/Refund.]
-
-[npc_%objectId%_Multisell 7000|Buy bracelet or talisman.]
-
-[npc_%objectId%_Buy 300904|Buy basic-type accessory.]
-
-[npc_%objectId%_TerritoryStatus|View information about the local lord
-and tax rate.] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Trader Sandra:</font><br>
+There are so many amazing things in this world! I'venever seen them, but I've heard about blazing swords and magic shoesthat can make you fly! Do you believe that these things really exist?Have you seen them? We have many amazing accessories here, but thoseitems seem almost unreal.<br1>
+Oh, I'm sorry! I've talked too much.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy basic-type accessory" action="bypass -h npc_%objectId%_Buy 300904" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 26" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy bracelet or talisman" action="bypass -h npc_%objectId%_Multisell 7000" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="View information about the local lordand tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

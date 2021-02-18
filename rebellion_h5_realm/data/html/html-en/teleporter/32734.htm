@@ -1,8 +1,21 @@
-Officer Klemis: Thank you for coming. I know the journey was long, but
-we have much to do. This place is in need of a good... how should I put
-it ...cleansing. That's why I've called you here. Now go in and meet
-*Ermian*. He has a mission for you.
-
-[scripts_Util:Gatekeeper -180218 185923 -10576 0|Enter the Seed of Annihilation]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Officer Klemis:</font><br>
+Thank you for coming.<br1>
+I know the journey was long, butwe have much to do.<br1>
+This place is in need of a good.<br1>
+how should I putit .<br1>
+cleansing.<br1>
+That's why I've called you here.<br1>
+Now go in and meet*Ermian*.<br1>
+He has a mission for you.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Enter the Seed of Annihilation" action="bypass -h scripts_Util:Gatekeeper -180218 185923 -10576 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

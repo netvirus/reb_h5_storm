@@ -3,7 +3,6 @@ package l2r.gameserver.network.clientpackets;
 import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.math.SafeMath;
 import l2r.gameserver.dao.MailDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.World;
 import l2r.gameserver.model.items.ItemInstance;
@@ -81,7 +80,7 @@ public class RequestExReceivePost extends L2GameClientPacket
 				Set<ItemInstance> attachments = mail.getAttachments();
 				ItemInstance[] items;
 
-				if(attachments.size() > 0 && !activeChar.isGM() && !activeChar.isInPeaceZone() && !PremiumAccountsTable.getMailOutsidePeace(activeChar))
+				if(attachments.size() > 0 && !activeChar.isGM() && !activeChar.isInPeaceZone())
 				{
 					activeChar.sendPacket(SystemMsg.YOU_CANNOT_RECEIVE_IN_A_NONPEACE_ZONE_LOCATION);
 					return;

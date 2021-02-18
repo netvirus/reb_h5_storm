@@ -1,5 +1,6 @@
 package quests;
 
+import l2r.gameserver.model.Player;
 import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.model.items.Inventory;
 import l2r.gameserver.model.quest.Quest;
@@ -189,11 +190,12 @@ public class _401_PathToWarrior extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == TRACKER_SKELETON || npcId == TRACKER_SKELETON_LD)
 		{
 			if(cond == 2 && st.getQuestItemsCount(RUSTED_BRONZE_SWORD1_ID) < 10)
 			{
-				st.giveItems(RUSTED_BRONZE_SWORD1_ID, 1);
+				st.giveItems(RUSTED_BRONZE_SWORD1_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(RUSTED_BRONZE_SWORD1_ID) >= 10)
 				{
 					st.playSound(SOUND_MIDDLE);
@@ -206,7 +208,7 @@ public class _401_PathToWarrior extends Quest implements ScriptFile
 		else if(npcId == ARACHNID_TRACKER || npcId == POISON_SPIDER)
 			if(st.getQuestItemsCount(POISON_SPIDER_LEG2_ID) < 20 && st.getQuestItemsCount(RUSTED_BRONZE_SWORD3_ID) == 1 && st.getItemEquipped(Inventory.PAPERDOLL_RHAND) == RUSTED_BRONZE_SWORD3_ID)
 			{
-				st.giveItems(POISON_SPIDER_LEG2_ID, 1);
+				st.giveItems(POISON_SPIDER_LEG2_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(POISON_SPIDER_LEG2_ID) >= 20)
 				{
 					st.playSound(SOUND_MIDDLE);

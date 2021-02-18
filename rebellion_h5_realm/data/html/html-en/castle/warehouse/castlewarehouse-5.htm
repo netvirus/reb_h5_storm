@@ -1,7 +1,19 @@
-!Warehouse Keeper: You can earn a total of *%total_items%* "Blood
-Alliances" throught a successful siege.
-
-[npc_%objectId%_ReciveBloodAlli|Receive "Blood Alliance".]
-
-[npc_%objectId%_ExchangeBloodAlli|Exchange a "Blood Alliance" for 30
-"Blood Oaths".] [npc_%objectId%_Chat 0|Back.]
+<font color="FF8000">Warehouse Keeper:</font><br>
+You can earn a total of *%total_items%* BloodAlliances throught a successful siege.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Receive Blood Alliance" action="bypass -h npc_%objectId%_ReciveBloodAlli" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange a Blood Alliance for 30Blood Oaths" action="bypass -h npc_%objectId%_ExchangeBloodAlli" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

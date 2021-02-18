@@ -201,7 +201,6 @@ public class AdminOlympiad implements IAdminCommandHandler
 			}
 			case admin_oly_clean_list:
 			{
-				Olympiad.getOlyHwidList().clear();
 				Olympiad.getOlyIPList().clear();
 				activeChar.sendMessage("Hwid & IP list restriction has been cleaned!");
 				break;
@@ -223,18 +222,11 @@ public class AdminOlympiad implements IAdminCommandHandler
 				}
 				
 				List<String> listIP = Olympiad.getOlyIPList();
-				List<String> listHWID = Olympiad.getOlyHwidList();
-				
+
 				if (listIP.contains(player.getIP()))
 				{
 					listIP.remove(player.getIP());
 					activeChar.sendMessage("Removed player IP from the list.");
-				}
-				
-				if (player.hasHWID() && listHWID.contains(player.getHWID()))
-				{
-					listHWID.remove(player.getHWID());
-					activeChar.sendMessage("Removed player HWID from the list.");
 				}
 				break;
 			}

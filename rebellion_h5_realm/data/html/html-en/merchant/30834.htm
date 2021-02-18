@@ -1,6 +1,24 @@
-!Magic Trader Cema: I am not always here; sometimes my master orders me
-to other locations. If you have business with me, hurry up!
-
-[npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Buy
-108|Buy/Sell/Refund General.] [npc_%objectId%_Wear 107|Try on Mystic
-equipment.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Magic Trader Cema:</font><br>
+I am not always here; sometimes my master orders meto other locations.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Mysticequipment" action="bypass -h npc_%objectId%_Wear 107" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund General" action="bypass -h npc_%objectId%_Buy 108" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

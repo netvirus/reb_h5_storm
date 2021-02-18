@@ -1,19 +1,79 @@
-!Santa Claus: Select the type of weapon you want to get.
-
-[scripts_events.SavingSnowman.SavingSnowman:coupon 0|Single-handed
-sword]%% [scripts_events.SavingSnowman.SavingSnowman:coupon 1|Two-handed
-sword]%% [scripts_events.SavingSnowman.SavingSnowman:coupon 2|Dagger]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 3|Single-handed
-blunt]%% [scripts_events.SavingSnowman.SavingSnowman:coupon 4|Two-handed
-blunt]%% [scripts_events.SavingSnowman.SavingSnowman:coupon 5|Magic type
-Single-handed blunt]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 6|Magic type
-Two-handed blunt]%% [scripts_events.SavingSnowman.SavingSnowman:coupon
-7|Dual-fists]%% [scripts_events.SavingSnowman.SavingSnowman:coupon
-8|Bow]%% [scripts_events.SavingSnowman.SavingSnowman:coupon 9|Pole]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 10|Dual-swords]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 11|Rapier]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 12|Ancient Sword]%%
-[scripts_events.SavingSnowman.SavingSnowman:coupon 13|Crossbow]
-
-[npc_%objectId%_Chat 0|Back.]
+<font color="FF8000">Santa Claus:</font><br>
+Select the type of weapon you want to get.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Single-handedsword" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Crossbow" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 13" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Magic typeSingle-handed blunt" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 5" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Dual-fists" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon7" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Single-handedblunt" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Bow" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon8" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Rapier" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 11" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Two-handedsword" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Two-handedblunt" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Dual-swords" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 10" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ancient Sword" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 12" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Dagger" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Magic typeTwo-handed blunt" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 6" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pole" action="bypass -h scripts_events.SavingSnowman.SavingSnowman:coupon 9" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

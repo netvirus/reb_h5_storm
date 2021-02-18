@@ -222,11 +222,12 @@ public class _411_PathToAssassin extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == CALPICO)
 		{
 			if(cond == 5 && st.getQuestItemsCount(LEIKANS_KNIFE_ID) > 0 && st.getQuestItemsCount(SHILENS_TEARS_ID) < 1)
 			{
-				st.giveItems(SHILENS_TEARS_ID, 1);
+				st.giveItems(SHILENS_TEARS_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(6);
 			}
@@ -234,7 +235,7 @@ public class _411_PathToAssassin extends Quest implements ScriptFile
 		else if(npcId == MOONSTONE_BEAST)
 			if(cond == 3 && st.getQuestItemsCount(LEIKANS_NOTE_ID) > 0 && st.getQuestItemsCount(ONYX_BEASTS_MOLAR_ID) < 10)
 			{
-				st.giveItems(ONYX_BEASTS_MOLAR_ID, 1);
+				st.giveItems(ONYX_BEASTS_MOLAR_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(ONYX_BEASTS_MOLAR_ID) > 9)
 				{
 					st.playSound(SOUND_MIDDLE);

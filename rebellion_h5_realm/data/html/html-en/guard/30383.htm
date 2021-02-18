@@ -1,6 +1,15 @@
-!Guard Scott: If you travel along the road, it is fairly safe, but if
-you wander from it, you must be careful for it is very dangerous. Before
-you leave, I suggest you go to a shop and provision yourself with ample
-equipment. [npc_%objectId%_Chat 1|Ask about Gludio Castle Town]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Scott:</font><br>
+If you travel along the road, it is fairly safe, but ifyou wander from it, you must be careful for it is very dangerous.<br1>
+Beforeyou leave, I suggest you go to a shop and provision yourself with ampleequipment.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about Gludio Castle Town" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

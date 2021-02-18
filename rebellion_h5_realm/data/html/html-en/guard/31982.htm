@@ -1,11 +1,21 @@
-!Guard Glen: You may not enter the village if you possess contraband or
-your identification is not in order. I'll need to check your papers and
-belongings. Thanks for your cooperation. Is this your first time here?
-This is a dangerous place for adventurers, my friend! Captain Vishotsky
-keeps the peace here, but the forest out there is a different matter!
-All sorts of vicious monsters lurk just outside the walls of this
-village! Even the mighty Vishotsky cant' kill all of them!
-
-[npc_%objectId%_Chat 1|"Please describe the structure of the upper and
-lower levels."] [npc_%objectId%_TerritoryStatus|"Who is the Lord of the
-manor and what is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Glen:</font><br>
+You may not enter the village if you possess contraband oryour identification is not in order.<br1>
+I'll need to check your papers andbelongings.<br1>
+Thanks for your cooperation.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Please describe the structure of the upper andlower levels" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Who is the Lord of themanor and what is the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

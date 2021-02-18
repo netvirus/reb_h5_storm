@@ -1,7 +1,25 @@
-!Guardian of the Tower Seal: Welcome. I am a guardian in charge of the
-Tower Seal in the Chamber of Delusion. What brings you here?
-
-[npc_%objectId%_enterDC 132|Enter the Tower Seal.] [npc_%objectId%_Chat
-1|Ask about the Chamber of Delusion.] [npc_%objectId%_Multisell
-326580001|Use Guiding Tea Leaves.] [scripts_Util:exit_dc|Wake up from
-the Chamber of Delusion.]
+<font color="FF8000">Guardian of the Tower Seal:</font><br>
+Welcome.<br1>
+I am a guardian in charge of theTower Seal in the Chamber of Delusion.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Use Guiding Tea Leaves" action="bypass -h npc_%objectId%_Multisell326580001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Wake up fromthe Chamber of Delusion" action="bypass -h scripts_Util:exit_dc" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Chamber of Delusion" action="bypass -h npc_%objectId%_Chat1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Enter the Tower Seal" action="bypass -h npc_%objectId%_enterDC 132" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

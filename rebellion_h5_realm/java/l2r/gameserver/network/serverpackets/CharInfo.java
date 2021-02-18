@@ -116,7 +116,7 @@ public class CharInfo extends L2GameServerPacket
 			_name = player.getName();
 			if(player.getPrivateStoreType() != Player.STORE_PRIVATE_NONE && !player.isSellBuff())
 				_title = "";
-			else if(!player.isConnected() && !player.isSellBuff() && !player.isPhantom())
+			else if(!player.isConnected() && !player.isSellBuff())
 			{
 				_title = "Disconnected";
 				_title_color = 255;

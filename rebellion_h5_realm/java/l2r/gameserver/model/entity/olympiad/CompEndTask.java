@@ -34,7 +34,6 @@ class CompEndTask extends RunnableImpl
 			}
 
 			// Every oly end cleanup the list just in case.
-			Olympiad.getOlyHwidList().clear();
 			Olympiad.getOlyIPList().clear();
 			
 			Announcements.getInstance().announceToAll(new SystemMessage2(SystemMsg.THE_OLYMPIAD_GAME_HAS_ENDED));

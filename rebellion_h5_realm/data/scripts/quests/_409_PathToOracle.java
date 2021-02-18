@@ -202,11 +202,12 @@ public class _409_PathToOracle extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == LIZARDMAN_WARRIOR | npcId == LIZARDMAN_SCOUT | npcId == LIZARDMAN)
 		{
 			if(cond == 2 && st.getQuestItemsCount(LIZARD_CAPTAIN_ORDER_ID) < 1)
 			{
-				st.giveItems(LIZARD_CAPTAIN_ORDER_ID, 1);
+				st.giveItems(LIZARD_CAPTAIN_ORDER_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(3);
 			}
@@ -214,7 +215,7 @@ public class _409_PathToOracle extends Quest implements ScriptFile
 		else if(npcId == TAMIL)
 			if(cond == 4 && st.getQuestItemsCount(TAMATOS_NECKLACE_ID) < 1)
 			{
-				st.giveItems(TAMATOS_NECKLACE_ID, 1);
+				st.giveItems(TAMATOS_NECKLACE_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				st.setCond(5);
 			}

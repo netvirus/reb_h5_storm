@@ -2,7 +2,6 @@ package actions;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.achievements.PlayerTops;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.handler.admincommands.impl.AdminEditChar;
 import l2r.gameserver.model.AggroList.HateComparator;
@@ -480,7 +479,7 @@ public class OnActionShift extends Functions
 		{
 			AdminEditChar.showCharacterList(player, (Player) object);
 		}
-		else if (target != null && target.isPlayer() && Config.ALT_PLAYER_SHIFTCLICK && PremiumAccountsTable.getPlayerShiftClick(player))
+		else if (target != null && target.isPlayer() && Config.ALT_PLAYER_SHIFTCLICK)
 		{
 			tempstats = tempstats.replaceAll("%target%", target.getName());
 			tempstats = tempstats.replaceFirst("%classname%", HtmlUtils.htmlClassName(target.getClassId().getId()));

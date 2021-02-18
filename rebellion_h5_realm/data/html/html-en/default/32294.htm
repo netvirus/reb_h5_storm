@@ -1,6 +1,30 @@
-!Budenka: Oh... From your appearance, I can see that you have crossed
-the Great Sea to come here. [npc_%objectId%_Chat 1|Ask who he is.]
-
-[npc_%objectId%_Chat 2|Ask if he knows Jirrone.] [npc_%objectId%_Chat
-3|Ask if he knows Beleth.] [npc_%objectId%_Chat 4|Ask if he knows
-Bernards.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Budenka:</font><br>
+Oh.<br1>
+From your appearance, I can see that you have crossedthe Great Sea to come here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask who he is" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask if he knows Beleth" action="bypass -h npc_%objectId%_Chat3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask if he knows Jirrone" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask if he knowsBernards" action="bypass -h npc_%objectId%_Chat 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

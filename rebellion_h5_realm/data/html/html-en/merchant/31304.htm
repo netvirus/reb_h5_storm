@@ -1,11 +1,33 @@
-!Trader Astrid: It is wise to be careful in your purchasing. Not
-everything that glitters is gold, after all! That is especially true for
-accessories. You cannot judge a book by its cover. In fact, that is even
-true for people. Do you see Mr. Kendis, the Dwarf? He may look like a
-child, but he's even older than me! [npc_%objectId%_Buy
-158|Buy/Sell/Refund.] [npc_%objectId%_Multisell 7000|Buy Bracelets and
-Talismans.] [npc_%objectId%_Buy 31304001|Buy/Sell/Refund General.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Trader Astrid:</font><br>
+It is wise to be careful in your purchasing.<br1>
+Noteverything that glitters is gold, after all! That is especially true foraccessories.<br1>
+You cannot judge a book by its cover.<br1>
+In fact, that is eventrue for people.<br1>
+Do you see Mr.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy Bracelets andTalismans" action="bypass -h npc_%objectId%_Multisell 7000" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 158" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund General" action="bypass -h npc_%objectId%_Buy 31304001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

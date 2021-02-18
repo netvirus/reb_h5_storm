@@ -1,13 +1,41 @@
-Captain Mathias: Welcome, traveler, to the capital of the kingdom of
-Elmore. You must be tired from your long journey. May your time in our
-fair city be restful and relaxing. [npc_%objectId%_Link
-instance/kamaloka/kamaloka_help.htm|Ask about Kamaloka.]
-
-[npc_%objectId%_Link instance/kamaloka/kamaloka_level.htm|Look at the
-list of Kamaloka.] [npc_%objectId%_Chat 1|Enter Kamaloka.]
-
-[npc_%objectId%_Chat 2|"Do you know anything about the ominous rumor I
-heard?"] [npc_%objectId%_TerritoryStatus|Ask about the local lord and
-tax rate.] [npc_%objectId%_Multisell 313401|Exchange Blue Elmore Coins]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Captain Mathias:</font><br>
+Welcome, traveler, to the capital of the kingdom ofElmore.<br1>
+You must be tired from your long journey.<br1>
+May your time in ourfair city be restful and relaxing.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Blue Elmore Coins" action="bypass -h npc_%objectId%_Multisell 313401" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Enter Kamaloka" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Do you know anything about the ominous rumor Iheard?" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the local lord andtax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about Kamaloka" action="bypass -h npc_%objectId%_Linkinstance/kamaloka/kamaloka_help.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Look at thelist of Kamaloka" action="bypass -h npc_%objectId%_Link instance/kamaloka/kamaloka_level.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

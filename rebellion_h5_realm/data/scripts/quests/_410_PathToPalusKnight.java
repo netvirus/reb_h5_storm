@@ -175,11 +175,12 @@ public class _410_PathToPalusKnight extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(npcId == LYCANTHROPE)
 		{
 			if(cond == 1 && st.getQuestItemsCount(PALLUS_TALISMAN_ID) > 0 && st.getQuestItemsCount(LYCANTHROPE_SKULL_ID) < 13)
 			{
-				st.giveItems(LYCANTHROPE_SKULL_ID, 1);
+				st.giveItems(LYCANTHROPE_SKULL_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(LYCANTHROPE_SKULL_ID) > 12)
 				{
 					st.playSound(SOUND_MIDDLE);
@@ -193,7 +194,7 @@ public class _410_PathToPalusKnight extends Quest implements ScriptFile
 		{
 			if(cond == 4 && st.getQuestItemsCount(MORTE_TALISMAN_ID) > 0 && st.getQuestItemsCount(PREDATOR_CARAPACE_ID) < 1)
 			{
-				st.giveItems(PREDATOR_CARAPACE_ID, 1);
+				st.giveItems(PREDATOR_CARAPACE_ID, questItemCountWithPremiumBonus);
 				st.playSound(SOUND_MIDDLE);
 				if(st.getQuestItemsCount(TRIMDEN_SILK_ID) > 4)
 					st.setCond(5);
@@ -202,7 +203,7 @@ public class _410_PathToPalusKnight extends Quest implements ScriptFile
 		else if(npcId == ARACHNID_TRACKER)
 			if(cond == 4 && st.getQuestItemsCount(MORTE_TALISMAN_ID) > 0 && st.getQuestItemsCount(TRIMDEN_SILK_ID) < 5)
 			{
-				st.giveItems(TRIMDEN_SILK_ID, 1);
+				st.giveItems(TRIMDEN_SILK_ID, questItemCountWithPremiumBonus);
 				if(st.getQuestItemsCount(TRIMDEN_SILK_ID) > 4)
 				{
 					st.playSound(SOUND_MIDDLE);

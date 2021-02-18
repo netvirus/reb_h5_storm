@@ -1,9 +1,31 @@
-!Trader Nils: Uhh? A customer! Oh, I'm sorry. It's been so long... Oh,
-where is my sales book? Just a moment, please... [npc_%objectId%_Chat
-1|Buy/Sell/Refund.] [npc_%objectId%_Wear 152|Try on Fighter equipment.]
-
-[npc_%objectId%_Wear 153|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Trader Nils:</font><br>
+Uhh? A customer! Oh, I'm sorry.<br1>
+It's been so long.<br1>
+Oh,where is my sales book? Just a moment, please.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Fighter equipment" action="bypass -h npc_%objectId%_Wear 152" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 153" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

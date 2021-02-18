@@ -1,22 +1,37 @@
-Master Yogi: Aha! So you decided to accept the challenge, eh?
-Outstanding! Select one of the following to get started. And don't
-forget, you can only have one staff in your inventory at any given time.
-And the staff must be equipped in order to receive a reward. May the
-light of guidance fall upon you.
-<br>
-<br>
-[scripts_events.MasterOfEnchanting.EnchantingReward:buy_staff|Purchase
-Staff of Master Yogi (1000 Adena).]
-
-[scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_lim|Purchase
-a 6-hour limited Enchant Scroll (6000 Adena).]
-
-[scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_1|Purchase
-1 Enchant Scroll (77,777 Adena).]
-
-[scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_10|Purchase
-10 Enchant Scrols (777,770 Adena).] [npc_%objectId%_Chat 2|View the
-prize list.]
-<br>
-<br>
-[npc_%objectId%_Chat 0|Back]
+<font color="FF8000">Master Yogi:</font><br>
+Aha! So you decided to accept the challenge, eh?Outstanding! Select one of the following to get started.<br1>
+And don'tforget, you can only have one staff in your inventory at any given time.<br1>
+And the staff must be equipped in order to receive a reward.<br1>
+May thelight of guidance fall upon you.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchasea 6-hour limited Enchant Scroll (6000 Adena)" action="bypass -h scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_lim" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase10 Enchant Scrols (777,770 Adena)" action="bypass -h scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_10" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View theprize list" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="PurchaseStaff of Master Yogi (1000 Adena)" action="bypass -h scripts_events.MasterOfEnchanting.EnchantingReward:buy_staff" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase1 Enchant Scroll (77,777 Adena)" action="bypass -h scripts_events.MasterOfEnchanting.EnchantingReward:buy_scroll_1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -173,8 +173,6 @@ public class CtF_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 
 		player.setPvPTeam(TeamWithMinPlayers());
 		_participants.put(player, Integer.valueOf(0));
-		if (player.hasHWID())
-			_registeredHWIDs.add(player.getHWID());
 		player.sendMessage(new CustomMessage("scripts.events.CtF_New.CtF_New.YouRegistred", player, new Object[0]));
 		player._event = this;
 		return true;
@@ -220,7 +218,6 @@ public class CtF_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 		}
 
 		_participants.remove(player);
-		_registeredHWIDs.remove(player.getHWID());
 		player.setPvPTeam(0);
 		player.allowPvPTeam();
 		player._event = null;
@@ -236,8 +233,6 @@ public class CtF_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 				return;
 			if (_participants.containsKey(player)) 
 				_participants.remove(player);
-			if (player.hasHWID() &&_registeredHWIDs.contains(player.getHWID()))
-				_registeredHWIDs.remove(player.getHWID());	
 			player.setPvPTeam(0);
 			player.allowPvPTeam();
 			player._event = null;
@@ -329,12 +324,6 @@ public class CtF_New extends GameEvent implements ScriptFile, OnPlayerExitListen
 			player.sendMessage(new CustomMessage("scripts.events.CtF_New.CtF_New.NoPk", player));
 			return false;
 		}
-		if (player.hasHWID() && first && _registeredHWIDs.contains(player.getHWID()))
-		{
-			player.sendMessage(new CustomMessage("scripts.events.CtF_New.CtF_New.AlreadyRegistered", player));
-			return false;
-		}
-		
 		return true;
 	}
 

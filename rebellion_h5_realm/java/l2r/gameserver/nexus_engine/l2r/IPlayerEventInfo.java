@@ -306,10 +306,8 @@ public interface IPlayerEventInfo
 	public boolean isGM();
 	
 	public String getIp();
-	public String getHWID();
 	public boolean getIpDualboxAllowed();
-	public boolean getHWIDDualboxAllowed();
-	
+
 	public boolean isInJail();
 	public boolean isInSiege();
 	public boolean isInDuel();

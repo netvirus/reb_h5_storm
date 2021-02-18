@@ -1,9 +1,15 @@
-Gatekeeper Mariell: Hi there. The Dark Elf Guild is located on the 4th
-floor, the Elves of Light are on the 3rd, and the Human Mystics are
-downstairs. With a history stained by blood, don't you think it is
-encouraging to see the different races gathered in a small tower like
-this? Now, what can I do for you?
-
-[npc_%objectId%_Teleport 1|Go to another floor.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Gatekeeper Mariell:</font><br>
+Hi there.<br1>
+The Dark Elf Guild is located on the 4thfloor, the Elves of Light are on the 3rd, and the Human Mystics aredownstairs.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Go to another floor" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

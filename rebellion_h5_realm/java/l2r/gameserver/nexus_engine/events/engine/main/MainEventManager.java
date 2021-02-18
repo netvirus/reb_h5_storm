@@ -660,7 +660,7 @@ public class MainEventManager
 		}
 		else
 		{
-			if (!player.isGM() && start && current.getBoolean("dualboxCheckHwidSupport") && dualboxDetectedHWID(player, current.getInt("maxHwidAllowed")))
+			if (!player.isGM() && start && current.getBoolean("dualboxCheckHwidSupport"))
 			{
 				player.sendMessage(LanguageEngine.getMsg("registering_sameHWID"));
 				return false;
@@ -838,76 +838,7 @@ public class MainEventManager
         
         return false;
 	}
-	
-	public boolean dualboxDetectedHWID(PlayerEventInfo player)
-	{
-		if (player == null)
-			return false;
-		
-		if(!player.isOnline(true))
-			return false;
-		
-		if (player.getHWIDDualboxAllowed())
-			return true;
-		
-		String hwid1 = player.getHWID();
-		
-		if(hwid1 == null)
-			return false;
-		
-        String hwid2;
-        
-        for(PlayerEventInfo p : _players)
-        {
-        	hwid2 = p.getHWID();
-        	
-        	if(hwid2 != null && hwid1.equalsIgnoreCase(hwid2))
-        	{
-				/**/ if(NexusLoader.detailedDebug) print("... MainEventManager.dualboxDetectedHWID() for " + player.getPlayersName());
-        		return true;
-        	}
-        }
-        
-        return false;
-	}
-	
-	public boolean dualboxDetectedHWID(PlayerEventInfo player, int maxHwid)
-	{
-		if (player == null)
-			return false;
-		
-		if(!player.isOnline(true))
-			return false;
-		
-		if (player.getHWIDDualboxAllowed())
-			return true;
-		
-		int occurences = 0;
-		String hwid1 = player.getHWID();
-		
-		if(hwid1 == null)
-			return false;
-		
-		String hwid2;
-		for(PlayerEventInfo p : _players)
-		{
-			hwid2 = p.getHWID();
-			
-			if(hwid2 != null && hwid1.equalsIgnoreCase(hwid2))
-			{
-				occurences ++;
-			}
-		}
-		
-		if(occurences >= maxHwid)
-		{
-			/**/ if(NexusLoader.detailedDebug) print("... MainEventManager.dualboxDetected() for " + player.getPlayersName() + ", found dualbox for HWID (method 2) " + player.getHWID() + " maxHwid " + maxHwid + " occurences = " + occurences);
-			return true;
-		}
-		
-		return false;
-	}
-	
+
 	public boolean dualboxDetected(PlayerEventInfo player, int maxPerIp)
 	{
 		if (player == null)

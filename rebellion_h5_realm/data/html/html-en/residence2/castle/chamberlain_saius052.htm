@@ -1,12 +1,20 @@
-The following devices can be used for the protection of the castle.
-
-These devices would all be useful in the next siege, but their high cost
-should be carefully weighed in your decision. If you want to reinforce
-your device, please note that each device can be directly reinforced to
-the upper level without going through the lower level.
-
-<center>[npc_%objectId%_reinforce|Reinforce gates and walls]
-
-	[npc_%objectId%_trap_select|Deploy trap device]
-
-	[npc_%objectId%_default|Return]</center>
+The following devices can be used for the protection of the castle.<br1>
+These devices would all be useful in the next siege, but their high costshould be carefully weighed in your decision.<br1>
+If you want to reinforceyour device, please note that each device can be directly reinforced tothe upper level without going through the lower level.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Return" action="bypass -h npc_%objectId%_default" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Reinforce gates and walls" action="bypass -h npc_%objectId%_reinforce" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Deploy trap device" action="bypass -h npc_%objectId%_trap_select" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

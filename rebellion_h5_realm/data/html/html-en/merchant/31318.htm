@@ -1,8 +1,19 @@
-!Blueprint Seller Greta: Hello there! Come on in! Are you here to see
-our new blueprints? We just got these in yesterday. Come check them out!
-An artisan could do amazing things with these, don't you think?
-
-[npc_%objectId%_Buy 164|Buy/Sell/Refund]
-
-[npc_%objectId%_TerritoryStatus|"Who is the lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Blueprint Seller Greta:</font><br>
+Hello there! Come on in! Are you here to seeour new blueprints? We just got these in yesterday.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 164" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Who is the lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

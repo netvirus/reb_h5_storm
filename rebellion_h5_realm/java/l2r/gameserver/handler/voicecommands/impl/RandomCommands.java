@@ -18,7 +18,6 @@ import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.NpcHolder;
 import l2r.gameserver.data.xml.holder.ResidenceHolder;
@@ -47,7 +46,6 @@ import l2r.gameserver.network.serverpackets.SystemMessage;
 import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.nexus_interface.NexusEvents;
-import l2r.gameserver.randoms.CharacterEmails;
 import l2r.gameserver.randoms.TradesHandler;
 import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.tables.SpawnTable;
@@ -299,10 +297,6 @@ public class RandomCommands extends Functions implements IVoicedCommandHandler
 			
 			botReportcommand(activeChar, paramSplit[0], sb.toString());
 		}
-		else if (command.equalsIgnoreCase("referral") && Config.ENABLE_REFERRAL_SYSTEM)
-		{
-			CharacterEmails.showReferralHtml(activeChar);
-		}
 		else if (command.equalsIgnoreCase("help") && Config.ENABLE_HELP_COMMAND)
 		{
 			String html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/help.htm", activeChar);
@@ -515,12 +509,6 @@ public class RandomCommands extends Functions implements IVoicedCommandHandler
 	private boolean whereis(String command, Player activeChar, String args)
 	{
 		Player friend = World.getPlayer(args);
-		
-		if (!PremiumAccountsTable.getWhereisVoiced(activeChar))
-		{
-			activeChar.sendChatMessage(0, ChatType.PARTY.ordinal() , "[Compass]", (activeChar.isLangRus() ? "У вас нет разрешения на использование этой команды." : "You do not have permission to use this command."));
-			return false;
-		}
 		
 		if(friend == null)
 		{

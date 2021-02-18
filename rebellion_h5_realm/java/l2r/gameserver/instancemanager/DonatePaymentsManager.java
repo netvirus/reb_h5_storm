@@ -44,8 +44,8 @@ public class DonatePaymentsManager implements Runnable {
                 Player player = GameObjectsStorage.getPlayer(payment.getRecipient());
                 if (player != null) {
                     sendMail(player, Config.DONATION_REWARD_ITEM_ID, payment.getAmount(), payment);
-                    payment.setStatus(1);
-                    _connect.changeStatusToReceived(payment);
+                    payment.setDeliveryStatus(true);
+                    _connect.changeStatusToDelivered(payment);
                     if (writeToLog) {
                         LOG.info("DonatePaymentsManager: The reward was mailed to the recipient ---> " + payment.getRecipient() + " in the amount of " + payment.getAmount() + " " + Config.DONATION_ITEM_NAME);
                     }
@@ -61,7 +61,7 @@ public class DonatePaymentsManager implements Runnable {
         _mail.setSenderName("Donate " + Config.DONATION_PROJECT_NAME);
         _mail.setReceiverId(player.getObjectId());
         _mail.setReceiverName(player.getName());
-        _mail.setTopic("Your order №" + list.getId() + " and date " + list.getPayDate());
+        _mail.setTopic("Your order №" + list.getId() + " and date " + list.getDateComplete());
         _mail.setBody("There was a donat to " + list.getRecipient() + " in the amount of " + list.getAmount() + " " + Config.DONATION_ITEM_NAME);
         _mail.setType(Mail.SenderType.NORMAL);
         _mail.setUnread(true);

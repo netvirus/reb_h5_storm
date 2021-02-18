@@ -3,9 +3,9 @@ package l2r.gameserver.model.reward;
 import l2r.commons.math.SafeMath;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.xml.holder.ItemHolder;
 import l2r.gameserver.model.Player;
+import l2r.gameserver.model.actor.instances.player.PremiumBonus;
 import l2r.gameserver.templates.item.ItemTemplate;
 
 import java.util.ArrayList;
@@ -141,17 +141,16 @@ public class RewardItem implements Cloneable
 	 */
 	public double getRate(Player player)
 	{
+		PremiumBonus premiumBonus = player.getPremiumBonus();
 		double rate = 1.0;
-		double adenaRate = player != null ? player.getRateAdena() : 1.0;
-		double itemRate = player != null ? player.getRateItems() : 1.0;
+		double adenaRate = player != null ? premiumBonus.getBonusAdenaDropRate() : 1.0;
+		double itemRate = player != null ? premiumBonus.getBonusDropRate() : 1.0;
 		if(_item.isAdena())
 			rate = Config.RATE_DROP_ADENA * adenaRate;
 		else if (_item.isAncientAdena())
 			rate = Config.RATE_DROP_AA_ADENA * adenaRate;
 		else
 			rate = Config.RATE_DROP_ITEMS * itemRate;
-		
-		rate *= PremiumAccountsTable.getDropBonus(player, _item.getItemId());
 		
 		return rate;
 	}
@@ -199,7 +198,6 @@ public class RewardItem implements Cloneable
 					t.count = SafeMath.addAndLimit(t.count, count);
 			}
 		}
-
 		return ret;
 	}
 }

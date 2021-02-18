@@ -1,8 +1,17 @@
-!Magister Xenovia: Well, we certainly aren't trying to keep anyone from
-using the urn that wants to... I suppose you will be wanting to summon a
-departed one's soul? I'm sorry, my friend, but the powder you need will
-not come for free... It may not look like much, but it is the property
-of the guild... A pouch of it will cost you 1,000 adena. [Quest
-_345_MethodToRaiseTheDead 3|"I wish to buy the powder."]
-
-[npc_%objectId%_Chat|Quit]
+<font color="FF8000">Magister Xenovia:</font><br>
+Well, we certainly aren't trying to keep anyone fromusing the urn that wants to.<br1>
+I suppose you will be wanting to summon adeparted one's soul? I'm sorry, my friend, but the powder you need willnot come for free.<br1>
+It may not look like much, but it is the propertyof the guild.<br1>
+A pouch of it will cost you 1,000 adena.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I wish to buy the powder" action="bypass -h Quest _345_MethodToRaiseTheDead 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quit" action="bypass -h npc_%objectId%_Chat" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

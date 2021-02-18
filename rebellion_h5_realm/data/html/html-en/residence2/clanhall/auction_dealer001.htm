@@ -1,10 +1,18 @@
-Ah, so you've come to see the clan hall! Good idea! A clan hall is
-something that every clan should have, don't you agree? There are many
-wonderful things here, so take your time!
-
-<center>[npc_%objectId%_list_all 0|All items for sale.]
-
-	[npc_%objectId%_info|My selected items.] [npc_%objectId%_map|Location
-	of the clan hall.]</center>
-
-
+Ah, so you've come to see the clan hall Good idea! A clan hall issomething that every clan should have, don't you agree? There are manywonderful things here, so take your time!<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="My selected items" action="bypass -h npc_%objectId%_info" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="All items for sale" action="bypass -h npc_%objectId%_list_all 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Location of the clan hall" action="bypass -h npc_%objectId%_map" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

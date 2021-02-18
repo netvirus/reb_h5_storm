@@ -1,8 +1,19 @@
-!Maestro Reorin: Hiccup~ Who goes there?... What could you possibly want
-from me, the "Blacksmith of Demons"? Sorry, but the shop is closed!
-Permanently! Hey, buddy, you don't have any liquor on you, by chance? I
-could really use a drink! [npc_%objectId%_Chat 1|"I need directions."]
-
-[npc_%objectId%_Chat 2|"Why are you a drunk?"]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Maestro Reorin:</font><br>
+Hiccup~ Who goes there?.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Why are you a drunk?" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I need directions" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

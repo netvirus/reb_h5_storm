@@ -1,15 +1,36 @@
-!Warehouse Chief Rikadio: Hey there, traveler! Pleased to meet you; I am
-Warehouse Chief Rikadio of the Iron Gate Guild here in Gludin. You've
-heard our motto, right? "Sell anything to anyone, anywhere." We'll
-travel to frozen wastes, burning deserts, even the dangerous volcanic
-zones of the north, for the sake of plying our trade. Ha! Who can match
-that? Tell me, my friend, have you come here in order to become a member
-of our guild?
-
-[scripts_services.villagemasters.Occupation:onTalk30498|Listen to
-information about first class transfer.] [npc_%objectId%_Link
-villagemaster/subclass_01.htm|Sub Class.] [npc_%objectId%_Link
-villagemaster/clan-01.htm|Clan.] [npc_%objectId%_Link
-villagemaster/ally-01.htm|Alliance.] [npc_%objectId%_Link
-villagemaster/reflect_weapon_master.htm|Use Shadow Weapon Exchange
-Coupon.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Warehouse Chief Rikadio:</font><br>
+Hey there, traveler! Pleased to meet you; I amWarehouse Chief Rikadio of the Iron Gate Guild here in Gludin.<br1>
+You'veheard our motto, right? Sell anything to anyone, anywhere.<br1>
+We'lltravel to frozen wastes, burning deserts, even the dangerous volcaniczones of the north, for the sake of plying our trade.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sub Class" action="bypass -h npc_%objectId%_Link villagemaster/subclass_01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan" action="bypass -h npc_%objectId%_Link villagemaster/clan-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Alliance" action="bypass -h npc_%objectId%_Link villagemaster/ally-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Listen toinformation about first class transfer" action="bypass -h scripts_services.villagemasters.Occupation:onTalk30498" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Use Shadow Weapon ExchangeCoupon" action="bypass -h npc_%objectId%_Link villagemaster/reflect_weapon_master.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

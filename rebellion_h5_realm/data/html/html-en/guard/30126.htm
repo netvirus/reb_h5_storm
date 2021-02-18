@@ -1,8 +1,16 @@
-!Guard Rath: Rumor has it that the *Great Wizard Hardin* lives somewhere
-within the northern mountain range. Many young people have gone in
-search of that place to learn magic from him, but no one has actually
-met him yet. Those who say they have met him are liars.
-
-[npc_%objectId%_Chat 1|Ask about the Great Wizard Hardin]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Rath:</font><br>
+Rumor has it that the *Great Wizard Hardin* lives somewherewithin the northern mountain range.<br1>
+Many young people have gone insearch of that place to learn magic from him, but no one has actuallymet him yet.<br1>
+Those who say they have met him are liars.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Great Wizard Hardin" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

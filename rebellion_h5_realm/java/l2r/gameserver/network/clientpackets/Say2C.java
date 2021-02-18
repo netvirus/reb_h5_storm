@@ -3,7 +3,6 @@ package l2r.gameserver.network.clientpackets;
 import l2r.gameserver.Config;
 import l2r.gameserver.cache.ItemInfoCache;
 import l2r.gameserver.dao.EmotionsTable;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.handler.admincommands.AdminCommandHandler;
 import l2r.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
@@ -408,19 +407,15 @@ public class Say2C extends L2GameClientPacket
 						return;
 					}
 
-					if(!activeChar.antiFlood.canShout(_text, PremiumAccountsTable.getGlobalChat(activeChar)))
+					if (Config.GLOBAL_SHOUT)
 					{
-						if (Config.GLOBAL_SHOUT && PremiumAccountsTable.getGlobalChat(activeChar))
-						{
-							// Original Message: Shout chat is allowed once per {0} seconds.
-							activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.ShoutChat1", activeChar).addNumber(Config.CHAT_SHOUT_TIME_DELAY / 2));
-						}
-						else
-						{
-							// Original Message: Shout chat is allowed once per {0} seconds.
-							activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.ShoutChat1", activeChar).addNumber(Config.CHAT_SHOUT_TIME_DELAY));
-						}
-						return;
+						// Original Message: Shout chat is allowed once per {0} seconds.
+						activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.ShoutChat1", activeChar).addNumber(Config.CHAT_SHOUT_TIME_DELAY / 2));
+					}
+					else
+					{
+						// Original Message: Shout chat is allowed once per {0} seconds.
+						activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.ShoutChat1", activeChar).addNumber(Config.CHAT_SHOUT_TIME_DELAY));
 					}
 
 					if(Config.GLOBAL_SHOUT && activeChar.isInJail())
@@ -472,17 +467,14 @@ public class Say2C extends L2GameClientPacket
 						return;
 					}
 
-					if(!activeChar.antiFlood.canTrade(_text, PremiumAccountsTable.getGlobalChat(activeChar)))
+					if (Config.GLOBAL_TRADE_CHAT)
 					{
-						if (Config.GLOBAL_TRADE_CHAT && PremiumAccountsTable.getGlobalChat(activeChar))
-						{
-							// Original Message: Trade chat is allowed only once per {0} seconds.
-							activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.TradeChat1", activeChar).addNumber(Config.CHAT_TRADE_TIME_DELAY / 2));
-						}
-						else
-							// Original Message: Trade chat is allowed only once per {0} seconds.
-							activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.TradeChat1", activeChar).addNumber(Config.CHAT_TRADE_TIME_DELAY));
-						return;
+						// Original Message: Trade chat is allowed only once per {0} seconds.
+						activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.TradeChat1", activeChar).addNumber(Config.CHAT_TRADE_TIME_DELAY / 2));
+					}
+					else {
+						// Original Message: Trade chat is allowed only once per {0} seconds.
+						activeChar.sendMessage(new CustomMessage("l2r.gameserver.network.clientpackets.Say2C.TradeChat1", activeChar).addNumber(Config.CHAT_TRADE_TIME_DELAY));
 					}
 
 					if(activeChar.getPvpKills() < Config.PVP_COUNT_TRADE)

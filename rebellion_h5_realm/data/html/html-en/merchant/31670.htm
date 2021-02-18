@@ -1,10 +1,20 @@
-!Spellbook Seller Burns: Welcome! I'm Burns! I sell spellbooks. Ha! It
-must seem strange to see a specialized book seller like me in a small
-village like this! Hunters Village may be remote, but it's hard to find
-a place where you can experience the magic of nature like this! Mystics
-can be found wherever you travel in this world. So is it so strange to
-find people like me who cater to them? What kind of spellbooks are you
-interested in? [npc_%objectId%_Buy 227|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|"Who is the lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Spellbook Seller Burns:</font><br>
+Welcome! I'm Burns! I sell spellbooks.<br1>
+Ha! Itmust seem strange to see a specialized book seller like me in a smallvillage like this! Hunters Village may be remote, but it's hard to finda place where you can experience the magic of nature like this! Mysticscan be found wherever you travel in this world.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 227" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Who is the lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

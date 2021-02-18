@@ -4,7 +4,6 @@ import l2r.commons.dao.JdbcEntityState;
 import l2r.commons.util.Base64;
 import l2r.gameserver.Config;
 import l2r.gameserver.dao.CharacterDAO;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.database.mysql;
 import l2r.gameserver.handler.admincommands.IAdminCommandHandler;
@@ -1016,7 +1015,6 @@ public class AdminEditChar implements IAdminCommandHandler
 		if (activeChar.getAccessLevel().canViewAccountInfo())
 		{
 			replyMSG.append("<tr><td width=100>Account/IP: </td><td><a action=\"bypass -h admin_find_char_acc "+ player.getName() +"\">" + player.getAccountName() + "</a> / <a action=\"bypass -h admin_find_ip "+ player.getIP() +"\">" + player.getIP() + "</a></td></tr>");
-			replyMSG.append("<tr><td width=100>HWID: </td><td><a action=\"bypass -h admin_find_hwid "+ player.getHWID() +"\">" + (player.hasHWID() ? player.getHWID() : "hwid missing") + "</a></td></tr>");
 			replyMSG.append("<tr><td width=100>Country: </td><td>" + GeoLocation.getCountry(player) + " (" + GeoLocation.getCountryCode(player) + ")</td></tr>");
 			replyMSG.append("<tr><td width=100>City: </td><td>" + GeoLocation.getCity(player) + " (" + GeoLocation.getCityRegion(player) + ")</td></tr>");
 		}
@@ -1038,9 +1036,6 @@ public class AdminEditChar implements IAdminCommandHandler
 		replyMSG.append("<tr><td width=100>PvP/PK: </td><td>" + player.getPvpKills() + "/" + player.getPkKills() + "</td></tr>");
 		replyMSG.append("<tr><td width=100>Coordinates: </td><td>" + player.getX() + "," + player.getY() + "," + player.getZ() + "</td></tr>");
 		replyMSG.append("<tr><td width=100>Direction: </td><td>" + Location.getDirectionTo(player, activeChar) + "</td></tr>");
-		replyMSG.append("<tr><td width=100>Premium: </td><td>" + (PremiumAccountsTable.isPremium(activeChar) == true ? "Yes" : "No") + "</td></tr>");
-		replyMSG.append("<tr><td width=100>Premium Template: </td><td>" + PremiumAccountsTable.getPremiumAccount(player).getTemplate().name + "</td></tr>");
-		replyMSG.append("<tr><td width=100>Premium Expires: </td><td>" + Util.formatTime((int) (PremiumAccountsTable.getPremiumAccount(player).getTimeLeftInMilis() / 1000)) + "</td></tr>");
 		replyMSG.append("<tr><td width=100>Uptime: </td><td>" + Util.formatTime((int) player.getUptime() / 1000) + "</td></tr>");
 		replyMSG.append("</table><br>");
 		
@@ -1331,19 +1326,6 @@ public class AdminEditChar implements IAdminCommandHandler
 		replyMSG.append("<td width=40><button value=\"Back\" action=\"bypass -h admin_show_characters 0\" width=40 height=15 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		replyMSG.append("</tr></table>");
 		replyMSG.append("<br><br>");
-		
-		
-		for (Player player : GameObjectsStorage.getAllPlayersForIterate())
-		{
-			if(hwid.equalsIgnoreCase(player.getHWID()))
-			{
-				CharactersFound += 1;
-				replyMSG.append("<table width=270>");
-				replyMSG.append("<tr><td width=80>Name</td><td width=110>Class</td><td width=40>Level</td></tr>");
-				replyMSG.append("<tr><td width=80><a action=\"bypass -h admin_character_list " + player.getName() + "\">" + player.getName() + "</a></td><td width=110>" + player.getTemplate().className + "</td><td width=40>" + player.getLevel() + "</td></tr>");
-				replyMSG.append("</table>");	
-			}
-		}
 		
 		if (CharactersFound == 0)
 		{

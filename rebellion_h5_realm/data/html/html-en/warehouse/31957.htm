@@ -1,7 +1,30 @@
-Warehouse Keeper Cherbal: Hallo! Welcome to Cherbal's warehouse. Leave
-your heavy luggage and precious treasures with us and leave for your
-adventure with a light heart. [npc_%objectId%_Chat 1|Private Warehouse.]
-
-[npc_%objectId%_Chat 2|Clan Warehouse.] [npc_%objectId%_Multisell
-631|Buy an item using Cube Fragments.] [npc_%objectId%_SkillList|Learn
-Skills.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Warehouse Keeper Cherbal:</font><br>
+Hallo! Welcome to Cherbal's warehouse.<br1>
+Leaveyour heavy luggage and precious treasures with us and leave for youradventure with a light heart.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="LearnSkills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy an item using Cube Fragments" action="bypass -h npc_%objectId%_Multisell631" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

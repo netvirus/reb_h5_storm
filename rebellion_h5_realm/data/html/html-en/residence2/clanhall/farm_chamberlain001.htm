@@ -1,15 +1,29 @@
-I trust your beasts are growing properly? Remember, beasts from our farm
-are very picky eaters. They'll only eat food that's grown here. What can
-I do for you today?
-
-<center>[npc_%objectId%_door|"Open the door."]
-
-	[npc_%objectId%_banish|"Expel outsiders."]
-
-	[npc_%objectId%_functions|Clan Hall Functions]
-
-	[npc_%objectId%_manage_vault|Clan Warehouse]
-
-	[npc_%objectId%_manage|Clan Hall Management]</center>
-
-
+I trust your beasts are growing properly? Remember, beasts from our farmare very picky eaters.<br1>
+They'll only eat food that's grown here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Hall Management" action="bypass -h npc_%objectId%_manage" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Expel outsiders" action="bypass -h npc_%objectId%_banish" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Hall Functions" action="bypass -h npc_%objectId%_functions" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Open the door" action="bypass -h npc_%objectId%_door" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_manage_vault" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

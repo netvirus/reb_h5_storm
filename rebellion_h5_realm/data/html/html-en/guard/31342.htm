@@ -1,7 +1,19 @@
-!Guard Dimitri: The *pasture of wild beasts* in the northern part of
-this village is one of our most popular attractions! I don't understand
-why anyone would want to keep such ferocious animals! Are they crazy or
-what? [npc_%objectId%_Chat 1|"Pasture of wild beasts? I wish to see
-it."] [npc_%objectId%_TerritoryStatus|See the lord & tax rate info.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Dimitri:</font><br>
+The *pasture of wild beasts* in the northern part ofthis village is one of our most popular attractions! I don't understandwhy anyone would want to keep such ferocious animals! Are they crazy orwhat?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="See the lord & tax rate info" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pasture of wild beasts? I wish to seeit" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

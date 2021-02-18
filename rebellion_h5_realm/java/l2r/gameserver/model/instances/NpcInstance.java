@@ -101,15 +101,10 @@ import l2r.gameserver.utils.Strings;
 
 import gnu.trove.iterator.TIntObjectIterator;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.StringTokenizer;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1318,16 +1313,18 @@ public class NpcInstance extends Creature
 	public void showTeleportList(Player player, TeleportLocation[] list)
 	{
 		StringBuilder sb = new StringBuilder();
+		AtomicInteger count = new AtomicInteger();
 
-		sb.append("&$556;").append("<br><br>");
+		sb.append("<center><font color=\"FFFF00\">[   &$556;  ]</font></center>");
+		sb.append("<table border=0 cellspacing=0 cellpadding=0 width=290 align=\"center\">");
 
 		if(list != null)
 		{
-			for(TeleportLocation tl : list)
-				if(tl.getItem().getItemId() == ItemTemplate.ITEM_ID_ADENA)
+			Arrays.stream(list).forEach(e -> {
+				if(e.getItem().getItemId() == ItemTemplate.ITEM_ID_ADENA)
 				{
 					double pricemod = player.getLevel() <= Config.GATEKEEPER_FREE ? 0. : Config.GATEKEEPER_MODIFIER;
-					if(tl.getPrice() > 0 && pricemod > 0)
+					if(e.getPrice() > 0 && pricemod > 0)
 					{
 						//On Saturdays and Sundays from 8 PM to 12 AM, gatekeeper teleport fees decrease by 50%.
 						Calendar calendar = Calendar.getInstance();
@@ -1336,19 +1333,35 @@ public class NpcInstance extends Creature
 						if((day == Calendar.SUNDAY || day == Calendar.SATURDAY) && (hour >= 20 && hour <= 12))
 							pricemod /= 2;
 					}
-					sb.append("[scripts_Util:Gatekeeper ").append(tl.getX()).append(" ").append(tl.getY()).append(" ").append(tl.getZ());
-					if (tl.getCastleId() != 0)
-						sb.append(" ").append(tl.getCastleId());
-					sb.append(" ").append((long) (tl.getPrice() * pricemod)).append(" @811;F;").append(tl.getName()).append("|").append(tl.getStringName());
-					if (tl.getPrice() * pricemod > 0)
-						sb.append(" - ").append((long) (tl.getPrice() * pricemod)).append(" ").append(HtmlUtils.htmlItemName(ItemTemplate.ITEM_ID_ADENA));
-					sb.append("]<br1>\n");
+					count.getAndIncrement();
+					sb.append("<tr>");
+					sb.append("<td><center><font color=\"FFFF00\">").append(count.get()).append("</font></center></td>");
+					sb.append("<td FIXWIDTH=80 align=center>");
+					sb.append("<button value=\"").append(e.getStringName());
+					if (e.getPrice() * pricemod > 0) {
+						sb.append(" - ").append((long) (e.getPrice() * pricemod)).append(" ").append(" аден");
+					}
+					sb.append("\" action=\"bypass -h scripts_Util:Gatekeeper ").append(e.getX()).append(" ").append(e.getY()).append(" ").append(e.getZ());
+					if (e.getCastleId() != 0) {
+						sb.append(" ").append(e.getCastleId());
+					}
+					sb.append(" ").append((long) (e.getPrice() * pricemod)).append(" @811;F;").append(e.getName());
+					sb.append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"240\" height=\"25\" />");
+					sb.append("</td>").append("</tr>");
+				} else {
+					sb.append("<tr>");
+					sb.append("<td>").append(count.get()).append("</td>");
+					sb.append("<td FIXWIDTH=80 align=center>");
+					sb.append("<button value=\"").append(e.getStringName()).append(" - ").append(e.getPrice()).append(" ").append(HtmlUtils.htmlItemName(e.getItem().getItemId()));
+					sb.append("\" action=\"bypass -h scripts_Util:QuestGatekeeper ").append(e.getX()).append(" ").append(e.getY()).append(" ").append(e.getZ()).append(" ").append(e.getPrice()).append(" ").append(e.getItem().getItemId()).append(" @811;F;");
+					sb.append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"240\" height=\"25\" />");
+					sb.append("</td>").append("</tr>");
 				}
-				else
-					sb.append("[scripts_Util:QuestGatekeeper ").append(tl.getX()).append(" ").append(tl.getY()).append(" ").append(tl.getZ()).append(" ").append(tl.getPrice()).append(" ").append(tl.getItem().getItemId()).append(" @811;F;").append("|").append(tl.getStringName()).append(" - ").append(tl.getPrice()).append(" ").append(HtmlUtils.htmlItemName(tl.getItem().getItemId())).append("]<br1>\n");
-		}
-		else
+			});
+			sb.append("</table>");
+		} else {
 			sb.append("No teleports available for you.");
+		}
 
 		NpcHtmlMessage html = new NpcHtmlMessage(player, this);
 		html.setHtml(Strings.bbParse(sb.toString()));
@@ -1388,16 +1401,21 @@ public class NpcInstance extends Creature
 	{
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("<html><body><title>Talk about:</title><br>");
+		sb.append("<html><body><title>Поговорить о квестах:</title><br><br><br>");
+		sb.append("<table border=0 cellspacing=0 cellpadding=0 width=290 align=\"center\">");
 
 		for(Quest q : quests)
 		{
 			if(!q.isVisible())
 				continue;
-
-			sb.append("<a action=\"bypass -h npc_").append(getObjectId()).append("_Quest ").append(q.getName()).append("\">[").append(q.getDescr(player)).append("]</a><br>");
+			sb.append("<tr>");
+				sb.append("<td FIXWIDTH=90 align=center>");
+					sb.append("<button value=\"").append(q.getDescr(player)).append("\" action=\"bypass -h npc_").append(getObjectId()).append("_Quest ").append(q.getName()).append("\" back=\"l2ui_ct1.button.button_df_small_down\" fore=\"l2ui_ct1.button.button_df_small\" width=\"280\" height=\"25\">");
+				sb.append("</td>");
+			sb.append("</tr>");
 		}
 
+		sb.append("</table>");
 		sb.append("</body></html>");
 
 		NpcHtmlMessage html = new NpcHtmlMessage(player, this);

@@ -1,13 +1,27 @@
-!Trader Garette: Hey, youngster! You look like fortune smiled on you!
-Did your ship just come in? Or are you expecting something good to
-happen? If you have something to celebrate, let's have a drink! You've
-come to the right place, by the way. I just decided to discount
-everything in my shop. Buy whatever you need, my friend. Fortune comes
-easily to someone who is well-equipped! But a miserly adventurer faces a
-dim future... [npc_%objectId%_Buy 66|Buy/Sell/Refund.]
-
-[npc_%objectId%_Buy 30231001|Buy/Sell/Refund Common Items.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Trader Garette:</font><br>
+Hey, youngster! You look like fortune smiled on you!Did your ship just come in? Or are you expecting something good tohappen? If you have something to celebrate, let's have a drink! You'vecome to the right place, by the way.<br1>
+I just decided to discounteverything in my shop.<br1>
+Buy whatever you need, my friend.<br1>
+Fortune comeseasily to someone who is well-equipped! But a miserly adventurer faces adim future.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund Common Items" action="bypass -h npc_%objectId%_Buy 30231001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 66" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

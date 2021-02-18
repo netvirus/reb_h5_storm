@@ -1,6 +1,19 @@
-!Warehouse Keeper Hagos: Welcome, valiant soldier of Varka! What can I
-do for you? [npc_%objectId%_DepositP|Deposit an item.]
-
-[npc_%objectId%_WithdrawP 0|Pick up an item (List all)]
-
-[npc_%objectId%_WithdrawP 99|Pick up an item (Select)]
+<font color="FF8000">Warehouse Keeper Hagos:</font><br>
+Welcome, valiant soldier of Varka! What can Ido for you?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pick up an item (List all)" action="bypass -h npc_%objectId%_WithdrawP 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pick up an item (Select)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Deposit an item" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

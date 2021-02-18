@@ -1,6 +1,21 @@
-!Marksman Syzar: You're an adventurer, eh? And you're trying to leave
-this way? He he... you must have some skill, then... This way lies
-Mimir's Forest, home to some of the most dangerous monsters on the
-island. You realize that, don't you? [npc_%objectId%_Chat 1|Ask about
-Mimir's Forest.] [npc_%objectId%_TerritoryStatus|See information on
-permanent residence and tax rates,] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Marksman Syzar:</font><br>
+You're an adventurer, eh? And you're trying to leavethis way? He he.<br1>
+you must have some skill, then.<br1>
+This way liesMimir's Forest, home to some of the most dangerous monsters on theisland.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="See information onpermanent residence and tax rates," action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask aboutMimir's Forest" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

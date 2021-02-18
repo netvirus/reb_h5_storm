@@ -1,11 +1,31 @@
-Warehouse Keeper Airy: Hey, come on in! Do you want to deposit an item?
-Or do you have other business with me? I'm tired, so let's cut to the
-chase. Oh, I should mention that you'll need to pay in advance if you
-want to deposit something. Don't trouble yourself with those heavy
-things -- just leave them here with us and we'll keep them safely...
-
-<center>[npc_%objectId%_Chat 1|Private Warehouse.]
-
-	[npc_%objectId%_Chat 2|Clan Warehouse.] [npc_%objectId%_Multisell
-	631|Buy an item using Cube Fragments.] [npc_%objectId%_SkillList|Learn
-	Skills.] [npc_%objectId%_Quest|Quest.]</center>
+<font color="FF8000">Warehouse Keeper Airy:</font><br>
+Hey, come on in! Do you want to deposit an item?Or do you have other business with me? I'm tired, so let's cut to thechase.<br1>
+Oh, I should mention that you'll need to pay in advance if youwant to deposit something.<br1>
+Don't trouble yourself with those heavythings -- just leave them here with us and we'll keep them safely.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy an item using Cube Fragments" action="bypass -h npc_%objectId%_Multisell	631" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn	Skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

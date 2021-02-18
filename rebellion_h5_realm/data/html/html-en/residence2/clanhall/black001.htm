@@ -1,9 +1,28 @@
-Greetings, my lord. Awaiting your order!
-
-<CENTER>[npc_%objectId%_door|Open and close the door.]
-
-	[npc_%objectId%_banish|Expel outsiders.] [npc_%objectId%_functions|Clan
-	hall functions] [npc_%objectId%_manage_vault|Clan hall warehouse]
-
-	[npc_%objectId%_manage|Clan hall management]</CENTER>
-
+Greetings, my lord.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan hall warehouse" action="bypass -h npc_%objectId%_manage_vault" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Expel outsiders" action="bypass -h npc_%objectId%_banish" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Open and close the door" action="bypass -h npc_%objectId%_door" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan hall functions" action="bypass -h npc_%objectId%_functions" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan hall management" action="bypass -h npc_%objectId%_manage" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,5 +1,19 @@
-Lottery Ticket Seller: Every ticket a potential winner! Step right up!
-
-[npc_%objectId%_Loto 0|Purchase lottery ticket] [npc_%objectId%_Loto
-23|Current lottery jackpot] [npc_%objectId%_Loto 24|Previous winning
-numbers/Prize claim]
+<font color="FF8000">Lottery Ticket Seller:</font><br>
+Every ticket a potential winner! Step right up!<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Current lottery jackpot" action="bypass -h npc_%objectId%_Loto23" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Purchase lottery ticket" action="bypass -h npc_%objectId%_Loto 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Previous winningnumbers/Prize claim" action="bypass -h npc_%objectId%_Loto 24" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

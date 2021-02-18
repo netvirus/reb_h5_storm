@@ -1,5 +1,17 @@
-!Guard Kent: Greetings! I am Kent of hte Heine Guards. If you follow
-this road west it will take you by a vast field of reeds. Althought it
-appears peaceful, occasionally some dangerous creatures show up there.
-You must be careful. [npc_%objectId%_Chat 1|Tell me about the field of
-reeds] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Kent:</font><br>
+Greetings! I am Kent of hte Heine Guards.<br1>
+If you followthis road west it will take you by a vast field of reeds.<br1>
+Althought itappears peaceful, occasionally some dangerous creatures show up there.<br1>
+You must be careful.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell me about the field ofreeds" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

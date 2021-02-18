@@ -1,11 +1,21 @@
-!Gatekeeper Aisher: For thousands of years, Primeval Isle had been
-sealed to prevent its inhabitants from leaving through this Gate. Now,
-however, adventurers' activities seem to have finally weakened the seal
-enough to permit departures. You may teleport to the mainland, but only
-to Rune Township. Would you like to do so?
-
-[scripts_Util:Gatekeeper 43816 -47768 -800 50000 @811;Rune Township|Teleport to Rune Township (50,000 Adena).]
-
-[npc_%objectId%_Chat 1|Ask About the effects of the weakened seal.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Gatekeeper Aisher:</font><br>
+For thousands of years, Primeval Isle had beensealed to prevent its inhabitants from leaving through this Gate.<br1>
+Now,however, adventurers' activities seem to have finally weakened the sealenough to permit departures.<br1>
+You may teleport to the mainland, but onlyto Rune Township.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport to Rune Township (50,000 Adena)" action="bypass -h scripts_Util:Gatekeeper 43816 -47768 -800 50000 @811;Rune Township" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask About the effects of the weakened seal" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

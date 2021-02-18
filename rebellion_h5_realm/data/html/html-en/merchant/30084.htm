@@ -1,14 +1,32 @@
-!Weapons Trader Graham: Welcome! Welcome to our shop, filled with
-history and tradition. We carry many rare weapons that you won't find
-elsewhere, from sturdy weapons made by famous Dwarven artisans to
-Mithril weapons that contain the mysterious power of the Elves. Take
-your time, look around and let me know if you see anything you need.
-There are many *violent monsters* around here, so be sure that you are
-well prepared before you leave the village. [npc_%objectId%_Chat
-2|Buy/Sell/Refund.] [npc_%objectId%_Wear 22|Try on Fighter weapons.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Chat 1|Ask about the violent monsters.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Weapons Trader Graham:</font><br>
+Welcome! Welcome to our shop, filled withhistory and tradition.<br1>
+We carry many rare weapons that you won't findelsewhere, from sturdy weapons made by famous Dwarven artisans toMithril weapons that contain the mysterious power of the Elves.<br1>
+Takeyour time, look around and let me know if you see anything you need.<br1>
+There are many *violent monsters* around here, so be sure that you arewell prepared before you leave the village.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the violent monsters" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Fighter weapons" action="bypass -h npc_%objectId%_Wear 22" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

@@ -1,7 +1,26 @@
-!Armor Trader Peta: Welcome! What sort of things are you looking for? I
-often say that a good item will recognize its owner. So...which one here
-is calling you? Look around and find the right one. Take your time! My
-name is Peta, by the way -- if you see something you like, just call out
-for me! [npc_%objectId%_Chat 1|Buy/Sell/Refund.] [npc_%objectId%_Wear
-24|Try on Mystic equipment.] [npc_%objectId%_TerritoryStatus|Ask about
-the local lord and tax rate.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Armor Trader Peta:</font><br>
+Welcome! What sort of things are you looking for? Ioften say that a good item will recognize its owner.<br1>
+So.<br1>
+which one hereis calling you? Look around and find the right one.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask aboutthe local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear24" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

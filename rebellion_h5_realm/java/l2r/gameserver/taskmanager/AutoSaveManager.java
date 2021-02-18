@@ -4,7 +4,6 @@ import l2r.commons.threading.RunnableImpl;
 import l2r.commons.threading.SteppingRunnableQueueManager;
 import l2r.commons.util.Rnd;
 import l2r.gameserver.ThreadPoolManager;
-import l2r.gameserver.ai.PhantomPlayerAI;
 import l2r.gameserver.model.Player;
 
 import java.util.concurrent.Future;
@@ -47,17 +46,6 @@ public class AutoSaveManager extends SteppingRunnableQueueManager
 					return;
 
 				player.store(true);
-				
-				// Kick stuck phantoms.
-				if (player.isPhantom() && player.getAI().isPhantomPlayerAI())
-				{
-					long stuckTime = (System.currentTimeMillis() - ((PhantomPlayerAI) player.getAI()).getLastAiResponse());
-					if (stuckTime > 10000)
-					{
-						player.kick();
-						_log.info("Kicking stuck phantom player: " + player + " stuck time is " + stuckTime + "ms.");
-					}
-				}
 			}
 
 		}, delay, delay);

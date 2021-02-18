@@ -1,13 +1,28 @@
-<center>Use Life Crystals</center>
-
-[npc_%objectId%_Link
-adventurer_guildsman/AboutNewLifeCrystals.htm|Listen to an explanation
-about the new Life Crystals.] [npc_%objectId%_Multisell
-317325003|Exchange previous Life Crystals for new Life Crystals.]
-
-[npc_%objectId%_Multisell 317325001|Craft Life Crystal.]
-
-[npc_%objectId%_Multisell 317325002|Craft Adventurer's Box.]
-
-[npc_%objectId%_Link adventurer_guildsman/AboutHighLevelGuilds.htm|Ask
-about higher level crafting]
+<center>Use Life Crystals</center><br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Life Crystal" action="bypass -h npc_%objectId%_Multisell 317325001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Listen to an explanationabout the new Life Crystals" action="bypass -h npc_%objectId%_Linkadventurer_guildsman/AboutNewLifeCrystals.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Askabout higher level crafting" action="bypass -h npc_%objectId%_Link adventurer_guildsman/AboutHighLevelGuilds.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Craft Adventurer's Box" action="bypass -h npc_%objectId%_Multisell 317325002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange previous Life Crystals for new Life Crystals" action="bypass -h npc_%objectId%_Multisell317325003" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

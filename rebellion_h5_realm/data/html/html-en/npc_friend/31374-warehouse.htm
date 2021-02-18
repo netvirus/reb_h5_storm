@@ -1,8 +1,19 @@
-!Warehouse Keeper Jaff: Come here, friend of Ketra! You've been given
-permission to use our warehouse by our chief! A valued warrior like you
-shouldn't have to carry around a heavy load! Leave anything here you
-don't need for combat! [npc_%objectId%_DepositP|Deposit an item.]
-
-[npc_%objectId%_WithdrawP 0|Pick up an item (List all)]
-
-[npc_%objectId%_WithdrawP 99|Pick up an item (Select)]
+<font color="FF8000">Warehouse Keeper Jaff:</font><br>
+Come here, friend of Ketra! You've been givenpermission to use our warehouse by our chief! A valued warrior like youshouldn't have to carry around a heavy load! Leave anything here youdon't need for combat!<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pick up an item (List all)" action="bypass -h npc_%objectId%_WithdrawP 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Pick up an item (Select)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Deposit an item" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

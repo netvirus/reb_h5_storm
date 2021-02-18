@@ -1,5 +1,19 @@
-!Spellbook Seller Antonio: Welcome, seeker of wisdom, in the name of the
-gods! We sell spellbooks written by the magisters and priests
-themselves! Care to take a look? [npc_%objectId%_Buy
-172|Buy/Sell/Refund.] [npc_%objectId%_TerritoryStatus|"Who is the Lord
-of the manor and what is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Spellbook Seller Antonio:</font><br>
+Welcome, seeker of wisdom, in the name of thegods! We sell spellbooks written by the magisters and prieststhemselves! Care to take a look?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Who is the Lordof the manor and what is the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 172" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

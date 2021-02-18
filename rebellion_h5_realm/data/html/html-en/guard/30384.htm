@@ -1,5 +1,16 @@
-!Guard Lynch: Hello, traveler. Are you planning to go to Gludio Castle
-Town that lies before the lord s castle? If you are, take the road here
-in front of me, and follow it northwest. However, you must be extra
-careful when you pass the *Abandoned Camp.* [npc_%objectId%_Chat 1|Ask
-about the Abandoned Camp] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Guard Lynch:</font><br>
+Hello, traveler.<br1>
+Are you planning to go to Gludio CastleTown that lies before the lord s castle? If you are, take the road herein front of me, and follow it northwest.<br1>
+However, you must be extracareful when you pass the *Abandoned Camp.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Askabout the Abandoned Camp" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

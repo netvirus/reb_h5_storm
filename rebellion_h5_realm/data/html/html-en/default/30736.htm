@@ -1,8 +1,17 @@
-!Mercenary Red Foot: Hello there Sir. Why would a distinguished noble
-looking fellow like yourself be hanging around in this back alleyway?
-Oh, me? I am Red Foot, a soldier of the Black Lion Mercenary Troop. But
-I m not a fighter. I am in charge of the delivery of war supplies.
-
-[npc_%objectId%_Chat 1|Ask about the Black Lion Mercenary Troop]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Mercenary Red Foot:</font><br>
+Hello there Sir.<br1>
+Why would a distinguished noblelooking fellow like yourself be hanging around in this back alleyway?Oh, me? I am Red Foot, a soldier of the Black Lion Mercenary Troop.<br1>
+ButI m not a fighter.<br1>
+I am in charge of the delivery of war supplies.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Black Lion Mercenary Troop" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

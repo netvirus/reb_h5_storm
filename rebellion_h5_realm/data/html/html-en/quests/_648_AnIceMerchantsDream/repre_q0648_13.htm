@@ -1,9 +1,21 @@
-!Rafforty: Yes. Then will you give the Ice Crystals to me? Ah! How would
-you like be paid? Do you want Adena for it all? Or perhaps you'd like to
-trade for some other items? I must warn you, however... If you want good
-materials, you'd better have lots of Ice Crystals. [Quest
-_648_AnIceMerchantsDream repre_q0648_14.htm|"Give me money."]
-
-[npc_%objectId%_Multisell 32020|"Show me the items."] [Quest
-_648_AnIceMerchantsDream repre_q0648_20.htm|"I changed my mind. I'll do
-it later."]
+<font color="36DC25">!Rafforty:</font><br>
+Yes.<br1>
+Then will you give the Ice Crystals to me? Ah! How wouldyou like be paid? Do you want Adena for it all? Or perhaps you'd like totrade for some other items? I must warn you, however.<br1>
+If you want goodmaterials, you'd better have lots of Ice Crystals.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Show me the items" action="bypass -h npc_%objectId%_Multisell 32020" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I changed my mind I'll doit later" action="bypass -h Quest _648_AnIceMerchantsDream repre_q0648_20.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Give me money" action="bypass -h Quest _648_AnIceMerchantsDream repre_q0648_14.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

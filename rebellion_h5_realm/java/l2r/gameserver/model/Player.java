@@ -20,7 +20,6 @@ import l2r.gameserver.achievements.PlayerCounters;
 import l2r.gameserver.achievements.iAchievement;
 import l2r.gameserver.ai.CtrlEvent;
 import l2r.gameserver.ai.CtrlIntention;
-import l2r.gameserver.ai.PhantomPlayerAI;
 import l2r.gameserver.ai.PlayableAI.nextAction;
 import l2r.gameserver.ai.PlayerAI;
 import l2r.gameserver.cache.Msg;
@@ -232,9 +231,6 @@ import l2r.gameserver.network.serverpackets.components.SceneMovie;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
 import l2r.gameserver.nexus_interface.NexusEvents;
 import l2r.gameserver.nexus_interface.PlayerEventInfo;
-import l2r.gameserver.randoms.CharacterEmails;
-import l2r.gameserver.randoms.PlayerKillsLogManager;
-import l2r.gameserver.randoms.PlayerKillsLogManager.KillLog;
 import l2r.gameserver.randoms.Radar;
 import l2r.gameserver.scripts.Events;
 import l2r.gameserver.scripts.Functions;
@@ -773,25 +769,6 @@ public final class Player extends Playable implements PlayerGroup
 		return _connection.getIpAddr();
 	}
 
-	public String getHWID()
-	{
-		if(_connection == null)
-			return NOT_CONNECTED;
-		
-		return _connection.getHWID();
-	}
-
-	public boolean hasHWID()
-	{
-		if (Config.DISABLE_HWID_SUPPORT)
-			return false;
-		
-		if (getPlayer() == null || getHWID() == null || getHWID().equalsIgnoreCase(NOT_CONNECTED))
-			return false;
-		
-		return true;
-	}
-	
 	public int getInstanceCount()
 	{
 		if(_connection == null)
@@ -2013,11 +1990,11 @@ public final class Player extends Playable implements PlayerGroup
 		// Fitted exponential curve to the data
 		int con = getCON();
 		if(con < 1)
-			return (int) (31000 * Config.MAXLOAD_MODIFIER);
+			return (int) (31000 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate());
 		else if(con > 59)
-			return (int) (176000 * Config.MAXLOAD_MODIFIER);
+			return (int) (176000 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate());
 		else
-			return (int) calcStat(Stats.MAX_LOAD, Math.pow(1.029993928, con) * 30495.627366 * Config.MAXLOAD_MODIFIER, this, null);
+			return (int) calcStat(Stats.MAX_LOAD, Math.pow(1.029993928, con) * 30495.627366 * Config.MAXLOAD_MODIFIER * _premiumBonus.getBonusWeightLimitRate(), this, null);
 	}
 
 	private Future<?> _updateEffectIconsTask;
@@ -2681,8 +2658,9 @@ public final class Player extends Playable implements PlayerGroup
 
 		if(applyRate)
 		{
-			addToExp *= Config.RATE_XP * getRateExp();
-			addToSp *= Config.RATE_SP * getRateSp();
+			addToExp *= getConfigXPRateWithPremiumBonusXPRates() * getRateExp();
+			addToSp *= getConfigSPRateWithPremiumBonusSPRates() * getRateSp();
+
 		}
 
 		Summon pet = getPet();
@@ -2700,12 +2678,14 @@ public final class Player extends Playable implements PlayerGroup
 					else if(pet.isPet() && pet.getExpPenalty() > 0f)
 						if(pet.getLevel() > getLevel() - 20 && pet.getLevel() < getLevel() + 5)
 						{
-							pet.addExpAndSp((long) (addToExp * pet.getExpPenalty()), 0);
+							long addToExpWithPremiumBonus = (long) (addToExp * _premiumBonus.getBonusPetExpRate());
+							pet.addExpAndSp((long) (addToExpWithPremiumBonus * pet.getExpPenalty()), 0);
 							addToExp *= 1. - pet.getExpPenalty();
 						}
 						else
 						{
-							pet.addExpAndSp((long) (addToExp * pet.getExpPenalty() / 5.), 0);
+							long addToExpWithPremiumBonus = (long) (addToExp * _premiumBonus.getBonusPetExpRate());
+							pet.addExpAndSp((long) (addToExpWithPremiumBonus * pet.getExpPenalty() / 5.), 0);
 							addToExp *= 1. - pet.getExpPenalty() / 5.;
 						}
 					else if(pet.isSummon())
@@ -2718,10 +2698,6 @@ public final class Player extends Playable implements PlayerGroup
 
 			if(_karma < 0)
 				_karma = 0;
-
-			// Premium System
-			addToExp *= PremiumAccountsTable.getExpBonus(this);
-			addToSp  *= PremiumAccountsTable.getSpBonus(this);
 			
 			long max_xp = getVarB("NoExp") ? Experience.LEVEL[getLevel() + 1] - 1 : getMaxExp();
 			addToExp = Math.min(addToExp, max_xp - getExp());
@@ -2778,19 +2754,6 @@ public final class Player extends Playable implements PlayerGroup
 				levelPassed = 80;
 			else if (oldLvl < 85 && _activeClass.getLevel() >= 85)
 				levelPassed = 85;
-			
-			switch (levelPassed)
-			{
-				case 20:
-				case 40:
-				case 60:
-				case 80:
-					CharacterEmails.newcomersReward(this, 250, levelPassed);
-			}
-			
-			// Referral System
-			if (_activeClass.getLevel() == 85)
-				CharacterEmails.referralReward(this);
 			
 			// Revita-Pop reward
 			if (_activeClass.getLevel() >= 40 && Rnd.get(3) == 0) // 33% for lv40 or above.
@@ -3553,7 +3516,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(IStaticPacket p)
 	{	
-		if(p == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(p == null || !isConnected() && (getAI() == null))
 			return;
 
 		if(isPacketIgnored(p.packet(this)))
@@ -3566,7 +3529,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(IStaticPacket... packets)
 	{
-		if(packets == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(packets == null || !isConnected() && (getAI() == null))
 			return;
 
 		for(IStaticPacket p : packets)
@@ -3599,7 +3562,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendPacket(List<? extends IStaticPacket> packets)
 	{
-		if(packets == null || !isConnected() && (getAI() == null || !getAI().isPhantomPlayerAI()))
+		if(packets == null || !isConnected() && (getAI() == null))
 			return;
 
 		for(IStaticPacket p : packets)
@@ -4374,9 +4337,6 @@ public final class Player extends Playable implements PlayerGroup
 			dropRate = _pkKills * Config.KARMA_DROPCHANCE_MOD + Config.KARMA_DROPCHANCE_BASE;
 		else
 			dropRate = Config.NORMAL_DROPCHANCE_BASE;
-
-		// Premium System
-		dropRate *= PremiumAccountsTable.getKarmaDrop(this);
 		
 		int dropEquipCount = 0, dropWeaponCount = 0, dropItemCount = 0;
 
@@ -4455,7 +4415,7 @@ public final class Player extends Playable implements PlayerGroup
 		Player player = getPlayer();
 		
 		// Check for active charm of luck for death penalty
-		if (player != null && !player.isPhantom())
+		if (player != null)
 			getDeathPenalty().checkCharmOfLuck();
 
 		if(isInStoreMode())
@@ -4504,24 +4464,6 @@ public final class Player extends Playable implements PlayerGroup
 		if (Config.ENABLE_PLAYER_COUNTERS)
 			getCounters().addPoint("_Times_Died");
 		
-		// playerkill - for the anti-feed system
-		if (Config.ENABLE_PVP_PK_LOG && getPlayer() != null && getPlayer().getHWID() != null && killer != null && killer.isPlayer() && killer.getPlayer().getHWID() != null)
-		{
-			Player pk = (Player) killer;
-			boolean isPvP = true;
-			
-			if (killer.getKarma() > 0)
-				isPvP = false;
-			
-			long lastKillTime = _killedHWIDs.get(getPlayer().getHWID()) == null ? 0 : _killedHWIDs.get(getPlayer().getHWID());
-			pk._killedHWIDs.put(getPlayer().getHWID(), System.currentTimeMillis());
-			KillLog kl = PlayerKillsLogManager.getInstance().new KillLog(pk, getPlayer(), System.currentTimeMillis(), lastKillTime, pk.checkIfKillIsFeed(this), NexusEvents.isInEvent(this), isPvP);
-			PlayerKillsLogManager.getInstance().addLog(getObjectId(), kl);
-		}
-				
-		if (!player.isPhantom())
-			getDeathPenalty().notifyDead(killer);
-
 		if (_event != null)
 			_event.doDie(killer, this);
 
@@ -4578,10 +4520,7 @@ public final class Player extends Playable implements PlayerGroup
 		
 		if(killer == null)
 			return;
-		
-		if (isPhantom())
-			return;
-		
+
 		final boolean atwar = killer.getPlayer() != null && atWarWith(killer.getPlayer());
 
 		double deathPenaltyBonus = getDeathPenalty().getLevel() * Config.ALT_DEATH_PENALTY_C5_EXPERIENCE_PENALTY;
@@ -5276,7 +5215,7 @@ public final class Player extends Playable implements PlayerGroup
 	public void reduceArrowCount()
 	{
 		sendPacket(SystemMsg.YOU_CAREFULLY_NOCK_AN_ARROW);
-		if(_arrowItem != null && (!Config.ALLOW_ARROW_INFINITELY || !PremiumAccountsTable.getPlayerInfinityShotsArrows(this)))
+		if(_arrowItem != null && (!Config.ALLOW_ARROW_INFINITELY))
 		{
 			if(!getInventory().destroyItemByObjectId(getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND), 1L))
 			{
@@ -5438,7 +5377,7 @@ public final class Player extends Playable implements PlayerGroup
 	@Override
 	public void sendChanges()
 	{
-		if(!isPhantom() && entering || isLogoutStarted())
+		if(entering || isLogoutStarted())
 			return;
 		
 		super.sendChanges();
@@ -5614,8 +5553,6 @@ public final class Player extends Playable implements PlayerGroup
 
 				player = new Player(objectId, template);
 
-				player.setIsPhantom(false, false);
-				
 				player.loadVariables();
 				player.loadInstanceReuses();
 				player.loadPremiumItemList();
@@ -6120,31 +6057,27 @@ public final class Player extends Playable implements PlayerGroup
 				statement.setInt(34, getObjectId());
 
 				statement.executeUpdate();
-				
-				if (!isPhantom())
-				{
-					if (Config.RATE_DROP_ADENA < 20)
-						GameStats.increaseUpdatePlayerBase();
-					
-					if (!fast)
-					{
-						CharacterGroupReuseDAO.getInstance().insert(this);
-						storeDisableSkills();
-						storeBlockList();
-					}
-					
-					if (Config.ENABLE_ACHIEVEMENTS)
-					{
-						getCounters().save();
-						saveAchivementsLevels();
-					}
-					
-					for (PlayerBuffProfile pbp : _profiles.values())
-						pbp.save(this);
-					
-					storeCharSubClasses();
-					_teleportBookmarks.store();
+
+				if (Config.RATE_DROP_ADENA < 20)
+					GameStats.increaseUpdatePlayerBase();
+
+				if (!fast) {
+					CharacterGroupReuseDAO.getInstance().insert(this);
+					storeDisableSkills();
+					storeBlockList();
 				}
+
+				if (Config.ENABLE_ACHIEVEMENTS) {
+					getCounters().save();
+					saveAchivementsLevels();
+				}
+
+				for (PlayerBuffProfile pbp : _profiles.values())
+					pbp.save(this);
+
+				storeCharSubClasses();
+				_teleportBookmarks.store();
+
 			}
 			catch(Exception e)
 			{
@@ -8360,9 +8293,6 @@ public final class Player extends Playable implements PlayerGroup
 		if(name == null)
 			return;
 
-		if (isPhantom())
-			return;
-		
 		PlayerVar pv = user_variables.remove(name);
 
 		if(pv != null)
@@ -8543,7 +8473,7 @@ public final class Player extends Playable implements PlayerGroup
 		if (player == null)
 			return Language.ENGLISH;
 		
-		if (player != null && player.isPhantom())
+		if (player != null)
 			return Language.ENGLISH;
 		
 		String lang = getVar("lang@");
@@ -8770,6 +8700,10 @@ public final class Player extends Playable implements PlayerGroup
 	public int getBaseClassId()
 	{
 		return _baseClass;
+	}
+
+	public ClassId getClassById() {
+		return ClassId.VALUES[getActiveClassId()];
 	}
 
 	public void setActiveClass(SubClass activeClass)
@@ -11054,7 +10988,6 @@ public final class Player extends Playable implements PlayerGroup
 		if(fame > _fame)
 		{
 			int added = fame - _fame;
-			added *= PremiumAccountsTable.getFameBonus(this);
 			fame = added + _fame;
 			sendPacket(new SystemMessage(SystemMessage.YOU_HAVE_ACQUIRED_S1_REPUTATION_SCORE).addNumber(added));
 		}
@@ -12886,7 +12819,7 @@ public final class Player extends Playable implements PlayerGroup
 				statement = con.prepareStatement("UPDATE `character_security` SET `password`=?, `changeDate`=?, `changeHWID`=?, `remainingTries`=? WHERE `charId`=?");
 				statement.setString(1, null);
 				statement.setLong(2, System.currentTimeMillis());
-				statement.setString(3, getHWID());
+				statement.setString(3, "-");
 				statement.setInt(4, 3); // 3 tries left on successful change
 				statement.setInt(5, getObjectId());
 			}
@@ -12896,12 +12829,12 @@ public final class Player extends Playable implements PlayerGroup
 				statement.setInt(1, getObjectId());
 				statement.setString(2, getSecurityPassword());
 				statement.setLong(3, System.currentTimeMillis());
-				statement.setString(4, getHWID());
+				statement.setString(4, "-");
 				
 				// On duplicate key - the char already has security set
 				statement.setString(5, getSecurityPassword());
 				statement.setLong(6, System.currentTimeMillis());
-				statement.setString(7, getHWID());
+				statement.setString(7, "-");
 			}
 			statement.executeUpdate();
 		}
@@ -12978,13 +12911,7 @@ public final class Player extends Playable implements PlayerGroup
 	{
 		return _profiles;
 	}
-	
-	public void delOlympiadIpHWID()
-	{
-		Olympiad.getOlyIPList().remove(getIP());
-		Olympiad.getOlyHwidList().remove(getHWID());
-	}
-	
+
 	public GameEvent getGameEvent()
 	{
 		return _event;
@@ -13211,19 +13138,6 @@ public final class Player extends Playable implements PlayerGroup
 			
 			if (i > 6)
 				return false;
-			
-			if (target.hasHWID() && target.hasTooManyRessurectionStacks())
-			{
-				// 20 min ban to this char for killing this target.
-				_killedHWIDs.put(target.getHWID(), System.currentTimeMillis() + 20 * 60000);
-				return true;
-			}
-			
-			if (Config.ANTIFEED_INTERVAL > 0 && target.hasHWID() && _killedHWIDs.containsKey(target.getHWID()))
-			{
-				if ((System.currentTimeMillis() - _killedHWIDs.get(target.getHWID())) < Config.ANTIFEED_INTERVAL) //multiplier
-					return true;
-			}
 		}
 		catch (NullPointerException npe)
 		{
@@ -13442,11 +13356,7 @@ public final class Player extends Playable implements PlayerGroup
 			{
 				maxBoxesAllowed--;
 			}
-			else if (player.hasHWID() && getClient().getAccountData() == null || getClient().getAccountData().accessLevel < 2 && getHWID().equalsIgnoreCase(player.getHWID())) // Account access 2 allows HWID dualbox bypass
-			{
-				maxBoxesAllowed--;
-			}
-			
+
 			if (maxBoxesAllowed < 0)
 				return true;
 		}
@@ -13810,22 +13720,6 @@ public final class Player extends Playable implements PlayerGroup
 		setCurrentMp(getMaxMp());
 	}
 	
-	private boolean _IsPhantom = false;
-	
-	public void setIsPhantom(boolean isPhantom, boolean hasAi)
-	{
-		_IsPhantom = isPhantom;
-		if (hasAi)
-			setAI(new PhantomPlayerAI(this));
-		else
-			setAI(new PlayerAI(this));
-	}
-	
-	public boolean isPhantom()
-	{
-		return _IsPhantom;
-	}
-
 	/**
 	 * To get an active premium player subscription
 	 * @return premium bonus object link
@@ -13950,5 +13844,27 @@ public final class Player extends Playable implements PlayerGroup
 	public boolean getPremiumBonusAbnormalEffectState()
 	{
 		return _premiumAbnormalEffectState;
+	}
+
+	/**
+	 * @return Exp rates from config and premium
+	 */
+	public double getConfigXPRateWithPremiumBonusXPRates() {
+		return Config.RATE_XP * _premiumBonus.getBonusExpRate();
+	}
+
+	/**
+	 * @return SP rates from config and premium
+	 */
+	public double getConfigSPRateWithPremiumBonusSPRates() {
+		return Config.RATE_SP * _premiumBonus.getBonusSpRate();
+	}
+
+	/**
+	 * @return drop rates from config and premium
+	 */
+	public double getConfigRaidDropChanceWithPremiumBonusRates()
+	{
+		return _premiumBonus.getBonusDropRate();
 	}
 }

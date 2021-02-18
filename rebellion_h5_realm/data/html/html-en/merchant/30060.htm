@@ -1,13 +1,31 @@
-!Trader Sabrin: People are still panic-stricken after the farmers
-rebelled in Dion a few years ago. With public order unstable, you must
-be responsible for your own safety! Our inventory is different than what
-is normally sold on Talking Island. We offer only the best weapons with
-which to protect your life. Why don't you take a look around and see if
-you find anything that catches your eye? [npc_%objectId%_Chat
-1|Buy/Sell/Refund.] [npc_%objectId%_Wear 9|Try on Fighter equipment.]
-
-[npc_%objectId%_Wear 10|Try on Mystic equipment.]
-
-[npc_%objectId%_TerritoryStatus|Ask about the local lord and tax rate.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Trader Sabrin:</font><br>
+People are still panic-stricken after the farmersrebelled in Dion a few years ago.<br1>
+With public order unstable, you mustbe responsible for your own safety! Our inventory is different than whatis normally sold on Talking Island.<br1>
+We offer only the best weapons withwhich to protect your life.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Chat1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Ask about the local lord and tax rate" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Fighter equipment" action="bypass -h npc_%objectId%_Wear 9" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Try on Mystic equipment" action="bypass -h npc_%objectId%_Wear 10" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

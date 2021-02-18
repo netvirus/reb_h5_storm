@@ -1,9 +1,19 @@
-!Mineral Trader Raban: No matter which blacksmith shop you visit in this
-kingdom, they'll all claim that their minerals are of the highest
-quality. Ha! That's ludicrous! What good is mass production if the same
-identically processed minerals have different qualities?
-
-[npc_%objectId%_Buy 202|Buy/Sell/Refund.]
-
-[npc_%objectId%_TerritoryStatus|"Who is the Lord of the manor and what
-is the tax rate?"] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Mineral Trader Raban:</font><br>
+No matter which blacksmith shop you visit in thiskingdom, they'll all claim that their minerals are of the highestquality.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Buy/Sell/Refund" action="bypass -h npc_%objectId%_Buy 202" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Who is the Lord of the manor and whatis the tax rate?" action="bypass -h npc_%objectId%_TerritoryStatus" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

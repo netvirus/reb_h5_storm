@@ -364,12 +364,13 @@ public class _416_PathToOrcShaman extends Quest implements ScriptFile
 	{
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
+		int questItemCountWithPremiumBonus = (int) Math.ceil(st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		for(int i = 0; i < DROPLIST_COND.length; i++)
 			if(cond == DROPLIST_COND[i][0] && npcId == DROPLIST_COND[i][2])
 				if(DROPLIST_COND[i][3] == 0 || st.getQuestItemsCount(DROPLIST_COND[i][3]) > 0)
 					if(DROPLIST_COND[i][5] == 0)
-						st.rollAndGive(DROPLIST_COND[i][4], DROPLIST_COND[i][7], DROPLIST_COND[i][6]);
-					else if(st.rollAndGive(DROPLIST_COND[i][4], DROPLIST_COND[i][7], DROPLIST_COND[i][7], DROPLIST_COND[i][5], DROPLIST_COND[i][6]))
+						st.rollAndGive(DROPLIST_COND[i][4], (DROPLIST_COND[i][7] * questItemCountWithPremiumBonus), DROPLIST_COND[i][6]);
+					else if(st.rollAndGive(DROPLIST_COND[i][4], (DROPLIST_COND[i][7] * questItemCountWithPremiumBonus), (DROPLIST_COND[i][7] * questItemCountWithPremiumBonus), DROPLIST_COND[i][5], DROPLIST_COND[i][6]))
 						if(DROPLIST_COND[i][1] != cond && DROPLIST_COND[i][1] != 0)
 							st.setCond(DROPLIST_COND[i][1]);
 		if(st.getQuestItemsCount(KashaBearPelt) != 0 && st.getQuestItemsCount(KashaBladeSpiderHusk) != 0 && st.getQuestItemsCount(FieryEgg1st) != 0)

@@ -1,16 +1,46 @@
-!Newbie Guide: Welcome! You are an Orc who has pledged loyalty to Flame
-Lord Kakai! I am a warrior of Atuba, the tribe of wolves. I'm in charge
-of educating novices like you. Whenever I feel you're ready, I'll teach
-you what you need to learn! If you want to become a powerful Orc hero on
-the Immortal Plateau, you'll have to pay attention to my advice.
-
-[npc_%objectId%_Chat 1|Ask for advice.] [npc_%objectId%_Link
-default/NPCloc/30602.htm|NPC location guide.]
-
-[scripts_services.SupportMagic:getSupportMagic|Give me some support
-magic.] [player_help default/newbie_travel.htm|Teleport to starting
-village of another race.] [npc_%objectId%_Chat 12|Tell me about novice
-characters.] [npc_%objectId%_Chat 20|Recive blessing of protection.]
-
-[npc_%objectId%_Link default/newbie_items.htm|Ask for help with a newbie
-item.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Newbie Guide:</font><br>
+Welcome! You are an Orc who has pledged loyalty to FlameLord Kakai! I am a warrior of Atuba, the tribe of wolves.<br1>
+I'm in chargeof educating novices like you.<br1>
+Whenever I feel you're ready, I'll teachyou what you need to learn! If you want to become a powerful Orc hero onthe Immortal Plateau, you'll have to pay attention to my advice.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Recive blessing of protection" action="bypass -h npc_%objectId%_Chat 20" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="NPC location guide" action="bypass -h npc_%objectId%_Linkdefault/NPCloc/30602.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell me about novicecharacters" action="bypass -h npc_%objectId%_Chat 12" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport to startingvillage of another race" action="bypass -h player_help default/newbie_travel.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask for advice" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Give me some supportmagic" action="bypass -h scripts_services.SupportMagic:getSupportMagic" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask for help with a newbieitem" action="bypass -h npc_%objectId%_Link default/newbie_items.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

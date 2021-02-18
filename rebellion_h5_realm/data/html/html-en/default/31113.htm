@@ -1,9 +1,21 @@
-!Merchant of Mammon: May you receive the blessings of Mammon! We of the
-Mammon Guild have come far to show you some exquisite items!Before you
-start shopping there are a few things I should tell you... We don't
-accept today's currency, but instead use only *ancient adena*. Also, if
-you wish to purchase an enchanted scroll, you must bring a *blank
-scroll*. [npc_%objectId%_Quest 2004_mammerch|I Wish to Buy Something]
-
-[npc_%objectId%_Chat 1|Tell Me About Ancient Adena] [npc_%objectId%_Chat
-2|Tell Me About Blank Scrolls]
+<font color="FF8000">Merchant of Mammon:</font><br>
+May you receive the blessings of Mammon! We of theMammon Guild have come far to show you some exquisite items!Before youstart shopping there are a few things I should tell you.<br1>
+We don'taccept today's currency, but instead use only *ancient adena*.<br1>
+Also, ifyou wish to purchase an enchanted scroll, you must bring a *blankscroll*.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="I Wish to Buy Something" action="bypass -h npc_%objectId%_Quest 2004_mammerch" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell Me About Ancient Adena" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Tell Me About Blank Scrolls" action="bypass -h npc_%objectId%_Chat2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

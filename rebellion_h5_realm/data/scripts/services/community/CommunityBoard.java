@@ -5,7 +5,6 @@ import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.achievements.PlayerTops;
 import l2r.gameserver.auction.AuctionManager;
 import l2r.gameserver.cache.Msg;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
 import l2r.gameserver.data.xml.holder.BuyListHolder.NpcTradeList;
@@ -13,6 +12,7 @@ import l2r.gameserver.data.xml.holder.MultiSellHolder;
 import l2r.gameserver.data.xml.parser.PremiumSystemOptionsData;
 import l2r.gameserver.handler.bbs.CommunityBoardManager;
 import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
+import l2r.gameserver.instancemanager.CommunityBoardPremiumAccountManager;
 import l2r.gameserver.instancemanager.ServerVariables;
 import l2r.gameserver.model.Creature;
 import l2r.gameserver.model.Player;
@@ -39,7 +39,6 @@ import l2r.gameserver.utils.TimeUtils;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
@@ -143,7 +142,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		{
 			if (Config.ENABLE_DONATE_PAGE)
 			{
-				html = CommunityBoardPremiumAccount.getInstance().getAction(player, "list");
+				html = CommunityBoardPremiumAccountManager.getInstance().getAction(player, "list");
 			}
 		}
 		else if(bypass.startsWith("_bbspage"))
@@ -273,7 +272,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
     		}
          		
 			// Custom
-			if (!PremiumAccountsTable.getGmShopOutsidePeace(player) && !player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
+			if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE))
 			{
 				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Shop", (player.isLangRus() ? "Вы должны быть внутри города или ClanHall воспользоваться услугами магазина." : "You must be inside Town or ClanHall to use the shop."));
 				return;
@@ -546,16 +545,16 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 		if(player.getClan() != null)
 			clanName = player.getClan().getName() + " (" + player.getClan().getLevel() + " лвл)";
 		html = html.replace("%playerClan%", "" + clanName);
-		html = html.replace("%noble%", player.isNoble() ? "Почетный дворянин" : "Все еще впереди");
+		html = html.replace("%noble%", player.isNoble() ? "Почетный дворянин" : "Все еще впереди...");
 		html = html.replace("%playerIP%", "" + player.getIP());
 
 		if (player.getPlayerAnyActivePremiumType()) {
 			PremiumBonus premiumBonus = PremiumSystemOptionsData.getInstance().findById(player.getPremiumBonus().getBonusId());
-			html = html.replace("%premium%", "Да");
-			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + premiumBonus.getBonusName() + "</font> - " + TimeUtils.minutesToFullString((int) (premiumBonus.getBonusDuration() / 60000), true, true, true, false) + " left.");
+			html = html.replace("%premium%", premiumBonus.getBonusName());
+			html = html.replace("%premiumData%", "<font color=\"D7DF01\">" + TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000) + "</font>" );
 		} else {
-			html = html.replace("%premium%", "Не имеется");
-			html = html.replace("%premiumData%", "Не имеется");
+			html = html.replace("%premium%", "Нет");
+			html = html.replace("%premiumData%", "Нет");
 		}
 
 		return html;

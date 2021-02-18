@@ -1,4 +1,19 @@
-!Teleport Device: It's a teleporter where one can travel around space.
-
-[npc_%objectId%_04_up|Go upstairs.] [npc_%objectId%_04_down|Go
-downstairs.] [npc_%objectId%_facedemon|Face Demon Prince.]
+<font color="FF8000">Teleport Device:</font><br>
+It's a teleporter where one can travel around space.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Face Demon Prince" action="bypass -h npc_%objectId%_facedemon" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Godownstairs" action="bypass -h npc_%objectId%_04_down" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Go upstairs" action="bypass -h npc_%objectId%_04_up" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

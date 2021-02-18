@@ -1,13 +1,23 @@
-Master Yogi: Hello child, and welcome. My name is Master Yogi, and I
-have come back to the lands of Aden and Elmore in possession of much
-knowledge and enlightenment. I have long walked the way of the ascetic
-and have only returned from my sojourn to share my wisdom with you. With
-me, I bring a new event. And through this event, you too will learn the
-secrets and mysteries surrounding enchantment.
-<br>
-<br>
-[npc_%objectId%_Chat 1|Ask about the event.] [npc_%objectId%_Chat
-3|Participate in the event.]
-
-[scripts_events.MasterOfEnchanting.EnchantingReward:receive_reward|Receive
-reward.]
+<font color="FF8000">Master Yogi:</font><br>
+Hello child, and welcome.<br1>
+My name is Master Yogi, and Ihave come back to the lands of Aden and Elmore in possession of muchknowledge and enlightenment.<br1>
+I have long walked the way of the asceticand have only returned from my sojourn to share my wisdom with you.<br1>
+Withme, I bring a new event.<br1>
+And through this event, you too will learn thesecrets and mysteries surrounding enchantment.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the event" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Participate in the event" action="bypass -h npc_%objectId%_Chat3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Receivereward" action="bypass -h scripts_events.MasterOfEnchanting.EnchantingReward:receive_reward" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

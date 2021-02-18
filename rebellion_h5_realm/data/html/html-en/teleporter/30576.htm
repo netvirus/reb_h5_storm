@@ -1,18 +1,34 @@
-Gatekeeper Tamil: Do you know Oren's Ivory Tower? I am one of the few
-Orcs to be inducted into the Gatekeeper Guild? Ah, you don't know of
-what I speak? How can you be ignorant about the center of magic, where
-the most brilliant wizards of our age gather? Ah, I finally see the
-dawning of respect in your eyes. Now, are you ready to experience the
-power of our magic?
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|Noblesse Exclusive Teleport]
-
-[scripts_Util:QuestGatekeeper -80684 149770 -3040 1 1658|Teleport using Gatekeeper's Amulet.]
-
-[scripts_services.Birthday:summonAlegria|Summon Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Gatekeeper Tamil:</font><br>
+Do you know Oren's Ivory Tower? I am one of the fewOrcs to be inducted into the Gatekeeper Guild? Ah, you don't know ofwhat I speak? How can you be ignorant about the center of magic, wherethe most brilliant wizards of our age gather? Ah, I finally see thedawning of respect in your eyes.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport using Gatekeeper's Amulet" action="bypass -h scripts_Util:QuestGatekeeper -80684 149770 -3040 1 1658" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Noblesse Exclusive Teleport" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Summon Alegria" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

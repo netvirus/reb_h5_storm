@@ -9,21 +9,13 @@ import l2r.gameserver.network.loginservercon.gspackets.ChangePassword;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
 import l2r.gameserver.network.serverpackets.components.ChatType;
 import l2r.gameserver.network.serverpackets.components.CustomMessage;
-import l2r.gameserver.randoms.CharacterIntro;
 import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.utils.Log;
 
-import gov.nasa.worldwind.util.StringUtil;
-
 import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class Password extends Functions implements IVoicedCommandHandler
 {
@@ -146,43 +138,8 @@ public class Password extends Functions implements IVoicedCommandHandler
 		
 		AuthServerCommunication.getInstance().sendPacket(new ChangePassword(activeChar.getAccountName(), parts[0], parts[1], "null"));
 		show(new CustomMessage("scripts.commands.user.password.ResultTrue", activeChar), activeChar);
-		Log.addGame("Player " + activeChar.getName() + " with account: " + activeChar.getAccountName() + " IP: " + activeChar.getClient().getIpAddr() + " HWID: " + (activeChar.hasHWID() ? activeChar.getHWID() : "hwid is null") + " has changed his password from ( " + parts[0] + " ) to ( " + parts[1] +  " )", "ChangePassword");
+		Log.addGame("Player " + activeChar.getName() + " with account: " + activeChar.getAccountName() + " IP: " + activeChar.getClient().getIpAddr() + " has changed his password from ( " + parts[0] + " ) to ( " + parts[1] +  " )", "ChangePassword");
 		
-		// Send email to the user about the password change.
-		if (Config.ENABLE_ON_PASSWORD_CHANGE)
-		{
-			String email = CharacterIntro.getEmail(activeChar);
-
-			if (email == null)
-				email = "";
-
-			if (!email.equals(StringUtil.EMPTY))
-			{
-				try
-				{
-					StringBuilder sb = new StringBuilder();
-					sb.append("This is an automated notification regarding the recent change(s) made to your character: " + activeChar.getName() + " \n\n");
-
-					sb.append("Your password for account " + activeChar.getAccountName() + " has been changed!  \n\n");
-					sb.append("If you made this password change, please disregard this notification. If you did not change your password, please contact the administrator. This action was performed from IP: " + activeChar.getClient().getIpAddr() + ".\n");
-
-					sb.append("L2-Rain \n");
-
-					Message message = new MimeMessage(SESSION);
-					message.setFrom(new InternetAddress(Config.SMTP_EMAIL_ADDR_SENDER));
-					message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-					message.setSubject("Account Password Changed");
-					message.setText(sb.toString());
-
-					Transport.send(message);
-				}
-				catch (MessagingException e)
-				{
-					throw new RuntimeException(e);
-				}
-			}
-		}
-				
 		return true;
 	}
 }

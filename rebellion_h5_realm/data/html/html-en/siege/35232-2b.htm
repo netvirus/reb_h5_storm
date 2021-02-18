@@ -1,6 +1,14 @@
-!Sir Sherwood: How can I help you?
-
-[npc_%objectId%_siege_list_siege_clans 4|View a list of clan]
-
-[npc_%objectId%_siege_withdraw_request 4|Not no longer be accessed under
-siege]
+<font color="FF8000">Sir Sherwood:</font><br>
+How can I help you?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="View a list of clan" action="bypass -h npc_%objectId%_siege_list_siege_clans 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Not no longer be accessed undersiege" action="bypass -h npc_%objectId%_siege_withdraw_request 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

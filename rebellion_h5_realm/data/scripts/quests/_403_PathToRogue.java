@@ -227,6 +227,7 @@ public class _403_PathToRogue extends Quest implements ScriptFile
 		int npcId = npc.getNpcId();
 		int cond = st.getCond();
 		int netis_cond = st.getInt("netis_cond");
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(netis_cond == 1 && st.getItemEquipped(Inventory.PAPERDOLL_RHAND) == NETIS_BOW_ID || st.getItemEquipped(Inventory.PAPERDOLL_RHAND) == NETIS_DAGGER_ID)
 		{
 			Functions.npcSay(npc, "I must do something about this shameful incident...");
@@ -236,8 +237,8 @@ public class _403_PathToRogue extends Quest implements ScriptFile
 					for(int[] element : MobsTable)
 						if(npcId == element[0] && Rnd.chance(10 * element[1]) && st.getQuestItemsCount(SPATOIS_BONES_ID) < 10)
 						{
-							st.giveItems(SPATOIS_BONES_ID, 1);
-							if(st.getQuestItemsCount(SPATOIS_BONES_ID) == 10)
+							st.giveItems(SPATOIS_BONES_ID, questItemCountWithPremiumBonus);
+							if(st.getQuestItemsCount(SPATOIS_BONES_ID) >= 10)
 							{
 								st.playSound(SOUND_MIDDLE);
 								st.setCond(3);
@@ -253,7 +254,7 @@ public class _403_PathToRogue extends Quest implements ScriptFile
 							int n = Rnd.get(4);
 							if(st.getQuestItemsCount(STOLEN_ITEM[n]) == 0)
 							{
-								st.giveItems(STOLEN_ITEM[n], 1);
+								st.giveItems(STOLEN_ITEM[n], questItemCountWithPremiumBonus);
 								if(st.getQuestItemsCount(STOLEN_JEWELRY_ID) + st.getQuestItemsCount(STOLEN_TOMES_ID) + st.getQuestItemsCount(STOLEN_RING_ID) + st.getQuestItemsCount(STOLEN_NECKLACE_ID) < 4)
 									st.playSound(SOUND_ITEMGET);
 								else

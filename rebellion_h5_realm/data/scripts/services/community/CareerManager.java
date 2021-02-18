@@ -1,7 +1,6 @@
 package services.community;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.dao.PremiumAccountsTable;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.ItemHolder;
 import l2r.gameserver.handler.bbs.CommunityBoardManager;
@@ -834,25 +833,17 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 			player.sendMessage(new CustomMessage("scripts.services.community.careermanager.cannot_use_in_jail", player));
 			return false;
 		}
-		
-		if (PremiumAccountsTable.getCareerOutsidePeace(player))
-		{
-			if (player.getReflectionId() != ReflectionManager.DEFAULT_ID || NexusEvents.isRegistered(player) ||  NexusEvents.isInEvent(player) || player.isInOlympiadMode())
-			{
-				player.sendMessage("You cannot use this option while in an instance, olympiad or event.");
-				return false;
-			}
+
+		if (player.getReflectionId() != ReflectionManager.DEFAULT_ID || NexusEvents.isRegistered(player) || NexusEvents.isInEvent(player) || player.isInOlympiadMode()) {
+			player.sendMessage("You cannot use this option while in an instance, olympiad or event.");
+			return false;
 		}
-		else
-		{		
-			if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE) || NexusEvents.isRegistered(player) || NexusEvents.isInEvent(player) || player.isInOlympiadMode())
-			{
-				player.sendChatMessage(0, ChatType.TELL.ordinal(), "Career Manager", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
-				return false;
-			}
+		if (!player.isInZone(ZoneType.peace_zone) && !player.isInZone(ZoneType.RESIDENCE) || NexusEvents.isRegistered(player) || NexusEvents.isInEvent(player) || player.isInOlympiadMode()) {
+			player.sendChatMessage(0, ChatType.TELL.ordinal(), "Career Manager", (player.isLangRus() ? "Вы должны быть в зону мира, чтобы использовать эту функцию." : "You must be inside peace zone to use this function."));
+			return false;
 		}
-		
-		if(!Config.USE_BBS_PROF_IS_COMBAT && (player.getPvpFlag() != 0 || player.isInDuel() || player.isInCombat() || player.isAttackingNow()))
+
+		if(player.getPvpFlag() != 0 || player.isInDuel() || player.isInCombat() || player.isAttackingNow())
 		{
 			player.sendMessage(new CustomMessage("scripts.services.community.careermanager.cannot_use_during_combat", player));
 			return false;

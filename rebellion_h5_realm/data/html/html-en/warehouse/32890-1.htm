@@ -1,5 +1,25 @@
-РЎРјРѕС‚СЂРёС‚РµР»СЊ РЎРєР»Р°РґР° Р СѓР№РјР°РЅ: *[Р›РёС‡РЅС‹Р№ СЃРєР»Р°Рґ]*
-
-[npc_%objectId%_DepositP|РџРѕР»РѕР¶РёС‚СЊ РїСЂРµРґРјРµС‚] [npc_%objectId%_WithdrawP
-0|Р—Р°Р±СЂР°С‚СЊ РїСЂРµРґРјРµС‚ (РЎРїРёСЃРѕРє)] [npc_%objectId%_WithdrawP 99|Р—Р°Р±СЂР°С‚СЊ РїСЂРµРґРјРµС‚
-(Р’С‹Р±РѕСЂ)] [npc_%objectId%_Chat 0|РќР°Р·Р°Рґ]
+<font color="FF8000">Смотритель Склада Руйман:</font><br>
+**<br1>
+[Личный склад]<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Забрать предмет(Выбор)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Назад" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Положить предмет" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Забрать предмет (Список)" action="bypass -h npc_%objectId%_WithdrawP0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

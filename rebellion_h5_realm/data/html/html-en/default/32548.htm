@@ -1,10 +1,27 @@
-!Keucereus: Are you an adventurer from Aden? Many of your comrades have
-already traveled here. I am truly grateful. Despite our lands' ancient
-hostility towards each other, it warms my heart to see these new bonds
-of friendship form between us. With your help, I hope to restore Gracia
-to its former glory... [npc_%objectId%_Chat 1|Ask about the current
-situation in Gracia.] [npc_%objectId%_Chat 2|Ask about the Seed.]
-
-[npc_%objectId%_Chat 3|Ask about the occupation status of the Seed.]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Keucereus:</font><br>
+Are you an adventurer from Aden? Many of your comrades havealready traveled here.<br1>
+I am truly grateful.<br1>
+Despite our lands' ancienthostility towards each other, it warms my heart to see these new bondsof friendship form between us.<br1>
+With your help, I hope to restore Graciato its former glory.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the currentsituation in Gracia" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the occupation status of the Seed" action="bypass -h npc_%objectId%_Chat 3" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about the Seed" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

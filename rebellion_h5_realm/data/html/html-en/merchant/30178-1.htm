@@ -1,6 +1,29 @@
-!Trader Zenkin: What would you like to trade? [npc_%objectId%_Buy
-51|Trade Warrior Equipment.] [npc_%objectId%_Buy 52|Trade Wizard
-Equipment.] [npc_%objectId%_Buy 30178001|Trade Common Items for
-Warriors.] [npc_%objectId%_Buy 30178002|Trade Common Items for Wizards.]
-
-[npc_%objectId%_Multisell 200|Trade a Shadow Item.]
+<font color="FF8000">Trader Zenkin:</font><br>
+What would you like to trade?<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade Common Items for Wizards" action="bypass -h npc_%objectId%_Buy 30178002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade Warrior Equipment" action="bypass -h npc_%objectId%_Buy 51" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade Common Items forWarriors" action="bypass -h npc_%objectId%_Buy 30178001" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade a Shadow Item" action="bypass -h npc_%objectId%_Multisell 200" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+   <tr>
+     <td FIXWIDTH=90 align=center>
+        <button value="Trade WizardEquipment" action="bypass -h npc_%objectId%_Buy 52" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+     </td>
+   </tr>
+</table>

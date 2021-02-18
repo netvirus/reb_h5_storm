@@ -8,16 +8,16 @@ public class Payment {
     private int _id;
     private String _recipient;
     private int _amount;
-    private int _payDate;
-    private int _status;
+    private String _dateComplete;
+    private boolean _delivered;
 
-    public Payment(int id, String recipient, int amount, int payDate, int status)
+    public Payment(int id, String recipient, int amount, String dateComplete, boolean delivered)
     {
         this._id = id;
         this._recipient = recipient;
         this._amount = amount;
-        this._payDate = payDate;
-        this._status = status;
+        this._dateComplete = dateComplete;
+        this._delivered = delivered;
     }
 
     public int getId()
@@ -45,23 +45,14 @@ public class Payment {
         _amount = amount;
     }
 
-    public int getPayDate()
-    {
-        return _payDate;
-    }
+    public String getDateComplete() { return _dateComplete; }
 
-    public void setPayDate(int payDate)
-    {
-        _payDate = payDate;
-    }
+    public void setDateComplete(String dateComplete) { _dateComplete = dateComplete; }
 
-    public int getStatus()
-    {
-        return _status;
-    }
+    public boolean getDeliveryStatus() { return _delivered; }
 
-    public void setStatus(int status)
+    public void setDeliveryStatus(boolean status)
     {
-        _status = status;
+        _delivered = status;
     }
 }

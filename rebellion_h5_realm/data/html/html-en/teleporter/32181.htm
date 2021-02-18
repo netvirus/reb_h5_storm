@@ -1,8 +1,15 @@
-Gatekeeper Mellon: Welcome to the heart of the Kamael homeland. From
-here, you may only go directly to Kamael Village if you are an
-adventurer lower than level 20. What would you like to do? Will you go
-back?
-
-[npc_%objectId%_Tele20Lvl 1|Go to the village]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Gatekeeper Mellon:</font><br>
+Welcome to the heart of the Kamael homeland.<br1>
+Fromhere, you may only go directly to Kamael Village if you are anadventurer lower than level 20.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Go to the village" action="bypass -h npc_%objectId%_Tele20Lvl 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

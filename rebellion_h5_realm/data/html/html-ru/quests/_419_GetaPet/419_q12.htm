@@ -1,8 +1,29 @@
-﻿!Question: Обладатель питомца может выполнять различные действия с ним.
-Как *нельзя* использовать питомца? [Quest _419_GetaPet
-wrong|Используется для транспортировки вещей.] [Quest _419_GetaPet
-wrong|Помогает атаковать и делает охоту более легкой. ] [Quest
-_419_GetaPet right|Его можно посылать в город за покупками.] [Quest
-_419_GetaPet wrong|Если у вас нет денег вы можете продать питомца.]
-
-[Quest _419_GetaPet wrong|Нет ответа]
+<font color="36DC25">﻿Question:</font><br>
+Обладатель питомца может выполнять различные действия с ним.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Используется для транспортировки вещей" action="bypass -h Quest _419_GetaPetwrong" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Если у вас нет денег вы можете продать питомца" action="bypass -h Quest_419_GetaPet wrong" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Помогает атаковать и делает охоту более легкой" action="bypass -h Quest _419_GetaPetwrong" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Его можно посылать в город за покупками" action="bypass -h Quest_419_GetaPet right" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Нет ответ" action="bypass -h Quest _419_GetaPet wrong" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

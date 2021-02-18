@@ -1,14 +1,30 @@
-Gatekeeper Mirabel: The Elves once thought that this forest was the
-whole world, when in reality it is only a very small part of the vast
-continent. If you wish to see that wider world, we Gatekeepers can help
-you do so.
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|Noblesse Exclusive Teleport]
-
-[scripts_services.Birthday:summonAlegria|Summon Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Gatekeeper Mirabel:</font><br>
+The Elves once thought that this forest was thewhole world, when in reality it is only a very small part of the vastcontinent.<br1>
+If you wish to see that wider world, we Gatekeepers can helpyou do so.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Noblesse Exclusive Teleport" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Summon Alegria" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

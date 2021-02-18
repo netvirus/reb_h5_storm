@@ -1,6 +1,24 @@
-Warehouse Keeper Dorankus: What do you want to do?
-
-<center>[npc_%objectId%_DepositP|Deposit item in a Private
-	Warehouse.] [npc_%objectId%_WithdrawP 0|Withdraw item from a Private
-	Warehouse. (List all)] [npc_%objectId%_WithdrawP 99|Withdraw item from
-	a Private Warehouse. (Select)] [npc_%objectId%_Chat 0|Back]</center>
+<font color="FF8000">Warehouse Keeper Dorankus:</font><br>
+What do you want to do?<center>   </center><br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Withdraw item from	a Private Warehouse (Select)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Withdraw item from a Private	Warehouse (List all)" action="bypass -h npc_%objectId%_WithdrawP 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Deposit item in a Private	Warehouse" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Back" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,9 +1,23 @@
-Sorcerer Dieter: You who search for the truth of magic, welcome. I
-perceive a strong passion for knowledge in your eyes... Yes, one must
-truly desire learning in order to become a potent Mystic. However, there
-are those who become blinded by their greed for knowledge, who begin
-studying forbidden magic.Excessive curiosity can lead to destruction.
-You must be careful to bridle your passion! Well then, shall we begin
-the lesson? [npc_%objectId%_Chat 1|Ask about Forbidden Magic]
-
-[npc_%objectId%_SkillList|Learn Skills] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Sorcerer Dieter:</font><br>
+You who search for the truth of magic, welcome.<br1>
+Iperceive a strong passion for knowledge in your eyes.<br1>
+Yes, one musttruly desire learning in order to become a potent Mystic.<br1>
+However, thereare those who become blinded by their greed for knowledge, who beginstudying forbidden magic.<br1>
+Excessive curiosity can lead to destruction.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about Forbidden Magic" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn Skills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

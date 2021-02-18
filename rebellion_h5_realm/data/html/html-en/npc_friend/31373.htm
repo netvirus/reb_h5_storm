@@ -1,6 +1,19 @@
-!Grocer Atan: Come on in, comrade of Ketra! I'm responsible for
-providing supplies to the honorable warriors of our tribe. Under special
-orders from the chief of our tribe, I can now offer supplies to
-outsiders like you! [npc_%objectId%_Buy 169|Buy]
-
-[npc_%objectId%_Sell|Sell] [npc_%objectId%_Quest|Quest]
+<font color="FF8000">Grocer Atan:</font><br>
+Come on in, comrade of Ketra! I'm responsible forproviding supplies to the honorable warriors of our tribe.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Sell" action="bypass -h npc_%objectId%_Sell" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy" action="bypass -h npc_%objectId%_Buy 169" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

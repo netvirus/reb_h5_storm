@@ -1,9 +1,35 @@
-Warehouse Keeper Durin: For the last century, Rune Township's warehouse
-has not lost a single item. Not even one! How about that? The Iron
-Guild's management record is beyond reproach. Why not trust us with your
-valuables? [npc_%objectId%_Chat 1|Private Warehouse.]
-
-[npc_%objectId%_Chat 2|Clan Warehouse.] [npc_%objectId%_SkillList|Learn
-Skills.] [npc_%objectId%_Link common/skillenchant_help.htm|Ask about
-Skill Enchanting.] [npc_%objectId%_Multisell 631|Buy an item using Cube
-Fragments.] [npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Warehouse Keeper Durin:</font><br>
+For the last century, Rune Township's warehousehas not lost a single item.<br1>
+Not even one! How about that? The IronGuild's management record is beyond reproach.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buy an item using CubeFragments" action="bypass -h npc_%objectId%_Multisell 631" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="LearnSkills" action="bypass -h npc_%objectId%_SkillList" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask aboutSkill Enchanting" action="bypass -h npc_%objectId%_Link common/skillenchant_help.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan Warehouse" action="bypass -h npc_%objectId%_Chat 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

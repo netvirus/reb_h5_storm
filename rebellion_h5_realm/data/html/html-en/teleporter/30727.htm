@@ -1,17 +1,29 @@
-Gatekeeper Verona: Greetings, seeker of knowledge! Welcome to the Ivory
-Tower, that venerable repository of mystical secrets. I am Verona,
-Gatekeeper of the Tower. The Ivory Tower consists of several floors,
-each of which is completely separated from the others. To travel from
-one floor to another, you must use the services of a gatekeeper like
-myself. You are currently standing in the first floor lobby. There is a
-shopping center in the basement, the Human Wizard Guild is on level 2,
-the Elven Wizard Guild is on level 3, and the Dark Wizard Guild is on
-level 4. Where do you wish to go?
-
-[npc_%objectId%_Teleport 1|Teleport.]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[npc_%objectId%_Teleport 2|Go to another floor.]
-
-[npc_%objectId%_Quest|Quest.]
+<font color="FF8000">Gatekeeper Verona:</font><br>
+Greetings, seeker of knowledge! Welcome to the IvoryTower, that venerable repository of mystical secrets.<br1>
+I am Verona,Gatekeeper of the Tower.<br1>
+The Ivory Tower consists of several floors,each of which is completely separated from the others.<br1>
+To travel fromone floor to another, you must use the services of a gatekeeper likemyself.<br1>
+You are currently standing in the first floor lobby.<br1>
+There is ashopping center in the basement, the Human Wizard Guild is on level 2,the Elven Wizard Guild is on level 3, and the Dark Wizard Guild is onlevel 4.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Go to another floor" action="bypass -h npc_%objectId%_Teleport 2" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

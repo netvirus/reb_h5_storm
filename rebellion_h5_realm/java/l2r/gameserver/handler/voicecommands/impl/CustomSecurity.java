@@ -13,7 +13,6 @@ import l2r.gameserver.network.serverpackets.CharacterSelectionInfo;
 import l2r.gameserver.network.serverpackets.NpcHtmlMessage;
 import l2r.gameserver.network.serverpackets.RestartResponse;
 import l2r.gameserver.network.serverpackets.components.ChatType;
-import l2r.gameserver.randoms.CharacterIntro;
 import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.utils.AutoBan;
 import l2r.gameserver.utils.TimeUtils;
@@ -245,93 +244,90 @@ public class CustomSecurity extends Functions implements IVoicedCommandHandler
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					if (newpass.startsWith("1234") || newpass.startsWith("1111") || newpass.startsWith("0000"))
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Ваш пароль слишком легко угадать. Пожалуйста, используйте более сложную пароль!" : "Your password is too easy to guess. Please use more difficult password!"));
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					if (newpass.equalsIgnoreCase(activeChar.getAccountName()))
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Пароль безопасность не может быть таким же, как ваш счет ID." : "The security password cannot be the same as your account ID."));
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					if (newpass.equalsIgnoreCase(activeChar.getName()))
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Пароль безопасность не может быть таким же, как имя персонажа." : "The security password cannot be the same as your character name."));
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					if (newpass.length() < 4)
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Пароль должен быть длиннее 4 символов! Пожалуйста, используйте более длинный пароль." : "The password has to be longer than 4 chars! Please use longer password."));
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					if (newpass.length() > 16)
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Пароль не может быть длиннее, чем 16 символов. Пожалуйста, используйте более короткий пароль." : "The password cannot be longer than 16 chars. Please use a shorter password."));
 						activeChar.sendPacket(html);
 						return false;
 					}
-					
+
 					MessageDigest md = MessageDigest.getInstance("SHA");
-					
+
 					byte[] raw = newpass.getBytes("UTF-8");
 					raw = md.digest(raw);
 					String newpassEnc = Base64.encodeBytes(raw);
-					
+
 					String accPassword = CharacterDAO.getInstance().getAccountPassword(activeChar.getAccountName());
-					
+
 					String passwordHash = encrypt(newpass);
-					
+
 					if (accPassword.equals(passwordHash))
 					{
 						activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", "The security password cannot match your login password.");
 						activeChar.sendPacket(html);
 						return false;
 					}
-				
+
 					activeChar.setSecurityPassword(newpassEnc);
 					activeChar.saveSecurity();
 					activeChar.setSecurity(false);
-					
+
 
 					activeChar.sendChatMessage(0, ChatType.TELL.ordinal(), "SECURITY", (activeChar.isLangRus() ? "Вы успешно установить пароль!" : "You have successfully set your character password!"));
-					
+
 					activeChar.sendPacket(html.setFile("mods/CustomSecurityMain.htm"));
-					
+
 					// Send E-mail about the security password.
 					if (Config.ENABLE_ON_SECURITY_PASSWORD_CHANGE)
 					{
-						String email = CharacterIntro.getEmail(activeChar);
-						
-						if (email == null)
-							email = "";
-						
+						String email = "";
+
 						if (!email.equals(StringUtils.EMPTY))
 						{
 							try
 							{
 								StringBuilder sb = new StringBuilder();
 								sb.append("This is an automated notification regarding the recent change(s) made to your character: " + activeChar.getName() + " \n\n");
-								
+
 								sb.append("You have enabled password protection for character " + activeChar.getName() + " \n\n");
-								
+
 								sb.append("L2-Rain \n");
-								
+
 								Message message = new MimeMessage(SESSION);
 								message.setFrom(new InternetAddress(Config.SMTP_EMAIL_ADDR_SENDER));
 								message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 								message.setSubject("L2-Rain - Character Security Password Notice");
 								message.setText(sb.toString());
-								
+
 								Transport.send(message);
 							}
 							catch (MessagingException e)
@@ -454,11 +450,8 @@ public class CustomSecurity extends Functions implements IVoicedCommandHandler
 						// Send E-mail about the security password.
 						if (Config.ENABLE_ON_SECURITY_PASSWORD_CHANGE)
 						{
-							String email = CharacterIntro.getEmail(activeChar);
-							
-							if (email == null)
-								email = "";
-							
+							String email = "";
+
 							if (!email.equals(StringUtil.EMPTY))
 							{
 								try
@@ -524,11 +517,8 @@ public class CustomSecurity extends Functions implements IVoicedCommandHandler
 			// Send E-mail about the security password.
 			if (Config.ENABLE_ON_SECURITY_PASSWORD_CHANGE)
 			{
-				String email = CharacterIntro.getEmail(activeChar);
-				
-				if (email == null)
-					email = "";
-				
+				String email = "";
+
 				if (!email.equals(StringUtil.EMPTY))
 				{
 					try

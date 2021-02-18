@@ -1,11 +1,30 @@
-!Grand Master Valpor: Your curiosity must have brought you here. Unless
-you have some business with me? If you have advanced beyond the
-occupational limits as a Kamael, perhaps I can help...
-
-[scripts_services.villagemasters.Occupation:onTalk32146|Ask about 2nd
-class transfer.] [npc_%objectId%_Link villagemaster/subclass_01.htm|Sub
-Class.] [npc_%objectId%_Link villagemaster/clan-01.htm|Clan]
-
-[npc_%objectId%_Link villagemaster/ally-01.htm|Alliance]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Grand Master Valpor:</font><br>
+Your curiosity must have brought you here.<br1>
+Unlessyou have some business with me? If you have advanced beyond theoccupational limits as a Kamael, perhaps I can help.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="SubClass" action="bypass -h npc_%objectId%_Link villagemaster/subclass_01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Clan" action="bypass -h npc_%objectId%_Link villagemaster/clan-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Alliance" action="bypass -h npc_%objectId%_Link villagemaster/ally-01.htm" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Ask about 2ndclass transfer" action="bypass -h scripts_services.villagemasters.Occupation:onTalk32146" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

@@ -1,16 +1,39 @@
-!Arena Manager: Way to go! Hooray! Hooray!!! (Be careful! CP/HP will not
-get recovered inside the fence.) [npc_%objectId%_CPRecovery|CP Recovery:
-1000 adena] [npc_%objectId%_HPRecovery|HP Recovery: 1000 adena]
-<br>
-
-[npc_%objectId%_ArenaBuff|Buff for Battle Ground : 2000 adena]
-<br>
-
-[npc_%objectId%_DepositP|Private Warehouse: Deposit an item.]
-
-[npc_%objectId%_WithdrawP 0|Private Warehouse: Withdraw an item. (List
-all)] [npc_%objectId%_WithdrawP 99|Private Warehouse: Withdraw an item.
-(Select)]
-<br>
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Arena Manager:</font><br>
+Way to go! Hooray! Hooray!!! (Be careful! CP/HP will notget recovered inside the fence)  <br><br> <br><br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="CP Recovery:1000 adena" action="bypass -h npc_%objectId%_CPRecovery" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Buff for Battle Ground : 2000 adena" action="bypass -h npc_%objectId%_ArenaBuff" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse: Deposit an item" action="bypass -h npc_%objectId%_DepositP" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse: Withdraw an item(Select)" action="bypass -h npc_%objectId%_WithdrawP 99" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="HP Recovery: 1000 adena" action="bypass -h npc_%objectId%_HPRecovery" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Private Warehouse: Withdraw an item (Listall)" action="bypass -h npc_%objectId%_WithdrawP 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

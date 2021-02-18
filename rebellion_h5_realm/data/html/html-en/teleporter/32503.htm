@@ -1,10 +1,24 @@
-!Kratei's Cube Entrance Manager: Welcome to Kratei's Cube! Only the
-strongest win here. Do you feel lucky?
-
-[npc_%objectId%_Chat 1|Learn more about Kratei's Cube.]
-
-[npc_%objectId%_Chat 0|Enter Kratei's Cube.]
-
-[npc_%objectId%_Chat 0|Cancel registration for Kratei's Cube competition.]
-
-[scripts_Util:Gatekeeper -59716 -55920 -2048 0 @811;Fantasy Isle|Return to Fantasy Isle Paddies.]
+<font color="FF8000">Kratei's Cube Entrance Manager:</font><br>
+Welcome to Kratei's Cube! Only thestrongest win here.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Cancel registration for Kratei's Cube competition" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Enter Kratei's Cube" action="bypass -h npc_%objectId%_Chat 0" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Learn more about Kratei's Cube" action="bypass -h npc_%objectId%_Chat 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Return to Fantasy Isle Paddies" action="bypass -h scripts_Util:Gatekeeper -59716 -55920 -2048 0 @811;Fantasy Isle" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>

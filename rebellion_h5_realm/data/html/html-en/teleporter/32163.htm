@@ -1,18 +1,38 @@
-Gatekeeper Ragara: Ages ago, the Kamael were barred from using
-teleportation magic. Needless to say, this has put us at a distinct
-disadvantage. Finally, we learned how to borrow other races' power. The
-Wizards of the Ivory Tower sympathized with us, so they created the
-Staff of Transferring and built strongholds everywhere. Beginning
-adventurers may move freely to strongholds as a result.
-
-[npc_%objectId%_Teleport 1|Teleport]
-
-[npc_%objectId%_Tele20Lvl 4|Move to a stronghold (free).]
-
-[npc_%objectId%_multisell 002|Exchange Dimension Diamonds.]
-
-[scripts_Util:NoblessTeleport|Noblesse Exclusive Teleport]
-
-[scripts_services.Birthday:summonAlegria|Summon Alegria]
-
-[npc_%objectId%_Quest|Quest]
+<font color="FF8000">Gatekeeper Ragara:</font><br>
+Ages ago, the Kamael were barred from usingteleportation magic.<br1>
+Needless to say, this has put us at a distinctdisadvantage.<br1>
+Finally, we learned how to borrow other races' power.<br1>
+TheWizards of the Ivory Tower sympathized with us, so they created theStaff of Transferring and built strongholds everywhere.<br1>
+Beginningadventurers may move freely to strongholds as a result.<br1>
+<table border=0 cellspacing=0 cellpadding=0 width=290 align="center">
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Exchange Dimension Diamonds" action="bypass -h npc_%objectId%_multisell 002" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Move to a stronghold (free)" action="bypass -h npc_%objectId%_Tele20Lvl 4" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Teleport" action="bypass -h npc_%objectId%_Teleport 1" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Noblesse Exclusive Teleport" action="bypass -h scripts_Util:NoblessTeleport" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Summon Alegria" action="bypass -h scripts_services.Birthday:summonAlegria" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+      <tr>
+          <td FIXWIDTH=90 align=center>
+               <button value="Quest" action="bypass -h npc_%objectId%_Quest" back="l2ui_ct1.button.button_df_small_down" fore="l2ui_ct1.button.button_df_small" width="280" height="25">
+          </td>
+      </tr>
+</table>
