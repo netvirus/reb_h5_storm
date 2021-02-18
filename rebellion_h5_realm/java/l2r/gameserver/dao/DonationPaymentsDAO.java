@@ -42,7 +42,7 @@ public class DonationPaymentsDAO {
             {
                 while (rset.next())
                 {
-                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("sum"), rset.getString("dateComplete"), rset.getBoolean("delivered")));
+                    payments.add(new Payment(rset.getInt("id"), rset.getString("char_name"), rset.getInt("itemsCount"), rset.getString("dateComplete"), rset.getBoolean("delivered")));
                 }
             }
         }
