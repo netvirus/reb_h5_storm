@@ -108,7 +108,7 @@ public class OnActionShift extends Functions
 			dialog = dialog.replaceFirst("%name%", nameNpc(npc));
 			dialog = dialog.replaceFirst("%id%", String.valueOf(npc.getNpcId()));
 			dialog = dialog.replaceFirst("%level%", String.valueOf(npc.getLevel()));
-			dialog = dialog.replaceFirst("%respawn%", String.valueOf(npc.getSpawn() != null ? Util.formatTime(npc.getSpawn().getRespawnDelay()) : "0"));
+			dialog = dialog.replaceFirst("%respawn%", "-");
 			dialog = dialog.replaceFirst("%factionId%", String.valueOf(npc.getFaction()));
 			dialog = dialog.replaceFirst("%aggro%", String.valueOf(npc.getAggroRange()));
 			dialog = dialog.replaceFirst("%maxHp%", String.valueOf(npc.getMaxHp()));
@@ -122,10 +122,12 @@ public class OnActionShift extends Functions
 			dialog = dialog.replaceFirst("%runSpeed%", String.valueOf(npc.getRunSpeed()));
 
 			// Дополнительная инфа для ГМов
-			if(player.canOverrideCond(PcCondOverride.HTML_ACTION_CONDITIONS))
+			if(player.canOverrideCond(PcCondOverride.HTML_ACTION_CONDITIONS)) {
+				dialog = dialog.replaceFirst("%respawn%", String.valueOf(npc.getSpawn() != null ? Util.formatTime(npc.getSpawn().getRespawnDelay()) : "0"));
 				dialog = dialog.replaceFirst("%AI%", String.valueOf(npc.getAI()) + ",<br1>active: " + npc.getAI().isActive() + ",<br1>intention: " + npc.getAI().getIntention());
-			else
+			} else {
 				dialog = dialog.replaceFirst("%AI%", "");
+			}
 
 			show(dialog, player, npc);
 		}
