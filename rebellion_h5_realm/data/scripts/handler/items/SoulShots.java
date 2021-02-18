@@ -109,32 +109,19 @@ public class SoulShots extends ScriptItemHandler implements ScriptFile
 				soulShotConsumption = newSS;
 		}
 
-		long count = item.getCount();
-
-		if(Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY && count >= 1) 
-		{ 
-			weaponInst.setChargedSoulshot(ItemInstance.CHARGED_SOULSHOT); 
-			player.sendPacket(Msg.POWER_OF_THE_SPIRITS_ENABLED); 
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0)); 
+		if (item.getCount() >= 1) {
+			if (!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY) {
+				if (!player.getInventory().destroyItem(item, soulShotConsumption)) {
+					player.sendPacket(Msg.NOT_ENOUGH_SOULSHOTS);
+					return false;
+				}
+			}
+			weaponInst.setChargedSoulshot(ItemInstance.CHARGED_SOULSHOT);
+			player.sendPacket(Msg.POWER_OF_THE_SPIRITS_ENABLED);
+			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0));
+			return true;
 		}
-		else if(count >= 1)
-		{ 
-			weaponInst.setChargedSoulshot(ItemInstance.CHARGED_SOULSHOT); 
-			player.sendPacket(Msg.POWER_OF_THE_SPIRITS_ENABLED); 
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0)); 
-		}
-		else if(!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY)
-		{ 
-			if(!player.getInventory().destroyItem(item, soulShotConsumption)) 
-			{ 
-				player.sendPacket(Msg.NOT_ENOUGH_SOULSHOTS); 
-				return false; 
-			} 
-			weaponInst.setChargedSoulshot(ItemInstance.CHARGED_SOULSHOT); 
-			player.sendPacket(Msg.POWER_OF_THE_SPIRITS_ENABLED); 
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0)); 
-		} 
-		return true;
+		return false;
 	}
 
 	@Override

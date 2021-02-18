@@ -101,38 +101,24 @@ public class BlessedSpiritShot extends ScriptItemHandler implements ScriptFile
 			return false;
 		}
 
-		long count = item.getCount();
-		if(Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY && count >= 1)
-		{
-			weaponInst.setChargedSpiritshot(ItemInstance.CHARGED_BLESSED_SPIRITSHOT); 
-			player.sendPacket(Msg.POWER_OF_MANA_ENABLED); 
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0)); 
-		} 
-		else if(count >= 1)
-		{
-			weaponInst.setChargedSpiritshot(ItemInstance.CHARGED_BLESSED_SPIRITSHOT); 
-			player.sendPacket(Msg.POWER_OF_MANA_ENABLED); 
-			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0)); 
-		}
-		else if(!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY)
-		{ 
-			if(!player.getInventory().destroyItem(item, blessedsoulSpiritConsumption))
-			{
-				if(isAutoSoulShot)
-				{
-					player.removeAutoSoulShot(SoulshotId);
-					player.sendPacket(new ExAutoSoulShot(SoulshotId, false), new SystemMessage(SystemMessage.THE_AUTOMATIC_USE_OF_S1_WILL_NOW_BE_CANCELLED).addItemName(spiritshotId));
+		if (item.getCount() >= 1) {
+			if (!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY) {
+				if (!player.getInventory().destroyItem(item, blessedsoulSpiritConsumption)) {
+					if (isAutoSoulShot) {
+						player.removeAutoSoulShot(SoulshotId);
+						player.sendPacket(new ExAutoSoulShot(SoulshotId, false), new SystemMessage(SystemMessage.THE_AUTOMATIC_USE_OF_S1_WILL_NOW_BE_CANCELLED).addItemName(spiritshotId));
+						return false;
+					}
+					player.sendPacket(Msg.NOT_ENOUGH_SPIRITSHOTS);
 					return false;
 				}
-				player.sendPacket(Msg.NOT_ENOUGH_SPIRITSHOTS);
-				return false;
 			}
-
 			weaponInst.setChargedSpiritshot(ItemInstance.CHARGED_BLESSED_SPIRITSHOT);
 			player.sendPacket(Msg.POWER_OF_MANA_ENABLED);
 			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0));
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override

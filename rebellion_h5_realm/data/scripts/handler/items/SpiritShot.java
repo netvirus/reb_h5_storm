@@ -71,7 +71,6 @@ public class SpiritShot extends ScriptItemHandler implements ScriptFile
 		int SpiritshotId = item.getItemId();
 		int grade = weaponItem.getCrystalType().externalOrdinal;
 		int soulSpiritConsumption = weaponItem.getSpiritShotCount();
-		long count = item.getCount();
 
 		if(soulSpiritConsumption == 0)
 		{
@@ -101,7 +100,7 @@ public class SpiritShot extends ScriptItemHandler implements ScriptFile
 			return false;
 		}
 
-		if(count < soulSpiritConsumption)
+		if(item.getCount() < soulSpiritConsumption)
 		{
 			if(isAutoSoulShot)
 			{
@@ -119,8 +118,7 @@ public class SpiritShot extends ScriptItemHandler implements ScriptFile
 			player.sendPacket(Msg.POWER_OF_MANA_ENABLED);
 			player.broadcastPacket(new MagicSkillUse(player, player, _skillIds[grade], 1, 0, 0));
 		}
-		else if(!Config.ALLOW_SOUL_SPIRIT_SHOT_INFINITELY)
-		{
+		else {
 			if(player.getInventory().destroyItem(item, soulSpiritConsumption))
 			{
 				weaponInst.setChargedSpiritshot(ItemInstance.CHARGED_SPIRITSHOT);
