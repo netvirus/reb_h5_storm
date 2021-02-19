@@ -43,20 +43,17 @@ public class CommunityBoardPremiumAccountManager {
             html = html.replace("{list}", builder.toString());
         } else if (bypass.startsWith("show_")) {
             String bonusId = bypass.substring(5).trim();
-            double xp = (Config.RATE_XP < 1.0) ? 1.0 : Config.RATE_XP; // Прячем от игроков совсем низкие рейты
-            double sp = (Config.RATE_SP < 1.0) ? 1.0 : Config.RATE_SP; // Пусть думают что они не ниже х1
             PremiumBonus premium = PremiumSystemOptionsData.getInstance().findById(Integer.parseInt(bonusId));
             if (premium != null) {
                 if (!player.getDoublePremiumState()) {
                     if ((player.getPremiumMainTypeState() && !premium.isBonusMain()) || (player.getPremiumSecondTypeState() && premium.isBonusMain()) || (!player.getPlayerAnyActivePremiumType())) {
-                        String itemName = ItemsDAO.getInstance().getItemsByItemId(premium.getBonusItemId()).stream().findFirst().get().getName();
                         html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/premium/detail.htm", player);
-                        String price = premium.getBonusItemAmount() + " " + itemName;
+                        String price = premium.getBonusItemAmount() + " " + Config.DONATION_ITEM_NAME;
                         html = html.replace("{bonus_title}", premium.getBonusName());
                         html = html.replace("{bonus_price}", price);
                         // Not have
-                        html = html.replace("{xp_n}", String.valueOf(xp));
-                        html = html.replace("{sp_n}", String.valueOf(sp));
+                        html = html.replace("{xp_n}", String.valueOf(Config.RATE_XP));
+                        html = html.replace("{sp_n}", String.valueOf(Config.RATE_SP));
                         html = html.replace("{drop_n}", String.valueOf(Config.RATE_DROP_ITEMS));
                         html = html.replace("{drop_chance_n}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS));
                         html = html.replace("{drop_amount_n}", String.valueOf(Config.RATE_DROP_SPOIL));
@@ -71,11 +68,11 @@ public class CommunityBoardPremiumAccountManager {
                         html = html.replace("{extract_n}", String.valueOf(Config.RATE_QUESTS_DROP)); // В UseSkill используется этот множитель
                         html = html.replace("{quest_n}", String.valueOf(Config.RATE_QUESTS_DROP));
                         html = html.replace("{quest_reward_n}", String.valueOf(Config.RATE_QUESTS_REWARD));
-                        html = html.replace("{pet_xp_n}", String.valueOf(xp));
+                        html = html.replace("{pet_xp_n}", String.valueOf(Config.RATE_XP));
                         html = html.replace("{raid_drop_chance_n}", String.valueOf(Config.RATE_DROP_RAIDBOSS));
                         // Have
-                        html = html.replace("{xp_h}", String.valueOf(xp * premium.getBonusExpRate()));
-                        html = html.replace("{sp_h}", String.valueOf(sp * premium.getBonusSpRate()));
+                        html = html.replace("{xp_h}", String.valueOf(Config.RATE_XP * premium.getBonusExpRate()));
+                        html = html.replace("{sp_h}", String.valueOf(Config.RATE_SP * premium.getBonusSpRate()));
                         html = html.replace("{drop_h}", String.valueOf(Config.RATE_DROP_ITEMS * premium.getBonusDropRate()));
                         html = html.replace("{drop_chance_h}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS * premium.getBonusDropChance()));
                         html = html.replace("{drop_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusDropAmount()));
@@ -90,7 +87,7 @@ public class CommunityBoardPremiumAccountManager {
                         html = html.replace("{extract_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusExtractableRate()));
                         html = html.replace("{quest_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusQuestDropRate()));
                         html = html.replace("{quest_reward_h}", String.valueOf(Config.RATE_QUESTS_REWARD * premium.getBonusQuestRewardRate()));
-                        html = html.replace("{pet_xp_h}", String.valueOf(xp * premium.getBonusPetExpRate()));
+                        html = html.replace("{pet_xp_h}", String.valueOf(Config.RATE_XP * premium.getBonusPetExpRate()));
                         html = html.replace("{raid_drop_chance_h}", String.valueOf(Config.RATE_DROP_RAIDBOSS * premium.getBonusRaidDropChance()));
                         String button = "";
                         button += "<button value=\"Подключить\" action=\"bypass -h premium_buy_";
@@ -108,8 +105,8 @@ public class CommunityBoardPremiumAccountManager {
                 }
                 // Have
                 premium = player.getPremiumBonus();
-                html = html.replace("{xp_h}", String.valueOf(xp * premium.getBonusExpRate()));
-                html = html.replace("{sp_h}", String.valueOf(sp * premium.getBonusSpRate()));
+                html = html.replace("{xp_h}", String.valueOf(Config.RATE_XP * premium.getBonusExpRate()));
+                html = html.replace("{sp_h}", String.valueOf(Config.RATE_SP * premium.getBonusSpRate()));
                 html = html.replace("{drop_h}", String.valueOf(Config.RATE_DROP_ITEMS * premium.getBonusDropRate()));
                 html = html.replace("{drop_chance_h}", String.valueOf(Config.RATE_CHANCE_DROP_ITEMS * premium.getBonusDropChance()));
                 html = html.replace("{drop_amount_h}", String.valueOf(Config.RATE_DROP_SPOIL * premium.getBonusDropAmount()));
@@ -124,7 +121,7 @@ public class CommunityBoardPremiumAccountManager {
                 html = html.replace("{extract_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusExtractableRate()));
                 html = html.replace("{quest_h}", String.valueOf(Config.RATE_QUESTS_DROP * premium.getBonusQuestDropRate()));
                 html = html.replace("{quest_reward_h}", String.valueOf(Config.RATE_QUESTS_REWARD * premium.getBonusQuestRewardRate()));
-                html = html.replace("{pet_xp_h}", String.valueOf(xp * premium.getBonusPetExpRate()));
+                html = html.replace("{pet_xp_h}", String.valueOf(Config.RATE_XP * premium.getBonusPetExpRate()));
                 html = html.replace("{raid_drop_chance_h}", String.valueOf(Config.RATE_DROP_RAIDBOSS * premium.getBonusRaidDropChance()));
                 html = html.replace("{time}", TimeUtils.getHumanSyntaxDateFromTimeshtamp(player.getPremiumBonus().getBonusDuration() * 1000));
         }
