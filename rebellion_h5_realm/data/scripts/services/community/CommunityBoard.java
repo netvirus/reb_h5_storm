@@ -80,6 +80,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			"_bbs_achievements",
 			"_bbs_achievements_cat",
 			"_bbs_achievements_close",
+			"_bbscareer",
 			"_maillist_0_1_0_",
 			"_bbs_Auction",
 			"_bbsmemo",

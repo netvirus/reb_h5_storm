@@ -6457,7 +6457,7 @@ public final class Player extends Playable implements PlayerGroup
 
 	public int getHennaEmptySlots()
 	{
-		int totalSlots = getClassId().level();
+		int totalSlots = 1 + getClassId().level();
 		for(int i = 0; i < 3; i++)
 			if(_henna[i] != null)
 				totalSlots--;

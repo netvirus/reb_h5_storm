@@ -33,6 +33,7 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import l2r.gameserver.instancemanager.CommunityBoardPremiumAccountManager;
+import services.community.CareerManager;
 
 public class RequestBypassToServer extends L2GameClientPacket
 {
@@ -142,6 +143,12 @@ public class RequestBypassToServer extends L2GameClientPacket
 				} catch (Exception ex) {
 					_log.warn("Catch: " + bp.bypass + " and can't open CommunityBoardPremiumAccountManager: " + ex);
 				}
+			}
+			else if(bp.bypass.startsWith("_bbscareer"))
+			{
+				if (!Config.CLASS_MASTER_NPC)
+					CareerManager.getInstance().onBypassCommand(activeChar, bp.bypass);
+				return;
 			}
 			else if(bp.bypass.startsWith("npc_"))
 			{
