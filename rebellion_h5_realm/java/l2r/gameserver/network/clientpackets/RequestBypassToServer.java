@@ -6,6 +6,7 @@ import l2r.gameserver.handler.admincommands.AdminCommandHandler;
 import l2r.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2r.gameserver.instancemanager.BypassManager.DecodedBypass;
+import l2r.gameserver.instancemanager.CommunityBoardCareerManager;
 import l2r.gameserver.instancemanager.OfflineBufferManager;
 import l2r.gameserver.instancemanager.OlympiadHistoryManager;
 import l2r.gameserver.listener.actor.player.impl.GmAnswerListener;
@@ -33,7 +34,6 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import l2r.gameserver.instancemanager.CommunityBoardPremiumAccountManager;
-import services.community.CareerManager;
 
 public class RequestBypassToServer extends L2GameClientPacket
 {
@@ -147,7 +147,7 @@ public class RequestBypassToServer extends L2GameClientPacket
 			else if(bp.bypass.startsWith("_bbscareer"))
 			{
 				if (!Config.CLASS_MASTER_NPC)
-					CareerManager.getInstance().onBypassCommand(activeChar, bp.bypass);
+					CommunityBoardCareerManager.getInstance().onBypassCommand(activeChar, bp.bypass);
 				return;
 			}
 			else if(bp.bypass.startsWith("npc_"))

@@ -127,7 +127,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					if(cid == ClassId.inspector)
 						continue;
 					if(cid.childOf(classId) && cid.level() == classId.level() + 1)
-						html.append("<center><button value=\"").append(cid.name()).append("\" action=\"bypass _bbscareer;classmaster;change_class;").append(cid.getId()).append(";").append(Config.CLASS_MASTERS_PRICE_ITEM_LIST[jobLevel]).append(";").append(Config.CLASS_MASTERS_PRICE_LIST[jobLevel]).append("\" width=150 height=28 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center>");
+						html.append("<center><button value=\"").append(cid.name()).append("\" action=\"bypass -h _bbscareer;classmaster;change_class;").append(cid.getId()).append(";").append(Config.CLASS_MASTERS_PRICE_ITEM_LIST[jobLevel]).append(";").append(Config.CLASS_MASTERS_PRICE_LIST[jobLevel]).append("\" width=150 height=28 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center>");
 
 				}
 
@@ -326,7 +326,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 						html.append("<img src=\"l2ui.squaregray\" width=\"300\" height=\"1\"><br>");
 
 						for(PlayerClass subClass : subsAvailable)
-							html.append("<a action=\"bypass _bbscareer;sub;4 " + subClass.ordinal() + "\">" + formatClassForDisplay(subClass) + "</a><br1>");
+							html.append("<a action=\"bypass -h _bbscareer;sub;4 " + subClass.ordinal() + "\">" + formatClassForDisplay(subClass) + "</a><br1>");
 					}
 					else
 					{
@@ -337,7 +337,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					}
 
 					html.append("<br>");
-					html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+					html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 					html.append("<br>");
 					break;
 				case 2: // Установка уже взятого саба (см case 5)
@@ -371,9 +371,9 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 								html.append(HtmlUtils.htmlClassName(baseClassId) + " <font color=\"LEVEL\">(Base)</font><br><br>");
 						else
 							if(activeChar.isLangRus())
-								html.append("<a action=\"bypass _bbscareer;sub;5 " + baseClassId + "\">" + HtmlUtils.htmlClassName(baseClassId) + "</a> " + "<font color=\"LEVEL\">(Базовый)</font><br>");
+								html.append("<a action=\"bypass -h _bbscareer;sub;5 " + baseClassId + "\">" + HtmlUtils.htmlClassName(baseClassId) + "</a> " + "<font color=\"LEVEL\">(Базовый)</font><br>");
 							else
-								html.append("<a action=\"bypass _bbscareer;sub;5 " + baseClassId + "\">" + HtmlUtils.htmlClassName(baseClassId) + "</a> " + "<font color=\"LEVEL\">(Base)</font><br>");
+								html.append("<a action=\"bypass -h _bbscareer;sub;5 " + baseClassId + "\">" + HtmlUtils.htmlClassName(baseClassId) + "</a> " + "<font color=\"LEVEL\">(Base)</font><br>");
 
 						for(SubClass subClass : playerClassList.values())
 						{
@@ -384,11 +384,11 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 							if(subClassId == activeChar.getActiveClassId())
 								html.append("<font name=hs9 color=\"2EFE2E\">" + HtmlUtils.htmlClassName(subClassId) + "</font><br1>(Current) <br>");
 							else
-								html.append("<a action=\"bypass _bbscareer;sub;5 " + subClassId + "\">" + HtmlUtils.htmlClassName(subClassId) + "</a><br>");
+								html.append("<a action=\"bypass -h _bbscareer;sub;5 " + subClassId + "\">" + HtmlUtils.htmlClassName(subClassId) + "</a><br>");
 						}
 
 						html.append("<br>");
-						html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+						html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 						html.append("<br>");
 					}
 					break;
@@ -404,11 +404,11 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					{
 						html.append("<br>");
 						if(!sub.isBase())
-							html.append("<a action=\"bypass _bbscareer;sub;6 " + sub.getClassId() + "\">" + HtmlUtils.htmlClassName(sub.getClassId()) + "</a><br>");
+							html.append("<a action=\"bypass -h _bbscareer;sub;6 " + sub.getClassId() + "\">" + HtmlUtils.htmlClassName(sub.getClassId()) + "</a><br>");
 					}
 
 					html.append("<br>");
-					html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+					html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 					html.append("<br>");
 					break;
 				case 4: // Добавление сабкласса - обработка выбора из case 1
@@ -472,7 +472,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 							html.append("<br><br><font name=hs9 color=86B404>Sub-Class <font name=hs9>" + className + "</font> successfully added!</font><br>");
 
 						html.append("<br>");
-						html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+						html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 						html.append("<br>");
 						activeChar.sendPacket(SystemMsg.CONGRATULATIONS__YOUVE_COMPLETED_A_CLASS_TRANSFER); // Transfer to new class.
 					}
@@ -484,7 +484,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 							html.append("<br><br>You cannot add sub-class at this moment. <br>To activate the subclass you must reach <font color=F2C202>level 75.</font><br>");
 
 						html.append("<br>");
-						html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+						html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 						html.append("<br>");
 					}
 
@@ -519,7 +519,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 						html.append("<br><br><br><font name=hs12>Your active sub-class is now: <font name=hs12 color=\"LEVEL\">" + HtmlUtils.htmlClassName(activeChar.getActiveClassId()).toUpperCase() + "</font></font>");
 
 					html.append("<br>");
-					html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+					html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 					html.append("<br>");
 
 					activeChar.sendPacket(SystemMsg.YOU_HAVE_SUCCESSFULLY_SWITCHED_TO_YOUR_SUBCLASS); // Transfer
@@ -537,7 +537,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 
 					if(!subsAvailable.isEmpty())
 						for(PlayerClass subClass : subsAvailable)
-							html.append("<a action=\"bypass _bbscareer;sub;7 " + classId + " " + subClass.ordinal() + "\">" + formatClassForDisplay(subClass) + "</a><br>");
+							html.append("<a action=\"bypass -h _bbscareer;sub;7 " + classId + " " + subClass.ordinal() + "\">" + formatClassForDisplay(subClass) + "</a><br>");
 					else
 					{
 						activeChar.sendMessage(new CustomMessage("l2r.gameserver.model.instances.L2VillageMasterInstance.NoSubAtThisTime", activeChar));
@@ -545,7 +545,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					}
 
 					html.append("<br>");
-					html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+					html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 					html.append("<br>");
 
 					break;
@@ -583,7 +583,7 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 							html.append("<br><br><br><font name=hs12>Your sub-class is changed to: <font name=hs12 color=\"LEVEL\">" + HtmlUtils.htmlClassName(activeChar.getActiveClassId()).toUpperCase() + "</font></font>");
 
 						html.append("<br>");
-						html.append("<button value=\"\" action=\"bypass _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
+						html.append("<button value=\"\" action=\"bypass -h _bbscareer;\" width=16 height=16 back=\"L2UI_CT1.Button_DF_Input\" fore=\"L2UI_CT1.Button_DF_Input\">");
 						html.append("<br>");
 
 						activeChar.sendPacket(SystemMsg.THE_NEW_SUBCLASS_HAS_BEEN_ADDED); // Subclass added.
@@ -636,11 +636,11 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					html.append("<center><table width=600><tr>");
 					if (subsAvailable != null && !subsAvailable.isEmpty())
 						html.append("<td><center><button value=\"Добавить\" action=\"bypass _bbscareer;sub;1\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
-					html.append("<td><center><button value=\"Изменить\" action=\"bypass _bbscareer;sub;2\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
-					html.append("<td><center><button value=\"Отменить\" action=\"bypass _bbscareer;sub;3\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Изменить\" action=\"bypass -h _bbscareer;sub;2\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Отменить\" action=\"bypass -h _bbscareer;sub;3\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
 					html.append("</tr>");
 					html.append("<tr>");
-					html.append("<td><center><button value=\"Certifications\" action=\"bypass _bbscareer;certification;\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Certifications\" action=\"bypass -h _bbscareer;certification;\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
 					html.append("</tr>");
 					html.append("</table></center>");
 				}
@@ -649,13 +649,13 @@ public class CareerManager implements ScriptFile, ICommunityBoardHandler
 					html.append("<br><font name=hs9 color=81DAF5>You can access the following options for sub-class:<br>");
 					html.append("<center><table width=600><tr>");
 					if (subsAvailable != null && !subsAvailable.isEmpty())
-						html.append("<td><center><button value=\"Add\" action=\"bypass _bbscareer;sub;1\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
-					html.append("<td><center><button value=\"Change\" action=\"bypass _bbscareer;sub;2\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
-					html.append("<td><center><button value=\"Remove\" action=\"bypass _bbscareer;sub;3\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+						html.append("<td><center><button value=\"Add\" action=\"bypass -h _bbscareer;sub;1\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Change\" action=\"bypass -h _bbscareer;sub;2\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Remove\" action=\"bypass -h _bbscareer;sub;3\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
 					html.append("</tr>");
 					html.append("<tr>");
 					html.append("<td>&nbsp;</td>");
-					html.append("<td><center><button value=\"Certifications\" action=\"bypass _bbscareer;certification;\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
+					html.append("<td><center><button value=\"Certifications\" action=\"bypass -h _bbscareer;certification;\" width=150 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></center></td>");
 					html.append("</tr>");
 					html.append("</table></center>");
 				}
