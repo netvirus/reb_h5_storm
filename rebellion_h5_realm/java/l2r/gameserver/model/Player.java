@@ -1219,7 +1219,7 @@ public final class Player extends Playable implements PlayerGroup
 	
 	public void logout()
 	{
-		logout(false, true);
+		logout(false, Config.TO_LOGIN_SCREEN);
 	}
 
 	/**

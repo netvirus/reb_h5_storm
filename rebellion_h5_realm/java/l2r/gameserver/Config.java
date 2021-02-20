@@ -479,6 +479,7 @@ public class Config
 	public static String DATABASE_LOGIN;
 	public static String DATABASE_PASSWORD;
 	public static String LOGINSERVER_DB_NAME;
+	public static boolean TO_LOGIN_SCREEN;
 	
 	// Database additional options
 	public static boolean AUTOSAVE;
@@ -1907,6 +1908,7 @@ public class Config
 			AUTH_SERVER_SERVER_TYPE |= t.getMask();
 		}
 
+		TO_LOGIN_SCREEN = serverSettings.getProperty("ToLoginScreenWhenRestart", false);
 		SECOND_AUTH_ENABLED = serverSettings.getProperty("SAEnabled", false);
 		SECOND_AUTH_BAN_ACC = serverSettings.getProperty("SABanAccEnabled", false);
 		SECOND_AUTH_STRONG_PASS = serverSettings.getProperty("SAStrongPass", false);

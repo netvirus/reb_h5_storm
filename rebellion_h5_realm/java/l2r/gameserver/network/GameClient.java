@@ -90,7 +90,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>>
 			player = getActiveChar();
 			
 			if (player != null)
-				player.logout(true);
+				player.logout(true, Config.TO_LOGIN_SCREEN);
 			
 			setActiveChar(null);
 			
