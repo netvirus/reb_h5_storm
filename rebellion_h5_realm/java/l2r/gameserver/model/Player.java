@@ -1260,7 +1260,7 @@ public final class Player extends Playable implements PlayerGroup
 			
 			if(_connection != null)
 			{
-				_connection.close(LeaveWorld.STATIC);
+				_connection.close(ServerClose.STATIC);
 				setClient(null);
 			}
 			
