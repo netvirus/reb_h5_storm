@@ -339,32 +339,32 @@ public class GameServer
 		if (Config.ENABLE_PLAYER_KILL_SYSTEM)
 			PlayerKill.getInstance().init();
 
-		if (Config.ENABLE_FAKEPC)
-			FakePcsTable.getInstance().init();
+//		if (Config.ENABLE_FAKEPC)
+//			FakePcsTable.getInstance().init();
 
-		if (Config.ENABLE_CAPTCHA)
-		{
-			new CaptchaImage();
-			_log.info("Captcha system loaded.");
-		}
+//		if (Config.ENABLE_CAPTCHA)
+//		{
+//			new CaptchaImage();
+//			_log.info("Captcha system loaded.");
+//		}
 		
-		// If there is no such var in server var create such with default false.
-		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
-			ServerVariables.set("DonationBonusActive", false);
-
-		if (ServerVariables.getBool("DonationBonusActive", true))
-			DonationBonusDay.getInstance().continuePormotion();
-		else
-			DonationBonusDay.getInstance().stopPromotion();
-
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
-		
-		BetaServer.getInstance();
-
-		if (Config.ENABLE_DONATION_READER) {
-			DonationPaymentsDAO.getInstance();
-			_log.info("Donation auto check system is enabled.");
-		}
+//		// If there is no such var in server var create such with default false.
+//		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
+//			ServerVariables.set("DonationBonusActive", false);
+//
+//		if (ServerVariables.getBool("DonationBonusActive", true))
+//			DonationBonusDay.getInstance().continuePormotion();
+//		else
+//			DonationBonusDay.getInstance().stopPromotion();
+//
+//		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
+//
+//		BetaServer.getInstance();
+//
+//		if (Config.ENABLE_DONATION_READER) {
+//			DonationPaymentsDAO.getInstance();
+//			_log.info("Donation auto check system is enabled.");
+//		}
 
 		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
 		_log.info("GameServer Started");

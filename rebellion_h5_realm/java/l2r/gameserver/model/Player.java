@@ -1219,14 +1219,14 @@ public final class Player extends Playable implements PlayerGroup
 	
 	public void logout()
 	{
-		logout(false);
+		logout(false, true);
 	}
 
 	/**
 	 * Соединение закрывается, клиент не закрывается, персонаж сохраняется и удаляется из игры
 	 * Пишем надпись NO CARRIER
 	 */
-	public void logout(boolean noCarrier)
+	public void logout(boolean noCarrier, boolean toLoginScreen)
 	{
 		try
 		{
@@ -1260,7 +1260,7 @@ public final class Player extends Playable implements PlayerGroup
 			
 			if(_connection != null)
 			{
-				_connection.close(ServerClose.STATIC);
+				_connection.close(toLoginScreen ? ServerClose.STATIC : LeaveWorld.STATIC);
 				setClient(null);
 			}
 			
