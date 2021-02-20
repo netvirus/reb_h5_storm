@@ -79,6 +79,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			"_bbsmultisell",
 			"_bbs_achievements",
 			"_bbs_achievements_cat",
+			"_bbs_achievements_close",
 			"_maillist_0_1_0_",
 			"_bbs_Auction",
 			"_bbsmemo",
@@ -203,7 +204,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler
 			
 			String[] cm = bypass.split(" ");
 			
-			Achievements.getInstance().usebypass(player, bypass, cm); 
+			Achievements.getInstance().onBypass(player, bypass, cm);
 			return;
 		}
 		else if(bypass.startsWith("_bbs_achievements_cat"))
