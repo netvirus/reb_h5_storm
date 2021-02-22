@@ -357,7 +357,8 @@ public class GameServer
 //		else
 //			DonationBonusDay.getInstance().stopPromotion();
 //
-//		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
+		// DonatePaymentsManager
+		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
 //
 //		BetaServer.getInstance();
 //
