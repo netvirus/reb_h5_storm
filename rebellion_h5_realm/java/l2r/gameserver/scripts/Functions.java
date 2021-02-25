@@ -453,7 +453,7 @@ public class Functions
 
 	public static boolean SimpleCheckDrop(Creature mob, Creature killer)
 	{
-		return mob != null && mob.isMonster() && !mob.isRaid() && killer != null && killer.getPlayer() != null && killer.getLevel() - mob.getLevel() < 9;
+		return mob != null && mob.isMonster() && !mob.isRaid() && killer != null && killer.getPlayer() != null && killer.getLevel() - mob.getLevel() < 9 && mob.getLevel() > 10;
 	}
 
 	public static boolean isPvPEventStarted()
