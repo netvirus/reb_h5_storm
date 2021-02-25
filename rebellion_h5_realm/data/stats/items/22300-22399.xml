@@ -25,7 +25,8 @@
     <set name="weight" value="150"/>
     <set name="durability" value="4320"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="true"/>
+	<set name="dropable" value="false"/>
+	<set name="destroyable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6656"/>
@@ -55,7 +56,8 @@
     <set name="weight" value="150"/>
     <set name="durability" value="10080"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="true"/>
+    <set name="dropable" value="false"/>
+	<set name="destroyable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6656"/>
@@ -85,7 +87,8 @@
     <set name="weight" value="150"/>
     <set name="durability" value="4320"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="true"/>
+	<set name="dropable" value="false"/>
+	<set name="destroyable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6658"/>
@@ -115,7 +118,8 @@
     <set name="weight" value="150"/>
     <set name="durability" value="10080"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="true"/>
+	<set name="dropable" value="false"/>
+	<set name="destroyable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6658"/>
