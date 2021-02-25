@@ -18,14 +18,14 @@
 		</skills>
 	</etcitem>
 	<armor id="22302" name="Antharas's Earring" add_name="3 day limited period">
-    <set name="crystal_type" value="S"/>
+    <set name="crystal_type" value="NONE"/>
     <set name="icon" value="icon.accessory_earring_of_antaras_i00"/>
     <set name="price" value="0"/>
     <set name="type" value="NONE"/>
     <set name="weight" value="150"/>
     <set name="durability" value="4320"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="false"/>
+    <set name="dropable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6656"/>
@@ -48,14 +48,14 @@
     </for>
   </armor>
   <armor id="22303" name="Antharas's Earring" add_name="7 day limited period">
-    <set name="crystal_type" value="S"/>
+    <set name="crystal_type" value="NONE"/>
     <set name="icon" value="icon.accessory_earring_of_antaras_i00"/>
     <set name="price" value="0"/>
     <set name="type" value="NONE"/>
     <set name="weight" value="150"/>
     <set name="durability" value="10080"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="false"/>
+    <set name="dropable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6656"/>
@@ -78,14 +78,14 @@
     </for>
   </armor>
   <armor id="22304" name="Baium's Ring" add_name="3 day limited period">
-    <set name="crystal_type" value="S"/>
+    <set name="crystal_type" value="NONE"/>
     <set name="icon" value="icon.accessory_ring_of_baium_i00"/>
     <set name="price" value="0"/>
     <set name="type" value="NONE"/>
     <set name="weight" value="150"/>
     <set name="durability" value="4320"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="false"/>
+    <set name="dropable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6658"/>
@@ -108,14 +108,14 @@
     </for>
   </armor>
   <armor id="22305" name="Baium's Ring" add_name="7 day limited period">
-    <set name="crystal_type" value="S"/>
+    <set name="crystal_type" value="NONE"/>
     <set name="icon" value="icon.accessory_ring_of_baium_i00"/>
     <set name="price" value="0"/>
     <set name="type" value="NONE"/>
     <set name="weight" value="150"/>
     <set name="durability" value="10080"/>
     <set name="temporal" value="true"/>
-    <set name="dropable" value="false"/>
+    <set name="dropable" value="true"/>
     <set name="sellable" value="false"/>
     <set name="tradeable" value="false"/>
     <set name="displayId" value="6658"/>

@@ -100,8 +100,8 @@
   </armor>
   <armor id="20204" name="Queen Ant's Ring (Event)" add_name="3 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="B"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="4320"/>
     <set name="icon" value="icon.accessory_ring_of_queen_ant_i00"/>
     <set name="sellable" value="false"/>
@@ -129,8 +129,8 @@
   </armor>
   <armor id="20205" name="Queen Ant's Ring (Event)" add_name="7 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="B"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="10080"/>
     <set name="icon" value="icon.accessory_ring_of_queen_ant_i00"/>
     <set name="sellable" value="false"/>
@@ -158,8 +158,8 @@
   </armor>
   <armor id="20206" name="Queen Ant's Ring (Event)" add_name="15 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="B"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="21600"/>
     <set name="icon" value="icon.accessory_ring_of_queen_ant_i00"/>
     <set name="sellable" value="false"/>
@@ -187,8 +187,8 @@
   </armor>
   <armor id="20207" name="Zaken's Earring (Event)" add_name="3 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="S"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="4320"/>
     <set name="icon" value="icon.accessory_earring_of_zaken_i00"/>
     <set name="sellable" value="false"/>
@@ -216,8 +216,8 @@
   </armor>
   <armor id="20208" name="Zaken's Earring (Event)" add_name="7 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="S"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="10080"/>
     <set name="icon" value="icon.accessory_earring_of_zaken_i00"/>
     <set name="sellable" value="false"/>
@@ -245,8 +245,8 @@
   </armor>
   <armor id="20209" name="Zaken's Earring (Event)" add_name="15 Day Expiration Period">
     <set name="enchantable" value="false"/>
-    <set name="crystal_type" value="S"/>
-    <set name="dropable" value="false"/>
+    <set name="crystal_type" value="NONE"/>
+    <set name="dropable" value="true"/>
     <set name="durability" value="21600"/>
     <set name="icon" value="icon.accessory_earring_of_zaken_i00"/>
     <set name="sellable" value="false"/>
