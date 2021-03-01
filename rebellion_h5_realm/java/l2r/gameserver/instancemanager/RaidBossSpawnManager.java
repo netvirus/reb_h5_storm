@@ -14,12 +14,16 @@ import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.model.instances.RaidBossInstance;
 import l2r.gameserver.model.instances.ReflectionBossInstance;
 import l2r.gameserver.model.pledge.Clan;
+import l2r.gameserver.network.serverpackets.RadarControl;
+import l2r.gameserver.network.serverpackets.ShowMiniMap;
+import l2r.gameserver.network.serverpackets.components.CustomMessage;
 import l2r.gameserver.tables.ClanTable;
 import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.templates.StatsSet;
 import l2r.gameserver.templates.mapregion.RestartArea;
 import l2r.gameserver.templates.mapregion.RestartPoint;
 import l2r.gameserver.templates.npc.NpcTemplate;
+import l2r.gameserver.utils.Location;
 import l2r.gameserver.utils.SqlBatch;
 
 import java.sql.Connection;
@@ -516,5 +520,43 @@ public class RaidBossSpawnManager
 	public Map<Integer, StatsSet> getAllBosses()
 	{
 		return _storedInfo;
+	}
+
+	/**
+	 * Using RadarControl to show location of bossId
+	 * Works only for ids that exists in RaidBossSpawnManager
+	 * @param player to get location
+	 * @param bossId Id of the target
+	 */
+	public static void showBossLocation(Player player, int bossId)
+	{
+		switch (getInstance().getRaidBossStatusId(bossId))
+		{
+			case ALIVE:
+			case DEAD:
+				Spawner spawn = getInstance().getSpawnTable().get(bossId);
+
+				Location loc = spawn.getCurrentSpawnRange().getRandomLoc(spawn.getReflection().getGeoIndex());
+
+				/*player.sendPacket(new RadarControl(2, 2, loc), new RadarControl(0, 1, loc));*/
+				final Player _player = player;
+				final Location loc1 = loc;
+				new java.util.Timer().schedule(
+						new java.util.TimerTask() {
+							@Override
+							public void run() {
+								_player.sendPacket(new RadarControl(2, 2, loc1));
+								_player.sendPacket(new RadarControl(0, 1, loc1));
+							}
+						},
+						500
+				);
+
+				player.sendPacket(new ShowMiniMap(player, 0));
+				break;
+			case UNDEFINED:
+				player.sendMessage(new CustomMessage("l2f.gameserver.model.instances.L2AdventurerInstance.BossNotInGame", player).addNumber(bossId));
+				break;
+		}
 	}
 }

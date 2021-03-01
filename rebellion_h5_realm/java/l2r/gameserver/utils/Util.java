@@ -41,6 +41,7 @@ public class Util
 {
 	static final String PATTERN = "0.0000000000E00";
 	static final DecimalFormat df;
+	private static final char[] ALLOWED_CHARS = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
 	/**
 	 * Форматтер для адены.<br>
@@ -1583,5 +1584,13 @@ public class Util
 		ICommunityBoardHandler handler = CommunityBoardManager.getInstance().getCommunityHandler(link);
 		if (handler != null)
 			handler.onBypassCommand(player, link);
+	}
+
+	public static boolean isInteger(char c)
+	{
+		for (char possibility : ALLOWED_CHARS)
+			if (possibility == c)
+				return true;
+		return false;
 	}
 }

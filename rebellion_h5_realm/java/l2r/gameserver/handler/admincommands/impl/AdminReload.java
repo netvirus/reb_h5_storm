@@ -4,7 +4,7 @@ import l2r.commons.threading.RunnableImpl;
 import l2r.gameserver.Config;
 import l2r.gameserver.ThreadPoolManager;
 import l2r.gameserver.achievements.Achievements;
-import l2r.gameserver.cache.ImagesChache;
+import l2r.gameserver.cache.ImagesCache;
 import l2r.gameserver.dao.EmotionsTable;
 import l2r.gameserver.dao.OlympiadNobleDAO;
 import l2r.gameserver.data.StringHolder;
@@ -250,7 +250,7 @@ public class AdminReload implements IAdminCommandHandler
 			}
 			case admin_reload_images:
 			{
-				ImagesChache.getInstance().reload();
+				ImagesCache.getInstance().reload();
 				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminreload.message13", activeChar));
 				break;
 			}

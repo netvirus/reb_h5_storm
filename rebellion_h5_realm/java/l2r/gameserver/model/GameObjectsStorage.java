@@ -290,6 +290,15 @@ public class GameObjectsStorage
 		return result;
 	}
 
+	public static List<NpcInstance> getAllByNpcId(int npc_id, boolean justAlive, boolean visible)
+	{
+		List<NpcInstance> result = new ArrayList<NpcInstance>();
+		for (NpcInstance temp : getStorageNpcs())
+			if (temp.getTemplate() != null && npc_id == temp.getTemplate().getNpcId() && (!justAlive || !temp.isDead()) && (!visible || temp.isVisible()))
+				result.add(temp);
+		return result;
+	}
+
 	public static List<NpcInstance> getAllByNpcId(int[] npc_ids, boolean justAlive)
 	{
 		List<NpcInstance> result = new ArrayList<NpcInstance>();

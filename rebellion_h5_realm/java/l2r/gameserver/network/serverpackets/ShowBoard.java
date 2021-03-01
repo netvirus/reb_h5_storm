@@ -1,7 +1,7 @@
 package l2r.gameserver.network.serverpackets;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.cache.ImagesChache;
+import l2r.gameserver.cache.ImagesCache;
 import l2r.gameserver.data.StringHolder;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.model.Player;
@@ -135,14 +135,14 @@ public class ShowBoard extends L2GameServerPacket
 			_htmlCode = player.encodeBypasses(htmlCode, true);
 			_htmlCode = _htmlCode.replace("\t", "");
 			
-			Matcher m = ImagesChache.HTML_PATTERN.matcher(_htmlCode);
+			Matcher m = ImagesCache.HTML_PATTERN.matcher(_htmlCode);
 			
 			while (m.find())
 			{
 				String imageName = m.group(1);
-				int imageId = ImagesChache.getInstance().getImageId(imageName);
+				int imageId = ImagesCache.getInstance().getImageId(imageName);
 				_htmlCode = _htmlCode.replaceAll("%image:" + imageName + "%", "Crest.crest_" + player.getServerId() + "_" + imageId);
-				byte[] image = ImagesChache.getInstance().getImage(imageId);
+				byte[] image = ImagesCache.getInstance().getImage(imageId);
 				if (image != null)
 					player.sendPacket(new PledgeCrest(imageId, image));
 				//else

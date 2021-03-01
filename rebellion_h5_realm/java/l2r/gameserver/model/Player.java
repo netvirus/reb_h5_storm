@@ -507,6 +507,10 @@ public final class Player extends Playable implements PlayerGroup
 	private int _pledgeItemId = 0;
 	private long _pledgePrice = 0;
 	private boolean _isInAcademyList = false;
+
+	private final List<Integer> loadedImages = new ArrayList<>();
+
+	private final Map<String, Object> quickVars = new ConcurrentHashMap<>();
 	  
 	/**
 	 * GM Stuff
@@ -13866,5 +13870,44 @@ public final class Player extends Playable implements PlayerGroup
 	public double getConfigRaidDropChanceWithPremiumBonusRates()
 	{
 		return _premiumBonus.getBonusDropRate();
+	}
+
+	/**
+	 * Adding new Image Id to List of Images loaded by Game Client of this plater
+	 * @param id of the image
+	 */
+	public void addLoadedImage(int id)
+	{
+		loadedImages.add(id);
+	}
+
+	/**
+	 * Did Game Client already receive Custom Image from the server?
+	 * @param id of the image
+	 * @return client received image
+	 */
+	public boolean wasImageLoaded(int id)
+	{
+		return loadedImages.contains(id);
+	}
+
+	/**
+	 * @return Number of Custom Images sent from Server to the Player
+	 */
+	public int getLoadedImagesSize()
+	{
+		return loadedImages.size();
+	}
+
+	/**
+	 * Adding Variable to Map<Name, Value>. It's not saved to database. Value can be taken back by {@link #getQuickVarO(String, Object...)} method.
+	 * @param name key
+	 * @param value value
+	 */
+	public void addQuickVar(String name, Object value)
+	{
+		if (quickVars.containsKey(name))
+			quickVars.remove(name);
+		quickVars.put(name, value);
 	}
 }

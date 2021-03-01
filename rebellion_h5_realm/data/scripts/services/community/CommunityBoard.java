@@ -93,9 +93,7 @@ public class CommunityBoard implements ScriptFile, ICommunityBoardHandler {
                         "_bbs_augment_item",
                         "_bbs_remove_augment",
                         "_bbsclan",
-                        "_bbsVisual",
-                        "_bbsCCP",
-                        "_bbsGrandBoss"
+                        "_bbsVisual"
                 };
     }
 

@@ -1385,6 +1385,8 @@ public class Config
 	public static int TRIVIA_TIME_PAUSE;
 	public static String TRIVIA_REWARD_FIRST;
 	public static String TRIVIA_REWARD_REST;
+
+	public static boolean ALLOW_SENDING_IMAGES;
 	
 	public static void loadTriviaSettings()
 	{
@@ -3618,6 +3620,8 @@ public class Config
 		
 		ENABLE_NEW_CLAN_CB = CommunityboardSettings.getProperty("EnableNewClanBoard", false);
 		ENABLE_OLD_CLAN_BOARD = CommunityboardSettings.getProperty("EnableOLDClanBoard", true);
+
+		ALLOW_SENDING_IMAGES = CommunityboardSettings.getProperty("AllowSendingImages",true);
 		
 		ENABLE_NEW_FRIENDS_BOARD = CommunityboardSettings.getProperty("EnableNewFriendsBoard", false);
 		ENABLE_RETAIL_FRIENDS_BOARD = CommunityboardSettings.getProperty("EnableRetailFriendsBoard", false);

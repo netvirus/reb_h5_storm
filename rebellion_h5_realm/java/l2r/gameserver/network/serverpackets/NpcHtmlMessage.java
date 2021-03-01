@@ -1,7 +1,7 @@
 package l2r.gameserver.network.serverpackets;
 
 import l2r.gameserver.Config;
-import l2r.gameserver.cache.ImagesChache;
+import l2r.gameserver.cache.ImagesCache;
 import l2r.gameserver.data.StringHolder;
 import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.model.Player;
@@ -278,14 +278,14 @@ public class NpcHtmlMessage extends L2GameServerPacket
 		player.cleanBypasses(false);
 		_html = player.encodeBypasses(_html, false);
 
-		m = ImagesChache.HTML_PATTERN.matcher(_html);
+		m = ImagesCache.HTML_PATTERN.matcher(_html);
 		
 		while (m.find())
 		{
 			String imageName = m.group(1);
-			int imageId = ImagesChache.getInstance().getImageId(imageName);
+			int imageId = ImagesCache.getInstance().getImageId(imageName);
 			_html = _html.replaceAll("%image:" + imageName + "%", "Crest.crest_" + player.getServerId() + "_" + imageId);
-			byte[] image = ImagesChache.getInstance().getImage(imageId);
+			byte[] image = ImagesCache.getInstance().getImage(imageId);
 			if (image != null)
 				player.sendPacket(new PledgeCrest(imageId, image));
 		}
