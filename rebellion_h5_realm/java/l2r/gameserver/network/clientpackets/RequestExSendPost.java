@@ -174,10 +174,11 @@ public class RequestExSendPost extends L2GameClientPacket
 			return;
 		}
 
-		if(!activeChar.antiFlood.canMail(activeChar.getLevel() >= 76))
-		{
-			activeChar.sendMessage("Mail is allowed once per " + (activeChar.getLevel() >= 76 ? "minute." : "10 minutes."));
-			return;
+		if (Config.ALLOW_MAIL_ANTOFLOOD) {
+			if (!activeChar.antiFlood.canMail(activeChar.getLevel() >= Config.ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL)) {
+				activeChar.sendMessage("Mail is allowed once per " + (activeChar.getLevel() >= Config.ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL ? "minute." : "10 minutes."));
+				return;
+			}
 		}
 
 		if(NexusEvents.isInEvent(activeChar))

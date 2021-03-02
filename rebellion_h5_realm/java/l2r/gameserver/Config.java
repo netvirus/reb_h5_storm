@@ -1199,6 +1199,8 @@ public class Config
 	
 	public static boolean ALLOW_DISCARDITEM;
 	public static boolean ALLOW_MAIL;
+	public static boolean ALLOW_MAIL_ANTOFLOOD;
+	public static int ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL;
 	public static boolean ALLOW_WAREHOUSE;
 	public static boolean ALLOW_WATER;
 	public static boolean ALLOW_CURSED_WEAPONS;
@@ -1952,6 +1954,8 @@ public class Config
 		
 		ALLOW_DISCARDITEM = serverSettings.getProperty("AllowDiscardItem", true);
 		ALLOW_MAIL = serverSettings.getProperty("AllowMail", true);
+		ALLOW_MAIL_ANTOFLOOD = serverSettings.getProperty("AllowAntiFloodMail", false);
+		ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL = serverSettings.getProperty("AllowAntiFloodMailPlayerLevel", 76);
 		ALLOW_WAREHOUSE = serverSettings.getProperty("AllowWarehouse", true);
 		
 		ALLOW_CURSED_WEAPONS = serverSettings.getProperty("AllowCursedWeapons", false);
