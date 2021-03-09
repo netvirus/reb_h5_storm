@@ -138,7 +138,7 @@ public class CommunityBosses implements ScriptFile, ICommunityBoardHandler
 
 		html = getNormalReplacements(html, page, sort, search, -1);
 
-		html = BbsUtil.htmlAll(html, player);
+//		html = BbsUtil.htmlAll(html, player);
 		ShowBoard.separateAndSend(html, player);
 	}
 
@@ -165,8 +165,8 @@ public class CommunityBosses implements ScriptFile, ICommunityBoardHandler
 			builder.append("<table bgcolor=").append(getLineColor(i)).append(" width=760 height=25 border=0 cellpadding=0 cellspacing=0><tr>");
 			builder.append("<td width=300 height=25><center><font name=__SYSTEMWORLDFONT color=F26262>").append(temp.getName()).append("</font></center></td>");
 			builder.append("<td width=73 height=25><center><font name=__SYSTEMWORLDFONT color=C8C8C8>").append(temp.level).append("</font></center></td>");
-			builder.append("<td width=130 height=25><center><font name=__SYSTEMWORLDFONT color=").append(getAliveColor(isAlive)).append('>').append(isAlive ? "Alive" : "Dead").append("</font></center></td>");
-			builder.append("<td width=240 height=25><center><button value=\"Detailed Information\" action=\"bypass _bbsboss_%sort%_").append(page).append("_ %search% _").append(entry.getKey()).append("\" width=200 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_ct1.button_df\"></center></td>");
+			builder.append("<td width=130 height=25><center><font name=__SYSTEMWORLDFONT color=").append(getAliveColor(isAlive)).append('>').append(isAlive ? "Жив" : "Мертв").append("</font></center></td>");
+			builder.append("<td width=240 height=25><center><button value=\"Подробнее\" action=\"bypass _bbsboss_%sort%_").append(page).append("_%search%").append(entry.getKey()).append("\" width=200 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_ct1.button_df\"></center></td>");
 			builder.append("</tr></table>");
 			i++;
 		}
@@ -250,7 +250,7 @@ public class CommunityBosses implements ScriptFile, ICommunityBoardHandler
 		html = getDetailedBossReplacements(player, html, bossSet, bossTemplate, bossInstance);
 		html = getNormalReplacements(html, page, sort, search, bossId);
 
-		ImagesCache.getInstance().sendUsedImages(html, player);
+		//ImagesCache.getInstance().sendUsedImages(html, player);
 		ShowBoard.separateAndSend(html, player);
 	}
 
@@ -336,12 +336,12 @@ public class CommunityBosses implements ScriptFile, ICommunityBoardHandler
 		newHtml = newHtml.replace("%evasionRate%", String.valueOf(bossTemplate.getBaseShldDef())); // maybe evasion?
 		newHtml = newHtml.replace("%criticalHit%", String.valueOf(bossTemplate.getBaseCritRate()));
 		// Stats:
-		newHtml = newHtml.replace("%STR%", String.valueOf(bossTemplate.getBaseSTR()));
-		newHtml = newHtml.replace("%DEX%", String.valueOf(bossTemplate.getBaseDEX()));
-		newHtml = newHtml.replace("%CON%", String.valueOf(bossTemplate.getBaseCON()));
-		newHtml = newHtml.replace("%INT%", String.valueOf(bossTemplate.getBaseINT()));
-		newHtml = newHtml.replace("%WIT%", String.valueOf(bossTemplate.getBaseWIT()));
-		newHtml = newHtml.replace("%MEN%", String.valueOf(bossTemplate.getBaseMEN()));
+//		newHtml = newHtml.replace("%STR%", String.valueOf(bossTemplate.getBaseSTR()));
+//		newHtml = newHtml.replace("%DEX%", String.valueOf(bossTemplate.getBaseDEX()));
+//		newHtml = newHtml.replace("%CON%", String.valueOf(bossTemplate.getBaseCON()));
+//		newHtml = newHtml.replace("%INT%", String.valueOf(bossTemplate.getBaseINT()));
+//		newHtml = newHtml.replace("%WIT%", String.valueOf(bossTemplate.getBaseWIT()));
+//		newHtml = newHtml.replace("%MEN%", String.valueOf(bossTemplate.getBaseMEN()));
 		// Def Attibute Value:
 		newHtml = newHtml.replace("%fire%", String.valueOf(bossTemplate.getBaseAttributeDefence()[0]));
 		newHtml = newHtml.replace("%wind%", String.valueOf(bossTemplate.getBaseAttributeDefence()[1]));
