@@ -33,7 +33,7 @@ public class CommandChannel implements PlayerGroup
 
 	/**
 	 * Creates a New Command Channel and Add the Leaders party to the CC
-	 * @param CommandChannelLeader
+	 * @param leader
 	 */
 	public CommandChannel(Player leader)
 	{
@@ -46,7 +46,7 @@ public class CommandChannel implements PlayerGroup
 
 	/**
 	 * Adds a Party to the Command Channel
-	 * @param Party
+	 * @param party
 	 */
 	public void addParty(Party party)
 	{
@@ -65,7 +65,7 @@ public class CommandChannel implements PlayerGroup
 
 	/**
 	 * Removes a Party from the Command Channel
-	 * @param Party
+	 * @param party
 	 */
 	public void removeParty(Party party)
 	{
@@ -289,27 +289,19 @@ public class CommandChannel implements PlayerGroup
 	/**
 	 * Проверяет возможность создания командного канала
 	 */
-	public static boolean checkAuthority(Player creator)
-	{
+	public static boolean checkAuthority(final Player creator) {
 		// CC могут создавать только лидеры партий, состоящие в клане ранком не ниже барона
-		if(creator.getClan() == null || !creator.isInParty() || !creator.getParty().isLeader(creator) || creator.getPledgeClass() < Player.RANK_BARON)
+		// if (creator.getClan() == null || !creator.isInParty() || !creator.getParty().isLeader(creator) || creator.getPledgeClass() >= 5) {
+		if (creator.getClan() == null || creator.getClan().getLevel() < 5)
 		{
-			creator.sendPacket(SystemMsg.YOU_DO_NOT_HAVE_THE_AUTHORITY_TO_USE_THE_COMMAND_CHANNEL);
+			creator.sendPacket(SystemMsg.COMMAND_CHANNELS_CAN_ONLY_BE_FORMED_BY_A_PARTY_LEADER_WHO_IS_ALSO_THE_LEADER_OF_A_LEVEL_5_CLAN);
 			return false;
 		}
 
-		// CC можно создать, если есть клановый скилл Clan Imperium
-		boolean haveSkill = creator.getSkillLevel(CLAN_IMPERIUM_ID) > 0;
-
-		// Ищем Strategy Guide в инвентаре
-		boolean haveItem = creator.getInventory().getItemByItemId(STRATEGY_GUIDE_ID) != null;
-
-		if(!haveSkill && !haveItem)
-		{
+		if (!creator.isInParty() || !creator.getParty().isLeader(creator)) {
 			creator.sendPacket(SystemMsg.YOU_DO_NOT_HAVE_THE_AUTHORITY_TO_USE_THE_COMMAND_CHANNEL);
 			return false;
 		}
-
 		return true;
 	}
 

@@ -100,10 +100,12 @@ public class RequestExMPCCAskJoin extends L2GameClientPacket
 			}
 
 			sendInvite(activeChar, target);
+			// СС еще не существует. Отсылаем запрос на инвайт и в случае согласия создаем канал
 		}
-		else // СС еще не существует. Отсылаем запрос на инвайт и в случае согласия создаем канал
-			if(CommandChannel.checkAuthority(activeChar))
-				sendInvite(activeChar, target);
+		else if(CommandChannel.checkAuthority(activeChar))
+		{
+			sendInvite(activeChar, target);
+		}
 	}
 
 	private void sendInvite(Player requestor, Player target)
