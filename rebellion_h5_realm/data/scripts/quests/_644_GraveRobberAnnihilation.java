@@ -134,7 +134,8 @@ public class _644_GraveRobberAnnihilation extends Quest implements ScriptFile
 	{
 		if(st.getCond() == 1 && Rnd.chance(90))
 		{
-			st.giveItems(ORC_GOODS, 1, false);
+			int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
+			st.giveItems(ORC_GOODS, questItemCountWithPremiumBonus, false);
 			if(st.getQuestItemsCount(ORC_GOODS) >= 120)
 			{
 				st.setCond(2);

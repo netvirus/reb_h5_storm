@@ -91,8 +91,10 @@ public class _645_GhostsOfBatur extends Quest implements ScriptFile
 	public String onKill(NpcInstance npc, QuestState st)
 	{
 		if(st.getCond() > 0)
-			if(Rnd.chance(5))
-				st.giveItems(CursedBurialItems, 1);
+			if(Rnd.chance(5)) {
+				int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
+				st.giveItems(CursedBurialItems, questItemCountWithPremiumBonus);
+			}
 		return null;
 	}
 }
