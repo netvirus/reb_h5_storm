@@ -282,7 +282,7 @@ public abstract class Playable extends Creature
 	}
 
 	@Override
-	public void doCast(final Skill skill, final Creature target, boolean forceUse)
+	public synchronized void doCast(final Skill skill, final Creature target, boolean forceUse)
 	{
 		if(skill == null)
 			return;

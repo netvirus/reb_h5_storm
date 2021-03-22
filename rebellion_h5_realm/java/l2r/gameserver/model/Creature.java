@@ -670,6 +670,7 @@ public abstract class Creature extends GameObject
 			if (_currentMp < mpConsume2)
 			{
 				sendPacket(SystemMsg.NOT_ENOUGH_MP);
+				onCastEndTime();
 				return;
 			}
 			
@@ -714,7 +715,7 @@ public abstract class Creature extends GameObject
 			
 			int itemConsume[] = skill.getItemConsume();
 			
-			if (!getAI().isPhantomPlayerAI() && itemConsume[0] > 0)
+			if (itemConsume[0] > 0)
 			{
 				for (int i = 0; i < itemConsume.length; i++)
 				{
@@ -1450,20 +1451,11 @@ public abstract class Creature extends GameObject
 		return _animationEndTime;
 	}
 	
-	public void doCast(Skill skill, Creature target, boolean forceUse)
+	public synchronized void doCast(Skill skill, Creature target, boolean forceUse)
 	{
 		if (skill == null)
 			return;
-		
-		if (Config.SECURITY_ENABLED && Config.SECURITY_CANT_PVP_ENABLED && isPlayer() && getPlayer().getSecurity())
-		{
-			if (target.isPlayable() && skill.isOffensive())
-			{
-				sendChatMessage(getPlayer().getObjectId(), ChatType.TELL.ordinal(), "SECURITY", (getPlayer().isLangRus() ? "Пожалуйста, назовите себя для того, чтобы сделать это, введя .security" : "Please identify yourself in order to do this by typing .security"));
-				target = null;
-			}
-		}
-		
+
 		if (!canOverrideCond(PcCondOverride.SKILL_CONDITIONS))
 		{
 			// Nexus engine
@@ -1481,7 +1473,7 @@ public abstract class Creature extends GameObject
 			
 			int itemConsume[] = skill.getItemConsume();
 			
-			if (!getAI().isPhantomPlayerAI() && itemConsume[0] > 0)
+			if (itemConsume[0] > 0)
 			{
 				for (int i = 0; i < itemConsume.length; i++)
 				{
@@ -1497,6 +1489,21 @@ public abstract class Creature extends GameObject
 			{
 				if (!consumeItemMp(skill.getReferenceItemId(), skill.getReferenceItemMpConsume()))
 					return;
+			}
+
+			double mpConsume1 = skill.getMpConsume1();
+			if (skill.isUsingWhileCasting())
+				mpConsume1 += calcStat(skill.isMagic() ? Stats.MP_MAGIC_SKILL_CONSUME : Stats.MP_PHYSICAL_SKILL_CONSUME, skill.getMpConsume2(), target, skill);
+
+			if (mpConsume1 > 0)
+			{
+				if (_currentMp < mpConsume1)
+				{
+					sendPacket(SystemMsg.NOT_ENOUGH_MP);
+					onCastEndTime();
+					return;
+				}
+				reduceCurrentMp(mpConsume1, null);
 			}
 		}
 		
@@ -1544,7 +1551,7 @@ public abstract class Creature extends GameObject
 		long reuseDelay = Math.max(0, canOverrideCond(PcCondOverride.SKILL_REUSE_CONDITIONS) ? 0 : Formulas.calcSkillReuseDelay(this, skill));
 		
 		broadcastPacket(new MagicSkillUse(this, target, skill.getDisplayId(), level, skillTime, reuseDelay));
-		
+
 		if (!skill.isHandler())
 			disableSkill(skill, reuseDelay);
 		
@@ -1559,23 +1566,23 @@ public abstract class Creature extends GameObject
 		if (skill.getTargetType() == SkillTargetType.TARGET_HOLY)
 			target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, this, 1);
 		
-		if (!canOverrideCond(PcCondOverride.SKILL_CONDITIONS))
-		{
-			double mpConsume1 = skill.getMpConsume1();
-			if (skill.isUsingWhileCasting())
-				mpConsume1 += calcStat(skill.isMagic() ? Stats.MP_MAGIC_SKILL_CONSUME : Stats.MP_PHYSICAL_SKILL_CONSUME, skill.getMpConsume2(), target, skill);
-			
-			if (mpConsume1 > 0)
-			{
-				if (_currentMp < mpConsume1)
-				{
-					sendPacket(SystemMsg.NOT_ENOUGH_MP);
-					onCastEndTime();
-					return;
-				}
-				reduceCurrentMp(mpConsume1, null);
-			}
-		}
+//		if (!canOverrideCond(PcCondOverride.SKILL_CONDITIONS))
+//		{
+//			double mpConsume1 = skill.getMpConsume1();
+//			if (skill.isUsingWhileCasting())
+//				mpConsume1 += calcStat(skill.isMagic() ? Stats.MP_MAGIC_SKILL_CONSUME : Stats.MP_PHYSICAL_SKILL_CONSUME, skill.getMpConsume2(), target, skill);
+//
+//			if (mpConsume1 > 0)
+//			{
+//				if (_currentMp < mpConsume1)
+//				{
+//					sendPacket(SystemMsg.NOT_ENOUGH_MP);
+//					onCastEndTime();
+//					return;
+//				}
+//				reduceCurrentMp(mpConsume1, null);
+//			}
+//		}
 		
 		_flyLoc = null;
 		switch (skill.getFlyType())

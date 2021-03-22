@@ -834,7 +834,7 @@ public final class Player extends Playable implements PlayerGroup
 	}
 
 	@Override
-	public void doCast(final Skill skill, final Creature target, boolean forceUse)
+	public synchronized void doCast(final Skill skill, final Creature target, boolean forceUse)
 	{
 		if(skill == null)
 			return;
@@ -13909,5 +13909,29 @@ public final class Player extends Playable implements PlayerGroup
 		if (quickVars.containsKey(name))
 			quickVars.remove(name);
 		quickVars.put(name, value);
+	}
+
+	private int soloInstance;
+
+	public void updateSoloInstance()
+	{
+		this.soloInstance++;
+	}
+
+	public int getSoloInstance()
+	{
+		return soloInstance;
+	}
+
+	private int partyInstance;
+
+	public void updatePartyInstance()
+	{
+		this.partyInstance++;
+	}
+
+	public int getPartyInstance()
+	{
+		return partyInstance;
 	}
 }

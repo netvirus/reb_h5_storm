@@ -233,25 +233,24 @@ public class Reflection
 
 	/**
 	 * Время в мс
-	 *
 	 * @param timeInMillis
 	 */
 	public void startCollapseTimer(long timeInMillis)
 	{
-		if(isDefault())
+		if (isDefault())
 		{
-			_log.error("", new Exception("Basic reflection " + _id + " could not be collapsed!"));
+			new Exception("Basic reflection " + _id + " could not be collapsed!").printStackTrace();
 			return;
 		}
 		lock.lock();
 		try
 		{
-			if(_collapseTask != null)
+			if (_collapseTask != null)
 			{
 				_collapseTask.cancel(false);
 				_collapseTask = null;
 			}
-			if(_collapse1minTask != null)
+			if (_collapse1minTask != null)
 			{
 				_collapse1minTask.cancel(false);
 				_collapse1minTask = null;
@@ -265,7 +264,8 @@ public class Reflection
 				}
 			}, timeInMillis);
 
-			if(timeInMillis >= 60 * 1000L)
+			if (timeInMillis >= (60 * 1000L))
+			{
 				_collapse1minTask = ThreadPoolManager.getInstance().schedule(new RunnableImpl()
 				{
 					@Override
@@ -273,7 +273,8 @@ public class Reflection
 					{
 						minuteBeforeCollapse();
 					}
-				}, timeInMillis - 60 * 1000L);
+				}, timeInMillis - (60 * 1000L));
+			}
 		}
 		finally
 		{
@@ -286,13 +287,13 @@ public class Reflection
 		lock.lock();
 		try
 		{
-			if(_collapseTask != null)
+			if (_collapseTask != null)
 			{
 				_collapseTask.cancel(false);
 				_collapseTask = null;
 			}
 
-			if(_collapse1minTask != null)
+			if (_collapse1minTask != null)
 			{
 				_collapse1minTask.cancel(false);
 				_collapse1minTask = null;
@@ -306,14 +307,26 @@ public class Reflection
 
 	public void minuteBeforeCollapse()
 	{
-		if(_isCollapseStarted)
+		if (_isCollapseStarted)
+		{
 			return;
+		}
 		lock.lock();
 		try
 		{
-			for(GameObject o : _objects)
-				if(o.isPlayer())
-					((Player) o).sendPacket(new SystemMessage(SystemMessage.THIS_INSTANCE_ZONE_WILL_BE_TERMINATED_IN_S1_MINUTES_YOU_WILL_BE_FORCED_OUT_OF_THE_DANGEON_THEN_TIME_EXPIRES).addNumber(1));
+			for (GameObject o : _objects)
+			{
+				if (o.isPlayer())
+				{
+					Player player = (Player) o;
+					if (player.isInParty())
+						player.updatePartyInstance();
+					else
+						player.updateSoloInstance();
+
+					player.sendPacket(new SystemMessage(SystemMessage.THIS_INSTANCE_ZONE_WILL_BE_TERMINATED_IN_S1_MINUTES_YOU_WILL_BE_FORCED_OUT_OF_THE_DANGEON_THEN_TIME_EXPIRES).addNumber(1));
+				}
+			}
 		}
 		finally
 		{
@@ -323,17 +336,19 @@ public class Reflection
 
 	public void collapse()
 	{
-		if(_id <= 0)
+		if (_id <= 0)
 		{
-			_log.error("", new Exception("Basic reflection " + _id + " could not be collapsed!"));
+			new Exception("Basic reflection " + _id + " could not be collapsed!").printStackTrace();
 			return;
 		}
 
 		lock.lock();
 		try
 		{
-			if(_isCollapseStarted)
+			if (_isCollapseStarted)
+			{
 				return;
+			}
 
 			_isCollapseStarted = true;
 		}
@@ -345,24 +360,32 @@ public class Reflection
 		try
 		{
 			stopCollapseTimer();
-			if(_hiddencollapseTask != null)
+			if (_hiddencollapseTask != null)
 			{
 				_hiddencollapseTask.cancel(false);
 				_hiddencollapseTask = null;
 			}
 
-			for(Spawner s : _spawns)
+			for (Spawner s : _spawns)
+			{
 				s.deleteAll();
+			}
 
-			for(String group : _spawners.keySet())
+			for (String group : _spawners.keySet())
+			{
 				despawnByGroup(group);
+			}
 
-			for(DoorInstance d : _doors.values())
+			for (DoorInstance d : _doors.values())
+			{
 				d.deleteMe();
+			}
 			_doors.clear();
 
-			for(Zone zone : _zones.values())
+			for (Zone zone : _zones.values())
+			{
 				zone.setActive(false);
+			}
 			_zones.clear();
 
 			List<Player> teleport = new ArrayList<Player>();
@@ -371,47 +394,65 @@ public class Reflection
 			lock.lock();
 			try
 			{
-				for(GameObject o : _objects)
-					if(o.isPlayer())
+				for (GameObject o : _objects)
+				{
+					if (o.isPlayer())
+					{
 						teleport.add((Player) o);
-					else if(!o.isPlayable())
+					}
+					else if (!o.isPlayable())
+					{
 						delete.add(o);
+					}
+				}
 			}
 			finally
 			{
 				lock.unlock();
 			}
 
-			for(Player player : teleport)
+			for (Player player : teleport)
 			{
-				if(player.getParty() != null)
+				if (player.getParty() != null)
 				{
-					if(equals(player.getParty().getReflection()))
+					if (equals(player.getParty().getReflection()))
+					{
 						player.getParty().setReflection(null);
-					if(player.getParty().getCommandChannel() != null && equals(player.getParty().getCommandChannel().getReflection()))
+					}
+					if ((player.getParty().getCommandChannel() != null) && equals(player.getParty().getCommandChannel().getReflection()))
+					{
 						player.getParty().getCommandChannel().setReflection(null);
+					}
 				}
-				if(equals(player.getReflection()))
-					if(getReturnLoc() != null)
+				if (equals(player.getReflection()))
+				{
+					if (getReturnLoc() != null)
+					{
 						player.teleToLocation(getReturnLoc(), ReflectionManager.DEFAULT);
+					}
 					else
+					{
 						player.setReflection(ReflectionManager.DEFAULT);
+					}
+				}
 			}
 
-			if(_commandChannel != null)
+			if (_commandChannel != null)
 			{
 				_commandChannel.setReflection(null);
 				_commandChannel = null;
 			}
 
-			if(_party != null)
+			if (_party != null)
 			{
 				_party.setReflection(null);
 				_party = null;
 			}
 
-			for(GameObject o : delete)
+			for (GameObject o : delete)
+			{
 				o.deleteMe();
+			}
 
 			_spawns.clear();
 			_objects.clear();

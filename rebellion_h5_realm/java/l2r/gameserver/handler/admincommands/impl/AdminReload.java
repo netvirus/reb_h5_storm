@@ -12,10 +12,7 @@ import l2r.gameserver.data.htm.HtmCache;
 import l2r.gameserver.data.xml.holder.BuyListHolder;
 import l2r.gameserver.data.xml.holder.MultiSellHolder;
 import l2r.gameserver.data.xml.holder.ProductHolder;
-import l2r.gameserver.data.xml.parser.FishParser;
-import l2r.gameserver.data.xml.parser.InstantZoneParser;
-import l2r.gameserver.data.xml.parser.ItemParser;
-import l2r.gameserver.data.xml.parser.NpcParser;
+import l2r.gameserver.data.xml.parser.*;
 import l2r.gameserver.handler.admincommands.IAdminCommandHandler;
 import l2r.gameserver.instancemanager.AutoAnnounce;
 import l2r.gameserver.instancemanager.BetaServer;
@@ -238,7 +235,14 @@ public class AdminReload implements IAdminCommandHandler
 			}
 			case admin_reload_premiumsystem:
 			{
-				//PremiumAccountsTable.init();
+				try
+				{
+					PremiumSystemOptionsData.getInstance().load();
+				}
+				catch(Exception e)
+				{
+					return false;
+				}
 				activeChar.sendMessage(new CustomMessage("l2r.gameserver.handler.admincommands.impl.adminreload.message11", activeChar));
 				break;
 			}

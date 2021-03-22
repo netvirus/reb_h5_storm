@@ -11,8 +11,7 @@
 		<remove itemId="0" count="0" necessary="false" />
 		<give itemId="0" count="0" />
 		<quest id="0" />
-		<reuse resetReuse="30 6 * * *" setUponEntry="false"
-			sharedReuseGroup="1" />
+		<reuse resetReuse="30 6 * * *" setUponEntry="false" sharedReuseGroup="1" />
 		<add_parameters>
 			<param name="tele_device_loc" value="9140 -205735 -8000" />
 		</add_parameters>
