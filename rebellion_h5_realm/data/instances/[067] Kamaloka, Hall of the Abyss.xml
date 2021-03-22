@@ -7,7 +7,7 @@
 		<level min="51" max="61" />
 		<party min="2" max="6" />
 		<return loc="80995 56411 -1552" />
-		<teleport loc="-49336 -220849 -8064" />
+		<teleport loc="9768 -205736 -8000" />
 		<remove itemId="0" count="0" necessary="false" />
 		<give itemId="0" count="0" />
 		<quest id="0" />
