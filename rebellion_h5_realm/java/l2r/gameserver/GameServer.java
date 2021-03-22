@@ -1,5 +1,6 @@
 package l2r.gameserver;
 
+import com.elfocrash.l2acp.L2ACPServer;
 import l2r.commons.lang.StatsUtils;
 import l2r.commons.listener.Listener;
 import l2r.commons.listener.ListenerList;
@@ -363,6 +364,9 @@ public class GameServer
 //			DonationPaymentsDAO.getInstance();
 //			_log.info("Donation auto check system is enabled.");
 //		}
+
+		printSection("Starting API");
+		L2ACPServer.getInstance();
 
 		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
 		_log.info("GameServer Started");
