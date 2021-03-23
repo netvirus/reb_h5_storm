@@ -15,7 +15,7 @@
  */
 package com.elfocrash.l2acp.responses;
 
-public class GetAllPlayerNamesResponse extends L2ACPResponse
+public class GetAllPlayerNamesResponse extends Response
 {
 	private String[] AllPlayerNames; 
 	

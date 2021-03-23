@@ -16,9 +16,8 @@
 package com.elfocrash.l2acp.responses;
 
 import com.elfocrash.l2acp.models.AnalyticsPlayerData;
-import com.elfocrash.l2acp.models.BuyListItem;
 
-public class GetAnalyticsPlayersResponse extends L2ACPResponse
+public class GetAnalyticsPlayersResponse extends Response
 {
 	private AnalyticsPlayerData[] PlayerData; 
 	

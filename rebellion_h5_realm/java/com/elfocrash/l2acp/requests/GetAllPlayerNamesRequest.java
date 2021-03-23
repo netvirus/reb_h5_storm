@@ -18,14 +18,14 @@ package com.elfocrash.l2acp.requests;
 import java.util.ArrayList;
 
 import com.elfocrash.l2acp.responses.GetAllPlayerNamesResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.elfocrash.l2acp.util.Helpers;
 import com.google.gson.JsonObject;
 
-public class GetAllPlayerNamesRequest extends L2ACPRequest {
+public class GetAllPlayerNamesRequest extends Request {
 	
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		
 		ArrayList<String> players = Helpers.getAllPlayerNames();
 		

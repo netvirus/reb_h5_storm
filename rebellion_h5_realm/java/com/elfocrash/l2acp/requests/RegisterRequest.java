@@ -15,7 +15,7 @@
  */
 package com.elfocrash.l2acp.requests;
 
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
 
 import java.sql.Connection;
@@ -29,14 +29,14 @@ import l2r.loginserver.database.L2DatabaseFactory;
  * @author Elfocrash
  *
  */
-public class RegisterRequest extends L2ACPRequest
+public class RegisterRequest extends Request
 {
 	private String Username;
 	
 	private String Password;
 	
 	@Override
-	public L2ACPResponse getResponse()
+	public Response getResponse()
 	{
 		String query = "SELECT login, password, access_level, lastServer FROM accounts WHERE login=?";
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(query))
@@ -46,14 +46,14 @@ public class RegisterRequest extends L2ACPRequest
 			{
 				if (rset.next())
 				{
-						return new L2ACPResponse(500, "Account with username: " + Username + " already exists");					
+						return new Response(500, "Account with username: " + Username + " already exists");
 				}
 			}
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			return new L2ACPResponse(500, "Unsuccessful registration");	
+			return new Response(500, "Unsuccessful registration");
 		}
 		
 		
@@ -67,11 +67,11 @@ public class RegisterRequest extends L2ACPRequest
 			ps.setInt(4, 0);
 			ps.execute();
 			ps.close();
-			return new L2ACPResponse(200, "Successful registration");
+			return new Response(200, "Successful registration");
 		}
 		catch (Exception e)
 		{
-			return new L2ACPResponse(500, "Unsuccessful registration");			
+			return new Response(500, "Unsuccessful registration");
 		}
 	}
 	

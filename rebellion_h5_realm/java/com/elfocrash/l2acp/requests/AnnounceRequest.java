@@ -15,21 +15,21 @@
  */
 package com.elfocrash.l2acp.requests;
 
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
 import l2r.gameserver.Announcements;
 
 
-public class AnnounceRequest extends L2ACPRequest {
+public class AnnounceRequest extends Request {
 
 	private String Text;
 
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		
 		Announcements.getInstance().announceToAll(Text);
 		
-		return new L2ACPResponse(200,"Successfully announced!");
+		return new Response(200,"Successfully announced!");
 	}
 
 	@Override

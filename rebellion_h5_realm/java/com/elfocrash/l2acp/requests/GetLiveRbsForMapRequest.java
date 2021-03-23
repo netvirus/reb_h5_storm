@@ -17,16 +17,15 @@ package com.elfocrash.l2acp.requests;
 
 import com.elfocrash.l2acp.models.MapMob;
 import com.elfocrash.l2acp.responses.GetLiveRbsForMapResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
-import l2r.gameserver.instancemanager.RaidBossSpawnManager;
 
 import java.util.ArrayList;
 
-public class GetLiveRbsForMapRequest extends L2ACPRequest {
+public class GetLiveRbsForMapRequest extends Request {
 
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		ArrayList<MapMob> mapMobs = new ArrayList<>();
 		
 //		for(L2RaidBossInstance boss : RaidBossSpawnManager.getInstance().getBosses().values()){

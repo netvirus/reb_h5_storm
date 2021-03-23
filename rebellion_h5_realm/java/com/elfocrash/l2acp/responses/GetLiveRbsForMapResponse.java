@@ -16,10 +16,8 @@
 package com.elfocrash.l2acp.responses;
 
 import com.elfocrash.l2acp.models.MapMob;
-import com.elfocrash.l2acp.models.MapPlayer;
-import com.elfocrash.l2acp.models.PlayerInfo;
 
-public class GetLiveRbsForMapResponse extends L2ACPResponse
+public class GetLiveRbsForMapResponse extends Response
 {
 	private MapMob[] MapMobs; 
 	

@@ -17,16 +17,16 @@ package com.elfocrash.l2acp.requests;
 
 import com.elfocrash.l2acp.models.BuyListItem;
 import com.elfocrash.l2acp.responses.GetBuyListResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.elfocrash.l2acp.util.Helpers;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-public class GetBuyListRequest extends L2ACPRequest {
+public class GetBuyListRequest extends Request {
 
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		ArrayList<BuyListItem> invInfo = Helpers.getDonateItemList();
 		
 		return new GetBuyListResponse(200,"Success", invInfo.toArray(new BuyListItem[invInfo.size()]));

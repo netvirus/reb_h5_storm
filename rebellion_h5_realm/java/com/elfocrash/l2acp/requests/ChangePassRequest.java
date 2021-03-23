@@ -20,12 +20,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
 
 import l2r.loginserver.database.L2DatabaseFactory;
 
-public class ChangePassRequest extends L2ACPRequest
+public class ChangePassRequest extends Request
 {
 	private String Username;
 	
@@ -34,7 +34,7 @@ public class ChangePassRequest extends L2ACPRequest
 	private String NewPassword;
 
 	@Override
-	public L2ACPResponse getResponse()
+	public Response getResponse()
 	{
 		String query = "SELECT login, password FROM accounts WHERE login=?";
 		boolean validPass = false;
@@ -58,14 +58,14 @@ public class ChangePassRequest extends L2ACPRequest
 					ps2.executeUpdate();
 					ps2.clearParameters();
 				}
-				return new L2ACPResponse(200, "Successful update");
+				return new Response(200, "Successful update");
 			}
-			return new L2ACPResponse(501, "Unsuccessful update. Invalid password.");			
+			return new Response(501, "Unsuccessful update. Invalid password.");
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			return new L2ACPResponse(500, "Unsuccessful update. Database error.");
+			return new Response(500, "Unsuccessful update. Database error.");
 		}
 	}
 	

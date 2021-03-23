@@ -17,7 +17,7 @@ package com.elfocrash.l2acp.requests;
 
 import com.elfocrash.l2acp.models.InventoryInfo;
 import com.elfocrash.l2acp.responses.GetPlayerInventoryResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.elfocrash.l2acp.util.Helpers;
 import com.google.gson.JsonObject;
 import l2r.gameserver.model.GameObjectsStorage;
@@ -26,12 +26,12 @@ import l2r.gameserver.model.items.ItemInstance;
 
 import java.util.ArrayList;
 
-public class GetPlayerInventoryRequest extends L2ACPRequest {
+public class GetPlayerInventoryRequest extends Request {
 
 	private String Username;
 	
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		Player player = GameObjectsStorage.getPlayer(Username);
 		if(player == null){
 			player = Player.restore(Helpers.getPlayerIdByName(Username));

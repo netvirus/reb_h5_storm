@@ -16,40 +16,31 @@
 package com.elfocrash.l2acp;
 
 import com.elfocrash.l2acp.requests.AnnounceRequest;
-import com.elfocrash.l2acp.requests.L2ACPRequest;
+import com.elfocrash.l2acp.requests.Request;
 import com.elfocrash.l2acp.requests.RegisterRequest;
 
+import java.util.Arrays;
+import java.util.function.Supplier;
+
 /**
- * @author Elfocrash, netvirus
+ * @author netvirus
  *
  */
-public enum L2ACPRequests
+public enum Requests
 {
-	REGISTER(1, new RegisterRequest()),
-	ANNOUNCE(2, new AnnounceRequest());
+	REGISTER(1, RegisterRequest::new),
+	ANNOUNCE(2, AnnounceRequest::new);
 
-	private int _requestId;
-	private L2ACPRequest _clazz;
+	int id;
+	Supplier<Request> ctor;
 
-	L2ACPRequests(int requestId, L2ACPRequest clazz){
-		_requestId = requestId;
-		_clazz = clazz != null ? clazz : null;
+	Requests(int id, Supplier<Request> ctor) {
+		this.id = id;
+		this.ctor = ctor;
 	}
 
-	public final int getRequestId()
-	{
-		return _requestId;
-	}
-
-	public final L2ACPRequest getRequestClazz()
-	{
-		return _clazz;
-	}
-
-	public static L2ACPRequest getClazzByRequestId(int clazzId)
-	{
-		for (L2ACPRequests clazz : L2ACPRequests.values())
-			if (clazz.getRequestId() == clazzId)
-				return clazz.getRequestClazz();
+	public static Request getById(int id) {
+		Requests wrapper = Arrays.stream(Requests.values()).filter(r -> r.id == id).findAny().orElse(null);
+		return wrapper != null ? wrapper.ctor.get() : null;
 	}
 }

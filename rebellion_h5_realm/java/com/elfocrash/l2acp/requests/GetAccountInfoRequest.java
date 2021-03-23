@@ -16,7 +16,7 @@
 package com.elfocrash.l2acp.requests;
 
 import com.elfocrash.l2acp.responses.GetAccountInfoResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
 
 import java.sql.Connection;
@@ -31,13 +31,13 @@ import l2r.loginserver.database.L2DatabaseFactory;
  * @author Elfocrash
  *
  */
-public class GetAccountInfoRequest extends L2ACPRequest
+public class GetAccountInfoRequest extends Request
 {
 	private String Username;
 	
 	
 	@Override
-	public L2ACPResponse getResponse()
+	public Response getResponse()
 	{
 		ArrayList<String> chars = new ArrayList<>();
 		int donatePoints = 0;
@@ -72,7 +72,7 @@ public class GetAccountInfoRequest extends L2ACPRequest
 			catch (SQLException e)
 			{
 				e.printStackTrace();
-				return new L2ACPResponse(500, "Unsuccessful retrieval");
+				return new Response(500, "Unsuccessful retrieval");
 			}
 			
 			return new GetAccountInfoResponse(200,"Success", chars.toArray(new String[chars.size()]), donatePoints, accessLevel);
@@ -81,7 +81,7 @@ public class GetAccountInfoRequest extends L2ACPRequest
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new L2ACPResponse(500, "Unsuccessful retrieval");
+			return new Response(500, "Unsuccessful retrieval");
 		}
 	}
 	

@@ -15,7 +15,7 @@
  */
 package com.elfocrash.l2acp;
 
-import com.elfocrash.l2acp.requests.L2ACPRequest;
+import com.elfocrash.l2acp.requests.Request;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -63,7 +63,7 @@ public class L2ACPServer {
                     JsonObject jobject = jelement.getAsJsonObject();
 
                     if (Config.API_KEY.equals(jobject.get("ApiKey").getAsString())) {
-                        L2ACPRequest request = L2ACPRequests.getClazzByRequestId(Integer.parseInt(jobject.get("RequestId").getAsString()));
+                        Request request = Requests.getById(Integer.parseInt(jobject.get("RequestId").getAsString()));
                         request.setContent(jobject);
 
                         Gson gson = new Gson();

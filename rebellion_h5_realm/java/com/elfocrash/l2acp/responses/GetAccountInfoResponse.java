@@ -19,7 +19,7 @@ package com.elfocrash.l2acp.responses;
  * @author Elfocrash
  *
  */
-public class GetAccountInfoResponse extends L2ACPResponse
+public class GetAccountInfoResponse extends Response
 {
 	private String[] AccountNames; 
 	private int DonatePoints;

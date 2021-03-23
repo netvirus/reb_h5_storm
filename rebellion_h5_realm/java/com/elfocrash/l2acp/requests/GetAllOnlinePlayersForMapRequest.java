@@ -19,16 +19,16 @@ import java.util.ArrayList;
 
 import com.elfocrash.l2acp.models.MapPlayer;
 import com.elfocrash.l2acp.responses.GetAllOnlinePlayersForMapResponse;
-import com.elfocrash.l2acp.responses.L2ACPResponse;
+import com.elfocrash.l2acp.responses.Response;
 import com.google.gson.JsonObject;
 
 import l2r.gameserver.model.GameObjectsStorage;
 import l2r.gameserver.model.Player;
 
-public class GetAllOnlinePlayersForMapRequest extends L2ACPRequest {
+public class GetAllOnlinePlayersForMapRequest extends Request {
 
 	@Override
-	public L2ACPResponse getResponse() {
+	public Response getResponse() {
 		ArrayList<MapPlayer> mapPlayers = new ArrayList<>();
 		
 		for(Player player : GameObjectsStorage.getAllPlayers()){

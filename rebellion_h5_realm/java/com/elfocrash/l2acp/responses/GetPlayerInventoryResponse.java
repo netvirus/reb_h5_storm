@@ -21,7 +21,7 @@ import com.elfocrash.l2acp.models.InventoryInfo;
  * @author Elfocrash
  *
  */
-public class GetPlayerInventoryResponse extends L2ACPResponse
+public class GetPlayerInventoryResponse extends Response
 {
 	private InventoryInfo[] InventoryInfo; 
 	

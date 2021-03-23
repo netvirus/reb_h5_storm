@@ -16,16 +16,16 @@
 package com.elfocrash.l2acp.responses;
 
 /**
- * @author Elfocrash
+ * @author Elfocrash, netvirus
  *
  */
-public class L2ACPResponse
+public class Response
 {
 	private int ResponseCode;
 	
 	private String ResponseMessage;	
 	
-	public L2ACPResponse(int code, String message){
+	public Response(int code, String message){
 		ResponseCode = code;
 		ResponseMessage = message;
 	}

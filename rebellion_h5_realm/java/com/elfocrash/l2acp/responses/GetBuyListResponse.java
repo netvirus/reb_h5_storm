@@ -16,13 +16,12 @@
 package com.elfocrash.l2acp.responses;
 
 import com.elfocrash.l2acp.models.BuyListItem;
-import com.elfocrash.l2acp.models.InventoryInfo;
 
 /**
  * @author Elfocrash
  *
  */
-public class GetBuyListResponse extends L2ACPResponse
+public class GetBuyListResponse extends Response
 {
 	private BuyListItem[] BuyList; 
 	
