@@ -23,7 +23,7 @@ import l2r.gameserver.Announcements;
 public class AnnounceRequest extends L2ACPRequest {
 
 	private String Text;
-	
+
 	@Override
 	public L2ACPResponse getResponse() {
 		
@@ -31,12 +31,11 @@ public class AnnounceRequest extends L2ACPRequest {
 		
 		return new L2ACPResponse(200,"Successfully announced!");
 	}
-	
-	
+
 	@Override
 	public void setContent(JsonObject content){
 		super.setContent(content);
 		
-		Text = content.get("Text").getAsString();
+		Text = content.get("Message").getAsString();
 	}
 }

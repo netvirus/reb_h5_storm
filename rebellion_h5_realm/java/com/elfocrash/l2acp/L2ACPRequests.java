@@ -15,52 +15,41 @@
  */
 package com.elfocrash.l2acp;
 
-import com.elfocrash.l2acp.requests.*;
-
-import com.google.gson.JsonObject;
-
-import java.util.function.Supplier;
+import com.elfocrash.l2acp.requests.AnnounceRequest;
+import com.elfocrash.l2acp.requests.L2ACPRequest;
+import com.elfocrash.l2acp.requests.RegisterRequest;
 
 /**
- * @author Elfocrash
+ * @author Elfocrash, netvirus
  *
  */
 public enum L2ACPRequests
 {
-	REGISTER(2, RegisterRequest::new),
-	GETACCOUNTINFO(3, GetAccountInfoRequest::new),
-	GETINVENTORY(4, GetPlayerInventoryRequest::new),
-	CHANGEPASS(8, ChangePassRequest::new),
-	GETBUYLIST(10, GetBuyListRequest::new),
-	GETDONATESERVICES(12, GetDonateServicesRequest::new),
-	GETALLPLAYERS(17, GetAllPlayerNamesRequest::new),
-	ANNOUNCE(19, AnnounceRequest::new),
-	GETMAPDATA(21, GetAllOnlinePlayersForMapRequest::new),
-	GETANALYTICSPLAYERS(27, GetAnalyticsPlayersRequest::new),
-	GETBOSSMAPDATA(28, GetLiveRbsForMapRequest::new);
-	
-	public static final L2ACPRequests[] REQUESTS;
-	
-	static
-	{
-		REQUESTS = new L2ACPRequests[values().length + 1];
-		for (L2ACPRequests request : values())
-		{
-			REQUESTS[request._requestId] =  request;
-		}
-	}
-	
+	REGISTER(1, new RegisterRequest()),
+	ANNOUNCE(2, new AnnounceRequest());
+
 	private int _requestId;
-	private Supplier<L2ACPRequest> _request;
-	
-	L2ACPRequests(int requestId, Supplier<L2ACPRequest> request){
+	private L2ACPRequest _clazz;
+
+	L2ACPRequests(int requestId, L2ACPRequest clazz){
 		_requestId = requestId;
-		_request = request != null ? request : () -> null;
+		_clazz = clazz != null ? clazz : null;
 	}
-	
-	public L2ACPRequest newRequest(JsonObject content){
-		L2ACPRequest request = _request.get();
-		request.setContent(content);
-		return request;
+
+	public final int getRequestId()
+	{
+		return _requestId;
+	}
+
+	public final L2ACPRequest getRequestClazz()
+	{
+		return _clazz;
+	}
+
+	public static L2ACPRequest getClazzByRequestId(int clazzId)
+	{
+		for (L2ACPRequests clazz : L2ACPRequests.values())
+			if (clazz.getRequestId() == clazzId)
+				return clazz.getRequestClazz();
 	}
 }

@@ -290,6 +290,11 @@ public class Config
 	public static int RRD_GRAPH_HEIGHT;
 	public static int RRD_GRAPH_WIDTH;
 	public static int RRD_LINE_WIDTH;
+
+	// API
+	public static boolean API_ENABLED;
+	public static int API_USE_PORT;
+	public static String API_KEY;
 	
 	// Clan Promotion npc
 	public static boolean SERVICES_CLAN_PROMOTION_ENABLE;
@@ -2043,6 +2048,9 @@ public class Config
 		SERVER_SIDE_NPC_TITLE_ETC = serverSettings.getProperty("ServerSideNpcTitleEtc", false);
 		NPC_ALLOW_HIT = serverSettings.getProperty("AllowHitOnNpcs", true);
 		LOG_ACCOUNT_INFO = serverSettings.getProperty("LogAccountInfo", true);
+		API_ENABLED = serverSettings.getProperty("ApiEnabled", true);
+		API_USE_PORT = serverSettings.getProperty("ApiUsePort", 8000);
+		API_KEY = serverSettings.getProperty("ApiKey", "12345678");
 	}
 	
 	public static void loadDonateRewardSettings()
