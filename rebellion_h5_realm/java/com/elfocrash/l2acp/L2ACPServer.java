@@ -61,17 +61,23 @@ public class L2ACPServer {
                     String requestBody = read(httpExchange.getRequestBody());
                     JsonElement jelement = new JsonParser().parse(requestBody);
                     JsonObject jobject = jelement.getAsJsonObject();
+                    int reqId = Integer.parseInt(jobject.get("RequestId").getAsString());
 
                     if (Config.API_KEY.equals(jobject.get("ApiKey").getAsString())) {
-                        Request request = Requests.getById(Integer.parseInt(jobject.get("RequestId").getAsString()));
-                        request.setContent(jobject);
+                        Request request = Requests.getById(reqId);
 
-                        Gson gson = new Gson();
-                        String jsonInString = gson.toJson(request.getResponse());
-                        String jsonResponse = jsonInString.toString();
-                        httpExchange.sendResponseHeaders(200, jsonResponse.length());
-                        try (OutputStream responseBody = httpExchange.getResponseBody()) {
-                            responseBody.write(jsonResponse.getBytes());
+                        if (request != null) {
+                            request.setContent(jobject);
+
+                            Gson gson = new Gson();
+                            String jsonInString = gson.toJson(request.getResponse());
+                            String jsonResponse = jsonInString.toString();
+                            httpExchange.sendResponseHeaders(200, jsonResponse.length());
+                            try (OutputStream responseBody = httpExchange.getResponseBody()) {
+                                responseBody.write(jsonResponse.getBytes());
+                            }
+                        } else {
+                            _log.info("API: wrong request " + reqId);
                         }
                     }
 
