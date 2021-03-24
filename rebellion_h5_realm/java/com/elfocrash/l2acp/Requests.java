@@ -18,6 +18,7 @@ package com.elfocrash.l2acp;
 import com.elfocrash.l2acp.requests.AnnounceRequest;
 import com.elfocrash.l2acp.requests.Request;
 import com.elfocrash.l2acp.requests.RegisterRequest;
+import com.elfocrash.l2acp.requests.TelegramChatRequest;
 
 import java.util.Arrays;
 import java.util.function.Supplier;
@@ -28,8 +29,9 @@ import java.util.function.Supplier;
  */
 public enum Requests
 {
-	REGISTER(1, RegisterRequest::new),
-	ANNOUNCE(2, AnnounceRequest::new);
+	API_REGISTER_USER(1, RegisterRequest::new),
+	API_ANNOUNCE(2, AnnounceRequest::new),
+	API_CHAT_MESSAGE(3, TelegramChatRequest::new);
 
 	int id;
 	Supplier<Request> ctor;

@@ -26,16 +26,13 @@ public class AnnounceRequest extends Request {
 
 	@Override
 	public Response getResponse() {
-		
 		Announcements.getInstance().announceToAll(Text);
-		
 		return new Response(200,"Successfully announced!");
 	}
 
 	@Override
 	public void setContent(JsonObject content){
 		super.setContent(content);
-		
 		Text = content.get("Message").getAsString();
 	}
 }
