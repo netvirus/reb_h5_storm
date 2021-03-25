@@ -127,7 +127,7 @@ public class CofferofShadows extends Functions implements ScriptFile, OnPlayerEn
 		catch(Exception E)
 		{}
 
-		long need_adena = (long) (COFFER_PRICE * Config.EVENT_CofferOfShadowsPriceRate * coffer_count);
+		long need_adena = (long) (COFFER_PRICE * Config.EVENT_COFFER_OF_SHADOWS_PRICE_RATE * coffer_count);
 		if(player.getAdena() < need_adena)
 		{
 			player.sendPacket(Msg.YOU_DO_NOT_HAVE_ENOUGH_ADENA);
@@ -152,7 +152,7 @@ public class CofferofShadows extends Functions implements ScriptFile, OnPlayerEn
 		String append = "";
 		for(int cnt : buycoffer_counts)
 		{
-			price = Util.formatAdena((long) (COFFER_PRICE * Config.EVENT_CofferOfShadowsPriceRate * cnt));
+			price = Util.formatAdena((long) (COFFER_PRICE * Config.EVENT_COFFER_OF_SHADOWS_PRICE_RATE * cnt));
 			append += "<a action=\"bypass -h scripts_events.CofferofShadows.CofferofShadows:buycoffer " + cnt + "\">";
 			if(cnt == 1)
 				append += new CustomMessage("scripts.events.CofferofShadows.buycoffer", getSelf()).addString(price);
