@@ -1580,6 +1580,7 @@ public class Config
 	
 	public static double EVENT_COFFER_OF_SHADOWS_PRICE_RATE;
 	public static double EVENT_COFFER_OF_SHADOWS_REWARD_RATE;
+	public static int [] EVENT_BUY_COFFER_COUNTS;
 	
 	public static double EVENT_APIL_FOOLS_DROP_CHANCE;
 	
@@ -3980,7 +3981,8 @@ public class Config
 		
 		EVENT_COFFER_OF_SHADOWS_PRICE_RATE = eventSettings.getProperty("CofferOfShadowsPriceRate", 1.);
 		EVENT_COFFER_OF_SHADOWS_REWARD_RATE = eventSettings.getProperty("CofferOfShadowsRewardRate", 1.);
-		
+		EVENT_BUY_COFFER_COUNTS = eventSettings.getProperty("BuyCofferCounts", new int [] { 1, 5, 10, 50, 100, 150, 200, 300, 500 });
+
 		EVENT_ENABLE_LAST_HERO = eventSettings.getProperty("Enable_last_hero", false);
 
 		EVENT_TvTTime = eventSettings.getProperty("TvT_time", 3);
