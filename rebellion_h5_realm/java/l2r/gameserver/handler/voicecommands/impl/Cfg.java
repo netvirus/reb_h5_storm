@@ -243,6 +243,18 @@ public class Cfg extends Functions implements IVoicedCommandHandler
 
 					if(param[0].equalsIgnoreCase("autolooth") && Config.AUTO_LOOT_INDIVIDUAL)
 						activeChar.setAutoLootHerbs(Boolean.parseBoolean(param[1]));
+
+					if (param[0].equalsIgnoreCase("showHerbsInDropList"))
+					{
+						if (param[1].equalsIgnoreCase("off")) {
+							activeChar.unsetVar("showHerbsInDropList");
+							activeChar.setDisabledShowHerbsInDropList(false);
+						}
+						if (param[1].equalsIgnoreCase("on")) {
+							activeChar.setVar("showHerbsInDropList", "true", -1);
+							activeChar.setDisabledShowHerbsInDropList(true);
+						}
+					}
 				}
 			}
 		}
@@ -377,6 +389,12 @@ public class Cfg extends Functions implements IVoicedCommandHandler
 			dialog = dialog.replaceFirst("%autoLootHerbs%", "<font color=\"808080\">Cannot be changed!</font>");
 			dialog = dialog.replaceFirst("%autoLootHerbsbp%", "#");
 		}
+
+		// disableShowHerbsInDroplist
+		hasDisabled = activeChar.getVarB("showHerbsInDropList", false);
+		dialog = dialog.replaceFirst("%showHerbsInDropList%", hasDisabled ? "<font name=hs12 color=\"01DF01\">Enabled</font>" : "<font name=hs12 color=\"DF0101\">Disabled</font>");
+		dialog = dialog.replaceFirst("%showHerbsInDropListbp%", hasDisabled ? "bypass -h user_cfg showHerbsInDropList off" : "bypass -h user_cfg showHerbsInDropList on");
+
 		
 		/*
 		for(String par : _params)

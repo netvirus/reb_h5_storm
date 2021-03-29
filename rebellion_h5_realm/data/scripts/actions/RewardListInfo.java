@@ -125,52 +125,52 @@ public abstract class RewardListInfo
 			{
 				for (RewardItem item : group.getItems())
 				{
-					double gchance = group.getChance();
-					
-					all++;
-					if(page == 1 && pageloop > 15)
+					if (player.disabledShowHerbsInDropList() && isGerb(item))
 						continue;
-					if(!pagereached && all > page * 15)
-						continue;
-					if(!pagereached && all <= (page - 1) * 15)
-						continue;
-					pageloop++;
-					
-					sb.append("<table width=270 border=0>");
-					sb.append("<tr><td><table width=270 border=0><tr><td><font color=\"aaccff\">").append(fixGroupName(rewardList.getType())).append("</font></td></tr></table></td></tr>");
-					sb.append("<tr><td><img src=\"L2UI.SquareWhite\" width=270 height=1> </td></tr>");
-					sb.append("<tr><td><img src=\"L2UI.SquareBlank\" width=270 height=10> </td></tr>");
-					sb.append("</table>");
-					
-					double simpleChanceMod = Math.min(group.getChance(), RewardList.MAX_CHANCE) / RewardList.MAX_CHANCE;
-					sb.append("<tr><td><img src=\"L2UI.SquareBlank\" width=270 height=10> </td></tr>");
-					sb.append("<tr><td>");
-					sb.append("<table width=270 border=0 bgcolor=333333>");
-					sb.append("<tr><td width=170><font color=\"a2a0a2\">Group Chance: </font><font color=\"b09979\">").append(pf.format(gchance / RewardList.MAX_CHANCE)).append("</font></td>");
-					sb.append("<td width=100 align=right>");
-					sb.append("</td></tr>");
-					sb.append("</table>").append("</td></tr>");
-					
-					sb.append("<tr><td><table>");
-					
-					String icon = item.getItem().getIcon();
-					if (icon == null || icon.equals(StringUtils.EMPTY))
-						icon = "icon.etc_question_mark_i00";
-					
-					if (icons)
-					{
-						sb.append("<tr><td width=32><img src=").append(icon).append(" width=32 height=32></td><td width=238>").append(resizeNames(HtmlUtils.htmlItemName(item.getItemId()))).append("<br1>");
-						sb.append("<font color=\"b09979\">[").append(item.getMinDrop()).append("~").append(item.getMaxDrop()).append("]&nbsp;");
-						sb.append(pf.format(item.getChance() * simpleChanceMod / RewardList.MAX_CHANCE)).append("</font></td></tr>");
-					}
-					else
-					{
-						sb.append("<tr><td width=238>").append(resizeNames(HtmlUtils.htmlItemName(item.getItemId()))).append("<br1>");
-						sb.append("<font color=\"b09979\">[").append(item.getMinDrop()).append("~").append(item.getMaxDrop()).append("]&nbsp;");
-						sb.append(pf.format(item.getChance() * simpleChanceMod / RewardList.MAX_CHANCE)).append("</font></td></tr>");
-					}
-					
-					sb.append("</table></td></tr>");
+
+						double gchance = group.getChance();
+
+						all++;
+						if (page == 1 && pageloop > 15)
+							continue;
+						if (!pagereached && all > page * 15)
+							continue;
+						if (!pagereached && all <= (page - 1) * 15)
+							continue;
+						pageloop++;
+
+						sb.append("<table width=270 border=0>");
+						sb.append("<tr><td><table width=270 border=0><tr><td><font color=\"aaccff\">").append(fixGroupName(rewardList.getType())).append("</font></td></tr></table></td></tr>");
+						sb.append("<tr><td><img src=\"L2UI.SquareWhite\" width=270 height=1> </td></tr>");
+						sb.append("<tr><td><img src=\"L2UI.SquareBlank\" width=270 height=10> </td></tr>");
+						sb.append("</table>");
+
+						double simpleChanceMod = Math.min(group.getChance(), RewardList.MAX_CHANCE) / RewardList.MAX_CHANCE;
+						sb.append("<tr><td><img src=\"L2UI.SquareBlank\" width=270 height=10> </td></tr>");
+						sb.append("<tr><td>");
+						sb.append("<table width=270 border=0 bgcolor=333333>");
+						sb.append("<tr><td width=170><font color=\"a2a0a2\">Group Chance: </font><font color=\"b09979\">").append(pf.format(gchance / RewardList.MAX_CHANCE)).append("</font></td>");
+						sb.append("<td width=100 align=right>");
+						sb.append("</td></tr>");
+						sb.append("</table>").append("</td></tr>");
+
+						sb.append("<tr><td><table>");
+
+						String icon = item.getItem().getIcon();
+						if (icon == null || icon.equals(StringUtils.EMPTY))
+							icon = "icon.etc_question_mark_i00";
+
+						if (icons) {
+							sb.append("<tr><td width=32><img src=").append(icon).append(" width=32 height=32></td><td width=238>").append(resizeNames(HtmlUtils.htmlItemName(item.getItemId()))).append("<br1>");
+							sb.append("<font color=\"b09979\">[").append(item.getMinDrop()).append("~").append(item.getMaxDrop()).append("]&nbsp;");
+							sb.append(pf.format(item.getChance() * simpleChanceMod / RewardList.MAX_CHANCE)).append("</font></td></tr>");
+						} else {
+							sb.append("<tr><td width=238>").append(resizeNames(HtmlUtils.htmlItemName(item.getItemId()))).append("<br1>");
+							sb.append("<font color=\"b09979\">[").append(item.getMinDrop()).append("~").append(item.getMaxDrop()).append("]&nbsp;");
+							sb.append(pf.format(item.getChance() * simpleChanceMod / RewardList.MAX_CHANCE)).append("</font></td></tr>");
+						}
+
+						sb.append("</table></td></tr>");
 				}
 			}
 		}
@@ -199,6 +199,36 @@ public abstract class RewardListInfo
 		}
 		sb.append("</tr></table>");
 		return sb.toString();
+	}
+
+	public static boolean isGerb(RewardItem item) {
+		switch (item.getItemId())
+		{
+			case 8600:  // [Herb of Life]
+			case 8601:  // [Greater Herb of Life]...
+			case 8602:  // [Superior Herb of Life]...
+			case 8603:  // [Herb of Mana]...
+			case 8604:  // [Greater Herb of Mana]...
+			case 8605:  // [Superior Herb of Mana]...
+			case 8606:  // [Herb of Power]
+			case 8607:  // [Herb of Magic]
+			case 8608:  // [Herb of Atk. Spd.]
+			case 8609:  // [Herb of Casting Spd.]
+			case 8610:  // [Herb of Critical Attack
+			case 8611:  // [Herb of Speed]
+			case 8612:  // [Herb of the Warrior]
+			case 8613:  // [Herb of the Mystic]
+			case 8614:  // [Herb of Recovery]
+			case 8952:  // [Greater Herb of Life]
+			case 8953:  // [Greater Herb of Mana]
+			case 10655: // [Herb of Vampiric Rage]
+			case 10656: // [Herb of Critical Attack - Power]
+			case 10657: // [Herb of Doubt]
+			case 3832:  // [Herb of Harit]
+			case 3833:  // [Herb of Vanor]
+				return true;
+		}
+		return false;
 	}
 	
 	public static String fixGroupName(RewardType type)
