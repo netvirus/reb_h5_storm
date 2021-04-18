@@ -197,7 +197,7 @@ public class Coffer extends ScriptItemHandler implements ScriptFile
 		ItemInstance item;
 		long count = 0;
 		for(RewardItem d : dropData)
-			if(Rnd.get(1, RewardList.MAX_CHANCE) <= d.getChance() * Config.EVENT_CofferOfShadowsRewardRate)
+			if(Rnd.get(1, RewardList.MAX_CHANCE) <= d.getChance() * Config.EVENT_COFFER_OF_SHADOWS_REWARD_RATE)
 			{
 				count = Rnd.get(d.getMinDrop(), d.getMaxDrop());
 				item = ItemFunctions.createItem(d.getItemId());

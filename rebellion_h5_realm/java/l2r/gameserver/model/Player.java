@@ -718,6 +718,11 @@ public final class Player extends Playable implements PlayerGroup
 	private boolean _premiumAbnormalEffectState = false;
 
 	/**
+	 * Hide or show herbs in droplist
+	 */
+	private boolean _disabledShowHerbsInDropList = false;
+
+	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
 	 */
 	public Player(final int objectId, final PlayerTemplate template, final String accountName)
@@ -5873,6 +5878,11 @@ public final class Player extends Playable implements PlayerGroup
 				{
 					OfflineBufferManager.getInstance().restoreOfflineBuffer(player, true);
 					player.setSitting(true);
+				}
+
+				if(player.getVar("showHerbsInDropList") != null)
+				{
+					player.setDisabledShowHerbsInDropList(true);
 				}
 				
 				try
@@ -13933,5 +13943,13 @@ public final class Player extends Playable implements PlayerGroup
 	public int getPartyInstance()
 	{
 		return partyInstance;
+	}
+
+	public boolean disabledShowHerbsInDropList() {
+		return _disabledShowHerbsInDropList;
+	}
+
+	public void setDisabledShowHerbsInDropList(boolean val) {
+		_disabledShowHerbsInDropList = val;
 	}
 }

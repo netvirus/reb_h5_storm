@@ -1,6 +1,5 @@
 package l2r.gameserver;
 
-import com.elfocrash.l2acp.L2ACPServer;
 import l2r.commons.lang.StatsUtils;
 import l2r.commons.listener.Listener;
 import l2r.commons.listener.ListenerList;
