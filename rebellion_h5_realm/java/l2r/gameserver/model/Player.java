@@ -507,6 +507,10 @@ public final class Player extends Playable implements PlayerGroup
 	private int _pledgeItemId = 0;
 	private long _pledgePrice = 0;
 	private boolean _isInAcademyList = false;
+
+	private final List<Integer> loadedImages = new ArrayList<>();
+
+	private final Map<String, Object> quickVars = new ConcurrentHashMap<>();
 	  
 	/**
 	 * GM Stuff
@@ -714,6 +718,11 @@ public final class Player extends Playable implements PlayerGroup
 	private boolean _premiumAbnormalEffectState = false;
 
 	/**
+	 * Hide or show herbs in droplist
+	 */
+	private boolean _disabledShowHerbsInDropList = false;
+
+	/**
 	 * Конструктор для L2Player. Напрямую не вызывается, для создания игрока используется PlayerManager.create
 	 */
 	public Player(final int objectId, final PlayerTemplate template, final String accountName)
@@ -830,7 +839,7 @@ public final class Player extends Playable implements PlayerGroup
 	}
 
 	@Override
-	public void doCast(final Skill skill, final Creature target, boolean forceUse)
+	public synchronized void doCast(final Skill skill, final Creature target, boolean forceUse)
 	{
 		if(skill == null)
 			return;
@@ -1219,14 +1228,14 @@ public final class Player extends Playable implements PlayerGroup
 	
 	public void logout()
 	{
-		logout(false);
+		logout(false, Config.TO_LOGIN_SCREEN);
 	}
 
 	/**
 	 * Соединение закрывается, клиент не закрывается, персонаж сохраняется и удаляется из игры
 	 * Пишем надпись NO CARRIER
 	 */
-	public void logout(boolean noCarrier)
+	public void logout(boolean noCarrier, boolean toLoginScreen)
 	{
 		try
 		{
@@ -1260,7 +1269,7 @@ public final class Player extends Playable implements PlayerGroup
 			
 			if(_connection != null)
 			{
-				_connection.close(LeaveWorld.STATIC);
+				_connection.close(toLoginScreen ? ServerClose.STATIC : LeaveWorld.STATIC);
 				setClient(null);
 			}
 			
@@ -5870,6 +5879,11 @@ public final class Player extends Playable implements PlayerGroup
 					OfflineBufferManager.getInstance().restoreOfflineBuffer(player, true);
 					player.setSitting(true);
 				}
+
+				if(player.getVar("showHerbsInDropList") != null)
+				{
+					player.setDisabledShowHerbsInDropList(true);
+				}
 				
 				try
 				{
@@ -6457,7 +6471,7 @@ public final class Player extends Playable implements PlayerGroup
 
 	public int getHennaEmptySlots()
 	{
-		int totalSlots = getClassId().level();
+		int totalSlots = 1 + getClassId().level();
 		for(int i = 0; i < 3; i++)
 			if(_henna[i] != null)
 				totalSlots--;
@@ -13866,5 +13880,76 @@ public final class Player extends Playable implements PlayerGroup
 	public double getConfigRaidDropChanceWithPremiumBonusRates()
 	{
 		return _premiumBonus.getBonusDropRate();
+	}
+
+	/**
+	 * Adding new Image Id to List of Images loaded by Game Client of this plater
+	 * @param id of the image
+	 */
+	public void addLoadedImage(int id)
+	{
+		loadedImages.add(id);
+	}
+
+	/**
+	 * Did Game Client already receive Custom Image from the server?
+	 * @param id of the image
+	 * @return client received image
+	 */
+	public boolean wasImageLoaded(int id)
+	{
+		return loadedImages.contains(id);
+	}
+
+	/**
+	 * @return Number of Custom Images sent from Server to the Player
+	 */
+	public int getLoadedImagesSize()
+	{
+		return loadedImages.size();
+	}
+
+	/**
+	 * Adding Variable to Map<Name, Value>. It's not saved to database. Value can be taken back by {@link #getQuickVarO(String, Object...)} method.
+	 * @param name key
+	 * @param value value
+	 */
+	public void addQuickVar(String name, Object value)
+	{
+		if (quickVars.containsKey(name))
+			quickVars.remove(name);
+		quickVars.put(name, value);
+	}
+
+	private int soloInstance;
+
+	public void updateSoloInstance()
+	{
+		this.soloInstance++;
+	}
+
+	public int getSoloInstance()
+	{
+		return soloInstance;
+	}
+
+	private int partyInstance;
+
+	public void updatePartyInstance()
+	{
+		this.partyInstance++;
+	}
+
+	public int getPartyInstance()
+	{
+		return partyInstance;
+	}
+
+	public boolean disabledShowHerbsInDropList() {
+		return _disabledShowHerbsInDropList;
+	}
+
+	public void setDisabledShowHerbsInDropList(boolean val) {
+		_disabledShowHerbsInDropList = val;
 	}
 }

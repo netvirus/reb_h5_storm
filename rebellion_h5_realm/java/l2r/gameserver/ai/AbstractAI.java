@@ -265,19 +265,13 @@ public abstract class AbstractAI extends RunnableImpl
 	
 	public boolean isDoorAI()
 	{return false;}
-	
-	public boolean isPlayableAI()
-	{return false;}
-	
+
 	public boolean isPlayerAI()
 	{return false;}
 	
 	public boolean isSummonAI()
 	{return false;}
-	
-	public boolean isPhantomPlayerAI()
-	{return false;}
-	
+
 	protected abstract void onIntentionIdle();
 
 	protected abstract void onIntentionActive();

@@ -37,7 +37,7 @@ public class Achievements
 		load();
 	}
 	
-	public void usebypass(Player player, String bypass, String[] cm)
+	public void onBypass(Player player, String bypass, String[] cm)
 	{
 		if (bypass.startsWith("_bbs_achievements_cat"))
 			generatePage(player, Integer.parseInt(cm[1]), Integer.parseInt(cm[2]));

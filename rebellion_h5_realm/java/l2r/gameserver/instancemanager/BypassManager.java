@@ -116,6 +116,10 @@ public class BypassManager
 		{
 			bypass = _bypass;
 			handler = CommunityBoardManager.getInstance().getCommunityHandler(bypass);
+			if (handler == null && bypass.startsWith("_bbsboss"))
+			{
+				handler = CommunityBoardManager.getInstance().getCommunityHandler("_bbsboss");
+			}
 		}
 
 		public DecodedBypass(String _bypass, ICommunityBoardHandler _handler)

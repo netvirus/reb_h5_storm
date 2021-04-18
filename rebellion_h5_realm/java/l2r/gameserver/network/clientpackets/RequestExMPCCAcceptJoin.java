@@ -91,22 +91,23 @@ public class RequestExMPCCAcceptJoin extends L2GameClientPacket
 				requestor.getParty().getCommandChannel().addParty(activeChar.getParty());
 			else if(CommandChannel.checkAuthority(requestor))
 			{
-				// CC можно создать, если есть клановый скилл Clan Imperium
-				boolean haveSkill = requestor.getSkillLevel(CommandChannel.CLAN_IMPERIUM_ID) > 0;
-				boolean haveItem = false;
-				// Скила нету, придется расходовать предмет, ищем Strategy Guide в инвентаре
-				if(!haveSkill) 
-				{
-					if(haveItem = requestor.getInventory().destroyItemByItemId(CommandChannel.STRATEGY_GUIDE_ID, 1))
-						requestor.sendPacket(SystemMessage2.removeItems(CommandChannel.STRATEGY_GUIDE_ID, 1));
-				}
 
-				if(!haveSkill && !haveItem)
-				{
-					//TODO [G1ta0] сообщение
+				// CC можно создать, если есть клановый скилл Clan Imperium
+				final boolean haveSkill = requestor.getSkillLevel(CommandChannel.CLAN_IMPERIUM_ID) > 0;
+
+				// Ищем Strategy Guide в инвентаре
+				final boolean haveItem = requestor.getInventory().getItemByItemId(CommandChannel.STRATEGY_GUIDE_ID) != null;
+
+				if (!haveSkill && !haveItem) {
+					requestor.sendPacket(SystemMsg.YOU_DO_NOT_HAVE_THE_AUTHORITY_TO_USE_THE_COMMAND_CHANNEL);
 					return;
 				}
-					
+
+				if (!haveSkill) {
+					requestor.getInventory().destroyItemByItemId(CommandChannel.STRATEGY_GUIDE_ID, 1);
+					requestor.sendPacket(SystemMessage2.removeItems(CommandChannel.STRATEGY_GUIDE_ID, 1));
+				}
+
 				CommandChannel channel = new CommandChannel(requestor); // Создаём Command Channel
 				requestor.sendPacket(SystemMsg.THE_COMMAND_CHANNEL_HAS_BEEN_FORMED);
 				channel.addParty(activeChar.getParty()); // Добавляем приглашенную партию

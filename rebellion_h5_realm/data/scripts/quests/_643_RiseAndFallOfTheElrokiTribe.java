@@ -137,8 +137,10 @@ public class _643_RiseAndFallOfTheElrokiTribe extends Quest implements ScriptFil
 	@Override
 	public String onKill(NpcInstance npc, QuestState st)
 	{
-		if(st.getCond() == 1)
-			st.rollAndGive(BONES_OF_A_PLAINS_DINOSAUR, 1, DROP_CHANCE);
+		if(st.getCond() == 1) {
+			int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
+			st.rollAndGive(BONES_OF_A_PLAINS_DINOSAUR, questItemCountWithPremiumBonus, DROP_CHANCE);
+		}
 		return null;
 	}
 }

@@ -29,7 +29,7 @@ public class HennaEquipList extends L2GameServerPacket
 	{
 		this(player, true);
 	}
-	
+
 	@Override
 	protected final void writeImpl()
 	{

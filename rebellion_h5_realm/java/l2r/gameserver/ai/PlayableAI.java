@@ -795,12 +795,6 @@ public class PlayableAI extends CharacterAI
 		clearNextAction();
 		setIntention(CtrlIntention.AI_INTENTION_CAST, skill, target);
 	}
-	
-	@Override
-	public boolean isPlayableAI()
-	{
-		return true;
-	}
 
 	@Override
 	public Playable getActor()

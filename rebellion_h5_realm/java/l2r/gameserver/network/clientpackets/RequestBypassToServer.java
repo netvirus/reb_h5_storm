@@ -6,6 +6,7 @@ import l2r.gameserver.handler.admincommands.AdminCommandHandler;
 import l2r.gameserver.handler.voicecommands.IVoicedCommandHandler;
 import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2r.gameserver.instancemanager.BypassManager.DecodedBypass;
+import l2r.gameserver.instancemanager.CommunityBoardCareerManager;
 import l2r.gameserver.instancemanager.OfflineBufferManager;
 import l2r.gameserver.instancemanager.OlympiadHistoryManager;
 import l2r.gameserver.listener.actor.player.impl.GmAnswerListener;
@@ -52,13 +53,18 @@ public class RequestBypassToServer extends L2GameClientPacket
 	protected void runImpl()
 	{
 		Player activeChar = getClient().getActiveChar();
-		if(activeChar == null || bp == null)
+		if (activeChar == null || bp == null || (activeChar.isBlocked() && !activeChar.isInObserverMode() && (bp.bypass == null || !(bp.bypass.contains("secondaryPassS") || bp.bypass.contains("user_report")))))
 			return;
+		if (bp.handler != null && !Config.COMMUNITYBOARD_ENABLED)
+			return;
+		if (bp.handler != null && activeChar.isCursedWeaponEquipped())
+			return;
+
 		try
 		{
 			NpcInstance npc = activeChar.getLastNpc();
 			GameObject target = activeChar.getTarget();
-			if(npc == null && target != null && target.isNpc())
+			if (npc == null && target != null && target.isNpc())
 				npc = (NpcInstance) target;
 			
 			if (activeChar.canOverrideCond(PcCondOverride.DEBUG_CONDITIONS))
@@ -132,9 +138,17 @@ public class RequestBypassToServer extends L2GameClientPacket
 			}
 			else if(bp.bypass.startsWith("premium_"))
 			{
-				String command = bp.bypass.substring(8).trim();
-				String word = command.split("\\s+")[0];
-				CommunityBoardPremiumAccountManager.getInstance().getAction(activeChar, word);
+				try {
+					CommunityBoardPremiumAccountManager.getInstance().getAction(activeChar, bp.bypass.substring(8).trim());
+				} catch (Exception ex) {
+					_log.warn("Catch: " + bp.bypass + " and can't open CommunityBoardPremiumAccountManager: " + ex);
+				}
+			}
+			else if(bp.bypass.startsWith("_bbscareer"))
+			{
+				if (!Config.CLASS_MASTER_NPC)
+					CommunityBoardCareerManager.getInstance().onBypassCommand(activeChar, bp.bypass);
+				return;
 			}
 			else if(bp.bypass.startsWith("npc_"))
 			{

@@ -288,6 +288,14 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="commons-dbcp-1.4" level="project" />
+    <orderEntry type="module-library">
+      <library name="gson-2.6.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/gson-2.6.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

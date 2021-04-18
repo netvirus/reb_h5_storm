@@ -9,7 +9,7 @@ import l2r.gameserver.achievements.Achievements;
 import l2r.gameserver.achievements.PlayerTops;
 import l2r.gameserver.auction.AuctionManager;
 import l2r.gameserver.cache.CrestCache;
-import l2r.gameserver.cache.ImagesChache;
+import l2r.gameserver.cache.ImagesCache;
 import l2r.gameserver.dao.*;
 import l2r.gameserver.data.BoatHolder;
 import l2r.gameserver.data.xml.Parsers;
@@ -26,7 +26,6 @@ import l2r.gameserver.handler.voicecommands.VoicedCommandHandler;
 import l2r.gameserver.idfactory.IdFactory;
 import l2r.gameserver.instancemanager.*;
 import l2r.gameserver.instancemanager.games.*;
-import l2r.gameserver.instancemanager.games.DonationBonusDay;
 import l2r.gameserver.instancemanager.itemauction.ItemAuctionManager;
 import l2r.gameserver.instancemanager.naia.NaiaCoreManager;
 import l2r.gameserver.instancemanager.naia.NaiaTowerManager;
@@ -46,7 +45,6 @@ import l2r.gameserver.network.GamePacketHandler;
 import l2r.gameserver.network.loginservercon.AuthServerCommunication;
 import l2r.gameserver.network.telnet.TelnetServer;
 import l2r.gameserver.nexus_interface.NexusEvents;
-import l2r.gameserver.randoms.CaptchaImage;
 import l2r.gameserver.randoms.PlayerKill;
 import l2r.gameserver.randoms.Visuals;
 import l2r.gameserver.scripts.Scripts;
@@ -54,7 +52,6 @@ import l2r.gameserver.tables.AdminTable;
 import l2r.gameserver.tables.AugmentationData;
 import l2r.gameserver.tables.ClanTable;
 import l2r.gameserver.tables.EnchantHPBonusTable;
-import l2r.gameserver.tables.FakePcsTable;
 import l2r.gameserver.tables.PetSkillsTable;
 import l2r.gameserver.tables.SkillTreeTable;
 import l2r.gameserver.taskmanager.ItemsAutoDestroy;
@@ -297,7 +294,7 @@ public class GameServer
 		MiniGameScoreManager.getInstance();
 		
 		printSection("Custom Shits");
-		ImagesChache.getInstance();
+		ImagesCache.getInstance();
 		
 		L2TopManager.getInstance();
 		
@@ -339,31 +336,12 @@ public class GameServer
 		if (Config.ENABLE_PLAYER_KILL_SYSTEM)
 			PlayerKill.getInstance().init();
 
-		if (Config.ENABLE_FAKEPC)
-			FakePcsTable.getInstance().init();
-
-		if (Config.ENABLE_CAPTCHA)
-		{
-			new CaptchaImage();
-			_log.info("Captcha system loaded.");
-		}
-		
-		// If there is no such var in server var create such with default false.
-		if(ServerVariables.getString("DonationBonusActive", "").isEmpty())
-			ServerVariables.set("DonationBonusActive", false);
-
-		if (ServerVariables.getBool("DonationBonusActive", true))
-			DonationBonusDay.getInstance().continuePormotion();
-		else
-			DonationBonusDay.getInstance().stopPromotion();
-
+		// DonatePaymentsManager
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new DonatePaymentsManager(), Config.DONATION_CHECK_DELAY, Config.DONATION_CHECK_DELAY);
-		
-		BetaServer.getInstance();
 
-		if (Config.ENABLE_DONATION_READER) {
-			DonationPaymentsDAO.getInstance();
-			_log.info("Donation auto check system is enabled.");
+		if (Config.API_ENABLED) {
+			printSection("Starting API");
+			L2ACPServer.getInstance();
 		}
 
 		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);

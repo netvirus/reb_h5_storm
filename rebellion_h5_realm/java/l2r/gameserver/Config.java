@@ -290,6 +290,11 @@ public class Config
 	public static int RRD_GRAPH_HEIGHT;
 	public static int RRD_GRAPH_WIDTH;
 	public static int RRD_LINE_WIDTH;
+
+	// API
+	public static boolean API_ENABLED;
+	public static int API_USE_PORT;
+	public static String API_KEY;
 	
 	// Clan Promotion npc
 	public static boolean SERVICES_CLAN_PROMOTION_ENABLE;
@@ -479,6 +484,7 @@ public class Config
 	public static String DATABASE_LOGIN;
 	public static String DATABASE_PASSWORD;
 	public static String LOGINSERVER_DB_NAME;
+	public static boolean TO_LOGIN_SCREEN;
 	
 	// Database additional options
 	public static boolean AUTOSAVE;
@@ -1198,6 +1204,8 @@ public class Config
 	
 	public static boolean ALLOW_DISCARDITEM;
 	public static boolean ALLOW_MAIL;
+	public static boolean ALLOW_MAIL_ANTOFLOOD;
+	public static int ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL;
 	public static boolean ALLOW_WAREHOUSE;
 	public static boolean ALLOW_WATER;
 	public static boolean ALLOW_CURSED_WEAPONS;
@@ -1384,6 +1392,8 @@ public class Config
 	public static int TRIVIA_TIME_PAUSE;
 	public static String TRIVIA_REWARD_FIRST;
 	public static String TRIVIA_REWARD_REST;
+
+	public static boolean ALLOW_SENDING_IMAGES;
 	
 	public static void loadTriviaSettings()
 	{
@@ -1568,8 +1578,9 @@ public class Config
 	public static boolean ENABLE_NEW_TVT;
 	public static boolean ENABLE_NEW_CTF;
 	
-	public static double EVENT_CofferOfShadowsPriceRate;
-	public static double EVENT_CofferOfShadowsRewardRate;
+	public static double EVENT_COFFER_OF_SHADOWS_PRICE_RATE;
+	public static double EVENT_COFFER_OF_SHADOWS_REWARD_RATE;
+	public static int [] EVENT_BUY_COFFER_COUNTS;
 	
 	public static double EVENT_APIL_FOOLS_DROP_CHANCE;
 	
@@ -1907,6 +1918,7 @@ public class Config
 			AUTH_SERVER_SERVER_TYPE |= t.getMask();
 		}
 
+		TO_LOGIN_SCREEN = serverSettings.getProperty("ToLoginScreenWhenRestart", false);
 		SECOND_AUTH_ENABLED = serverSettings.getProperty("SAEnabled", false);
 		SECOND_AUTH_BAN_ACC = serverSettings.getProperty("SABanAccEnabled", false);
 		SECOND_AUTH_STRONG_PASS = serverSettings.getProperty("SAStrongPass", false);
@@ -1948,6 +1960,8 @@ public class Config
 		
 		ALLOW_DISCARDITEM = serverSettings.getProperty("AllowDiscardItem", true);
 		ALLOW_MAIL = serverSettings.getProperty("AllowMail", true);
+		ALLOW_MAIL_ANTOFLOOD = serverSettings.getProperty("AllowAntiFloodMail", false);
+		ALLOW_MAIL_ANTOFLOOD_PLAYER_LEVEL = serverSettings.getProperty("AllowAntiFloodMailPlayerLevel", 76);
 		ALLOW_WAREHOUSE = serverSettings.getProperty("AllowWarehouse", true);
 		
 		ALLOW_CURSED_WEAPONS = serverSettings.getProperty("AllowCursedWeapons", false);
@@ -2035,6 +2049,9 @@ public class Config
 		SERVER_SIDE_NPC_TITLE_ETC = serverSettings.getProperty("ServerSideNpcTitleEtc", false);
 		NPC_ALLOW_HIT = serverSettings.getProperty("AllowHitOnNpcs", true);
 		LOG_ACCOUNT_INFO = serverSettings.getProperty("LogAccountInfo", true);
+		API_ENABLED = serverSettings.getProperty("ApiEnabled", true);
+		API_USE_PORT = serverSettings.getProperty("ApiUsePort", 8000);
+		API_KEY = serverSettings.getProperty("ApiKey", "12345678");
 	}
 	
 	public static void loadDonateRewardSettings()
@@ -3616,6 +3633,8 @@ public class Config
 		
 		ENABLE_NEW_CLAN_CB = CommunityboardSettings.getProperty("EnableNewClanBoard", false);
 		ENABLE_OLD_CLAN_BOARD = CommunityboardSettings.getProperty("EnableOLDClanBoard", true);
+
+		ALLOW_SENDING_IMAGES = CommunityboardSettings.getProperty("AllowSendingImages",true);
 		
 		ENABLE_NEW_FRIENDS_BOARD = CommunityboardSettings.getProperty("EnableNewFriendsBoard", false);
 		ENABLE_RETAIL_FRIENDS_BOARD = CommunityboardSettings.getProperty("EnableRetailFriendsBoard", false);
@@ -3960,9 +3979,10 @@ public class Config
 		ENABLE_NEW_CTF = eventSettings.getProperty("EnableNewCTF", false);
 		ENABLE_NEW_TVT = eventSettings.getProperty("EnableNewTVT", false);
 		
-		EVENT_CofferOfShadowsPriceRate = eventSettings.getProperty("CofferOfShadowsPriceRate", 1.);
-		EVENT_CofferOfShadowsRewardRate = eventSettings.getProperty("CofferOfShadowsRewardRate", 1.);
-		
+		EVENT_COFFER_OF_SHADOWS_PRICE_RATE = eventSettings.getProperty("CofferOfShadowsPriceRate", 1.);
+		EVENT_COFFER_OF_SHADOWS_REWARD_RATE = eventSettings.getProperty("CofferOfShadowsRewardRate", 1.);
+		EVENT_BUY_COFFER_COUNTS = eventSettings.getProperty("BuyCofferCounts", new int [] { 1, 5, 10, 50, 100, 150, 200, 300, 500 });
+
 		EVENT_ENABLE_LAST_HERO = eventSettings.getProperty("Enable_last_hero", false);
 
 		EVENT_TvTTime = eventSettings.getProperty("TvT_time", 3);

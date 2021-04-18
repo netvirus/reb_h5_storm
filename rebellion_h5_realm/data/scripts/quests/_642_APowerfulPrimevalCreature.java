@@ -111,12 +111,13 @@ public class _642_APowerfulPrimevalCreature extends Quest implements ScriptFile
 	@Override
 	public String onKill(NpcInstance npc, QuestState st)
 	{
+		int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 		if(st.getState() != STARTED || st.getCond() != 1)
 			return null;
 		if(npc.getNpcId() == Ancient_Egg)
-			st.rollAndGive(Dinosaur_Egg, 1, Dinosaur_Egg_Chance);
+			st.rollAndGive(Dinosaur_Egg, questItemCountWithPremiumBonus, Dinosaur_Egg_Chance);
 		else
-			st.rollAndGive(Dinosaur_Tissue, 1, Dinosaur_Tissue_Chance);
+			st.rollAndGive(Dinosaur_Tissue, questItemCountWithPremiumBonus, Dinosaur_Tissue_Chance);
 		return null;
 	}
 

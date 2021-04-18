@@ -654,11 +654,11 @@ public class Say2C extends L2GameClientPacket
 				}
 				break;
 			case HERO_VOICE:
-				if(activeChar.isHero() || activeChar.canOverrideCond(PcCondOverride.CHAT_CONDITIONS))
+				if(activeChar.isHero() || activeChar.canOverrideCond(PcCondOverride.CHAT_CONDITIONS) || activeChar.isGM())
 				{
 					
 					// Ограничение только для героев, гм-мы пускай говорят.
-					if (!activeChar.canOverrideCond(PcCondOverride.CHAT_CONDITIONS))
+					if (!activeChar.canOverrideCond(PcCondOverride.CHAT_CONDITIONS) || !activeChar.isGM())
 					{
 						if(activeChar.isInJail())
 						{

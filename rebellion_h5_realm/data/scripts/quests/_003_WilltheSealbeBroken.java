@@ -115,19 +115,20 @@ public class _003_WilltheSealbeBroken extends Quest implements ScriptFile
 		int id = st.getState();
 		if(id == STARTED)
 		{
+			int questItemCountWithPremiumBonus = (int) Math.ceil(1 * st.getPlayer().getPremiumBonus().getBonusQuestDropRate());
 			if(npcId == Monster[0] && st.getQuestItemsCount(OnyxBeastEye) == 0)
 			{
-				st.giveItems(OnyxBeastEye, 1, false);
+				st.giveItems(OnyxBeastEye, questItemCountWithPremiumBonus, false);
 				st.playSound(SOUND_ITEMGET);
 			}
 			else if((npcId == Monster[1] || npcId == Monster[2]) && st.getQuestItemsCount(TaintStone) == 0)
 			{
-				st.giveItems(TaintStone, 1, false);
+				st.giveItems(TaintStone, questItemCountWithPremiumBonus, false);
 				st.playSound(SOUND_ITEMGET);
 			}
 			else if((npcId == Monster[3] || npcId == Monster[4] || npcId == Monster[5]) && st.getQuestItemsCount(SuccubusBlood) == 0)
 			{
-				st.giveItems(SuccubusBlood, 1, false);
+				st.giveItems(SuccubusBlood, questItemCountWithPremiumBonus, false);
 				st.playSound(SOUND_ITEMGET);
 			}
 			if(st.getQuestItemsCount(OnyxBeastEye) > 0 && st.getQuestItemsCount(TaintStone) > 0 && st.getQuestItemsCount(SuccubusBlood) > 0)

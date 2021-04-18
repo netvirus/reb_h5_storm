@@ -5,6 +5,7 @@ import l2r.gameserver.model.Player;
 import l2r.gameserver.model.entity.Reflection;
 import l2r.gameserver.model.instances.NpcInstance;
 import l2r.gameserver.templates.npc.NpcTemplate;
+import l2r.gameserver.utils.ReflectionUtils;
 
 
 /**
@@ -39,7 +40,7 @@ public final class KamalokaGuardInstance extends NpcInstance
 			}
 			else if(player.canEnterInstance(val))
 			{
-				ReflectionManager.enterReflection(player, val);
+				ReflectionUtils.enterReflection(player, val);
 			}
 		}
 		else if(command.startsWith("escape"))

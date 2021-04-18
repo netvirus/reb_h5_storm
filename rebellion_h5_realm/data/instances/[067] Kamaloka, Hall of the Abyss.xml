@@ -7,12 +7,11 @@
 		<level min="51" max="61" />
 		<party min="2" max="6" />
 		<return loc="80995 56411 -1552" />
-		<teleport loc="-49336 -220849 -8064" />
+		<teleport loc="9768 -205736 -8000" />
 		<remove itemId="0" count="0" necessary="false" />
 		<give itemId="0" count="0" />
 		<quest id="0" />
-		<reuse resetReuse="30 6 * * *" setUponEntry="false"
-			sharedReuseGroup="1" />
+		<reuse resetReuse="30 6 * * *" setUponEntry="false" sharedReuseGroup="1" />
 		<add_parameters>
 			<param name="tele_device_loc" value="9140 -205735 -8000" />
 		</add_parameters>

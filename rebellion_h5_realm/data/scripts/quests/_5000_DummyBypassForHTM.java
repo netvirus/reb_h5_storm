@@ -26,7 +26,7 @@ import l2r.gameserver.scripts.Functions;
 import l2r.gameserver.scripts.ScriptFile;
 
 import services.community.CareerManager;
-import services.community.CommunityRaidBoss;
+import services.community.CommunityBosses;
 
 public class _5000_DummyBypassForHTM extends Quest implements ScriptFile
 {
@@ -84,11 +84,11 @@ public class _5000_DummyBypassForHTM extends Quest implements ScriptFile
 			return;
 		}
 		
-		if (npc.getNpcId() == RBSTATUS_ID)
-		{
-			CommunityRaidBoss.getInstance().onBypassCommand(player, "_bbsraidboss");
-			return;
-		}
+//		if (npc.getNpcId() == RBSTATUS_ID)
+//		{
+//			CommunityBosses.onBypassCommand(player, "_bbsraidboss");
+//			return;
+//		}
 		
 		if (npc.getNpcId() == GATEKEEPER_ID)
 			html = HtmCache.getInstance().getNotNull(Config.BBS_HOME_DIR + "pages/teleport/teleport.htm", player);

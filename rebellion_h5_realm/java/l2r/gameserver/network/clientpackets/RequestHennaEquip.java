@@ -3,9 +3,7 @@ package l2r.gameserver.network.clientpackets;
 import l2r.gameserver.data.xml.holder.HennaHolder;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.base.PcCondOverride;
-import l2r.gameserver.network.serverpackets.HennaEquipList;
 import l2r.gameserver.network.serverpackets.components.SystemMsg;
-import l2r.gameserver.randoms.PvPCharacterIntro;
 import l2r.gameserver.templates.Henna;
 
 public class RequestHennaEquip extends L2GameClientPacket
@@ -36,21 +34,21 @@ public class RequestHennaEquip extends L2GameClientPacket
 			return;
 		}
 		
-		if (PvPCharacterIntro.getInstance().getCharactertStep(player).equals("dyes"))
-		{
-			player.sendPacket(SystemMsg.THE_SYMBOL_HAS_BEEN_ADDED);
-			player.addHenna(temp);
-			
-			if(player.getHennaEmptySlots() == 0)
-			{
-				PvPCharacterIntro.getInstance().showTutorialHTML("teleport", player);
-				PvPCharacterIntro.getInstance().setCharacterStep(player, "teleport");
-				return;
-			}
-			
-			player.sendPacket(new HennaEquipList(player, false));
-			return;
-		}
+//		if (PvPCharacterIntro.getInstance().getCharactertStep(player).equals("dyes"))
+//		{
+//			player.sendPacket(SystemMsg.THE_SYMBOL_HAS_BEEN_ADDED);
+//			player.addHenna(temp);
+//
+//			if(player.getHennaEmptySlots() == 0)
+//			{
+//				PvPCharacterIntro.getInstance().showTutorialHTML("teleport", player);
+//				PvPCharacterIntro.getInstance().setCharacterStep(player, "teleport");
+//				return;
+//			}
+//
+//			player.sendPacket(new HennaEquipList(player, false));
+//			return;
+//		}
 		
 		long countDye = player.getInventory().getCountOf(temp.getDyeId());
 		if(countDye < temp.getDrawCount())

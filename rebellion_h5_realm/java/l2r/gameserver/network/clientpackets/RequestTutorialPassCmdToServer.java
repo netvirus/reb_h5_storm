@@ -2,10 +2,16 @@ package l2r.gameserver.network.clientpackets;
 
 import l2r.gameserver.Config;
 import l2r.gameserver.achievements.Achievements;
+import l2r.gameserver.handler.bbs.CommunityBoardManager;
+import l2r.gameserver.handler.bbs.ICommunityBoardHandler;
 import l2r.gameserver.instancemanager.QuestManager;
 import l2r.gameserver.model.Player;
 import l2r.gameserver.model.quest.Quest;
-import l2r.gameserver.randoms.PvPCharacterIntro;
+import l2r.gameserver.network.serverpackets.SystemMessage2;
+import l2r.gameserver.network.serverpackets.components.SystemMsg;
+import l2r.gameserver.scripts.Scripts;
+
+import java.util.Map;
 
 public class RequestTutorialPassCmdToServer extends L2GameClientPacket
 {
@@ -23,53 +29,62 @@ public class RequestTutorialPassCmdToServer extends L2GameClientPacket
 	protected void runImpl()
 	{
 		Player player = getClient().getActiveChar();
-		if(player == null)
+		if (player == null)
 			return;
 
-		Quest tutorial = QuestManager.getQuest(255);
-
-		if(tutorial != null)
-			player.processQuestEvent(tutorial.getName(), _bypass, null);
-		
-		if (_bypass.startsWith("emailvalidation") && Config.ENABLE_EMAIL_VALIDATION)
+		// Synerge - Support for handling bbs events on tutorial windows
+		else if (_bypass.startsWith("_bbs"))
 		{
-			String[] cm = _bypass.split(" ");
-			
-			if (cm.length < 3)
+			if (!Config.COMMUNITYBOARD_ENABLED)
+				player.sendPacket(new SystemMessage2(SystemMsg.THE_COMMUNITY_SERVER_IS_CURRENTLY_OFFLINE));
+			else
 			{
-				player.sendMessage("Please fill all required fields.");
-				return;
+				String[] cm = _bypass.split(" ");
+				final ICommunityBoardHandler handler = CommunityBoardManager.getInstance().getCommunityHandler(cm[0]);
+				if (handler != null)
+					handler.onBypassCommand(player, _bypass);
 			}
 		}
-		else if (_bypass.startsWith("_bbs_achievements") && Config.ENABLE_ACHIEVEMENTS)
+		// Synerge - Support for handling scripts events on tutorial windows
+		else if (_bypass.startsWith("scripts_"))
 		{
-			String[] cm = _bypass.split(" ");
-			
-			Achievements.getInstance().usebypass(player, _bypass, cm);
-		}
-		else if(Config.ENABLE_ACHIEVEMENTS && _bypass.startsWith("_bbs_achievements_cat"))
-		{
-			String[] cm = _bypass.split(" ");
+			String command = _bypass.substring(8).trim();
+			String[] word = command.split("\\s+");
+			String[] args = command.substring(word[0].length()).trim().split("\\s+");
+			String[] path = word[0].split(":");
+			if (path.length != 2)
+				return;
 
-			int page = 0;
-			if (cm.length < 1)
-				page = 1;
+			Map<String, Object> variables = null;
+
+			if (word.length == 1)
+				Scripts.getInstance().callScripts(player, path[0], path[1], variables);
 			else
-				page = Integer.parseInt(cm[2]);
-				
-			Achievements.getInstance().generatePage(player, Integer.parseInt(cm[1]), page);
-			return;
+				Scripts.getInstance().callScripts(player, path[0], path[1], new Object[] { args }, variables);
 		}
-		else if(Config.ENABLE_ACHIEVEMENTS && _bypass.startsWith("_bbs_achievements_close"))
+		else if (Config.ENABLE_ACHIEVEMENTS && _bypass.startsWith("_bbs_achievements"))
 		{
 			String[] cm = _bypass.split(" ");
+			if (_bypass.startsWith("_bbs_achievements_cat"))
+			{
+				int page = 0;
+				if (cm.length < 1)
+					page = 1;
+				else
+					page = Integer.parseInt(cm[2]);
 
-			Achievements.getInstance().usebypass(player, _bypass, cm);
-			return;
+				Achievements.getInstance().generatePage(player, Integer.parseInt(cm[1]), page);
+			}
+			else
+				Achievements.getInstance().onBypass(player, _bypass, cm);
 		}
-		else if (_bypass.startsWith("_pvpcharintro"))
+		else
 		{
-			PvPCharacterIntro.getInstance().bypassIntro(player, _bypass);
+			Quest tutorial = QuestManager.getQuest(255);
+
+			if (tutorial != null)
+				player.processQuestEvent(tutorial.getName(), _bypass, null);
 		}
+
 	}
 }

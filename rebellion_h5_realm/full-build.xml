@@ -54,6 +54,7 @@
 	</target>
 
 	<target name="commons-jar" depends="compile-commons">
+		<record name="build/build-commons-jar.log" append="true"  loglevel="verbose" action="start"/>
 		<jar destfile="${build}/commons.jar">
 			<fileset dir="${build.classes}" />
 			<manifest>

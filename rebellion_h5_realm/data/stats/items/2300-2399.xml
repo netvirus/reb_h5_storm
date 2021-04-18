@@ -781,6 +781,8 @@
     <set name="class" value="OTHER"/>
     <set name="crystal_type" value="NONE"/>
     <set name="icon" value="icon.etc_prefect_belt_i00"/>
+    <set name="dropable" value="true"/>
+    <set name="tradeable" value="true"/>
     <set name="type" value="PET_COLLAR"/>
     <set name="weight" value="10"/>
     <cond msgId="1508">

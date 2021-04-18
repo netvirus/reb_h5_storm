@@ -87,6 +87,6 @@ public class Logout extends L2GameClientPacket
 			return;
 		}
 		
-		activeChar.logout(false);
+		activeChar.logout(false, Config.TO_LOGIN_SCREEN);
 	}
 }

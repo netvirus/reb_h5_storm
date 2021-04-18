@@ -41,7 +41,7 @@ public class RequestTutorialLinkHtml extends L2GameClientPacket
 				_log.warn("Bad Script bypass!"); 
 				return; 
 			} 
-			Achievements.getInstance().usebypass(player, _bypass, null); 
+			Achievements.getInstance().onBypass(player, _bypass, null);
 		}
 		else if(_bypass.startsWith("_bbs_Auction"))
 		{

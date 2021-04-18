@@ -236,7 +236,7 @@ public class _211_TrialOfChallenger extends Quest implements ScriptFile
 			st.exitCurrentQuest(false);
 		}
 		else if(npcId == 30535 && cond == 8)
-			if(st.getPlayer().getLevel() >= 36)
+			if(st.getPlayer().getLevel() >= 35)
 			{
 				htmltext = "elder_filaur_q0211_01.htm";
 				st.addRadar(176560, -184969, -3729);
